@@ -1,4 +1,129 @@
 ---
 name: make-website
-description: TODO
+description: >-
+  Build a bilingual (Swiss-French + English) static marketing website for one Geneva business from the dossier produced by extract-data, and write the deployable multi-page site to docs/webs/<slug>/. This is step 3 ("build") of the websites pipeline: extract → enhance → build. Use when the user wants to generate, build, or create the website for a shop whose dossier already exists under data/.
 ---
+
+# make-website
+
+Turn one business's `extract-data` dossier into a deployable, bilingual (**fr-CH** + **EN**) static website under `docs/webs/<web-slug>/`, and add it to the portfolio index.
+
+**Scope:** this skill starts from an existing dossier and ends when the site is written, self-verified, and linked from `docs/index.html`. It does **not** gather data (that's `extract-data`) and does **not** commit or deploy. **One business per invocation.** **Paths** are relative to the repo root (the working directory): `references/`, `resources/`, `data/`, and `docs/` all live there.
+
+## Inputs
+
+Ask the user for the **path to the dossier folder** (e.g. `data/miro-barbershop_barber-shop`). Do not ask anything else.
+
+From it:
+
+- Read the dossier markdown `<dir>/<slug>.md` **in full** — it is the single source of truth for every fact on the site. Note the files in `<dir>/assets/` (logo, photos).
+- Derive the **web slug** = the folder name up to the **first `_`** (the dossier slug is `<name-kebab>_<type-kebab>`, joined by a single `_`, so this drops the type suffix). E.g. `miro-barbershop_barber-shop` → `miro-barbershop`. Output dir `<out>` = `docs/webs/<web-slug>/`.
+
+## Read before building
+
+1. `references/site-structure.md` — the section menu and top-to-bottom order.
+2. `references/best-practices.md` — the **quality bar**. The site must satisfy it. Don't restate it; apply it.
+3. `docs/webs/miro-barbershop/` — the **reference implementation**: study its file layout, head/meta, JSON-LD, hreflang, language switcher, semantic landmarks, `js/main.js` patterns (header state, `IntersectionObserver` reveals with fallback, Intl open/closed badge), and `404.html`. Match this structure and quality. **Ignore `yummy-coffee/`** — it is an older, divergent style (single-file, Bootstrap, English-only) and must **not** be copied.
+
+## Procedure
+
+### 1. Resolve the output folder
+
+Fix `<out>` = `docs/webs/<web-slug>/`. **If `<out>` already exists, stop and ask** before overwriting — a built site may carry hand edits. Only proceed once the user confirms (then delete the old `<out>` and regenerate clean).
+
+### 2. Derive the base URL
+
+The site deploys to GitHub Pages, so absolute URLs (canonical, hreflang, `og:url`, `og:image`, sitemap `<loc>`) use the real deploy origin. Run `git remote get-url origin`, parse `github.com[:/]<org>/<repo>`, and build:
+
+- `<base>` = `https://<org>.github.io/<repo>/webs/<web-slug>/` (e.g. `https://vndly.github.io/websites/webs/<web-slug>/`).
+- `/en/` lives at `<base>en/`.
+
+If there is no remote or it can't be parsed, use a literal `{{BASE_URL}}` token instead and flag it in the final summary.
+
+### 3. Plan content from the dossier
+
+- Map the dossier's available data onto the sections in `site-structure.md`. **Omit any section with no backing data — never fabricate.** No reviews in the dossier → no Reviews section (and no `Review`/`aggregateRating` in the JSON-LD). The structure adapts per business.
+- Choose the brand palette (per `resources/info.txt`): use the dossier's stated brand colors if present → else derive from the **logo** → else infer from the business **type/name**.
+- Decide the most specific schema.org `LocalBusiness` subtype for the business type (e.g. `BarberShop`, `HairSalon`, `Restaurant`, `Bakery`, `BarOrPub`, `VeterinaryCare`, …); fall back to `LocalBusiness`.
+
+### 4. Build with the frontend-design skill
+
+Invoke the **frontend-design** skill to design and implement the site (your global rule requires it for any UI). Feed it the dossier facts, the chosen palette, the section plan, the `<base>` URL, and the `miro` reference. Produce distinctive, production-grade output — not a clone of the exemplar.
+
+### 5. Write the files
+
+Create this layout under `<out>`:
+
+```
+index.html        fr-CH homepage  (lang="fr-CH")
+en/index.html     EN homepage     (lang="en")
+css/style.css     shared hand-written CSS (no framework)
+js/main.js        shared vanilla JS (no framework)
+assets/           logo, photos, favicons, og-image
+robots.txt
+sitemap.xml
+404.html
+.nojekyll         empty file (serve dotfiles / skip Jekyll)
+favicon.ico
+```
+
+Both locales share `css/`, `js/`, and `assets/` (the `/en/` pages reference them with `../`).
+
+### 6. Assets
+
+- Copy the needed `logo.*` and chosen `photo-*.*` from the dossier `<dir>/assets/` into `<out>/assets/`. Reference them locally with honest `alt` text, explicit `width`/`height`, `decoding="async"`, `loading="lazy"` below the fold, and `fetchpriority="high"` on the hero/LCP image (never lazy-load it).
+- Generate from the logo, if `convert`/ImageMagick (or `sharp`) is available: `favicon.ico`, `favicon-32.png`, `favicon-512.png`, `apple-touch-icon.png`, and a `1200×630` `og-image.png`. **If no image tooling is available**, fall back to referencing the logo directly as a single favicon + OG image, and flag this in the summary.
+
+### 7. Per-page requirements (apply `best-practices.md`; mirror `miro`)
+
+Each `index.html`:
+
+- `<!DOCTYPE html>`, correct `<html lang>`, `<meta charset="utf-8">` first, responsive viewport (**never** disable zoom).
+- **Unique** `<title>` + `<meta name="description">` per locale; `theme-color`; `<meta name="author">`.
+- `<link rel="canonical">` + reciprocal `hreflang` (`fr`/`fr-CH`, `en`, `x-default`) + Open Graph + Twitter Card, all absolute under `<base>`; `og:image` = the generated OG image; `og:locale` `fr_CH` / `en`.
+- **JSON-LD** for the chosen subtype, with only properties backed by visible content (name, address, `geo`, hours, telephone, `priceRange`, services, ratings/reviews **only if present**).
+- Fonts via **Google Fonts CDN** (not self-hosted — this diverges from `miro` on purpose): `preconnect` to `fonts.googleapis.com` and `fonts.gstatic.com` (crossorigin), stylesheet with `&display=swap`. Do not copy `miro`'s `@font-face`.
+- Semantic landmarks (`header`/`nav`/`main`/`section[id]`/`footer`), exactly one `<h1>`, ordered headings, skip-to-content link, `:focus-visible`, `prefers-reduced-motion`, `aria-current` on the active nav/locale, touch targets ≥24px.
+- A **language switcher** in the nav (and footer) — explicit links between the two locale URLs with `aria-current` on the current one (static host, so no server-side negotiation).
+- `js/main.js` (end of body, IIFE, no inline `on*=` handlers): dynamic copyright year, scroll reveals via `IntersectionObserver` with a no-IO fallback, and — if hours are known — an Intl-based open/closed badge (`Europe/Zurich`).
+
+### 8. Conversion section
+
+A **Formspree** POST form plus native links:
+
+- `<form action="https://formspree.io/f/{{FORMSPREE_ID}}" method="post">` with labelled (`<label for>`), `autocomplete`-tokened, typed, `required` fields. The `{{FORMSPREE_ID}}` is a placeholder — **flag it** in the summary as must-replace for the form to work.
+- Alongside it, the real contact paths from the dossier: `tel:`, `mailto:`, WhatsApp (`https://wa.me/<intl-number>`), and the booking/reservation link if the dossier has one.
+
+### 9. SEO / deploy files
+
+- `robots.txt`: `User-agent: * / Allow: /` + absolute `Sitemap:` line under `<base>`.
+- `sitemap.xml`: both locale URLs, each with `xhtml:link` hreflang alternates.
+- `404.html`: self-contained (inline `<style>`), `<meta name="robots" content="noindex">`, bilingual one-liner, link home — like `miro`.
+- `.nojekyll`: empty.
+
+### 10. Portfolio index
+
+Append the new site to `docs/index.html` if not already listed, matching the existing entries:
+`<a href="webs/<web-slug>/index.html" target="_blank" rel="noopener"><Business Name></a>`. Leave existing entries untouched.
+
+## Verify before finishing
+
+Don't report success without checking:
+
+- Both `index.html` and `en/index.html` exist and are **content-complete in their own language** (full parity — no untranslated leftovers, no empty sections that the other locale fills).
+- Every `assets/…`, `css/…`, `js/…` path referenced resolves on disk, and every file in `<out>/assets/` is referenced back (no danglers either way); `/en/` references resolve with `../`.
+- All in-page anchors and internal links resolve; the language switcher points each locale at the other.
+- JSON-LD reflects only visible content; absolute URLs all use `<base>` consistently; `hreflang` is reciprocal.
+- No fabricated facts anywhere — every claim traces to the dossier.
+- Favicons/OG image were generated (or their absence was flagged); the `{{FORMSPREE_ID}}` (and `{{BASE_URL}}`, if used) placeholders are flagged.
+- `docs/index.html` links the new site.
+
+End with a short summary: the business, `<out>`, sections built vs. omitted (and why), any placeholders to replace before deploy, and anything the dossier lacked that would improve the site.
+
+## Constraints & conventions
+
+- **Bilingual, multi-page** (fr-CH root + `/en/`) — every fact in both languages.
+- **No framework**: hand-written CSS + vanilla JS. Fonts via Google Fonts CDN (`display=swap` + preconnect).
+- **Truthful content only** — omit what the dossier doesn't support; never invent reviews, hours, prices, or copy.
+- **Accessibility + SEO + performance per `references/best-practices.md`** — it is the bar, not a suggestion.
+- **One business per invocation.** Does not commit, push, or deploy.
