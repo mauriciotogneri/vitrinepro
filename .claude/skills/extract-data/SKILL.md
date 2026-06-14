@@ -47,7 +47,7 @@ Then prune:
 
 - **Drop** any entry the doc marks defunct, "do not use", "none"/no-CH-coverage, or "not a usable source".
 - **Drop redundant aggregators** when a primary source they re-publish is already in the list (the doc flags these, e.g. yellowpages.swiss, companyfinder.ch, Restaurant Guru, infoisinfo).
-- **Drop sources the doc flags as actively bot-blocking / 403** (phrases like "actively blocks bots (HTTP 403)", "returns 403 to bots", "returned HTTP 403 to automated fetch"). A best-effort fetch will almost certainly fail on these, so they don't earn an agent — e.g. Cylex, resto-rang.ch, Comparis Garagensuche, pressingsuisse.com, laveriesuisse.com, Raisin, Boucherie Suisse, TasteAtlas.
+- **Drop sources the doc flags as actively bot-blocking / 403** (phrases like "actively blocks bots (HTTP 403)", "returns 403 to bots", "returned HTTP 403 to automated fetch"). A best-effort fetch will almost certainly fail on these, so they don't earn an agent (e.g. Cylex). Scan the doc for these phrases rather than a fixed name list, which goes stale as the reference changes.
 
 The result is typically ~15–30 sources. For each, keep: `{ name, url, access_notes }` (url = the source's site or its Geneva page if the doc gives one; access_notes = the doc's access/ToS line).
 
@@ -80,14 +80,21 @@ const SCHEMA = {
     },
     access_status: {
       type: "string",
-      enum: ["ok", "partial", "blocked", "not_found", "no_data"],
+      enum: ["ok", "partial", "blocked", "not_found", "no_data", "error"],
       description:
-        "ok=found+extracted, partial=some data, blocked=bot-blocked/403, not_found=business not listed, no_data=listed but empty",
+        "ok=found+extracted, partial=some data, blocked=bot-blocked/403, not_found=business not listed, no_data=listed but empty, error=agent failed (set by the merge, not the source agent)",
     },
     status: {
       type: ["string", "null"],
+      enum: [
+        "operational",
+        "temporarily_closed",
+        "permanently_closed",
+        "unknown",
+        null,
+      ],
       description:
-        "operational / temporarily_closed / permanently_closed / unknown",
+        "Use these exact tokens; the merge renders them with spaces in the dossier.",
     },
     types: { type: "array", items: { type: "string" } },
     name: { type: ["string", "null"] },
@@ -194,14 +201,21 @@ const results = await parallel(
           "- Preserve original language; do NOT translate names, services, or menu text.",
           "- Logo/photos: return image URLs only. Do NOT download anything.",
           "- Reviews: at most ~5-10 representative ones.",
+          "- Also capture FAQ-useful extras when the source shows them — payment methods, parking/access, accessibility, age limits, booking/deposit policy, founding year — in `notes`.",
           "- Do NOT merge in knowledge from other sources or your own memory; only this source.",
         ].join("\n"),
-        { label: `src:${s.name}`, phase: "Gather", schema: SCHEMA },
+        { label: `src:${s.name}`, phase: "Gather", schema: SCHEMA, model: "sonnet" },
       ),
   ),
 );
 
-return results.filter(Boolean);
+// Keep every source represented and correctly attributed in the appendix,
+// even when its agent died (parallel() yields null for a thrown thunk).
+return sources.map((s, i) =>
+  results[i]
+    ? { ...results[i], source: s.name, source_url: results[i].source_url ?? s.url ?? null }
+    : { source: s.name, source_url: s.url ?? null, access_status: "error" },
+);
 ```
 
 ### 5. Merge with provenance
@@ -213,7 +227,7 @@ Combine the per-source results into one record. Rules:
 - **Identity fields** (name, status, address, coordinates, types): choose one **canonical** value by authority — official registry (Zefix/UID/RC Genève) or Google over directories over aggregators — and list the rest as alternates.
 - **Reviews / photos:** pool across sources and **deduplicate** (same text/author, same image URL).
 - **Identifiers:** collect all (google_place_id, uid_che, …).
-- Track each source's `access_status` for the appendix. The per-source objects are the array returned by the step-4 Workflow; if a source is missing from it (its agent errored out), record it as not queried in the appendix rather than failing the run.
+- Track each source's `access_status` for the appendix. The step-4 Workflow returns one object per source in the original order; a source whose agent died comes back as `access_status: "error"` (never dropped), so every selected source appears in the appendix. Normalize `status` tokens to spaced form (`temporarily_closed` → "temporarily closed") when rendering.
 
 ### 6. Resolve the output folder
 
@@ -235,9 +249,21 @@ Use `curl` via Bash with a normal browser User-Agent and a Referer matching the 
 
 On any failure (404, block, timeout): keep the source URL in the markdown, record the failure in the appendix, and continue — never abort the run. Note the 20-photo cap and any skipped photos in the appendix.
 
+After downloading, drop byte-for-byte duplicates that URL-dedup missed (the same image served at different CDN URLs): compare file hashes (e.g. `sha256sum <dir>/assets/photo-* | sort`), delete the redundant copies, and renumber so `photo-001…` stays contiguous.
+
 ### 8. Write the dossier
 
 Write `<dir>/<slug>.md` using the template below. Reference each downloaded asset by its **local path** _and_ its **source URL**.
+
+### 9. Verify before finishing
+
+A quick self-check — don't report success without it:
+
+- The dossier `<dir>/<slug>.md` exists and is non-empty.
+- Every `assets/…` path referenced in the markdown exists on disk, and every file in `<dir>/assets/` is referenced back (no danglers either way).
+- The downloaded photo/logo count matches the **Media** section and the appendix's "N downloaded".
+- The **Sources queried** table lists _every_ selected source (`ok`/`partial`/`blocked`/`not_found`/`no_data`/`error`).
+- **Sanity-check the fan-out:** if _every_ source came back `blocked`/`no_data`/`error`, suspect the sub-agents lacked web access (no `WebSearch`/`WebFetch`) rather than a genuine data desert — flag it instead of writing a hollow dossier.
 
 ## Output template
 
@@ -306,16 +332,17 @@ Write `<dir>/<slug>.md` using the template below. Reference each downloaded asse
 
 ## Sources queried
 
-| Source                  | Access    | Notes    |
-| ----------------------- | --------- | -------- |
-| Google Business Profile | ok        |          |
-| local.ch                | ok        |          |
-| Cylex Schweiz           | blocked   | HTTP 403 |
-| Yelp                    | not_found |          |
+| Source                  | Access    | Notes        |
+| ----------------------- | --------- | ------------ |
+| Google Business Profile | ok        |              |
+| local.ch                | ok        |              |
+| Cylex Schweiz           | blocked   | HTTP 403     |
+| Yelp                    | not_found |              |
+| Infobel                 | error     | agent failed |
 
 ## Notes
 
-- Photo cap: 20 (<N> downloaded, <M> skipped).
+- Photo cap: 20 (<N> downloaded, <M> skipped, <D> duplicates removed).
 - Download failures: <list or none>.
 - Other relevant info: <anything captured outside the standard fields>.
 ```
