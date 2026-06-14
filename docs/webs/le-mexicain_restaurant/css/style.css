@@ -515,10 +515,10 @@ section { position: relative; z-index: 1; }
 }
 .features svg { width: 1.05em; height: 1.05em; color: var(--agave); flex: none; }
 
-.collage { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 1rem; }
-.collage figure { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 1; }
-.collage figure:first-child { grid-row: span 2; aspect-ratio: auto; }
-.collage img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--ease-spring); }
+.collage { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1rem; aspect-ratio: 1; }
+.collage figure { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
+.collage figure:first-child { grid-row: 1 / 3; }
+.collage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform var(--ease-spring); }
 .collage figure:hover img { transform: scale(1.05); }
 
 /* gallery */
