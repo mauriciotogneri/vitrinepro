@@ -3,7 +3,7 @@
 ## HTML & Document Structure
 
 - **`<!DOCTYPE html>`** — standards mode declaration; _avoids browser quirks mode._
-- **`<html lang="en">`** — declares page language; _screen readers + translation + SEO._
+- **Accurate `<html lang>`** — set the document language to the active locale, such as `<html lang="en">` or `<html lang="fr-CH">`; _enables correct screen-reader pronunciation, translation, and SEO._
 - **`<meta charset="utf-8">` first** — encoding before any text; _prevents mojibake, no re-parse._
 - **Responsive viewport meta** — `width=device-width, initial-scale=1`; _correct scaling on mobile._
 - **Semantic landmarks** — `<nav> <main> <section> <footer> <h1>`; _accessibility + SEO structure over `<div>` soup._
@@ -79,14 +79,17 @@
 
 ## SEO & Discoverability
 
+- **Crawlable, indexable pages** — ensure important pages return useful content with successful HTTP responses and are not unintentionally blocked by authentication, `robots.txt`, or `noindex`; _lets search engines crawl, index, and understand the content._
 - **`robots.txt`** — `Allow: /` + `Sitemap:` line; _guides crawlers, points to sitemap._
 - **Do not block required rendering assets** — keep CSS, JavaScript, and images needed to understand pages crawlable; _lets search engines render and evaluate the real content._
 - **`sitemap.xml`** — list canonical URLs and include accurate `<lastmod>` dates for significant changes; omit ignored `<priority>`/`<changefreq>` values; _supports discovery without misleading metadata._
+- **Purposeful internal links** — connect related and important pages with crawlable `<a href>` links and descriptive anchor text; _helps users and search engines discover content and understand its relationships._
 - **JSON-LD structured data** — add accurate, visible-content-backed schema.org types such as `Organization` / `SoftwareApplication` / `WebSite`; _improves machine understanding and eligibility for supported search features._
+- **Local-business structured data** — use `LocalBusiness` or the most specific applicable subtype on each location page, with accurate visible details such as name, address, telephone, `geo`, opening hours, price range, services, menu, departments, and eligible reviews where relevant; validate supported properties with Google's Rich Results Test; _helps search engines understand the business and its location-specific details._
 - **Unique `<title>` + `<meta description>` per page** — concise, page-specific; _better SERP snippets + CTR._
 - **`<meta name="author">`** — attribution metadata.
 - **`app-ads.txt` when selling app ads** — publish the authorized ad sellers list when applicable; _helps prevent ad-inventory fraud._
-- **`hreflang`** — links language/region variants; _serves the right localized page (you already have `/en/`)._
+- **Localized URLs + `hreflang`** — give complete English and Swiss French versions stable, crawlable URLs; link them with reciprocal `hreflang="en"` / `hreflang="fr-CH"` annotations and use English as `x-default`; _helps users and search engines reach the appropriate localized content._
 - **`meta robots noindex`** — on thin/utility pages; _keeps low-value pages out of the index._
 - **Eligible page-specific JSON-LD** — add supported schema types such as breadcrumbs only when they accurately match visible content; validate against current search-engine guidance; _improves machine understanding without relying on deprecated rich results._
 
@@ -144,6 +147,7 @@
 - **Prevent duplicate actions while pending** — temporarily disable repeated submissions, but restore controls after failure; _avoids accidental duplicate operations._
 - **Handle request races** — cancel or ignore stale requests when newer requests supersede them; _prevents outdated responses replacing current UI._
 - **Locale-aware formatting** — use `Intl.DateTimeFormat`, `Intl.NumberFormat`, and `Intl.PluralRules`; _avoids incorrect hand-written date, number, and plural formatting._
+- **English/Swiss French language selection** — provide all information in complete English and Swiss French (`fr-CH`) versions; when no explicit or saved preference exists, serve Swiss French for a French browser preference and otherwise fall back to English; provide a visible, keyboard-accessible language switcher, persist the user's choice, and update the URL and document `lang`; _serves the appropriate language while keeping users in control._
 - **Avoid blocking browser features** — do not unnecessarily intercept copy, paste, context menus, text selection, or standard keyboard shortcuts; _preserves expected browser behavior._
 - **Passive + rAF-throttled scroll/touch** — `{passive:true}`, batch work in `requestAnimationFrame`; _no scroll jank._
 - **`IntersectionObserver`** — scroll-reveal animations & lazy work; _efficient vs per-event scroll handlers._
