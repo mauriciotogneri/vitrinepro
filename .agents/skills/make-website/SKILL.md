@@ -17,7 +17,7 @@ Ask the user for the **path to the dossier folder** (e.g. `data/razor_hairdresse
 From it:
 
 - Read the dossier markdown `<dir>/<slug>.md` **in full** — it is the single source of truth for every fact on the site. Note the files in `<dir>/assets/` (logo, photos).
-- Derive the **web slug** = the folder name up to the **first `_`** (the dossier slug is `<name-kebab>_<type-kebab>`, joined by a single `_`, so this drops the type suffix). E.g. `razor_hairdresser` → `razor`. Output dir `<out>` = `docs/webs/<web-slug>/`.
+- Derive the **web slug** = the dossier **folder name**, used unchanged (the dossier slug is `<name-kebab>_<type-kebab>`, joined by a single `_` — keep the whole name, type suffix included). E.g. `razor_hairdresser` → `razor_hairdresser`. Output dir `<out>` = `docs/webs/<web-slug>/`.
 
 ## Read before building
 

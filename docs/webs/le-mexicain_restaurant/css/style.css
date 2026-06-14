@@ -127,7 +127,6 @@ p { text-wrap: pretty; }
   color: var(--terracotta-deep);
 }
 .eyebrow svg { width: 1.05em; height: 1.05em; flex: none; }
-.eyebrow--on-dark { color: var(--amber-soft); }
 
 .section-head { max-width: 46rem; margin-bottom: clamp(2rem, 4vw, 3.25rem); }
 .section-head h2 {
@@ -153,7 +152,6 @@ p { text-wrap: pretty; }
 }
 section { position: relative; z-index: 1; }
 .section { padding-block: var(--section); }
-.section--tight { padding-block: clamp(3rem, 6vw, 5rem); }
 
 /* organic divider between sections */
 .wave {
@@ -258,6 +256,10 @@ section { position: relative; z-index: 1; }
 .nav-links a:hover::after,
 .nav-links a[aria-current="true"]::after { transform: scaleX(1); }
 .nav-links a[aria-current="true"] { color: var(--terracotta-deep); }
+/* the Réserver pill keeps its button colours even inside the nav */
+.nav-links a.btn { color: var(--cream); }
+.nav-links a.btn:hover { color: var(--cream); }
+.nav-links a.btn::after { content: none; }
 
 .nav-tail { display: flex; align-items: center; gap: .7rem; }
 
@@ -434,17 +436,6 @@ section { position: relative; z-index: 1; }
   justify-content: space-between;
   gap: 1.5rem;
 }
-.price-note {
-  display: inline-flex;
-  align-items: center;
-  gap: .6em;
-  padding: .6rem 1.05rem;
-  border: 1.5px dashed var(--clay);
-  border-radius: 999px;
-  color: var(--terracotta-deep);
-  font-weight: 700;
-  background: color-mix(in srgb, var(--clay) 8%, transparent);
-}
 .menu-grid {
   margin-top: clamp(2rem, 4vw, 3.25rem);
   display: grid;
@@ -494,26 +485,6 @@ section { position: relative; z-index: 1; }
   background: linear-gradient(transparent, rgba(28,20,15,.78));
 }
 
-/* ---------- Pull quote band ---------- */
-.band {
-  background:
-    radial-gradient(120% 120% at 85% 0%, rgba(176,80,46,.5), transparent 55%),
-    var(--cocoa);
-  color: var(--cream);
-}
-.band .container { position: relative; }
-.band blockquote {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.6rem, 1.1rem + 2.4vw, 2.85rem);
-  line-height: 1.18;
-  letter-spacing: -.01em;
-  max-width: 24ch;
-}
-.band blockquote .mark { color: var(--amber); font-size: 1.4em; line-height: 0; vertical-align: -.35em; margin-right: .1em; }
-.band cite { display: block; margin-top: 1.5rem; font-style: normal; font-size: .95rem; color: var(--amber-soft); letter-spacing: .02em; }
-.band cite b { color: var(--cream); font-weight: 700; }
-
 /* ---------- About ---------- */
 .about-grid {
   display: grid;
@@ -546,7 +517,7 @@ section { position: relative; z-index: 1; }
 
 .collage { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 1rem; }
 .collage figure { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 1; }
-.collage figure:first-child { grid-row: span 2; aspect-ratio: 3 / 5; }
+.collage figure:first-child { grid-row: span 2; aspect-ratio: auto; }
 .collage img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--ease-spring); }
 .collage figure:hover img { transform: scale(1.05); }
 
@@ -716,18 +687,6 @@ a.contact-line:hover { transform: translateY(-2px); box-shadow: var(--shadow-md)
     repeating-linear-gradient(45deg, var(--cream-deep), var(--cream-deep) 14px, var(--sand) 14px, var(--sand) 28px);
 }
 .map iframe { width: 100%; height: 100%; border: 0; display: block; }
-.map-load {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-content: center;
-  gap: .8rem;
-  justify-items: center;
-  text-align: center;
-  padding: 1.5rem;
-  background: color-mix(in srgb, var(--cocoa) 12%, transparent);
-}
-.map-load p { font-size: .88rem; color: var(--cocoa-soft); max-width: 22rem; }
 
 /* ---------- FAQ ---------- */
 .faq-list { max-width: 50rem; margin-inline: auto; display: grid; gap: .8rem; }

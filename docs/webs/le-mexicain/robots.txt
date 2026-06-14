@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://vndly.github.io/websites/webs/le-mexicain/sitemap.xml

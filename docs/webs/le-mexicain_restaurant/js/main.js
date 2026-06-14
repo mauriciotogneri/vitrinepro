@@ -11,7 +11,6 @@
     open: "Ouvert", closed: "Fermé",
     closes: "ferme à", opens: "ouvre à", opensOn: "ouvre",
     today: "", tomorrow: "demain",
-    mapTitle: "Carte — Le Mexicain, Rue des Deux-Ponts 3, Genève",
     sending: "Envoi…",
     ok: "Merci ! Votre demande de réservation a bien été envoyée. Nous vous recontactons rapidement.",
     err: "Désolé, l’envoi a échoué. Appelez-nous au +41 22 320 82 29 ou réessayez."
@@ -19,7 +18,6 @@
     open: "Open now", closed: "Closed",
     closes: "closes", opens: "opens", opensOn: "opens",
     today: "", tomorrow: "tomorrow",
-    mapTitle: "Map — Le Mexicain, Rue des Deux-Ponts 3, Geneva",
     sending: "Sending…",
     ok: "Thank you! Your reservation request has been sent. We’ll get back to you shortly.",
     err: "Sorry, sending failed. Please call us on +41 22 320 82 29 or try again."
@@ -174,31 +172,6 @@
     if (!now) return;
     var row = document.querySelector('.hours tr[data-day="' + now.day + '"]');
     if (row) row.classList.add("today");
-  })();
-
-  /* ---------- click-to-load map (privacy: no third-party until activated) ---------- */
-  (function () {
-    var map = document.querySelector(".map[data-lat]");
-    if (!map) return;
-    var btn = map.querySelector(".map-load button");
-    if (!btn) return;
-    btn.addEventListener("click", function () {
-      var lat = map.getAttribute("data-lat"), lng = map.getAttribute("data-lng");
-      var dLat = 0.0022, dLng = 0.0045;
-      var bbox = [ (+lng - dLng).toFixed(5), (+lat - dLat).toFixed(5),
-                   (+lng + dLng).toFixed(5), (+lat + dLat).toFixed(5) ].join(",");
-      var src = "https://www.openstreetmap.org/export/embed.html?bbox=" +
-        encodeURIComponent(bbox) + "&layer=mapnik&marker=" +
-        encodeURIComponent(lat + "," + lng);
-      var f = document.createElement("iframe");
-      f.src = src;
-      f.title = I18N.mapTitle;
-      f.loading = "lazy";
-      f.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
-      var loader = map.querySelector(".map-load");
-      if (loader) loader.remove();
-      map.appendChild(f);
-    });
   })();
 
   /* ---------- reservation form (progressive enhancement over Formspree) ---------- */
