@@ -28,7 +28,7 @@ Assemble a shop record:
 { name, types: [...], address?, website?, phones?, emails?, notes? }
 ```
 
-If name, Geneva, or type(s) are missing, ask once for the missing piece. Do not ask for anything else. Build the output **slug** = kebab-case of the name, ASCII-folding accents and dropping punctuation (e.g. `Miro Barbershop` → `miro-barbershop`; `Café Crémerie` → `cafe-cremerie`).
+If name, Geneva, or type(s) are missing, ask once for the missing piece. Do not ask for anything else. Build the output **slug** = `<name>_<type>` — the business name and its **primary type** (`types[0]`), each kebab-cased with accents ASCII-folded and punctuation dropped, joined by a single underscore (the only `_` in the slug, so name and type stay separable). E.g. `Miro Barbershop` (Barber Shop) → `miro-barbershop_barber-shop`; `Café Crémerie` (Coffee Shop) → `cafe-cremerie_coffee-shop`; `Le Chat Noir` (Bar / Pub) → `le-chat-noir_bar-pub`.
 
 **Pin the identity before fanning out.** If neither address nor website is known, first do a quick resolution pass — search Google Business Profile / Maps and local.ch for the name + "Geneva" + type — to lock the canonical address (and website, if found), then add it to the shop record so every source agent matches against the same business. If it can't be resolved confidently, proceed anyway but treat matching as lower-confidence and flag ambiguous results in the merge.
 
