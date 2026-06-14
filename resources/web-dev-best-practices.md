@@ -8,6 +8,7 @@
 - **Responsive viewport meta** — `width=device-width, initial-scale=1`; _correct scaling on mobile._
 - **Semantic landmarks** — `<nav> <main> <section> <footer> <h1>`; _accessibility + SEO structure over `<div>` soup._
 - **One `<h1>` per page, ordered headings** — logical outline; _a11y + SEO._
+- **Headings for structure, not style** — use `<h1>`–`<h6>` to mark hierarchy, never to get a bigger font; style `<p>`/`<li>` with a class instead; _keeps the document outline meaningful for a11y + SEO._
 - **Explicit `width`/`height` on `<img>`** — reserves space; _prevents layout shift (CLS)._
 - **`<link rel="canonical">`** — declares the authoritative URL; _avoids duplicate-content penalties._
 - **Clean hierarchical URLs** — e.g. `/reference/collections/list/`; _readable, SEO-friendly, organizes content._
@@ -66,7 +67,7 @@
 - **CSS Grid + `subgrid`** — aligns rows across sibling cards; _consistent alignment without magic numbers._
 - **Vendor prefixes** — `-webkit-`/`-moz-` (e.g. `backdrop-filter`, `background-clip`, font-smoothing); _cross-browser support._
 - **Gradient text** — `background-clip: text` + transparent fill; _styled headings/branding._
-- **Reusable utility + component classes** — `.btn`, `.card`, spacing helpers; _consistency, less duplication._
+- **Reusable classes over inline styles** — apply `.btn`/`.card`/spacing helpers instead of repeating `style="…"` across elements; _consistency, less duplication._
 - **Centralized transition/easing tokens** — `--t-fast`, `--ease-out`; _uniform motion feel._
 - **`prefers-color-scheme` + `color-scheme`** — honor OS dark/light; _user comfort + native-styled controls._
 - **`aspect-ratio` property** — reserve ratio directly (replaces the `padding-bottom` hack); _cleaner, avoids CLS._
@@ -75,6 +76,8 @@
 - **`scroll-margin-top` on anchor targets** — offsets in-page jumps under a fixed navbar; _sections aren't hidden behind it._
 - **Modern CSS reset** — normalize cross-browser defaults; _predictable baseline._
 - **`:is()` / `:where()` / nesting** — group & flatten selectors; _less repetition, controlled specificity._
+- **Validate/lint CSS** — invalid declarations (e.g. a hex color missing its `#`) are silently dropped, not errored; _a linter catches them before the style quietly fails._
+- **Prune dead CSS** — delete rules nothing uses (or apply them); _smaller payload, no confusion over what's actually live._
 
 ## JavaScript
 
@@ -83,7 +86,7 @@
 - **Scripts at end of `<body>`** — after content; _DOM ready, no parser blocking._
 - **Progressive enhancement** — `try/catch` around `Flutter.postMessage`; _page still works outside the app shell._
 - **`localStorage` persistence** — editor content + console history; _state survives reloads._
-- **Platform/UA detection** — show correct app-store badge per OS; _relevant CTA per visitor._
+- **Reliable platform detection** — pick the app-store badge per OS via feature detection / UA-Client-Hints, not deprecated `navigator.platform` (iPadOS 13+ reports as desktop Mac); default unknowns to showing all options; _relevant CTA without misdetecting devices._
 - **Dynamic copyright year** — `new Date().getFullYear()`; _never stale._
 - **Minified third-party libs** — `*.min.js`; _smaller transfer._
 - **Keyboard-driven UX** — arrow-up/down console history, Enter to run; _power-user ergonomics._
@@ -91,6 +94,9 @@
 - **Passive + rAF-throttled scroll/touch** — `{passive:true}`, batch work in `requestAnimationFrame`; _no scroll jank._
 - **`IntersectionObserver`** — scroll-reveal animations & lazy work; _efficient vs per-event scroll handlers._
 - **Native `fetch` over `$.ajax`** — drop jQuery for new code; _smaller, dependency-free._
+- **No inline handlers or inline `<script>`** — wire events with `addEventListener` from external JS, not `onclick="…"`; _lets a strict CSP drop `unsafe-inline`._
+- **Encode user values in URLs** — wrap interpolated query/path values in `encodeURIComponent()`; _`&` `#` `+` and spaces would otherwise corrupt or truncate them._
+- **State changes use `POST`, not `GET`** — never submit form/mutation data via a query string; _GET URLs get cached, proxied, length-capped, and logged._
 - **Central error handling** — `window.onerror` / `unhandledrejection`; _catch & report client errors._
 
 ## Performance
@@ -125,6 +131,7 @@
 
 - **Security headers via host config** — `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY/SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`; _blocks MIME-sniffing, clickjacking, referrer leakage._
 - **`Permissions-Policy`** — disables unused `camera()/microphone()/geolocation()`; _shrinks attack surface._
+- **Scope CORS to what needs it** — set `Access-Control-Allow-Origin` only on assets read cross-origin, never `*` on every file; _avoids needlessly exposing all assets to any origin._
 - **`rel="noopener noreferrer"` on `target="_blank"`** — severs `window.opener`; _prevents reverse-tabnabbing._
 - **Subresource Integrity (`integrity` + `crossorigin`)** — hash-pinned CDN `<script>`s; _blocks tampered CDN payloads._
 - **HTTPS canonical URLs everywhere** — all absolute links use `https://`; _secure transport, no mixed content._
