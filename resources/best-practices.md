@@ -12,7 +12,7 @@
 - **Explicit `width`/`height` on `<img>`** — reserves space; _prevents layout shift (CLS)._
 - **`<link rel="canonical">`** — declares the authoritative URL; _avoids duplicate-content penalties._
 - **Clean hierarchical URLs** — e.g. `/reference/collections/list/`; _readable, SEO-friendly, organizes content._
-- **External CSS/JS files** — markup/style/behavior separated; _cacheable, maintainable._
+- **Single self-contained HTML file** — all HTML, CSS, and JS in one `.html`: CSS in a single `<head>` `<style>`, JS in a single end-of-`<body>` `<script>`; no external stylesheets or scripts; _fewest requests, no render-blocking asset fetches, fastest first paint, trivial deploy. Media (images, fonts) stays external._
 - **`<noscript>` fallback** — message/content shown when JS is disabled; _core info stays reachable._
 - **Branded custom 404** — on-theme page with link home; _recovers lost visitors._
 
@@ -97,7 +97,7 @@
 - **`IntersectionObserver`** — scroll-reveal animations & lazy work; _efficient vs per-event scroll handlers._
 - **Clean up listeners/observers** — `removeEventListener`, `observer.disconnect()`, `AbortController` for `fetch`/listeners; _prevents memory leaks and dangling work on long-lived pages._
 - **Native `fetch` over `$.ajax`** — drop jQuery for new code; _smaller, dependency-free._
-- **No inline handlers or inline `<script>`** — wire events with `addEventListener` from external JS, not `onclick="…"`; _lets a strict CSP drop `unsafe-inline`._
+- **No inline `on*=` handlers** — wire events with `addEventListener` from the page's single inlined `<script>`, not `onclick="…"`; _keeps all JS in one place; for a strict CSP, allow the inline block via a hash/nonce rather than `unsafe-inline`._
 - **Encode user values in URLs** — wrap interpolated query/path values in `encodeURIComponent()`; _`&` `#` `+` and spaces would otherwise corrupt or truncate them._
 - **State changes use `POST`, not `GET`** — never submit form/mutation data via a query string; _GET URLs get cached, proxied, length-capped, and logged._
 - **Central error handling** — `window.onerror` / `unhandledrejection`; _catch & report client errors._
@@ -114,7 +114,7 @@
 - **Responsive images** — `srcset`/`sizes` + `<picture>`; _right resolution per device/DPR._
 - **Modern image formats (AVIF/WebP)** — with PNG/JPEG fallback; _much smaller files._
 - **`rel="preload"` critical assets** — LCP image & fonts (`as=`, `crossorigin`); _earlier fetch, faster LCP._
-- **Inline critical CSS, defer the rest** — inline above-the-fold styles, load the rest async; avoid render-blocking CSS `@import`; _faster first paint._
+- **Inline all CSS in one `<style>`** — the whole stylesheet lives in the `<head>`; no external sheets, no render-blocking CSS `@import`; _single small page, so every style is critical — zero blocking fetches._
 - **`fetchpriority="high"` on LCP image** — prioritize the hero; _paints sooner._
 - **Subset + self-host fonts** — only needed glyphs, same origin; _smaller, fewer connections, more private._
 - **Content-hashed filenames** — pair with `immutable` caching; _safe long cache + instant cache-bust on change._
