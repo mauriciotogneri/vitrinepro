@@ -40,6 +40,7 @@ Read `references/data-extraction.md` in full. It catalogs every source, its Gene
 
 Select the sources to query for **this** shop:
 
+- **The shop's own official website** (when `shop.website` is known) — add it as the **first** source, named `Official website`, queried with the full per-source schema. It is the **top-authority** source for self-reported facts (hours, services, menu, prices, contact, social, logo/photos) and is **not** in `data-extraction.md`. Set its `access_notes` to flag its nature, e.g. _"The business's OWN site — most authoritative for self-reported hours/services/menu/prices/contact; extract comprehensively."_ A separate `branding:website` agent reads the same site for the visual theme (step 8), so this agent focuses on facts/content.
 - **All Generic sites** with plausible Geneva coverage for this business (skip ones whose coverage note says this type won't appear).
 - **All category-specific sites** for the shop's type(s). Map type → category using `resources/businesses.txt` (its category headers match the `## <Category>` sections in `data-extraction.md`); if the shop has multiple types spanning categories, include all matching category sections.
 
@@ -373,6 +374,7 @@ Combine the per-source results into one record. Rules:
 - **Keep every distinct value**, each tagged with the source(s) that reported it. Never silently pick a single winner.
 - **Ratings:** always list **per source** (score/scale/count).
 - **Identity fields** (name, status, address, coordinates, types): choose one **canonical** value by authority — official registry (Zefix/UID/RC Genève) or Google over directories over aggregators — and list the rest as alternates.
+- **Official website authority:** the business's own site is the **top** authority for **self-reported facts** — opening hours, services/menu, prices, contact details, social links, and its own logo/photos — outranking directories and aggregators. For **legal identity & status** (registered name, permanently/temporarily closed) keep the **registry** (Zefix/UID) or Google canonical, since a site can be stale; for **ratings**, defer to the review platforms (an official site won't carry impartial ratings).
 - **Reviews / photos:** pool across sources and **deduplicate** (same text/author, same image URL).
 - **Logo:** pick one canonical `logo_url` (prefer the official website or Google, else the highest-resolution candidate) — this is the one step 7 downloads; keep other candidates as alternates.
 - **Website / social links:** choose the canonical website by authority (registry/official over directories); union social links by network, keeping distinct URLs tagged by source.
@@ -431,7 +433,7 @@ A quick self-check — don't report success without it:
 - The dossier `<dir>/<slug>.md` exists and is non-empty.
 - Every `assets/…` path referenced in the markdown exists on disk, and every file in `<dir>/assets/` is referenced back (no danglers either way).
 - The downloaded photo/logo count matches the **Media** section and the appendix's "N downloaded".
-- The **Sources queried** table lists _every_ selected source (`ok`/`partial`/`blocked`/`not_found`/`no_data`/`error`).
+- The **Sources queried** table lists _every_ selected source (`ok`/`partial`/`blocked`/`not_found`/`no_data`/`error`), including the `Official website` row when the shop has a site.
 - **Sanity-check the fan-out:** if _every_ source came back `blocked`/`no_data`/`error`, suspect the sub-agents lacked web access (no `WebSearch`/`WebFetch`) rather than a genuine data desert — flag it instead of writing a hollow dossier.
 - The **Branding / Theme** section exists with a labeled **Basis**, valid `#rrggbb` palette values, and named `display`/`body` fonts. If a usable website was found, the basis should be **extracted** — an **inferred** basis despite a known site means the branding agent failed; flag it.
 
