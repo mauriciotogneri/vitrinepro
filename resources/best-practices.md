@@ -48,7 +48,6 @@
 - **`hreflang`** — links language/region variants; _serves the right localized page (you already have `/en/`)._
 - **`meta robots noindex`** — on thin/utility pages; _keeps low-value pages out of the index._
 - **Breadcrumb / FAQ JSON-LD** — additional schema types; _breadcrumb & FAQ rich results._
-- **Host + trailing-slash canonicalization** — one URL form via 301 (www/non-www, slash); _consolidates ranking, no duplicates._
 
 ## Social / Link Previews
 
@@ -105,7 +104,6 @@
 
 ## Performance
 
-- **Immutable long-cache headers** — `Cache-Control: public, max-age=31536000, immutable` on hashed CSS/JS/img/fonts; _near-zero repeat-visit requests._
 - **`rel="preconnect"`** — to font/CDN/analytics origins; _warms DNS+TLS early._
 - **`dns-prefetch` / `prefetch` / Speculation Rules** — `dns-prefetch` as a `preconnect` fallback, `prefetch`/prerender likely-next pages; _near-instant subsequent navigations._
 - **`loading="lazy"`** — on below-the-fold images and iframes; _defers offscreen loads, faster first paint._
@@ -135,17 +133,11 @@
 
 ## Security
 
-- **Security headers via host config** — `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY/SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`; _blocks MIME-sniffing, clickjacking, referrer leakage._
-- **`Permissions-Policy`** — disables unused `camera()/microphone()/geolocation()`; _shrinks attack surface._
-- **Scope CORS to what needs it** — set `Access-Control-Allow-Origin` only on assets read cross-origin, never `*` on every file; _avoids needlessly exposing all assets to any origin._
 - **`rel="noopener noreferrer"` on `target="_blank"`** — severs `window.opener`; _prevents reverse-tabnabbing._
 - **Subresource Integrity (`integrity` + `crossorigin`)** — hash-pinned CDN `<script>`s; _blocks tampered CDN payloads._
 - **HTTPS canonical URLs everywhere** — all absolute links use `https://`; _secure transport, no mixed content._
 - **Content-Security-Policy** — allowlist script/style/connect sources; _strong XSS/injection mitigation._
 - **Sanitize/escape untrusted HTML** — prefer `textContent`; run a sanitizer (e.g. DOMPurify) before any `innerHTML`; _prevents DOM-XSS at the source (CSP only mitigates)._
-- **HSTS (`Strict-Transport-Security`)** — force HTTPS on later visits; _blocks downgrade/SSL-strip._
-- **Form anti-spam** — honeypot field / rate limit / captcha; _cuts bot submissions._
 - **`/.well-known/security.txt`** — security contact for disclosures; _responsible vuln reporting._
 - **Dependency hygiene** — pin versions + `npm audit`/Dependabot; _avoid known CVEs & supply-chain risk._
 - **Analytics consent (EU)** — consent banner + GA Consent Mode / IP anonymization; _GDPR/ePrivacy compliance._
-- **Secure cookie flags** — `Secure`/`HttpOnly`/`SameSite` when cookies are used; _limits theft & CSRF._
