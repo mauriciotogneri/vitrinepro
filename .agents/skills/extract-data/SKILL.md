@@ -14,7 +14,9 @@ Gather everything publicly available about **one** Geneva business and write it 
 
 Accept the shop info from the skill arguments or by asking the user. Parse whatever free-form details are given (name, address, website, phone, etc.).
 
-**Required to proceed:** business **name**, that it is in **Geneva, Switzerland**, and its **type(s)** (from the `resources/businesses.txt` taxonomy, e.g. `Barber Shop`, `Restaurant`). Ask the user **only** for whichever of these is missing — don't interrogate field-by-field.
+**Google Maps URL shortcut.** The user may instead (or also) paste a **Google Maps link** — a full `…google.com/maps/place/…` URL or a short `maps.app.goo.gl/…` / `goo.gl/maps/…` link. Treat it as the identity seed: step 1 resolves it, parses name/coordinates/place-id from the URL, and best-effort extracts the listing (address, phone, website, hours, category), so the user usually needn't type those.
+
+**Required to proceed:** business **name**, that it is in **Geneva, Switzerland**, and its **type(s)** (from the `resources/businesses.txt` taxonomy, e.g. `Barber Shop`, `Restaurant`). Ask the user **only** for whichever of these is missing — don't interrogate field-by-field. A Google Maps URL usually supplies the **name** and confirms **Geneva** (via coordinates), so often only the **type(s)** needs inferring/confirming.
 
 Everything else is optional and just improves matching.
 
@@ -22,7 +24,18 @@ Everything else is optional and just improves matching.
 
 ### 1. Collect & confirm identity
 
-Assemble a shop record:
+**If the input is (or contains) a Google Maps URL, resolve and extract it first:**
+
+1. **Resolve short links.** For `maps.app.goo.gl/…` or `goo.gl/maps/…`, follow redirects to the canonical place URL — e.g. `curl -sIL -o /dev/null -w '%{url_effective}' "<short-url>"` (or WebFetch, which follows redirects).
+2. **Parse the URL string** (reliable, no page render needed):
+   - **Name** — the `/place/<Name>/` segment (URL-decode; `+` → space).
+   - **Coordinates** — `@<lat>,<lng>,…` or the `!3d<lat>!4d<lng>` data params.
+   - **Place identifier** — the `0x…:0x…` hex (CID), `!1s0x…` (ftid), and/or `…%2Fg%2F…` (Knowledge-Graph mid) → store under `identifiers` as `google_cid` / `google_maps_ftid` / `google_kg_mid`, plus the canonical `google_maps_url`.
+   - **Validate** the coordinates fall in the Geneva area (≈ lat 46.1–46.3, lng 6.0–6.3); if not, flag it — the pipeline is Geneva-only.
+3. **Extract the listing (best-effort).** Fetch the resolved place page for **address, phone, website, opening hours, category, rating**. Google Maps is JS-rendered and bot-protected, so if the fetch is blocked or thin, fall back to a **web search** for the place (parsed name + "Geneva" + street) and read the Google knowledge-panel details. Capture whatever is available, tagged source **"Google Maps (URL)"**. Do **not** fail if blocked — the fan-out's Google source agent (step 4) re-extracts and corroborates, so this is a head-start, not a single point of failure.
+4. **Map the category → taxonomy type.** Translate the Google category (e.g. "Barber shop", "Coffee shop") to the `resources/businesses.txt` type(s); propose it and let the user confirm. If no category was obtained, ask the user for the type(s) only.
+
+Assemble a shop record (seeding it with everything the Maps URL provided, if any):
 
 ```
 { name, types: [...], address?, website?, phones?, emails?, notes? }
