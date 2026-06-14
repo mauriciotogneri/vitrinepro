@@ -1,7 +1,7 @@
 ---
 name: extract-data
 description: >-
-  Enrich a single Geneva business by gathering publicly-available data in parallel from many web sources, then write a structured markdown dossier (with downloaded logo/photos) to data/<slug>/. Use when the user wants to collect, enhance, or research all available information about a specific shop/business — name, address, hours, ratings, reviews, services/menu, prices, photos, social links, etc. This is step 2 (“enhance”) of the websites pipeline: extract → enhance → build.
+  Enrich a single Geneva business by gathering publicly-available data in parallel from many web sources, then write a structured markdown dossier (with downloaded logo/photos) to data/<slug>/. Use when the user wants to collect, enhance, or research all available information about a specific shop/business — name, address, hours, ratings, reviews, services/menu, prices, photos, social links, branding (colors/fonts), etc. This is step 2 (“enhance”) of the websites pipeline: extract → enhance → build.
 ---
 
 # extract-data
@@ -30,7 +30,7 @@ Assemble a shop record:
 
 If name, Geneva, or type(s) are missing, ask once for the missing piece. Do not ask for anything else. Build the output **slug** = `<name>_<type>` — the business name and its **primary type** (`types[0]`), each kebab-cased with accents ASCII-folded and punctuation dropped, joined by a single underscore (the only `_` in the slug, so name and type stay separable). E.g. `Miro Barbershop` (Barber Shop) → `miro-barbershop_barber-shop`; `Café Crémerie` (Coffee Shop) → `cafe-cremerie_coffee-shop`; `Le Chat Noir` (Bar / Pub) → `le-chat-noir_bar-pub`.
 
-**Pin the identity before fanning out.** If neither address nor website is known, first do a quick resolution pass — search Google Business Profile / Maps and local.ch for the name + "Geneva" + type — to lock the canonical address (and website, if found), then add it to the shop record so every source agent matches against the same business. If it can't be resolved confidently, proceed anyway but treat matching as lower-confidence and flag ambiguous results in the merge.
+**Pin the identity before fanning out.** If neither address nor website is known, first do a quick resolution pass — search Google Business Profile / Maps and local.ch for the name + "Geneva" + type — to lock the canonical address (and website, if found), then add it to the shop record so every source agent matches against the same business. If it can't be resolved confidently, proceed anyway but treat matching as lower-confidence and flag ambiguous results in the merge. The canonical **website**, if found, is also the primary source for the **branding theme** (step 8), so resolving it pays off twice.
 
 ### 2. Read the source reference
 
@@ -173,58 +173,197 @@ const SCHEMA = {
   },
 };
 
+// Branding theme, read from the shop's OWN website (one dedicated agent).
+// Every field nullable — most sites expose only some of it.
+const BRANDING_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["access_status"],
+  properties: {
+    source_url: {
+      type: ["string", "null"],
+      description: "The exact website page inspected",
+    },
+    access_status: {
+      type: "string",
+      enum: ["ok", "partial", "blocked", "not_found", "no_data", "error"],
+      description:
+        "ok=branding extracted, partial=some, blocked=bot-blocked, not_found=no reachable site, no_data=site has no discernible styling",
+    },
+    palette: {
+      type: "array",
+      description: "Colors the site uses, each mapped to a semantic role",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["role", "hex"],
+        properties: {
+          role: {
+            type: "string",
+            description:
+              "primary | accent | background | surface | text | muted | border | other",
+          },
+          hex: { type: "string", description: "#rrggbb" },
+          note: {
+            type: ["string", "null"],
+            description:
+              "where seen, e.g. 'CSS --brand', 'button bg', 'body color'",
+          },
+        },
+      },
+    },
+    typography: {
+      type: ["object", "null"],
+      additionalProperties: false,
+      properties: {
+        display: {
+          type: ["string", "null"],
+          description: "Heading/display font-family as written in the CSS",
+        },
+        body: {
+          type: ["string", "null"],
+          description: "Body font-family as written in the CSS",
+        },
+        loaded_via: {
+          type: ["string", "null"],
+          description:
+            "Google Fonts | self-hosted @font-face | system stack | other",
+        },
+      },
+    },
+    theme_color: {
+      type: ["string", "null"],
+      description: 'The <meta name="theme-color"> value if present',
+    },
+    shape: {
+      type: ["object", "null"],
+      additionalProperties: false,
+      properties: {
+        radius: {
+          type: ["string", "null"],
+          description: "dominant border-radius, e.g. '8px', 'pill', 'sharp/0'",
+        },
+        borders: {
+          type: ["string", "null"],
+          description: "border character, e.g. 'hairline 1px', 'none', 'bold'",
+        },
+      },
+    },
+    depth: {
+      type: ["string", "null"],
+      description:
+        "shadow/elevation character, e.g. 'flat/none', 'soft diffuse', 'hard offset'",
+    },
+    spacing: {
+      type: ["string", "null"],
+      description:
+        "layout density, e.g. 'airy/generous', 'balanced', 'compact'",
+    },
+    vibe: {
+      type: "array",
+      items: { type: "string" },
+      description: "3-5 adjectives for the overall visual personality",
+    },
+    notes: { type: ["string", "null"] },
+  },
+};
+
 phase("Gather");
 
-const results = await parallel(
-  sources.map(
-    (s) => () =>
-      agent(
-        [
-          "You research ONE business and extract structured data from ONE source. Return ONLY what THIS source shows.",
-          "",
-          "BUSINESS:",
-          `- Name: ${shop.name}`,
-          "- City: Geneva, Switzerland",
-          `- Type(s): ${(shop.types || []).join(", ")}`,
-          `- Known address: ${shop.address || "unknown"}`,
-          `- Known website: ${shop.website || "unknown"}`,
-          `- Other known info: ${shop.notes || "none"}`,
-          "",
-          `SOURCE: ${s.name}${s.url ? " — " + s.url : ""}`,
-          `Reference access notes: ${s.access_notes || "none"}`,
-          "",
-          "RULES:",
-          "- Web only: use web search + public page fetches. Do NOT use paid or credentialed APIs and never invent or use credentials — but where THIS source exposes a free keyless endpoint (e.g. Overpass/Nominatim for OpenStreetMap at <=1 req/s, the Zefix public REST search, the Wikidata/Wikipedia APIs, opendata.swiss/CKAN), prefer it over scraping the source's HTML. Don't substitute a different source's API for the one you're assigned.",
-          "- Pragmatic best-effort: if the page loads, extract it; do NOT attempt anti-bot bypass (proxies, UA rotation).",
-          "- If the source blocks you, the business is not listed, or the page is empty, report it via access_status and stop — don't guess.",
-          "- Match carefully: confirm name + Geneva (+ address/website if known) so you extract the RIGHT business.",
-          "- Preserve original language; do NOT translate names, services, or menu text.",
-          "- Logo/photos: return absolute image URLs only (resolve relative paths against the page URL); do NOT download anything. Photos: up to ~15 representative ones.",
-          "- Reviews: at most ~5-10 representative ones.",
-          "- Also capture FAQ-useful extras when the source shows them — payment methods, parking/access, accessibility, age limits, booking/deposit policy, founding year — in `notes`.",
-          "- Do NOT merge in knowledge from other sources or your own memory; only this source.",
-        ].join("\n"),
-        {
-          label: `src:${s.name}`,
-          phase: "Gather",
-          schema: SCHEMA,
-          model: "sonnet",
-        },
-      ),
-  ),
+const thunks = sources.map(
+  (s) => () =>
+    agent(
+      [
+        "You research ONE business and extract structured data from ONE source. Return ONLY what THIS source shows.",
+        "",
+        "BUSINESS:",
+        `- Name: ${shop.name}`,
+        "- City: Geneva, Switzerland",
+        `- Type(s): ${(shop.types || []).join(", ")}`,
+        `- Known address: ${shop.address || "unknown"}`,
+        `- Known website: ${shop.website || "unknown"}`,
+        `- Other known info: ${shop.notes || "none"}`,
+        "",
+        `SOURCE: ${s.name}${s.url ? " — " + s.url : ""}`,
+        `Reference access notes: ${s.access_notes || "none"}`,
+        "",
+        "RULES:",
+        "- Web only: use web search + public page fetches. Do NOT use paid or credentialed APIs and never invent or use credentials — but where THIS source exposes a free keyless endpoint (e.g. Overpass/Nominatim for OpenStreetMap at <=1 req/s, the Zefix public REST search, the Wikidata/Wikipedia APIs, opendata.swiss/CKAN), prefer it over scraping the source's HTML. Don't substitute a different source's API for the one you're assigned.",
+        "- Pragmatic best-effort: if the page loads, extract it; do NOT attempt anti-bot bypass (proxies, UA rotation).",
+        "- If the source blocks you, the business is not listed, or the page is empty, report it via access_status and stop — don't guess.",
+        "- Match carefully: confirm name + Geneva (+ address/website if known) so you extract the RIGHT business.",
+        "- Preserve original language; do NOT translate names, services, or menu text.",
+        "- Logo/photos: return absolute image URLs only (resolve relative paths against the page URL); do NOT download anything. Photos: up to ~15 representative ones.",
+        "- Reviews: at most ~5-10 representative ones.",
+        "- Also capture FAQ-useful extras when the source shows them — payment methods, parking/access, accessibility, age limits, booking/deposit policy, founding year — in `notes`.",
+        "- Do NOT merge in knowledge from other sources or your own memory; only this source.",
+      ].join("\n"),
+      {
+        label: `src:${s.name}`,
+        phase: "Gather",
+        schema: SCHEMA,
+        model: "sonnet",
+      },
+    ),
 );
+
+// The shop's OWN website is the primary branding source — one dedicated agent
+// joins the same fan-out, run only when a canonical website was resolved.
+if (shop.website) {
+  thunks.push(() =>
+    agent(
+      [
+        "You extract the VISUAL BRAND IDENTITY of ONE business from its OWN official website. Report ONLY what the site's markup/CSS actually shows.",
+        "",
+        "BUSINESS:",
+        `- Name: ${shop.name}`,
+        "- City: Geneva, Switzerland",
+        `- Type(s): ${(shop.types || []).join(", ")}`,
+        `- Website to inspect: ${shop.website}`,
+        "",
+        "WHAT TO EXTRACT (from HTML + linked CSS — do NOT execute JS, do NOT process images):",
+        "- Palette: the colors the site actually uses. Prefer CSS custom properties (:root { --… }); else prominent color / background-color / border-color declarations. Map each to a role — primary (brand), accent (CTA/links), background, surface (cards/raised), text, muted, border — and give #rrggbb.",
+        "- Typography: the heading/display and body font-family values; note how they load (Google Fonts <link>, self-hosted @font-face, or a system stack).",
+        '- theme-color: the <meta name="theme-color"> value, if any.',
+        "- Shape: dominant border-radius (e.g. 8px / pill / sharp) and border character.",
+        "- Depth: shadow/elevation style (flat, soft diffuse, hard offset).",
+        "- Spacing: overall density (airy / balanced / compact).",
+        "- Vibe: 3-5 adjectives for the visual personality (e.g. minimal, luxe, playful, rustic).",
+        "",
+        "RULES:",
+        "- Confirm it is THIS business's own site (name + Geneva) before trusting it.",
+        "- Report only what THIS site shows; do NOT infer from the logo, the name, or other sites — that is the main agent's job.",
+        "- Preserve exact hex values and exact font-family names; do not normalize or translate.",
+        "- If the site is unreachable, blocked, or has no discernible styling, say so via access_status and stop — do not guess.",
+      ].join("\n"),
+      {
+        label: "branding:website",
+        phase: "Gather",
+        schema: BRANDING_SCHEMA,
+        model: "sonnet",
+      },
+    ),
+  );
+}
+
+const all = await parallel(thunks);
+const branding = shop.website ? all[all.length - 1] : null;
+const results = all.slice(0, sources.length);
 
 // Keep every source represented and correctly attributed in the appendix,
 // even when its agent died (parallel() yields null for a thrown thunk).
-return sources.map((s, i) =>
-  results[i]
-    ? {
-        ...results[i],
-        source: s.name,
-        source_url: results[i].source_url ?? s.url ?? null,
-      }
-    : { source: s.name, source_url: s.url ?? null, access_status: "error" },
-);
+return {
+  perSource: sources.map((s, i) =>
+    results[i]
+      ? {
+          ...results[i],
+          source: s.name,
+          source_url: results[i].source_url ?? s.url ?? null,
+        }
+      : { source: s.name, source_url: s.url ?? null, access_status: "error" },
+  ),
+  branding,
+};
 ```
 
 ### 5. Merge with provenance
@@ -238,7 +377,8 @@ Combine the per-source results into one record. Rules:
 - **Logo:** pick one canonical `logo_url` (prefer the official website or Google, else the highest-resolution candidate) — this is the one step 7 downloads; keep other candidates as alternates.
 - **Website / social links:** choose the canonical website by authority (registry/official over directories); union social links by network, keeping distinct URLs tagged by source.
 - **Identifiers:** collect all (google_place_id, uid_che, …).
-- Track each source's `access_status` for the appendix. The step-4 Workflow returns one object per source in the original order; a source whose agent died comes back as `access_status: "error"` (never dropped), so every selected source appears in the appendix. Normalize `status` tokens to spaced form (`temporarily_closed` → "temporarily closed") when rendering.
+- Track each source's `access_status` for the appendix. The step-4 Workflow now returns `{ perSource, branding }`; `perSource` has one object per source in the original order, and a source whose agent died comes back as `access_status: "error"` (never dropped), so every selected source appears in the appendix. Normalize `status` tokens to spaced form (`temporarily_closed` → "temporarily closed") when rendering.
+- **Branding:** set the `branding` object (the website agent's result, or `null` when the shop had no known site) aside — it is **not** merged into the per-source record; it feeds the **Derive the branding theme** step (step 8).
 
 ### 6. Resolve the output folder
 
@@ -262,11 +402,29 @@ On any failure (404, block, timeout): keep the source URL in the markdown, recor
 
 After downloading, drop byte-for-byte duplicates that URL-dedup missed (the same image served at different CDN URLs): compare file hashes (e.g. `sha256sum <dir>/assets/photo-* | sort`), delete the redundant copies, and renumber so `photo-001…` stays contiguous.
 
-### 8. Write the dossier
+### 8. Derive the branding theme
+
+In the **main agent**, synthesize one canonical visual **theme** for the business, keeping the evidence as alternates. Work the tiers in priority order and fix the _canonical_ value at the first that yields real signal — but keep lower tiers as cross-checks/alternates:
+
+1. **Website (highest authority)** — if the step-4 branding agent returned usable data, canonicalize from it: palette roles, fonts, `theme-color`, shape/depth/spacing, vibe. Basis = **extracted**.
+2. **Logo-derived** — else (or as a cross-check), inspect the downloaded `<dir>/assets/logo.*` **with your own vision** (read the image file) and name its dominant colors; assign them to primary/accent/background/text. `convert`/ImageMagick may refine this with a colour histogram if available, but vision alone suffices. For type, describe the lettering and nominate a Google-Fonts match only if it's a clear wordmark. Basis = **logo-derived**.
+3. **Name/type archetype (last resort)** — else infer a **category-fitting, cliché-averse** palette and type mood from the name + type(s) (e.g. a taqueria → warm terracotta + deep green + cream, friendly rounded display; a fine French restaurant → muted, restrained, elegant). Avoid literal national-flag / stereotype kitsch. Basis = **inferred** (low confidence — a replaceable placeholder).
+
+Assemble the canonical theme from the chosen tier:
+
+- **Palette:** semantic roles `primary`, `accent`, `background`, `surface`, `text`, `muted`, `border`, each a `#rrggbb` tagged with its source/basis; keep distinct alternates (e.g. logo colours when the website was canonical).
+- **Typography:** a `display` + `body` pairing. Nominate **Google-Fonts-available** families (that is what the build can load) and record the actually-observed font as provenance/alt; when unsure, give a descriptor instead (e.g. "geometric sans, 700–800 display").
+- **theme-color:** one `#rrggbb` (usually the primary or background).
+- **Shape / Depth / Spacing:** radius, shadow/elevation, and density character — but **label these "extracted" only when a site supplied them**; on the logo/name tiers they are tasteful defaults, so mark them **convention, not evidence**.
+- **Vibe:** 3–5 adjectives.
+
+Tag every value with its source/basis and an overall **confidence** (high / medium / low). When a real website theme exists, do **not** also run the name/type archetype — it only adds noise.
+
+### 9. Write the dossier
 
 Write `<dir>/<slug>.md` using the template below. Reference each downloaded asset by its **local path** _and_ its **source URL**.
 
-### 9. Verify before finishing
+### 10. Verify before finishing
 
 A quick self-check — don't report success without it:
 
@@ -275,6 +433,7 @@ A quick self-check — don't report success without it:
 - The downloaded photo/logo count matches the **Media** section and the appendix's "N downloaded".
 - The **Sources queried** table lists _every_ selected source (`ok`/`partial`/`blocked`/`not_found`/`no_data`/`error`).
 - **Sanity-check the fan-out:** if _every_ source came back `blocked`/`no_data`/`error`, suspect the sub-agents lacked web access (no `WebSearch`/`WebFetch`) rather than a genuine data desert — flag it instead of writing a hollow dossier.
+- The **Branding / Theme** section exists with a labeled **Basis**, valid `#rrggbb` palette values, and named `display`/`body` fonts. If a usable website was found, the basis should be **extracted** — an **inferred** basis despite a known site means the branding agent failed; flag it.
 
 ## Output template
 
@@ -329,6 +488,41 @@ A quick self-check — don't report success without it:
 ## Prices
 
 <overall price level / notable prices> _(sources)_
+
+## Branding / Theme
+
+**Basis:** <extracted from website | logo-derived | inferred from name/type> _(confidence)_
+
+**Palette** (canonical; alternates noted)
+
+| Role       | Hex       | Source / basis             |
+| ---------- | --------- | -------------------------- |
+| primary    | `#1b4d3e` | site `--brand` _(website)_ |
+| accent     | `#e0a458` | button bg _(website)_      |
+| background | `#faf7f2` | body _(website)_           |
+| surface    | `#ffffff` | cards _(website)_          |
+| text       | `#1a1a1a` | body color _(website)_     |
+| muted      | `#6b6b6b` | _(website)_                |
+| border     | `#e6e0d8` | _(website)_                |
+
+- Alt: logo-derived `#14443a`, `#d99a4e` _(logo)_
+
+**Typography**
+
+- **Display:** "Fraunces" _(Google Fonts; observed on site: "Fraunces")_
+- **Body:** "Inter" _(Google Fonts; observed on site: "Inter")_
+
+**theme-color:** `#1b4d3e`
+
+**Shape / Depth / Spacing**
+
+- Radius: 8px _(website)_ · Borders: hairline 1px _(website)_
+- Depth: soft diffuse shadow _(website)_
+- Spacing: airy / generous _(website)_
+
+_(On the logo/name tiers, shape/depth/spacing are tasteful defaults — mark them "convention, not evidence".)_
+
+**Vibe:** warm, artisanal, understated
 
 ## Media
 
