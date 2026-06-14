@@ -13,6 +13,7 @@
 - **Clean hierarchical URLs** — e.g. `/reference/collections/list/`; _readable, SEO-friendly, organizes content._
 - **External CSS/JS files** — markup/style/behavior separated; _cacheable, maintainable._
 - **`<noscript>` fallback** — message/content shown when JS is disabled; _core info stays reachable._
+- **Branded custom 404** — on-theme page with link home; _recovers lost visitors._
 
 ## Accessibility (a11y)
 
@@ -134,34 +135,3 @@
 - **Dependency hygiene** — pin versions + `npm audit`/Dependabot; _avoid known CVEs & supply-chain risk._
 - **Analytics consent (EU)** — consent banner + GA Consent Mode / IP anonymization; _GDPR/ePrivacy compliance._
 - **Secure cookie flags** — `Secure`/`HttpOnly`/`SameSite` when cookies are used; _limits theft & CSRF._
-
-## Hosting, Deploy & Tooling
-
-- **Branded custom 404** — on-theme page with link home; _recovers lost visitors._
-
----
-
-## Anti-Patterns to Avoid
-
-### Security & Privacy
-
-- **`target="_blank"` without `rel`** — the opened page can manipulate `window.opener` (reverse tabnabbing); _fix: add `rel="noopener noreferrer"` — the studio site does, the game sites don't._
-- **CDN scripts without SRI** — most pages load Bootstrap/CodeMirror with no `integrity` hash, so a compromised CDN can ship arbitrary code; _fix: add `integrity` + `crossorigin` (the playground page already does)._
-- **Wildcard CORS on every file** — `Access-Control-Allow-Origin: *` on `**/*.*` exposes all assets to any origin for no benefit on a static site; _fix: drop it, or scope to the assets that need cross-origin reads._
-- **Inline event handlers / inline `<script>`** — `onclick="…"` and inline blocks throughout; _block a strict Content-Security-Policy; fix: `addEventListener` + external JS._
-
-### Correctness
-
-- **Unescaped interpolation into a URL** — `?message=${message}` (feedback form + playground); `&`, `#`, `+`, spaces corrupt or truncate the value; _fix: `encodeURIComponent(message)`._
-- **State-changing request over `GET`** — feedback is submitted via a GET query string; can be cached/proxied, length-limited, and logged in URLs; _fix: use `POST`._
-- **`navigator.platform` device sniffing** — deprecated and unreliable (iPadOS 13+ reports as desktop Mac, so iPads miss the iOS badge); _fix: prefer feature detection / UA-Client-Hints, and default unknowns to "show all options"._
-
-### Semantics & Accessibility
-
-- **Headings used for styling** — every About/Features line wrapped in `<h2>` for the font, not structure; spams the document outline and misleads screen readers; _fix: use `<p>`/`<li>` + a class._
-- **Missing `<html lang>`** — several legal/help/tool sub-pages omit it (main pages have it); _fix: set `lang` on every page._
-
-### CSS
-
-- **Hex color missing `#`** — `color: 141422` is invalid and silently ignored (text falls back to inherited color); _fix: `#141422`._
-- **Repeated inline styles + dead CSS** — `.about-text`/`.feature-list` exist in `custom.css`, but the markup repeats `style="font-family:…; font-size:…"` on ~20 elements instead; _fix: apply the classes; delete or use the dead rules._
