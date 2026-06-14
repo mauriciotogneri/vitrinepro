@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bd5a35"/>
+      <stop offset="1" stop-color="#9a3f22"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="116" fill="url(#tile)"/>
+  <g>
+    <path d="M 256 368 Q 286 279 256 156 Q 226 279 256 368 Z" fill="#f7ecd8"/>
+    <path d="M 248.2 370 Q 232.5 281.7 150.3 193.3 Q 181.7 309.9 248.2 370 Z" fill="#f7ecd8"/>
+    <path d="M 263.8 370 Q 330.3 309.9 361.7 193.3 Q 279.5 281.7 263.8 370 Z" fill="#f7ecd8"/>
+    <path d="M 242.7 375.1 Q 194 312.1 93.5 274.4 Q 166.1 353.5 242.7 375.1 Z" fill="#f7ecd8"/>
+    <path d="M 269.3 375.1 Q 345.9 353.5 418.5 274.4 Q 318 312.1 269.3 375.1 Z" fill="#f7ecd8"/>
+    <path d="M 240.2 381.5 Q 181.3 350.9 92 358 Q 174.7 392.4 240.2 381.5 Z" fill="#5c7f4f"/>
+    <path d="M 271.8 381.5 Q 337.3 392.4 420 358 Q 330.7 350.9 271.8 381.5 Z" fill="#5c7f4f"/>
+    <path d="M 240.3 387.3 Q 190.8 380.5 130.8 410.6 Q 197.9 413.7 240.3 387.3 Z" fill="#5c7f4f"/>
+    <path d="M 271.7 387.3 Q 314.1 413.7 381.2 410.6 Q 321.2 380.5 271.7 387.3 Z" fill="#5c7f4f"/>
+    <circle cx="256" cy="384" r="22" fill="#3f5e38"/>
+    <circle cx="256" cy="384" r="9" fill="#f7ecd8"/>
+  </g>
+</svg>

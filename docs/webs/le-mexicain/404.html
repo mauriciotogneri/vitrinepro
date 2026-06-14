@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Page introuvable — Le Mexicain</title>
+  <meta name="theme-color" content="#b0502e">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      min-height: 100svh;
+      display: grid;
+      place-content: center;
+      gap: 1.1rem;
+      justify-items: center;
+      text-align: center;
+      padding: 2rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: #2b221c;
+      background:
+        radial-gradient(120% 80% at 85% -10%, rgba(217,138,61,.18), transparent 60%),
+        radial-gradient(90% 70% at 0% 5%, rgba(79,122,77,.12), transparent 55%),
+        #faf3e7;
+    }
+    img { width: 76px; height: 76px; border-radius: 16px; box-shadow: 0 10px 30px rgba(74,47,28,.16); }
+    h1 { font-size: clamp(2.4rem, 8vw, 3.6rem); font-weight: 800; letter-spacing: -.02em; color: #8f3d20; }
+    p { color: #6f5d4e; max-width: 34rem; font-size: 1.05rem; line-height: 1.6; }
+    .row { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; margin-top: .6rem; }
+    a.btn {
+      display: inline-flex; align-items: center; min-height: 48px;
+      padding: .8em 1.5em; border-radius: 999px;
+      background: #8f3d20; color: #faf3e7; font-weight: 700; text-decoration: none;
+      border: 1.5px solid #8f3d20;
+    }
+    a.btn.ghost { background: transparent; color: #8f3d20; border-color: #e7dac6; }
+    a:focus-visible { outline: 3px solid #4f7a4d; outline-offset: 3px; }
+  </style>
+</head>
+
+<body>
+  <img src="assets/favicon-512.png" alt="Le Mexicain">
+  <h1>404</h1>
+  <p>
+    <strong>Cette page n’existe pas.</strong> Retournons à table.<br>
+    <span lang="en">This page doesn’t exist. Let’s head back to the table.</span>
+  </p>
+  <div class="row">
+    <a class="btn" href="https://vndly.github.io/websites/webs/le-mexicain/">Accueil</a>
+    <a class="btn ghost" href="https://vndly.github.io/websites/webs/le-mexicain/en/" lang="en">English home</a>
+  </div>
+</body>
+
+</html>
