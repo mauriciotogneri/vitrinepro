@@ -1,32 +1,20 @@
 ---
 name: extract-data
 description: >-
-  Enrich a single Geneva business by gathering publicly-available data in parallel from many web
-  sources, then write a structured markdown dossier (with downloaded logo/photos) to data/<slug>/.
-  Use when the user wants to collect, enhance, or research all available information about a specific
-  shop/business — name, address, hours, ratings, reviews, services/menu, prices, photos, social
-  links, etc. This is step 2 (“enhance”) of the websites pipeline: extract → enhance → build.
+  Enrich a single Geneva business by gathering publicly-available data in parallel from many web sources, then write a structured markdown dossier (with downloaded logo/photos) to data/<slug>/. Use when the user wants to collect, enhance, or research all available information about a specific shop/business — name, address, hours, ratings, reviews, services/menu, prices, photos, social links, etc. This is step 2 (“enhance”) of the websites pipeline: extract → enhance → build.
 ---
 
 # extract-data
 
-Gather everything publicly available about **one** Geneva business and write it to a structured markdown dossier under `data/<slug>/`, with the logo and photos downloaded into an `assets/`
-subfolder. The dossier feeds the downstream website build (which uses `references/site-structure.md`
-and `references/best-practices.md`).
+Gather everything publicly available about **one** Geneva business and write it to a structured markdown dossier under `data/<slug>/`, with the logo and photos downloaded into an `assets/` subfolder. The dossier feeds the downstream website build (which uses `references/site-structure.md` and `references/best-practices.md`).
 
-**Scope:** this skill ends when the dossier is written. It does **not** build the website.
-**One business per invocation** — the caller iterates over a business list.
-**Paths** are relative to the repo root (the working directory), not this skill folder: `references/`
-and `resources/` live at the repo root and are shared with `make-website`.
+**Scope:** this skill ends when the dossier is written. It does **not** build the website. **One business per invocation** — the caller iterates over a business list. **Paths** are relative to the repo root (the working directory), not this skill folder: `references/` and `resources/` live at the repo root and are shared with `make-website`.
 
 ## Inputs
 
-Accept the shop info from the skill arguments or by asking the user. Parse whatever free-form
-details are given (name, address, website, phone, etc.).
+Accept the shop info from the skill arguments or by asking the user. Parse whatever free-form details are given (name, address, website, phone, etc.).
 
-**Required to proceed:** business **name**, that it is in **Geneva, Switzerland**, and its
-**type(s)** (from the `resources/businesses.txt` taxonomy, e.g. `Barber Shop`, `Restaurant`). Ask
-the user **only** for whichever of these is missing — don't interrogate field-by-field.
+**Required to proceed:** business **name**, that it is in **Geneva, Switzerland**, and its **type(s)** (from the `resources/businesses.txt` taxonomy, e.g. `Barber Shop`, `Restaurant`). Ask the user **only** for whichever of these is missing — don't interrogate field-by-field.
 
 Everything else is optional and just improves matching.
 
@@ -40,52 +28,34 @@ Assemble a shop record:
 { name, types: [...], address?, website?, phones?, emails?, notes? }
 ```
 
-If name, Geneva, or type(s) are missing, ask once for the missing piece. Do not ask for anything
-else. Build the output **slug** = kebab-case of the name (e.g. `Miro Barbershop` → `miro-barbershop`).
+If name, Geneva, or type(s) are missing, ask once for the missing piece. Do not ask for anything else. Build the output **slug** = kebab-case of the name (e.g. `Miro Barbershop` → `miro-barbershop`).
 
-**Pin the identity before fanning out.** If neither address nor website is known, first do a quick
-resolution pass — search Google Business Profile / Maps and local.ch for the name + "Geneva" +
-type — to lock the canonical address (and website, if found), then add it to the shop record so
-every source agent matches against the same business. If it can't be resolved confidently, proceed
-anyway but treat matching as lower-confidence and flag ambiguous results in the merge.
+**Pin the identity before fanning out.** If neither address nor website is known, first do a quick resolution pass — search Google Business Profile / Maps and local.ch for the name + "Geneva" + type — to lock the canonical address (and website, if found), then add it to the shop record so every source agent matches against the same business. If it can't be resolved confidently, proceed anyway but treat matching as lower-confidence and flag ambiguous results in the merge.
 
 ### 2. Read the source reference
 
-Read `references/data-extraction.md` in full. It catalogs every source, its Geneva coverage, the
-fields it exposes, and its access method/ToS notes.
+Read `references/data-extraction.md` in full. It catalogs every source, its Geneva coverage, the fields it exposes, and its access method/ToS notes.
 
 ### 3. Build the source list
 
 Select the sources to query for **this** shop:
 
-- **All Generic sites** with plausible Geneva coverage for this business (skip ones whose coverage
-  note says this type won't appear).
-- **All category-specific sites** for the shop's type(s). Map type → category using
-  `resources/businesses.txt` (its category headers match the `## <Category>` sections in
-  `data-extraction.md`); if the shop has multiple types spanning categories, include all matching
-  category sections.
+- **All Generic sites** with plausible Geneva coverage for this business (skip ones whose coverage note says this type won't appear).
+- **All category-specific sites** for the shop's type(s). Map type → category using `resources/businesses.txt` (its category headers match the `## <Category>` sections in `data-extraction.md`); if the shop has multiple types spanning categories, include all matching category sections.
 
 Then prune:
 
-- **Drop** any entry the doc marks defunct, "do not use", "none"/no-CH-coverage, or "not a usable
-  source".
-- **Drop redundant aggregators** when a primary source they re-publish is already in the list (the
-  doc flags these, e.g. yellowpages.swiss, companyfinder.ch, Restaurant Guru, infoisinfo).
-- **Drop sources the doc flags as actively bot-blocking / 403** (phrases like "actively blocks bots
-  (HTTP 403)", "returns 403 to bots", "returned HTTP 403 to automated fetch"). A best-effort fetch
-  will almost certainly fail on these, so they don't earn an agent — e.g. Cylex, resto-rang.ch,
-  Comparis Garagensuche, pressingsuisse.com, laveriesuisse.com, Raisin, Boucherie Suisse, TasteAtlas.
+- **Drop** any entry the doc marks defunct, "do not use", "none"/no-CH-coverage, or "not a usable source".
+- **Drop redundant aggregators** when a primary source they re-publish is already in the list (the doc flags these, e.g. yellowpages.swiss, companyfinder.ch, Restaurant Guru, infoisinfo).
+- **Drop sources the doc flags as actively bot-blocking / 403** (phrases like "actively blocks bots (HTTP 403)", "returns 403 to bots", "returned HTTP 403 to automated fetch"). A best-effort fetch will almost certainly fail on these, so they don't earn an agent — e.g. Cylex, resto-rang.ch, Comparis Garagensuche, pressingsuisse.com, laveriesuisse.com, Raisin, Boucherie Suisse, TasteAtlas.
 
-The result is typically ~15–30 sources. For each, keep: `{ name, url, access_notes }` (url = the
-source's site or its Geneva page if the doc gives one; access_notes = the doc's access/ToS line).
+The result is typically ~15–30 sources. For each, keep: `{ name, url, access_notes }` (url = the source's site or its Geneva page if the doc gives one; access_notes = the doc's access/ToS line).
 
 Do **not** pause for confirmation — proceed straight to the fan-out.
 
 ### 4. Fan out — one agent per source (Workflow tool)
 
-Call the **Workflow** tool with the script below, passing `args = { shop, sources }`. Each source
-gets one independent, schema-validated agent. (Invoking Workflow here is expected — this skill
-instructs it.)
+Call the **Workflow** tool with the script below, passing `args = { shop, sources }`. Each source gets one independent, schema-validated agent. (Invoking Workflow here is expected — this skill instructs it.)
 
 ```javascript
 export const meta = {
@@ -238,53 +208,36 @@ return results.filter(Boolean);
 
 Combine the per-source results into one record. Rules:
 
-- **Keep every distinct value**, each tagged with the source(s) that reported it. Never silently
-  pick a single winner.
+- **Keep every distinct value**, each tagged with the source(s) that reported it. Never silently pick a single winner.
 - **Ratings:** always list **per source** (score/scale/count).
-- **Identity fields** (name, status, address, coordinates, types): choose one **canonical** value
-  by authority — official registry (Zefix/UID/RC Genève) or Google over directories over
-  aggregators — and list the rest as alternates.
+- **Identity fields** (name, status, address, coordinates, types): choose one **canonical** value by authority — official registry (Zefix/UID/RC Genève) or Google over directories over aggregators — and list the rest as alternates.
 - **Reviews / photos:** pool across sources and **deduplicate** (same text/author, same image URL).
 - **Identifiers:** collect all (google_place_id, uid_che, …).
-- Track each source's `access_status` for the appendix. The per-source objects are the array
-  returned by the step-4 Workflow; if a source is missing from it (its agent errored out), record it
-  as not queried in the appendix rather than failing the run.
+- Track each source's `access_status` for the appendix. The per-source objects are the array returned by the step-4 Workflow; if a source is missing from it (its agent errored out), record it as not queried in the appendix rather than failing the run.
 
 ### 6. Resolve the output folder
 
-Fix the destination directory `<dir>` **before** writing anything, so assets and dossier land
-together:
+Fix the destination directory `<dir>` **before** writing anything, so assets and dossier land together:
 
 - Default `<dir>` = `data/<slug>`.
-- If `data/<slug>/` already exists, read its existing dossier first: if it's the **same** business
-  (matching name / address / identifiers), reuse `<dir>` and **overwrite** it; if a genuinely
-  **different** business that happens to share the slug, set `<dir>` = `data/<slug>-2` (then `-3`, …
-  if that also exists).
+- If `data/<slug>/` already exists, read its existing dossier first: if it's the **same** business (matching name / address / identifiers), reuse `<dir>` and **overwrite** it; if a genuinely **different** business that happens to share the slug, set `<dir>` = `data/<slug>-2` (then `-3`, … if that also exists).
 
 ### 7. Download media
 
-After the folder is fixed, in the **main agent** (not the source agents), download into
-`<dir>/assets/`:
+After the folder is fixed, in the **main agent** (not the source agents), download into `<dir>/assets/`:
 
 - The chosen **logo** → `assets/logo.<ext>`.
-- Up to **20 deduplicated photos** → `assets/photo-001.<ext>`, `photo-002.<ext>`, … (extension from
-  the content-type or URL). Dedup is by image URL, so the same photo served as resized CDN variants
-  can slip through — don't treat the 20 as guaranteed-distinct.
+- Up to **20 deduplicated photos** → `assets/photo-001.<ext>`, `photo-002.<ext>`, … (extension from the content-type or URL). Dedup is by image URL, so the same photo served as resized CDN variants can slip through — don't treat the 20 as guaranteed-distinct.
 
-Use `curl` via Bash with a normal browser User-Agent and a Referer matching the source page (plain
-browser headers — not rotation or bypass) plus a timeout, since many image CDNs reject header-less
-requests:
+Use `curl` via Bash with a normal browser User-Agent and a Referer matching the source page (plain browser headers — not rotation or bypass) plus a timeout, since many image CDNs reject header-less requests:
 
 `curl -fsSL --max-time 30 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36" -e "<source-page-url>" -o <path> "<url>"`
 
-On any failure (404, block, timeout): keep the source URL in the markdown, record the failure in the
-appendix, and continue — never abort the run. Note the 20-photo cap and any skipped photos in the
-appendix.
+On any failure (404, block, timeout): keep the source URL in the markdown, record the failure in the appendix, and continue — never abort the run. Note the 20-photo cap and any skipped photos in the appendix.
 
 ### 8. Write the dossier
 
-Write `<dir>/<slug>.md` using the template below. Reference each downloaded asset by its **local
-path** _and_ its **source URL**.
+Write `<dir>/<slug>.md` using the template below. Reference each downloaded asset by its **local path** _and_ its **source URL**.
 
 ## Output template
 
@@ -369,12 +322,8 @@ path** _and_ its **source URL**.
 
 ## Constraints & conventions
 
-- **Web only, no credentialed APIs.** Never assume, invent, or use credentials; no paid APIs. Free
-  keyless public endpoints (Overpass, Nominatim, Wikidata, Zefix public search, opendata.swiss) are
-  allowed and preferred over HTML scraping. Best-effort fetch; no anti-bot bypass.
+- **Web only, no credentialed APIs.** Never assume, invent, or use credentials; no paid APIs. Free keyless public endpoints (Overpass, Nominatim, Wikidata, Zefix public search, opendata.swiss) are allowed and preferred over HTML scraping. Best-effort fetch; no anti-bot bypass.
 - **Original language preserved** — translation is the website-build step's job.
-- **Provenance everywhere** — every value carries its source(s); a registry fact must be
-  distinguishable from an aggregator's guess.
-- **Partial results are expected** — most shops won't have all fields, and some sources will be
-  blocked or empty. Record gaps in the appendix; never fail the run over a missing field or source.
+- **Provenance everywhere** — every value carries its source(s); a registry fact must be distinguishable from an aggregator's guess.
+- **Partial results are expected** — most shops won't have all fields, and some sources will be blocked or empty. Record gaps in the appendix; never fail the run over a missing field or source.
 - **One business per invocation.**
