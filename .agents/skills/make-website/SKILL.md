@@ -12,7 +12,7 @@ Turn one business's `extract-data` dossier into a deployable, bilingual (**fr-CH
 
 ## Inputs
 
-Ask the user for the **path to the dossier folder** (e.g. `data/miro-barbershop_barber-shop`). Do not ask anything else.
+Ask the user for the **path to the dossier folder** (e.g. `data/miro-barbershop_barber-shop`) — and nothing else. The path must always come from the user: **never assume, default to, or guess it**, and even if a path is passed in the skill arguments, treat it as a suggestion to confirm, not a path to use directly. **Validate** it before building — the folder must exist and contain the dossier markdown `<dir>/<slug>.md`; if it's missing, empty, or ambiguous, ask again rather than proceeding.
 
 From it:
 
