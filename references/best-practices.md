@@ -24,6 +24,7 @@
 
 ## Accessibility (a11y)
 
+- **WCAG 2.2 POUR principles** — evaluate the whole experience as perceivable, operable, understandable, and robust; _provides a complete framework beyond checking isolated accessibility features._
 - **Purposeful image alternatives** — describe informative images, use `alt=""` for decorative images, and describe the action/destination of functional images; _gives screen-reader users equivalent information without noise._
 - **`aria-label` on icon-only buttons** — names the hamburger toggler; _operable without a visible label._
 - **`:focus-visible` outlines** — keyboard focus ring, hidden for mouse via `:focus:not(:focus-visible)`; _keyboard nav without ugly mouse outlines._
@@ -36,6 +37,7 @@
 - **Character-key shortcut controls** — let users turn off or remap single-character shortcuts, or make them active only while the relevant control has focus; _prevents accidental commands from speech and keyboard input._
 - **`iframe` `title` attribute** — names the embedded trailer; _screen-reader context._
 - **Color contrast (WCAG AA)** — ≥4.5:1 text, ≥3:1 large text & UI; _readable for low-vision users._
+- **Readable, scalable typography** — use legible fonts and comfortable default sizes, prefer relative units, and ensure text can resize to 200% without loss of content or functionality; _supports low-vision users and comfortable reading across devices._
 - **Don't rely on color alone** — communicate errors, states, and selections with text, icons, patterns, or other cues too; _works for users who cannot distinguish the colors._
 - **Don't rely on sensory characteristics alone** — instructions must not depend only on shape, color, size, visual location, orientation, or sound; _users can understand directions without perceiving a particular sense._
 - **Avoid images of text** — use real styled text except where the presentation is essential, such as a logo; _text remains scalable, adaptable, searchable, and readable by assistive technology._
@@ -103,7 +105,7 @@
 - **`font-display: swap`** — via `@font-face` or Google Fonts `&display=swap`; _text visible during font load (no FOIT)._
 - **woff2-first with ttf fallback** — `@font-face` format list; _smallest format, graceful fallback._
 - **`clamp()` fluid typography** — `clamp(3rem, 8vw, 5.5rem)`; _scales with viewport, fewer breakpoints._
-- **Mobile-first responsive breakpoints** — `min-width`/`max-width` media queries; _adapts layout per device._
+- **Mobile-first responsive design** — prioritize core content and immediate-intent tasks on small screens, then progressively enhance layouts for tablet and desktop with `min-width` breakpoints; _keeps the experience effective on mobile while adapting cleanly to larger devices._
 - **Responsive embeds with `aspect-ratio`** — set the intended ratio on video and iframe wrappers; use the padding technique only as a legacy fallback; _keeps embeds fluid without layout shift._
 - **CSS Grid + `subgrid`** — aligns rows across sibling cards; _consistent alignment without magic numbers._
 - **Targeted vendor prefixes** — use tooling such as Autoprefixer or add only prefixes required by supported browsers; _avoids stale, unnecessary declarations._
@@ -163,10 +165,11 @@
 - **`loading="lazy"`** — on below-the-fold images and iframes; _defers offscreen loads, faster first paint._
 - **Choose third-party asset hosting deliberately** — self-host for control/privacy or use a reputable CDN with pinned versions and SRI when its tradeoffs are justified; _avoids assuming a CDN is always faster or safer._
 - **Minified CSS/JS + woff2 fonts** — pre-compressed assets; _less bandwidth._
-- **No framework for simple pages** — hand-written CSS/JS; _minimal critical path._
+- **Avoid bloated frameworks and themes** — for simple pages, prefer focused hand-written CSS/JS and include only the components actually used; _keeps the critical path and payload small._
 - **`<video>` (MP4/WebM) over animated GIF** — far smaller for motion clips; _major bandwidth/LCP win._
 - **Responsive images** — `srcset`/`sizes` + `<picture>`; _right resolution per device/DPR._
 - **Modern image formats (AVIF/WebP)** — with PNG/JPEG fallback; _much smaller files._
+- **Compress and resize images** — encode images at an appropriate quality and avoid serving dimensions larger than their rendered size; _reduces transfer size and loading time without unnecessary visual loss._
 - **`rel="preload"` critical assets** — LCP image & fonts (`as=`, `crossorigin`); _earlier fetch, faster LCP._
 - **Avoid CSS `@import`; inline only genuinely critical CSS** — use a small inline critical block when measured to help, while keeping reusable styles cacheable; _reduces render blocking without duplicating the whole stylesheet._
 - **`fetchpriority="high"` on LCP image** — prioritize the hero; _paints sooner._
@@ -179,7 +182,8 @@
 - **Optimize for back/forward cache** — avoid `unload`; use `pagehide`/`pageshow` when lifecycle handling is needed; _enables near-instant Back and Forward navigation._
 - **Avoid long main-thread tasks** — split expensive work, yield between chunks, or move CPU-heavy work to Web Workers; _keeps interactions responsive._
 - **Minimize third-party code** — every analytics script, widget, and embed adds performance, privacy, and security cost; _reduces page weight and risk._
-- **Core Web Vitals budgets** — LCP<2.5s, CLS<0.1, INP<200ms; _concrete UX targets._
+- **Performance-oriented hosting** — use a reliable low-latency origin or edge/CDN setup with HTTP compression and effective caching; _reduces server response time and repeat-load cost._
+- **Core Web Vitals budgets** — target LCP<2.5s for loading, INP<200ms for interactivity, and CLS<0.1 for visual stability; _provides concrete user-experience targets._
 - **Frontend payload budgets** — define limits for JavaScript, CSS, images, fonts, and third-party code; _prevents gradual performance regressions._
 - **Audit + frontend measurement** — use Lighthouse/PageSpeed/WebPageTest and browser performance APIs; send field metrics only with consent and a suitable collection service; _finds regressions without assuming server-side monitoring._
 

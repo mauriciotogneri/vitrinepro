@@ -5,17 +5,12 @@ Branding:
     * Inherit it from the name (Le Mexican)
 
 Requirements:
-* Responsive design: Works well on mobile first, then tablet/desktop. Most local searches happen with immediate intent.
-* Fast loading: Compressed images, minimal scripts, good hosting, no bloated theme. Google’s Core Web Vitals measure loading, interactivity, and visual stability.
-* Basic accessibility: Good contrast, readable font sizes, keyboard-friendly navigation, labels on forms, alt text, visible focus states. WCAG 2.2 organizes accessibility around content being perceivable, operable, understandable, and robust.
 * SEO basics: Unique title/meta description, clear headings, crawlable pages, descriptive URLs, internal links, image alt text. Google’s SEO starter guide focuses on helping search engines crawl, index, and understand content.
 * Structured data: Add LocalBusiness schema, and more specific schema where relevant, with name, address, phone, opening hours, geo/location, price range, services, menu, etc. Google says Local Business structured data can help search results understand hours, departments, reviews, and more.
-* Always offer French and English (auto selecting the proper one from the browser locale, falling back to english)
+* Always display the information in French and English (auto selecting the proper one from the browser locale, falling back to english). allow the user to switch between them
 
 Extra features:
 * Analytics
-* Contact form
-* Booking system
 
 Loop:
 1. Extract list of businesses (free + paid)
