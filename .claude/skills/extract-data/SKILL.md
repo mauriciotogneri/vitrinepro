@@ -28,7 +28,7 @@ Assemble a shop record:
 { name, types: [...], address?, website?, phones?, emails?, notes? }
 ```
 
-If name, Geneva, or type(s) are missing, ask once for the missing piece. Do not ask for anything else. Build the output **slug** = kebab-case of the name (e.g. `Miro Barbershop` → `miro-barbershop`).
+If name, Geneva, or type(s) are missing, ask once for the missing piece. Do not ask for anything else. Build the output **slug** = kebab-case of the name, ASCII-folding accents and dropping punctuation (e.g. `Miro Barbershop` → `miro-barbershop`; `Café Crémerie` → `cafe-cremerie`).
 
 **Pin the identity before fanning out.** If neither address nor website is known, first do a quick resolution pass — search Google Business Profile / Maps and local.ch for the name + "Geneva" + type — to lock the canonical address (and website, if found), then add it to the shop record so every source agent matches against the same business. If it can't be resolved confidently, proceed anyway but treat matching as lower-confidence and flag ambiguous results in the merge.
 
@@ -194,17 +194,22 @@ const results = await parallel(
           `Reference access notes: ${s.access_notes || "none"}`,
           "",
           "RULES:",
-          "- Web only: use web search + public page fetches. Do NOT use paid or credentialed APIs and never invent or use credentials — but free keyless public endpoints (e.g. Overpass, Nominatim at <=1 req/s, Wikidata/Wikipedia, Zefix public search, opendata.swiss) are allowed and preferred over scraping HTML.",
+          "- Web only: use web search + public page fetches. Do NOT use paid or credentialed APIs and never invent or use credentials — but where THIS source exposes a free keyless endpoint (e.g. Overpass/Nominatim for OpenStreetMap at <=1 req/s, the Zefix public REST search, the Wikidata/Wikipedia APIs, opendata.swiss/CKAN), prefer it over scraping the source's HTML. Don't substitute a different source's API for the one you're assigned.",
           "- Pragmatic best-effort: if the page loads, extract it; do NOT attempt anti-bot bypass (proxies, UA rotation).",
           "- If the source blocks you, the business is not listed, or the page is empty, report it via access_status and stop — don't guess.",
           "- Match carefully: confirm name + Geneva (+ address/website if known) so you extract the RIGHT business.",
           "- Preserve original language; do NOT translate names, services, or menu text.",
-          "- Logo/photos: return image URLs only. Do NOT download anything.",
+          "- Logo/photos: return absolute image URLs only (resolve relative paths against the page URL); do NOT download anything. Photos: up to ~15 representative ones.",
           "- Reviews: at most ~5-10 representative ones.",
           "- Also capture FAQ-useful extras when the source shows them — payment methods, parking/access, accessibility, age limits, booking/deposit policy, founding year — in `notes`.",
           "- Do NOT merge in knowledge from other sources or your own memory; only this source.",
         ].join("\n"),
-        { label: `src:${s.name}`, phase: "Gather", schema: SCHEMA, model: "sonnet" },
+        {
+          label: `src:${s.name}`,
+          phase: "Gather",
+          schema: SCHEMA,
+          model: "sonnet",
+        },
       ),
   ),
 );
@@ -213,7 +218,11 @@ const results = await parallel(
 // even when its agent died (parallel() yields null for a thrown thunk).
 return sources.map((s, i) =>
   results[i]
-    ? { ...results[i], source: s.name, source_url: results[i].source_url ?? s.url ?? null }
+    ? {
+        ...results[i],
+        source: s.name,
+        source_url: results[i].source_url ?? s.url ?? null,
+      }
     : { source: s.name, source_url: s.url ?? null, access_status: "error" },
 );
 ```
@@ -226,6 +235,8 @@ Combine the per-source results into one record. Rules:
 - **Ratings:** always list **per source** (score/scale/count).
 - **Identity fields** (name, status, address, coordinates, types): choose one **canonical** value by authority — official registry (Zefix/UID/RC Genève) or Google over directories over aggregators — and list the rest as alternates.
 - **Reviews / photos:** pool across sources and **deduplicate** (same text/author, same image URL).
+- **Logo:** pick one canonical `logo_url` (prefer the official website or Google, else the highest-resolution candidate) — this is the one step 7 downloads; keep other candidates as alternates.
+- **Website / social links:** choose the canonical website by authority (registry/official over directories); union social links by network, keeping distinct URLs tagged by source.
 - **Identifiers:** collect all (google_place_id, uid_che, …).
 - Track each source's `access_status` for the appendix. The step-4 Workflow returns one object per source in the original order; a source whose agent died comes back as `access_status: "error"` (never dropped), so every selected source appears in the appendix. Normalize `status` tokens to spaced form (`temporarily_closed` → "temporarily closed") when rendering.
 
@@ -234,7 +245,7 @@ Combine the per-source results into one record. Rules:
 Fix the destination directory `<dir>` **before** writing anything, so assets and dossier land together:
 
 - Default `<dir>` = `data/<slug>`.
-- If `data/<slug>/` already exists, read its existing dossier first: if it's the **same** business (matching name / address / identifiers), reuse `<dir>` and **overwrite** it; if a genuinely **different** business that happens to share the slug, set `<dir>` = `data/<slug>-2` (then `-3`, … if that also exists).
+- If `data/<slug>/` already exists, read its existing dossier first: if it's the **same** business (matching name / address / identifiers), reuse `<dir>` and **overwrite** it — delete the old `<dir>/assets/` first so stale photos from the previous run don't linger; if a genuinely **different** business that happens to share the slug, set `<dir>` = `data/<slug>-2` (then `-3`, … if that also exists).
 
 ### 7. Download media
 
