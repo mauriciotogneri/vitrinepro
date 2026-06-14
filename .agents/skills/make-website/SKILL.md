@@ -12,18 +12,18 @@ Turn one business's `extract-data` dossier into a deployable, bilingual (**fr-CH
 
 ## Inputs
 
-Ask the user for the **path to the dossier folder** (e.g. `data/miro-barbershop_barber-shop`) — and nothing else. The path must always come from the user: **never assume, default to, or guess it**, and even if a path is passed in the skill arguments, treat it as a suggestion to confirm, not a path to use directly. **Validate** it before building — the folder must exist and contain the dossier markdown `<dir>/<slug>.md`; if it's missing, empty, or ambiguous, ask again rather than proceeding.
+Ask the user for the **path to the dossier folder** (e.g. `data/razor_hairdresser`) — and nothing else. The path must always come from the user: **never assume, default to, or guess it**, and even if a path is passed in the skill arguments, treat it as a suggestion to confirm, not a path to use directly. **Validate** it before building — the folder must exist and contain the dossier markdown `<dir>/<slug>.md`; if it's missing, empty, or ambiguous, ask again rather than proceeding.
 
 From it:
 
 - Read the dossier markdown `<dir>/<slug>.md` **in full** — it is the single source of truth for every fact on the site. Note the files in `<dir>/assets/` (logo, photos).
-- Derive the **web slug** = the folder name up to the **first `_`** (the dossier slug is `<name-kebab>_<type-kebab>`, joined by a single `_`, so this drops the type suffix). E.g. `miro-barbershop_barber-shop` → `miro-barbershop`. Output dir `<out>` = `docs/webs/<web-slug>/`.
+- Derive the **web slug** = the folder name up to the **first `_`** (the dossier slug is `<name-kebab>_<type-kebab>`, joined by a single `_`, so this drops the type suffix). E.g. `razor_hairdresser` → `razor`. Output dir `<out>` = `docs/webs/<web-slug>/`.
 
 ## Read before building
 
 1. `references/site-structure.md` — the section menu and top-to-bottom order.
 2. `references/best-practices.md` — the **quality bar**. The site must satisfy it. Don't restate it; apply it.
-3. `docs/webs/miro-barbershop/` — the **reference implementation**: study its file layout, head/meta, JSON-LD, hreflang, language switcher, semantic landmarks, `js/main.js` patterns (header state, `IntersectionObserver` reveals with fallback, Intl open/closed badge), and `404.html`. Match this structure and quality. **Ignore `yummy-coffee/`** — it is an older, divergent style (single-file, Bootstrap, English-only) and must **not** be copied.
+3. `docs/webs/` — survey the **already-built sites** there and pick the strongest one as your **reference implementation**: the site that best matches this skill's conventions (multi-page, bilingual fr-CH + EN, hand-written CSS + vanilla JS, no framework). Study its file layout, head/meta, JSON-LD, hreflang, language switcher, semantic landmarks, `js/main.js` patterns (header state, `IntersectionObserver` reveals with fallback, Intl open/closed badge), and `404.html`. Match that structure and quality. **Disregard any site that diverges from these conventions** (single-file, CSS framework, single-language) — those are older and must **not** be copied.
 
 ## Procedure
 
@@ -48,7 +48,7 @@ If there is no remote or it can't be parsed, use a literal `{{BASE_URL}}` token 
 
 ### 4. Build with the frontend-design skill
 
-Invoke the **frontend-design** skill to design and implement the site (your global rule requires it for any UI). Feed it the dossier facts, the chosen palette, the section plan, the `<base>` URL, and the `miro` reference. Produce distinctive, production-grade output — not a clone of the exemplar.
+Invoke the **frontend-design** skill to design and implement the site (your global rule requires it for any UI). Feed it the dossier facts, the chosen palette, the section plan, the `<base>` URL, and the reference implementation you chose. Produce distinctive, production-grade output — not a clone of the exemplar.
 
 ### 5. Write the files
 
@@ -74,7 +74,7 @@ Both locales share `css/`, `js/`, and `assets/` (the `/en/` pages reference them
 - Copy the needed `logo.*` and chosen `photo-*.*` from the dossier `<dir>/assets/` into `<out>/assets/`. Reference them locally with honest `alt` text, explicit `width`/`height`, `decoding="async"`, `loading="lazy"` below the fold, and `fetchpriority="high"` on the hero/LCP image (never lazy-load it).
 - Generate from the logo, if `convert`/ImageMagick (or `sharp`) is available: `favicon.ico`, `favicon-32.png`, `favicon-512.png`, `apple-touch-icon.png`, and a `1200×630` `og-image.png`. **If no image tooling is available**, fall back to referencing the logo directly as a single favicon + OG image, and flag this in the summary.
 
-### 7. Per-page requirements (apply `best-practices.md`; mirror `miro`)
+### 7. Per-page requirements (apply `best-practices.md`; mirror the reference)
 
 Each `index.html`:
 
@@ -82,7 +82,7 @@ Each `index.html`:
 - **Unique** `<title>` + `<meta name="description">` per locale; `theme-color`; `<meta name="author">`.
 - `<link rel="canonical">` + reciprocal `hreflang` (`fr`/`fr-CH`, `en`, `x-default`) + Open Graph + Twitter Card, all absolute under `<base>`; `og:image` = the generated OG image; `og:locale` `fr_CH` / `en`.
 - **JSON-LD** for the chosen subtype, with only properties backed by visible content (name, address, `geo`, hours, telephone, `priceRange`, services, ratings/reviews **only if present**).
-- Fonts via **Google Fonts CDN** (not self-hosted — this diverges from `miro` on purpose): `preconnect` to `fonts.googleapis.com` and `fonts.gstatic.com` (crossorigin), stylesheet with `&display=swap`. Do not copy `miro`'s `@font-face`.
+- Fonts via **Google Fonts CDN** (not self-hosted — deliberately, even if the reference self-hosts): `preconnect` to `fonts.googleapis.com` and `fonts.gstatic.com` (crossorigin), stylesheet with `&display=swap`. Do not copy a self-hosted `@font-face` block from the reference.
 - Semantic landmarks (`header`/`nav`/`main`/`section[id]`/`footer`), exactly one `<h1>`, ordered headings, skip-to-content link, `:focus-visible`, `prefers-reduced-motion`, `aria-current` on the active nav/locale, touch targets ≥24px.
 - A **language switcher** in the nav (and footer) — explicit links between the two locale URLs with `aria-current` on the current one (static host, so no server-side negotiation).
 - `js/main.js` (end of body, IIFE, no inline `on*=` handlers): dynamic copyright year, scroll reveals via `IntersectionObserver` with a no-IO fallback, and — if hours are known — an Intl-based open/closed badge (`Europe/Zurich`).
@@ -98,7 +98,7 @@ A **Formspree** POST form plus native links:
 
 - `robots.txt`: `User-agent: * / Allow: /` + absolute `Sitemap:` line under `<base>`.
 - `sitemap.xml`: both locale URLs, each with `xhtml:link` hreflang alternates.
-- `404.html`: self-contained (inline `<style>`), `<meta name="robots" content="noindex">`, bilingual one-liner, link home — like `miro`.
+- `404.html`: self-contained (inline `<style>`), `<meta name="robots" content="noindex">`, bilingual one-liner, link home — like the reference.
 - `.nojekyll`: empty.
 
 ### 10. Portfolio index
