@@ -16,6 +16,8 @@ and `references/best-practices.md`).
 
 **Scope:** this skill ends when the dossier is written. It does **not** build the website.
 **One business per invocation** — the caller iterates over a business list.
+**Paths** are relative to the repo root (the working directory), not this skill folder: `references/`
+and `resources/` live at the repo root and are shared with `make-website`.
 
 ## Inputs
 
@@ -40,6 +42,12 @@ Assemble a shop record:
 
 If name, Geneva, or type(s) are missing, ask once for the missing piece. Do not ask for anything
 else. Build the output **slug** = kebab-case of the name (e.g. `Miro Barbershop` → `miro-barbershop`).
+
+**Pin the identity before fanning out.** If neither address nor website is known, first do a quick
+resolution pass — search Google Business Profile / Maps and local.ch for the name + "Geneva" +
+type — to lock the canonical address (and website, if found), then add it to the shop record so
+every source agent matches against the same business. If it can't be resolved confidently, proceed
+anyway but treat matching as lower-confidence and flag ambiguous results in the merge.
 
 ### 2. Read the source reference
 
@@ -209,7 +217,7 @@ const results = await parallel(
           `Reference access notes: ${s.access_notes || "none"}`,
           "",
           "RULES:",
-          "- Web only: use web search + public page fetches. Assume NO API keys. Do not invent or use credentials.",
+          "- Web only: use web search + public page fetches. Do NOT use paid or credentialed APIs and never invent or use credentials — but free keyless public endpoints (e.g. Overpass, Nominatim at <=1 req/s, Wikidata/Wikipedia, Zefix public search, opendata.swiss) are allowed and preferred over scraping HTML.",
           "- Pragmatic best-effort: if the page loads, extract it; do NOT attempt anti-bot bypass (proxies, UA rotation).",
           "- If the source blocks you, the business is not listed, or the page is empty, report it via access_status and stop — don't guess.",
           "- Match carefully: confirm name + Geneva (+ address/website if known) so you extract the RIGHT business.",
@@ -238,15 +246,30 @@ Combine the per-source results into one record. Rules:
   aggregators — and list the rest as alternates.
 - **Reviews / photos:** pool across sources and **deduplicate** (same text/author, same image URL).
 - **Identifiers:** collect all (google_place_id, uid_che, …).
-- Track each source's `access_status` for the appendix.
+- Track each source's `access_status` for the appendix. The per-source objects are the array
+  returned by the step-4 Workflow; if a source is missing from it (its agent errored out), record it
+  as not queried in the appendix rather than failing the run.
 
-### 6. Download media
+### 6. Resolve the output folder
 
-After merge, in the **main agent** (not the source agents), download into `data/<slug>/assets/`:
+Fix the destination directory `<dir>` **before** writing anything, so assets and dossier land
+together:
+
+- Default `<dir>` = `data/<slug>`.
+- If `data/<slug>/` already exists, read its existing dossier first: if it's the **same** business
+  (matching name / address / identifiers), reuse `<dir>` and **overwrite** it; if a genuinely
+  **different** business that happens to share the slug, set `<dir>` = `data/<slug>-2` (then `-3`, …
+  if that also exists).
+
+### 7. Download media
+
+After the folder is fixed, in the **main agent** (not the source agents), download into
+`<dir>/assets/`:
 
 - The chosen **logo** → `assets/logo.<ext>`.
 - Up to **20 deduplicated photos** → `assets/photo-001.<ext>`, `photo-002.<ext>`, … (extension from
-  the content-type or URL).
+  the content-type or URL). Dedup is by image URL, so the same photo served as resized CDN variants
+  can slip through — don't treat the 20 as guaranteed-distinct.
 
 Use `curl` via Bash with a normal browser User-Agent and a Referer matching the source page (plain
 browser headers — not rotation or bypass) plus a timeout, since many image CDNs reject header-less
@@ -258,13 +281,10 @@ On any failure (404, block, timeout): keep the source URL in the markdown, recor
 appendix, and continue — never abort the run. Note the 20-photo cap and any skipped photos in the
 appendix.
 
-### 7. Write the dossier
+### 8. Write the dossier
 
-Write `data/<slug>/<slug>.md` using the template below. If `data/<slug>/` already exists, read its
-dossier first: if it's the **same** business (matching name / address / identifiers), **overwrite**
-the folder; if a genuinely **different** business that happens to share the slug, write to
-`data/<slug>-2/` instead. Reference each downloaded asset by its **local path** _and_ its
-**source URL**.
+Write `<dir>/<slug>.md` using the template below. Reference each downloaded asset by its **local
+path** _and_ its **source URL**.
 
 ## Output template
 
@@ -283,7 +303,7 @@ the folder; if a genuinely **different** business that happens to share the slug
 ## Identity
 
 - **Name:** <canonical> _(sources)_ — alt: "<other>" _(source)_
-- **Identifiers:** Google place*id `<...>`; UID `<CHE-...>` *(sources)\_
+- **Identifiers:** Google `place_id` `<...>`; UID `<CHE-...>` _(sources)_
 
 ## Contact
 
@@ -349,7 +369,9 @@ the folder; if a genuinely **different** business that happens to share the slug
 
 ## Constraints & conventions
 
-- **Web only, no API keys.** Never assume or use credentials. Best-effort fetch; no anti-bot bypass.
+- **Web only, no credentialed APIs.** Never assume, invent, or use credentials; no paid APIs. Free
+  keyless public endpoints (Overpass, Nominatim, Wikidata, Zefix public search, opendata.swiss) are
+  allowed and preferred over HTML scraping. Best-effort fetch; no anti-bot bypass.
 - **Original language preserved** — translation is the website-build step's job.
 - **Provenance everywhere** — every value carries its source(s); a registry fact must be
   distinguishable from an aggregator's guess.
