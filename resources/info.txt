@@ -1,13 +1,18 @@
 W3C compliant
-Languages, analytics, booking, contact form, FAQ, call to action, etc
-What's the brand color, design system of the business?
+What's the brand color, design system of the business? If missing, inherit it from the name (Le Mexican)
 
 Requirements:
-• Responsive design: Works well on mobile first, then tablet/desktop. Most local searches happen with immediate intent.
-• Fast loading: Compressed images, minimal scripts, good hosting, no bloated theme. Google’s Core Web Vitals measure loading, interactivity, and visual stability.
-• Basic accessibility: Good contrast, readable font sizes, keyboard-friendly navigation, labels on forms, alt text, visible focus states. WCAG 2.2 organizes accessibility around content being perceivable, operable, understandable, and robust.
-• SEO basics: Unique title/meta description, clear headings, crawlable pages, descriptive URLs, internal links, image alt text. Google’s SEO starter guide focuses on helping search engines crawl, index, and understand content.
-• Structured data: Add LocalBusiness schema, and more specific schema where relevant, with name, address, phone, opening hours, geo/location, price range, services, menu, etc. Google says Local Business structured data can help search results understand hours, departments, reviews, and more.
+* Responsive design: Works well on mobile first, then tablet/desktop. Most local searches happen with immediate intent.
+* Fast loading: Compressed images, minimal scripts, good hosting, no bloated theme. Google’s Core Web Vitals measure loading, interactivity, and visual stability.
+* Basic accessibility: Good contrast, readable font sizes, keyboard-friendly navigation, labels on forms, alt text, visible focus states. WCAG 2.2 organizes accessibility around content being perceivable, operable, understandable, and robust.
+* SEO basics: Unique title/meta description, clear headings, crawlable pages, descriptive URLs, internal links, image alt text. Google’s SEO starter guide focuses on helping search engines crawl, index, and understand content.
+* Structured data: Add LocalBusiness schema, and more specific schema where relevant, with name, address, phone, opening hours, geo/location, price range, services, menu, etc. Google says Local Business structured data can help search results understand hours, departments, reviews, and more.
+* Always offer French and English (auto selecting the proper one from the browser locale, falling back to english)
+
+Extra features:
+* Analytics
+* Contact form
+* Booking system
 
 Loop:
 1. Extract list of businesses (free + paid)
@@ -15,24 +20,22 @@ Loop:
 3. Create website
 
 Basic information to extract:
-• ID
-• Status
-• Type
-• Name
-• Website
-• Email
-• Address
-• Coordinates
-• Phones
-• Opening hours
-• Rating
-• Reviews
-• Prices
-• Services/Products/Menu
-• Logo
-• Photos
-• Social links
+* Status (operational, closed temporarily, closed permanently, etc)
+* Types (restaurant, florist, hairdresser, etc). Can be more than one
+* Name
+* Website
+* Email (can have more than one)
+* Address
+* Coordinates
+* Phones (can have more than one)
+* Opening hours
+* Rating (from Google, foursquare, yelp, TripAdvisor, etc)
+* Reviews
+* Services/Products/Menu
+* Prices
+* Logo
+* Photos
+* Social links (facebook, instagram, twitter, etc)
 
 Use https://www.local.ch
 Use enterprise directory
-Trip advisor for restaurants
