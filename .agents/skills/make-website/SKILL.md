@@ -93,6 +93,7 @@ A **Formspree** POST form plus native links:
 
 - `<form action="https://formspree.io/f/{{FORMSPREE_ID}}" method="post">` with labelled (`<label for>`), `autocomplete`-tokened, typed, `required` fields. The `{{FORMSPREE_ID}}` is a placeholder — **flag it** in the summary as must-replace for the form to work.
 - Alongside it, the real contact paths from the dossier: `tel:`, `mailto:`, WhatsApp (`https://wa.me/<intl-number>`), and the booking/reservation link if the dossier has one.
+- **Location map** (only when a map is shown): always embed **Google Maps**, **directly visible on page load with no click-to-load button** — a plain `<iframe>` (`https://www.google.com/maps?q=<lat>,<lng>&z=16&hl=<fr|en>&output=embed`) inside a fixed `aspect-ratio` box. This is a deliberate exception to `best-practices.md`'s click-to-load embed guidance — never use OpenStreetMap or a press-to-reveal placeholder.
 
 ### 9. SEO / deploy files
 
