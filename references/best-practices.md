@@ -16,9 +16,11 @@
 - **`<noscript>` fallback** — message/content shown when JS is disabled; _core info stays reachable._
 - **Branded static `404.html`** — provide an on-theme fallback with a link home where the hosting platform supports custom error pages; _recovers lost visitors without depending on application code._
 - **Correct native element semantics** — links navigate, buttons perform actions, and lists/tables use their corresponding elements; _provides expected browser behavior and assistive-technology semantics._
+- **Conforming HTML features and content models** — use only elements, attributes, values, and nesting permitted by the current HTML Standard; replace obsolete and presentational markup with conforming HTML and CSS; _avoids non-conforming documents and inconsistent browser repair._
+- **Valid interactive-content nesting** — do not nest links or buttons within links or buttons, and follow each interactive element's permitted content model; _keeps activation, focus, and accessible semantics unambiguous._
+- **Valid identifiers and references** — keep `id` values unique and ensure `for`, `headers`, `list`, `form`, and ARIA ID references point to the intended existing elements; _preserves relationships used by browsers and assistive technology._
 - **Explicit button types** — use `type="button"` unless a button should submit its form; _prevents accidental submissions._
 - **Accessible data tables** — use `<caption>`, `<thead>`, and `<th scope="col|row">` where appropriate; _communicates table relationships to assistive technology._
-- **Validate rendered HTML** — catch duplicate IDs, invalid nesting, and browser-repaired markup; _prevents inconsistent DOM behavior and accessibility failures._
 
 ## Accessibility (a11y)
 
@@ -28,16 +30,22 @@
 - **`prefers-reduced-motion`** — disables transitions/smooth-scroll when requested; _avoids vestibular discomfort._
 - **Controllable moving content** — provide pause, stop, or hide controls for automatically moving, blinking, or updating content; `prefers-reduced-motion` alone is insufficient; _supports users with attention and vestibular disabilities._
 - **Keyboard support for unavoidable custom controls** — provide correct roles, states, focus behavior, and expected keys; prefer native controls whenever possible; _non-mouse users can operate them._
+- **Conforming ARIA use** — follow ARIA in HTML: use only permitted roles, states, and properties, include required attributes, and keep exposed names, roles, values, and states synchronized with the UI; _invalid or stale ARIA misrepresents controls to assistive technology._
 - **No keyboard traps** — users must be able to enter and leave every control using the keyboard; _prevents users becoming stuck in widgets or overlays._
+- **Meaningful reading and focus order** — keep DOM, visual, and keyboard sequences logical; do not use CSS reordering that changes meaning; _screen-reader and keyboard users receive the intended sequence._
+- **Character-key shortcut controls** — let users turn off or remap single-character shortcuts, or make them active only while the relevant control has focus; _prevents accidental commands from speech and keyboard input._
 - **`iframe` `title` attribute** — names the embedded trailer; _screen-reader context._
 - **Color contrast (WCAG AA)** — ≥4.5:1 text, ≥3:1 large text & UI; _readable for low-vision users._
 - **Don't rely on color alone** — communicate errors, states, and selections with text, icons, patterns, or other cues too; _works for users who cannot distinguish the colors._
+- **Don't rely on sensory characteristics alone** — instructions must not depend only on shape, color, size, visual location, orientation, or sound; _users can understand directions without perceiving a particular sense._
+- **Avoid images of text** — use real styled text except where the presentation is essential, such as a logo; _text remains scalable, adaptable, searchable, and readable by assistive technology._
 - **Descriptive link text** — avoid ambiguous labels such as "click here" or "read more" without sufficient context; _makes links understandable when read independently._
+- **Multiple ways to locate pages** — provide at least two methods such as navigation, search, a sitemap, or contextual links, except for steps within a process; _users can find content using the approach that works for them._
 - **Skip-to-content link** — first focusable jumps past the nav; _keyboard users skip repeated chrome._
 - **No positive `tabindex`** — keep it `0`/`-1`; _positive values break natural focus order._
-- **Associated `<label>` + accessible errors** — `<label for>`, `aria-describedby` on inputs; _forms usable with screen readers._
+- **Associated labels, instructions, and errors** — use `<label for>`, identify required fields and expected formats, and connect help and errors with `aria-describedby`; _forms are understandable and usable with assistive technology._
 - **Typed inputs + `autocomplete` + `inputmode`** — `type="email/tel/url"`, `autocomplete` tokens, `inputmode`; _correct mobile keyboard, autofill, fewer errors._
-- **Allow paste, autofill, and password managers** — never block pasting into authentication or verification fields; _supports accessible authentication and avoids unnecessary cognitive tests._
+- **Accessible authentication** — allow paste, autofill, and password managers, and do not require cognitive-function tests unless a conforming alternative or WCAG exception applies; _supports authentication without unnecessary memory, transcription, or puzzle barriers._
 - **Group related form controls** — use `<fieldset>` and `<legend>` for related checkboxes and radio buttons; _announces the shared question or context._
 - **Preserve valid user input after errors** — keep previously entered values and identify how to fix each invalid field; _avoids unnecessary re-entry._
 - **Avoid redundant data entry** — reuse or prefill information already entered during the same process; _reduces cognitive and physical effort._
@@ -48,13 +56,20 @@
 - **Touch targets ≥24px, ideally 44×44px** — meet the WCAG 2.5.8 minimum and aim larger where practical; _easier tapping on mobile._
 - **Don't disable zoom** — never `user-scalable=no` / `maximum-scale=1` in the viewport meta; _low-vision users must be able to pinch-zoom._
 - **Responsive reflow and zoom** — keep content usable at 320 CSS pixels wide and 400% zoom without unnecessary two-dimensional scrolling; _supports magnification and small screens._
+- **Do not lock display orientation** — keep content and controls usable in portrait and landscape unless one orientation is essential; _supports users with mounted or fixed-position devices._
 - **Tolerate user text-spacing overrides** — layouts must remain usable when users increase line, paragraph, letter, and word spacing; _supports low-vision and cognitive accessibility._
 - **Focus management for dynamic UI** — move focus appropriately after opening dialogs, changing views, or reporting errors, then restore it when closing; _keeps keyboard and screen-reader users oriented._
 - **Focus must not be obscured** — ensure sticky headers, cookie banners, and overlays do not cover the focused element; _meets WCAG 2.2 focus visibility requirements._
 - **Accessible modal dialogs** — prefer `<dialog>.showModal()` with sensible initial focus, an explicit close button, and Escape support; _provides expected focus containment and dismissal._
 - **No hover-only interactions** — make menus, tooltips, and controls usable with keyboard focus and touch too; _works across input methods._
+- **Dismissible hover/focus content** — additional content shown on hover or focus must be dismissible, hoverable, and remain visible until dismissed or no longer relevant; _users can perceive and control tooltips and popovers._
 - **Alternatives to dragging and complex gestures** — provide buttons or simple pointer actions for drag, multipoint, and path-based interactions; _supports users with limited dexterity._
-- **Accessible media** — provide captions, transcripts, and audio descriptions where appropriate; avoid autoplay with sound; _makes audio and video perceivable and controllable._
+- **Cancellable pointer actions and motion alternatives** — trigger pointer actions on release or provide undo/cancellation, and provide a conventional control for device-motion actions; _prevents accidental activation and supports users unable to move a device._
+- **Adjustable time limits** — let users turn off, extend, or adjust time limits unless a WCAG exception applies, and warn before expiration where required; _users have enough time to read and act._
+- **No unsafe flashing content** — avoid content that flashes more than three times in one second unless it remains below the WCAG flash thresholds; _reduces seizure risk._
+- **Predictable context changes** — focus or input alone must not unexpectedly navigate, submit, open a window, or substantially change context without advance notice; _users remain oriented and in control._
+- **Consistent navigation, identification, and help** — keep repeated navigation and help mechanisms in a consistent order and identify same-purpose controls consistently; _reduces cognitive effort across pages._
+- **Accessible media** — provide required text alternatives, captions for prerecorded and live audio, and audio descriptions for prerecorded video; avoid autoplay with sound and provide independent audio controls when needed; _makes time-based media perceivable and controllable at WCAG AA._
 - **Visible label matches accessible name** — ensure the accessible name contains the visible control text; _supports speech-input users._
 - **Language and direction changes** — use `lang` on passages in another language and `dir` where bidirectional text requires it; _enables correct pronunciation and reading order._
 - **Support forced-colors/high-contrast mode** — test controls, states, and focus indicators with browser or OS high-contrast settings; _keeps UI visible when colors are overridden._
@@ -107,6 +122,7 @@
 - **Modern CSS reset** — normalize cross-browser defaults; _predictable baseline._
 - **`:is()` / `:where()` / nesting** — group & flatten selectors; _less repetition, controlled specificity._
 - **Validate/lint CSS** — invalid declarations (e.g. a hex color missing its `#`) are silently dropped, not errored; _a linter catches them before the style quietly fails._
+- **Validate against the intended CSS profile** — use the W3C CSS Validator and distinguish standards errors from unsupported-browser warnings; _keeps stylesheets conformant without confusing conformance with compatibility._
 - **Prune dead CSS** — delete rules nothing uses (or apply them); _smaller payload, no confusion over what's actually live._
 - **Animate compositor-friendly properties** — prefer `transform` and `opacity` over layout-triggering properties; _reduces animation jank._
 

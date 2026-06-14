@@ -1,5 +1,3 @@
-W3C compliant
-
 Branding:
 * What's the brand color, design system of the business?
 * If missing:
