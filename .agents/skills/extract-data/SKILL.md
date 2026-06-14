@@ -79,7 +79,9 @@ export const meta = {
   phases: [{ title: "Gather", detail: "one agent per source" }],
 };
 
-const { shop, sources } = args;
+// `args` may arrive as a JSON string rather than a parsed object — guard for both.
+const _args = typeof args === "string" ? JSON.parse(args) : args;
+const { shop, sources } = _args;
 
 // Per-source structured return. Every field nullable — a source rarely has all of them.
 const SCHEMA = {
