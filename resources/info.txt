@@ -1,5 +1,10 @@
 W3C compliant
-What's the brand color, design system of the business? If missing, inherit it from the name (Le Mexican)
+
+Branding:
+* What's the brand color, design system of the business?
+* If missing:
+    * Derive it from logo
+    * Inherit it from the name (Le Mexican)
 
 Requirements:
 * Responsive design: Works well on mobile first, then tablet/desktop. Most local searches happen with immediate intent.
@@ -36,6 +41,3 @@ Basic information to extract:
 * Logo
 * Photos
 * Social links (facebook, instagram, twitter, etc)
-
-Use https://www.local.ch
-Use enterprise directory

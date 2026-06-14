@@ -17,6 +17,7 @@
 - **Branded static `404.html`** — provide an on-theme fallback with a link home where the hosting platform supports custom error pages; _recovers lost visitors without depending on application code._
 - **Correct native element semantics** — links navigate, buttons perform actions, and lists/tables use their corresponding elements; _provides expected browser behavior and assistive-technology semantics._
 - **Explicit button types** — use `type="button"` unless a button should submit its form; _prevents accidental submissions._
+- **Accessible data tables** — use `<caption>`, `<thead>`, and `<th scope="col|row">` where appropriate; _communicates table relationships to assistive technology._
 - **Validate rendered HTML** — catch duplicate IDs, invalid nesting, and browser-repaired markup; _prevents inconsistent DOM behavior and accessibility failures._
 
 ## Accessibility (a11y)
@@ -25,22 +26,29 @@
 - **`aria-label` on icon-only buttons** — names the hamburger toggler; _operable without a visible label._
 - **`:focus-visible` outlines** — keyboard focus ring, hidden for mouse via `:focus:not(:focus-visible)`; _keyboard nav without ugly mouse outlines._
 - **`prefers-reduced-motion`** — disables transitions/smooth-scroll when requested; _avoids vestibular discomfort._
+- **Controllable moving content** — provide pause, stop, or hide controls for automatically moving, blinking, or updating content; `prefers-reduced-motion` alone is insufficient; _supports users with attention and vestibular disabilities._
 - **Keyboard support for unavoidable custom controls** — provide correct roles, states, focus behavior, and expected keys; prefer native controls whenever possible; _non-mouse users can operate them._
+- **No keyboard traps** — users must be able to enter and leave every control using the keyboard; _prevents users becoming stuck in widgets or overlays._
 - **`iframe` `title` attribute** — names the embedded trailer; _screen-reader context._
 - **Color contrast (WCAG AA)** — ≥4.5:1 text, ≥3:1 large text & UI; _readable for low-vision users._
 - **Don't rely on color alone** — communicate errors, states, and selections with text, icons, patterns, or other cues too; _works for users who cannot distinguish the colors._
+- **Descriptive link text** — avoid ambiguous labels such as "click here" or "read more" without sufficient context; _makes links understandable when read independently._
 - **Skip-to-content link** — first focusable jumps past the nav; _keyboard users skip repeated chrome._
 - **No positive `tabindex`** — keep it `0`/`-1`; _positive values break natural focus order._
 - **Associated `<label>` + accessible errors** — `<label for>`, `aria-describedby` on inputs; _forms usable with screen readers._
 - **Typed inputs + `autocomplete` + `inputmode`** — `type="email/tel/url"`, `autocomplete` tokens, `inputmode`; _correct mobile keyboard, autofill, fewer errors._
+- **Allow paste, autofill, and password managers** — never block pasting into authentication or verification fields; _supports accessible authentication and avoids unnecessary cognitive tests._
 - **Group related form controls** — use `<fieldset>` and `<legend>` for related checkboxes and radio buttons; _announces the shared question or context._
 - **Preserve valid user input after errors** — keep previously entered values and identify how to fix each invalid field; _avoids unnecessary re-entry._
+- **Avoid redundant data entry** — reuse or prefill information already entered during the same process; _reduces cognitive and physical effort._
+- **Error prevention for important actions** — provide confirmation, review, or undo for destructive, financial, or irreversible actions; _reduces costly mistakes._
 - **`aria-live` regions** — announce dynamic status/toasts (e.g. "Sent"); _non-visual users hear updates._
 - **Native `<button>`/`<a>` over `div[role]`** — built-in keyboard/semantics; _less ARIA, fewer bugs._
 - **`aria-current="page"`** — marks the active nav link; _announces current location._
-- **Touch targets ≥24px** — minimum hit area (WCAG 2.5.8); _easier tapping on mobile._
+- **Touch targets ≥24px, ideally 44×44px** — meet the WCAG 2.5.8 minimum and aim larger where practical; _easier tapping on mobile._
 - **Don't disable zoom** — never `user-scalable=no` / `maximum-scale=1` in the viewport meta; _low-vision users must be able to pinch-zoom._
 - **Responsive reflow and zoom** — keep content usable at 320 CSS pixels wide and 400% zoom without unnecessary two-dimensional scrolling; _supports magnification and small screens._
+- **Tolerate user text-spacing overrides** — layouts must remain usable when users increase line, paragraph, letter, and word spacing; _supports low-vision and cognitive accessibility._
 - **Focus management for dynamic UI** — move focus appropriately after opening dialogs, changing views, or reporting errors, then restore it when closing; _keeps keyboard and screen-reader users oriented._
 - **Focus must not be obscured** — ensure sticky headers, cookie banners, and overlays do not cover the focused element; _meets WCAG 2.2 focus visibility requirements._
 - **Accessible modal dialogs** — prefer `<dialog>.showModal()` with sensible initial focus, an explicit close button, and Escape support; _provides expected focus containment and dismissal._
@@ -91,6 +99,10 @@
 - **`aspect-ratio` property** — reserve ratio directly (replaces the `padding-bottom` hack); _cleaner, avoids CLS._
 - **Container queries (`@container`)** — style by container, not viewport; _components reusable in any context._
 - **Logical properties** — `margin-inline`/`inset`/etc.; _RTL & i18n-ready without overrides._
+- **Modern viewport units** — use `svh`, `lvh`, or `dvh` deliberately instead of assuming `100vh` matches the visible mobile viewport; _avoids content hidden behind browser chrome._
+- **Safe-area insets** — account for `env(safe-area-inset-*)` around fixed controls and full-screen layouts; _prevents controls being obscured by device cutouts and system UI._
+- **Resilient text wrapping** — ensure long URLs, translated text, and unbroken strings cannot overflow or become clipped; _keeps layouts usable with unpredictable content._
+- **Progressive CSS with `@supports`** — provide functional fallbacks before newer CSS enhancements; _keeps core content usable in older browsers._
 - **`scroll-margin-top` on anchor targets** — offsets in-page jumps under a fixed navbar; _sections aren't hidden behind it._
 - **Modern CSS reset** — normalize cross-browser defaults; _predictable baseline._
 - **`:is()` / `:where()` / nesting** — group & flatten selectors; _less repetition, controlled specificity._
@@ -110,6 +122,11 @@
 - **Minified third-party libs** — `*.min.js`; _smaller transfer._
 - **Keyboard-driven UX** — arrow-up/down console history, Enter to run; _power-user ergonomics._
 - **`defer` / `type="module"`** — non-blocking, in-order, runs after parse; _cleaner than end-of-body scripts._
+- **Explicit loading, empty, error, and offline states** — communicate asynchronous states visually and through `aria-live` or `aria-busy`; _prevents confusing silent failures._
+- **Prevent duplicate actions while pending** — temporarily disable repeated submissions, but restore controls after failure; _avoids accidental duplicate operations._
+- **Handle request races** — cancel or ignore stale requests when newer requests supersede them; _prevents outdated responses replacing current UI._
+- **Locale-aware formatting** — use `Intl.DateTimeFormat`, `Intl.NumberFormat`, and `Intl.PluralRules`; _avoids incorrect hand-written date, number, and plural formatting._
+- **Avoid blocking browser features** — do not unnecessarily intercept copy, paste, context menus, text selection, or standard keyboard shortcuts; _preserves expected browser behavior._
 - **Passive + rAF-throttled scroll/touch** — `{passive:true}`, batch work in `requestAnimationFrame`; _no scroll jank._
 - **`IntersectionObserver`** — scroll-reveal animations & lazy work; _efficient vs per-event scroll handlers._
 - **Clean up listeners/observers** — `removeEventListener`, `observer.disconnect()`, `AbortController` for `fetch`/listeners; _prevents memory leaks and dangling work on long-lived pages._
@@ -147,7 +164,12 @@
 - **Avoid long main-thread tasks** — split expensive work, yield between chunks, or move CPU-heavy work to Web Workers; _keeps interactions responsive._
 - **Minimize third-party code** — every analytics script, widget, and embed adds performance, privacy, and security cost; _reduces page weight and risk._
 - **Core Web Vitals budgets** — LCP<2.5s, CLS<0.1, INP<200ms; _concrete UX targets._
+- **Frontend payload budgets** — define limits for JavaScript, CSS, images, fonts, and third-party code; _prevents gradual performance regressions._
 - **Audit + frontend measurement** — use Lighthouse/PageSpeed/WebPageTest and browser performance APIs; send field metrics only with consent and a suitable collection service; _finds regressions without assuming server-side monitoring._
+
+## Testing & Quality
+
+- **Cross-browser and device testing** — test supported browsers, touch input, keyboard-only navigation, zoom, slow networks, offline mode, and disabled JavaScript; _catches failures that automated audits miss._
 
 ## PWA & Mobile
 
@@ -160,10 +182,12 @@
 ## Security
 
 - **`rel="noopener noreferrer"` on `target="_blank"`** — severs `window.opener`; _prevents reverse-tabnabbing._
-- **Subresource Integrity (`integrity` + `crossorigin`)** — hash-pinned CDN `<script>`s; _blocks tampered CDN payloads._
+- **Subresource Integrity (`integrity` + `crossorigin`)** — hash-pin eligible CDN scripts and stylesheets; _blocks tampered CDN payloads._
 - **HTTPS resource and canonical URLs** — use `https://` for frontend-authored absolute links and resources; _avoids introducing mixed content, while transport enforcement remains a hosting concern._
+- **Frontend referrer policy** — use `<meta name="referrer">` or per-element `referrerpolicy` where URLs may expose unnecessary information; _reduces cross-origin data leakage._
 - **Meta Content-Security-Policy where headers are unavailable** — use `<meta http-equiv="Content-Security-Policy">` to restrict supported resource types; account for its limitations and avoid `unsafe-inline`; _adds frontend-controlled XSS mitigation when response headers cannot be changed._
 - **Sanitize/escape untrusted HTML** — prefer `textContent`; run a sanitizer (e.g. DOMPurify) before any `innerHTML`; _prevents DOM-XSS at the source (CSP only mitigates)._
+- **Keep sensitive data out of URLs and logs** — do not place secrets or personal information in query strings, fragments, console output, or analytics events; _limits accidental exposure._
 - **`/.well-known/security.txt`** — security contact for disclosures; _responsible vuln reporting._
 - **Dependency hygiene** — pin versions + `npm audit`/Dependabot; _avoid known CVEs & supply-chain risk._
 - **Analytics consent where required** — do not load optional tracking before consent; integrate the provider's consent controls and honor the user's choice; _supports privacy and ePrivacy compliance._
