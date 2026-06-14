@@ -11,21 +11,3 @@ Loop:
 1. Extract list of businesses (free + paid)
 2. Enhance information for each business
 3. Create website
-
-Basic information to extract:
-* Status (operational, closed temporarily, closed permanently, etc)
-* Types (restaurant, florist, hairdresser, etc). Can be more than one
-* Name
-* Website
-* Email (can have more than one)
-* Address
-* Coordinates
-* Phones (can have more than one)
-* Opening hours
-* Rating (from Google, foursquare, yelp, TripAdvisor, etc)
-* Reviews
-* Services/Products/Menu
-* Prices
-* Logo
-* Photos
-* Social links (facebook, instagram, twitter, etc)
