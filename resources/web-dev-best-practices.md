@@ -26,11 +26,14 @@
 - **`iframe` `title` attribute** — names the embedded trailer; _screen-reader context._
 - **Color contrast (WCAG AA)** — ≥4.5:1 text, ≥3:1 large text & UI; _readable for low-vision users._
 - **Skip-to-content link** — first focusable jumps past the nav; _keyboard users skip repeated chrome._
+- **No positive `tabindex`** — keep it `0`/`-1`; _positive values break natural focus order._
 - **Associated `<label>` + accessible errors** — `<label for>`, `aria-describedby` on inputs; _forms usable with screen readers._
+- **Typed inputs + `autocomplete` + `inputmode`** — `type="email/tel/url"`, `autocomplete` tokens, `inputmode`; _correct mobile keyboard, autofill, fewer errors._
 - **`aria-live` regions** — announce dynamic status/toasts (e.g. "Sent"); _non-visual users hear updates._
 - **Native `<button>`/`<a>` over `div[role]`** — built-in keyboard/semantics; _less ARIA, fewer bugs._
 - **`aria-current="page"`** — marks the active nav link; _announces current location._
 - **Touch targets ≥24px** — minimum hit area (WCAG 2.5.8); _easier tapping on mobile._
+- **Don't disable zoom** — never `user-scalable=no` / `maximum-scale=1` in the viewport meta; _low-vision users must be able to pinch-zoom._
 - **A11y testing** — axe/Lighthouse + keyboard & screen-reader passes; _catches regressions._
 
 ## SEO & Discoverability
@@ -93,6 +96,7 @@
 - **`defer` / `type="module"`** — non-blocking, in-order, runs after parse; _cleaner than end-of-body scripts._
 - **Passive + rAF-throttled scroll/touch** — `{passive:true}`, batch work in `requestAnimationFrame`; _no scroll jank._
 - **`IntersectionObserver`** — scroll-reveal animations & lazy work; _efficient vs per-event scroll handlers._
+- **Clean up listeners/observers** — `removeEventListener`, `observer.disconnect()`, `AbortController` for `fetch`/listeners; _prevents memory leaks and dangling work on long-lived pages._
 - **Native `fetch` over `$.ajax`** — drop jQuery for new code; _smaller, dependency-free._
 - **No inline handlers or inline `<script>`** — wire events with `addEventListener` from external JS, not `onclick="…"`; _lets a strict CSP drop `unsafe-inline`._
 - **Encode user values in URLs** — wrap interpolated query/path values in `encodeURIComponent()`; _`&` `#` `+` and spaces would otherwise corrupt or truncate them._
@@ -103,6 +107,7 @@
 
 - **Immutable long-cache headers** — `Cache-Control: public, max-age=31536000, immutable` on hashed CSS/JS/img/fonts; _near-zero repeat-visit requests._
 - **`rel="preconnect"`** — to font/CDN/analytics origins; _warms DNS+TLS early._
+- **`dns-prefetch` / `prefetch` / Speculation Rules** — `dns-prefetch` as a `preconnect` fallback, `prefetch`/prerender likely-next pages; _near-instant subsequent navigations._
 - **`loading="lazy"`** — on below-the-fold images and iframes; _defers offscreen loads, faster first paint._
 - **CDN-hosted libraries** — Bootstrap/jQuery/CodeMirror; _edge caching, parallel download._
 - **Minified CSS/JS + woff2 fonts** — pre-compressed assets; _less bandwidth._
@@ -111,6 +116,7 @@
 - **Responsive images** — `srcset`/`sizes` + `<picture>`; _right resolution per device/DPR._
 - **Modern image formats (AVIF/WebP)** — with PNG/JPEG fallback; _much smaller files._
 - **`rel="preload"` critical assets** — LCP image & fonts (`as=`, `crossorigin`); _earlier fetch, faster LCP._
+- **Inline critical CSS, defer the rest** — inline above-the-fold styles, load the rest async; avoid render-blocking CSS `@import`; _faster first paint._
 - **`fetchpriority="high"` on LCP image** — prioritize the hero; _paints sooner._
 - **Subset + self-host fonts** — only needed glyphs, same origin; _smaller, fewer connections, more private._
 - **Content-hashed filenames** — pair with `immutable` caching; _safe long cache + instant cache-bust on change._
@@ -136,6 +142,7 @@
 - **Subresource Integrity (`integrity` + `crossorigin`)** — hash-pinned CDN `<script>`s; _blocks tampered CDN payloads._
 - **HTTPS canonical URLs everywhere** — all absolute links use `https://`; _secure transport, no mixed content._
 - **Content-Security-Policy** — allowlist script/style/connect sources; _strong XSS/injection mitigation._
+- **Sanitize/escape untrusted HTML** — prefer `textContent`; run a sanitizer (e.g. DOMPurify) before any `innerHTML`; _prevents DOM-XSS at the source (CSP only mitigates)._
 - **HSTS (`Strict-Transport-Security`)** — force HTTPS on later visits; _blocks downgrade/SSL-strip._
 - **Form anti-spam** — honeypot field / rate limit / captcha; _cuts bot submissions._
 - **`/.well-known/security.txt`** — security contact for disclosures; _responsible vuln reporting._
