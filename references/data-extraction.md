@@ -15,6 +15,29 @@ Each entry is annotated:
 
 ---
 
+## Information to extract (per shop)
+
+The baseline set of fields we want to capture for each business. These are **desired** targets, not requirements: many shops won't expose all of them, so capture whatever is available rather than treating a missing field as an error. If a source yields other relevant information not listed here (e.g. founding year, payment methods, accessibility, booking links), keep it too.
+
+- **Status** — operational, temporarily closed, permanently closed, etc.
+- **Type(s)** — restaurant, florist, hairdresser, etc.; a shop may have more than one.
+- **Name**
+- **Website**
+- **Email(s)** — may be more than one.
+- **Address**
+- **Coordinates** — latitude / longitude.
+- **Phone(s)** — may be more than one.
+- **Opening hours** — including special/holiday hours where published.
+- **Rating** — aggregate score, kept per source (Google, Foursquare, Yelp, TripAdvisor, …).
+- **Reviews** — individual user reviews.
+- **Services / Products / Menu**
+- **Prices** — price level and/or itemized prices.
+- **Logo**
+- **Photos**
+- **Social links** — Facebook, Instagram, X/Twitter, etc.
+
+---
+
 ## Generic sites (any business)
 
 These work as a first pass for essentially any shop. For most small Geneva businesses, the realistic core stack is **Google + local.ch/search.ch**, with **Zefix/UID/Geneva RC + moneyhouse** for legal/company data.
