@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Yummy Coffee — Cosy coffee &amp; homemade breakfast in Plainpalais, Geneva</title>
+<meta name="description" content="Yummy Coffee is a small, much-loved café on Rue Dancet in Geneva's Plainpalais. Carefully brewed coffee, almond-milk chai and homemade pastries from 7:30, weekday mornings. Rated 5.0 on Google." />
+<meta name="theme-color" content="#FBF3E4" />
+
+<!-- ============================================================
+     YUMMY COFFEE — static website (HTML / CSS / JS / Bootstrap)
+     ------------------------------------------------------------
+     QUICK CUSTOMISATION GUIDE (everything is in this one file):
+       1. COLOURS / FONTS .... edit the variables in  :root { … }
+       2. PHOTOS ............. search "PHOTO:" and swap the image
+                               URLs for the café's own photos.
+                               (If a photo ever fails to load, a warm
+                                gradient shows instead — never a broken
+                                image, so the page always looks finished.)
+       3. MENU / PRICES ...... search "MENU DATA" — plain HTML, edit text.
+       4. HOURS / ADDRESS .... search "VISIT" — update freely.
+       5. REVIEWS ............ search "REVIEWS" — replace with real ones.
+       6. SOCIAL / MAP ....... Instagram + Google Map are near the bottom.
+     ============================================================ -->
+
+<!-- Bootstrap 5 (grid + utilities) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Bootstrap Icons (small UI icons: instagram, clock, pin, arrow) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+<!-- Fonts: Bricolage Grotesque (display) · DM Sans (body) · Caveat (handwritten accents) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Caveat:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+
+<style>
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+:root{
+  /* Palette — "sunny morning café" */
+  --cream:    #FBF3E4;   /* page base */
+  --cream-2:  #F4E8D1;   /* alternate section */
+  --paper:    #FFFCF6;   /* cards */
+  --espresso: #281A11;   /* darkest — text & dark sections */
+  --coffee:   #43301F;
+  --mocha:    #7B5230;
+  --caramel:  #B17B45;
+  --honey:    #E89B2E;   /* SIGNATURE accent */
+  --honey-2:  #D6831A;   /* honey hover */
+  --berry:    #C04A38;   /* tiny jam-red accent, used sparingly */
+  --ink:      #281A11;
+  --muted:    rgba(40,26,17,.66);
+  --line:     rgba(40,26,17,.14);
+  --line-2:   rgba(40,26,17,.08);
+
+  /* Type */
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:    "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --script:  "Caveat", "Segoe Script", cursive;
+
+  /* Radius / shadow */
+  --r-sm: 14px;
+  --r:    22px;
+  --r-lg: 34px;
+  --shadow:    0 24px 50px -28px rgba(40,26,17,.45);
+  --shadow-sm: 0 12px 28px -18px rgba(40,26,17,.40);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:84px; -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  font-family:var(--body);
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.7;
+  font-size:1.0625rem;
+  overflow-x:hidden;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; }
+
+/* Shared container */
+.wrap{ width:min(1180px, 100% - 2.6rem); margin-inline:auto; }
+
+/* Headings */
+h1,h2,h3,h4{ font-family:var(--display); font-weight:800; line-height:1.04; letter-spacing:-.02em; margin:0 0 .5em; color:var(--espresso); }
+h2{ font-size:clamp(2rem, 1rem + 3.4vw, 3.05rem); }
+h3{ font-size:1.45rem; letter-spacing:-.01em; font-weight:700; }
+p{ margin:0 0 1rem; }
+.lead{ font-size:clamp(1.08rem, 1rem + .5vw, 1.3rem); color:var(--coffee); }
+
+/* Eyebrow (handwritten) */
+.eyebrow{
+  font-family:var(--script);
+  font-size:1.6rem;
+  line-height:1;
+  color:var(--honey-2);
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  transform:rotate(-2deg);
+  margin-bottom:.4rem;
+}
+.eyebrow svg{ width:1.3em; height:1.3em; }
+
+/* Section rhythm */
+.section{ padding:clamp(4rem, 2rem + 7vw, 7rem) 0; position:relative; }
+.section--cream2{ background:var(--cream-2); }
+.section--dark{ background:var(--espresso); color:var(--cream); }
+.section--dark h2,.section--dark h3{ color:var(--cream); }
+.section-head{ max-width:640px; margin-bottom:2.6rem; }
+.section-head.center{ margin-inline:auto; text-align:center; }
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn-yc{
+  display:inline-flex; align-items:center; gap:.55rem;
+  font-family:var(--body); font-weight:700; font-size:1rem;
+  padding:.85rem 1.5rem; border-radius:999px;
+  border:2px solid transparent; cursor:pointer;
+  transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease, border-color .2s ease;
+  line-height:1;
+}
+.btn-yc i{ font-size:1.05em; }
+.btn-honey{ background:var(--honey); color:var(--espresso); box-shadow:0 12px 22px -12px rgba(214,131,26,.9); }
+.btn-honey:hover{ background:var(--honey-2); transform:translateY(-2px); }
+.btn-outline{ background:transparent; color:var(--espresso); border-color:var(--espresso); }
+.btn-outline:hover{ background:var(--espresso); color:var(--cream); transform:translateY(-2px); }
+.btn-ghost{ background:transparent; color:var(--cream); border-color:rgba(251,243,228,.45); }
+.btn-ghost:hover{ background:var(--cream); color:var(--espresso); border-color:var(--cream); transform:translateY(-2px); }
+
+:focus-visible{ outline:3px solid var(--honey); outline-offset:3px; border-radius:6px; }
+
+/* Stars */
+.stars{ color:var(--honey); letter-spacing:2px; font-size:.95em; }
+
+/* =========================================================
+   TOP BAR + NAV
+   ========================================================= */
+.topbar{
+  background:var(--espresso); color:var(--cream);
+  font-size:.82rem; letter-spacing:.01em;
+}
+.topbar .wrap{ display:flex; flex-wrap:wrap; gap:.4rem 1.4rem; justify-content:center; align-items:center; padding:.5rem 0; }
+.topbar span{ display:inline-flex; align-items:center; gap:.45rem; opacity:.92; white-space:nowrap; }
+.topbar i{ color:var(--honey); }
+.topbar .dot{ opacity:.35; }
+@media (max-width:560px){ .topbar .hide-xs{ display:none; } }
+
+.nav{ position:sticky; top:0; z-index:60; background:var(--cream); border-bottom:1px solid var(--line-2); transition:box-shadow .25s ease, background .25s ease; }
+.nav.is-scrolled{ background:rgba(251,243,228,.9); backdrop-filter:blur(10px); box-shadow:0 10px 30px -18px rgba(40,26,17,.5); }
+.nav__inner{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.7rem 0; }
+
+.brand{ display:inline-flex; align-items:center; gap:.6rem; font-family:var(--display); font-weight:800; font-size:1.35rem; letter-spacing:-.02em; color:var(--espresso); }
+.brand .mark{ width:40px; height:40px; flex:none; }
+.brand b{ color:var(--honey-2); font-weight:800; }
+
+.nav-links{ display:flex; align-items:center; gap:1.7rem; }
+.nav-links a{ font-weight:600; font-size:.98rem; color:var(--coffee); position:relative; padding:.2rem 0; }
+.nav-links a:not(.nav-cta)::after{ content:""; position:absolute; left:0; right:100%; bottom:-2px; height:2px; background:var(--honey); transition:right .25s ease; }
+.nav-links a:not(.nav-cta):hover{ color:var(--espresso); }
+.nav-links a:not(.nav-cta):hover::after{ right:0; }
+.nav-cta{ padding:.6rem 1.2rem !important; }
+
+.nav-toggle{ display:none; width:46px; height:42px; border:1px solid var(--line); background:var(--paper); border-radius:12px; cursor:pointer; align-items:center; justify-content:center; }
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{ content:""; display:block; width:20px; height:2px; background:var(--espresso); border-radius:2px; position:relative; transition:.25s; }
+.nav-toggle span::before{ position:absolute; top:-6px; }
+.nav-toggle span::after{ position:absolute; top:6px; }
+.nav-toggle[aria-expanded="true"] span{ background:transparent; }
+.nav-toggle[aria-expanded="true"] span::before{ top:0; transform:rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span::after{ top:0; transform:rotate(-45deg); }
+
+@media (max-width:880px){
+  .nav-toggle{ display:inline-flex; }
+  .nav-links{
+    position:absolute; left:0; right:0; top:100%;
+    flex-direction:column; align-items:stretch; gap:.1rem;
+    background:var(--paper); border-top:1px solid var(--line);
+    padding:.8rem 1.3rem 1.4rem; box-shadow:0 22px 32px -22px rgba(40,26,17,.55);
+    transform:translateY(-10px); opacity:0; visibility:hidden; transition:.25s ease;
+  }
+  .nav-links.is-open{ transform:none; opacity:1; visibility:visible; }
+  .nav-links a{ padding:.65rem .2rem; font-size:1.05rem; }
+  .nav-links a:not(.nav-cta)::after{ display:none; }
+  .nav-cta{ text-align:center; margin-top:.6rem; justify-content:center; }
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero{
+  position:relative; overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 92% 0%, rgba(232,155,46,.30), transparent 55%),
+    radial-gradient(90% 70% at 0% 100%, rgba(177,123,69,.18), transparent 60%),
+    var(--cream);
+}
+.hero__grid{
+  display:grid; grid-template-columns:1.04fr .96fr;
+  gap:clamp(2rem,4vw,4rem); align-items:center;
+  padding:clamp(2.6rem,5vw,5rem) 0 clamp(3rem,6vw,5.5rem);
+}
+.hero h1{ font-size:clamp(2.6rem, 1.2rem + 6vw, 4.7rem); margin-bottom:.35em; }
+.hero h1 .swash{ color:var(--honey-2); }
+.hero__cta{ display:flex; flex-wrap:wrap; gap:.8rem; margin:1.6rem 0 1.4rem; }
+.hero__rating{ display:inline-flex; align-items:center; gap:.6rem; font-size:.98rem; color:var(--coffee); background:var(--paper); border:1px solid var(--line); padding:.5rem .9rem; border-radius:999px; box-shadow:var(--shadow-sm); }
+.hero__rating strong{ font-family:var(--display); }
+
+/* Hero media: photo card + sun + steam + doodles */
+.hero__media{ position:relative; min-height:380px; display:grid; place-items:center; }
+.hero__sun{ position:absolute; width:min(78%, 420px); aspect-ratio:1; right:-4%; top:-6%; color:var(--honey); opacity:.9; z-index:0; animation:spin 60s linear infinite; }
+.hero__photo{
+  position:relative; z-index:1; width:min(86%, 430px); aspect-ratio:4/5;
+  border-radius:46% 54% 52% 48% / 48% 46% 54% 52%;
+  background:
+    /* PHOTO: hero cup of coffee — replace this URL */
+    url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80") center/cover,
+    linear-gradient(150deg, var(--caramel), var(--coffee));
+  box-shadow:var(--shadow); transform:rotate(-3deg);
+  border:6px solid var(--paper);
+}
+.hero__steam{ position:absolute; z-index:2; top:6%; left:50%; transform:translateX(-50%); width:90px; height:90px; color:var(--paper); opacity:.85; }
+.hero__doodle{ position:absolute; z-index:3; color:var(--coffee); }
+.hero__doodle.croissant{ width:78px; left:-2%; bottom:8%; transform:rotate(-12deg); color:var(--mocha); }
+.hero__doodle.bean{ width:46px; right:4%; bottom:0; transform:rotate(18deg); color:var(--caramel); }
+.hero__tag{
+  position:absolute; z-index:4; bottom:14%; right:-2%;
+  background:var(--paper); border:1px solid var(--line); border-radius:16px;
+  padding:.55rem .85rem; box-shadow:var(--shadow-sm);
+  font-family:var(--script); font-size:1.35rem; color:var(--espresso); line-height:1; transform:rotate(4deg);
+}
+.hero__tag small{ display:block; font-family:var(--body); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:.2rem; }
+
+.scrolldown{ display:flex; justify-content:center; padding-bottom:1.4rem; }
+.scrolldown a{ display:inline-flex; flex-direction:column; align-items:center; gap:.3rem; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+.scrolldown i{ animation:bob 2s ease-in-out infinite; font-size:1.1rem; color:var(--honey-2); }
+
+@media (max-width:880px){
+  .hero__grid{ grid-template-columns:1fr; text-align:center; gap:1.5rem; }
+  .hero__cta{ justify-content:center; }
+  .hero__media{ min-height:340px; order:-1; }
+  .hero__sun{ width:300px; right:auto; }
+}
+
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+.marquee{ background:var(--mocha); color:var(--cream); padding:.85rem 0; overflow:hidden; }
+.marquee__track{ display:flex; gap:0; width:max-content; animation:marquee 32s linear infinite; }
+.marquee__track span{ display:inline-flex; align-items:center; gap:1.1rem; padding:0 1.1rem; font-family:var(--display); font-weight:600; font-size:1.05rem; letter-spacing:.01em; white-space:nowrap; }
+.marquee__track span svg{ width:18px; height:18px; color:var(--honey); flex:none; }
+
+/* =========================================================
+   STORY
+   ========================================================= */
+.story__media{ position:relative; }
+.story__photo{
+  aspect-ratio:5/6; border-radius:var(--r-lg);
+  background:
+    /* PHOTO: café interior / barista — replace this URL */
+    url("https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=900&q=80") center/cover,
+    linear-gradient(160deg, var(--mocha), var(--espresso));
+  box-shadow:var(--shadow); border:7px solid var(--paper);
+}
+.story__badge{
+  position:absolute; left:-18px; bottom:-22px;
+  background:var(--honey); color:var(--espresso);
+  width:128px; height:128px; border-radius:50%;
+  display:grid; place-items:center; text-align:center; line-height:1.1;
+  box-shadow:var(--shadow); border:5px solid var(--paper); transform:rotate(-6deg);
+}
+.story__badge .num{ font-family:var(--display); font-weight:800; font-size:2.1rem; }
+.story__badge small{ font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; }
+.story__list{ list-style:none; padding:0; margin:1.4rem 0 0; display:grid; gap:.7rem; }
+.story__list li{ display:flex; gap:.7rem; align-items:flex-start; }
+.story__list i{ color:var(--honey-2); margin-top:.25rem; }
+.signature{ font-family:var(--script); font-size:2rem; color:var(--mocha); line-height:1; margin-top:1.4rem; transform:rotate(-3deg); }
+.underline-hand{ position:relative; white-space:nowrap; }
+.underline-hand svg{ position:absolute; left:0; right:0; bottom:-.55em; width:100%; height:.45em; color:var(--honey); }
+
+@media (max-width:820px){ .story__media{ max-width:440px; margin-inline:auto; } }
+
+/* =========================================================
+   FAVOURITES (feature cards)
+   ========================================================= */
+.feat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+.feat{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r);
+  padding:2rem 1.7rem; box-shadow:var(--shadow-sm);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.feat:hover{ transform:translateY(-6px); box-shadow:var(--shadow); }
+.feat__icon{ width:64px; height:64px; border-radius:18px; background:rgba(232,155,46,.16); display:grid; place-items:center; color:var(--mocha); margin-bottom:1.1rem; }
+.feat__icon svg{ width:38px; height:38px; }
+.feat h3{ margin-bottom:.35em; }
+.feat p{ color:var(--muted); margin:0; font-size:.98rem; }
+@media (max-width:820px){ .feat-grid{ grid-template-columns:1fr; max-width:460px; margin-inline:auto; } }
+
+/* =========================================================
+   MENU
+   ========================================================= */
+.menu-tabs{ display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; margin-bottom:2.4rem; }
+.menu-tab{
+  border:1.5px solid var(--line); background:transparent; color:var(--coffee);
+  font-weight:600; font-size:.96rem; padding:.6rem 1.2rem; border-radius:999px; cursor:pointer;
+  transition:.2s;
+}
+.menu-tab:hover{ border-color:var(--mocha); }
+.menu-tab.is-active{ background:var(--espresso); color:var(--cream); border-color:var(--espresso); }
+
+.menu-pane{ display:none; }
+.menu-pane.is-active{ display:block; animation:fade .4s ease; }
+.menu-grid{ display:grid; grid-template-columns:1fr 1fr; gap:.2rem 3.2rem; }
+@media (max-width:760px){ .menu-grid{ grid-template-columns:1fr; } }
+
+.menu-item{ display:grid; grid-template-columns:1fr auto; align-items:baseline; gap:.5rem; padding:.95rem 0; border-bottom:1px dashed var(--line); }
+.menu-item__name{ font-family:var(--display); font-weight:600; font-size:1.08rem; color:var(--espresso); }
+.menu-item__tag{ font-family:var(--script); font-size:1.1rem; color:var(--honey-2); margin-left:.45rem; }
+.menu-item__desc{ grid-column:1/-1; color:var(--muted); font-size:.9rem; margin-top:.15rem; }
+.menu-item__price{ font-family:var(--display); font-weight:700; color:var(--mocha); white-space:nowrap; }
+.menu-note{ text-align:center; color:var(--muted); font-size:.9rem; margin-top:1.8rem; }
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+.gallery{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:200px; gap:14px; }
+.tile{
+  position:relative; overflow:hidden; border-radius:var(--r);
+  border:none; padding:0; cursor:pointer; color:var(--cream);
+  background:var(--tile, linear-gradient(150deg,var(--caramel),var(--coffee)));
+  box-shadow:var(--shadow-sm);
+}
+.tile__photo{ position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .5s ease; }
+.tile::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(40,26,17,0) 40%, rgba(40,26,17,.62)); }
+.tile:hover .tile__photo{ transform:scale(1.07); }
+.tile__cap{ position:absolute; left:0; right:0; bottom:0; z-index:2; padding:.9rem 1rem; text-align:left; font-family:var(--display); font-weight:700; font-size:1.02rem; display:flex; align-items:center; gap:.5rem; }
+.tile__cap svg{ width:18px; height:18px; color:var(--honey); flex:none; }
+.tile.big{ grid-column:span 2; grid-row:span 2; }
+.tile.wide{ grid-column:span 2; }
+@media (max-width:900px){ .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:170px; } .tile.big{ grid-column:span 2; grid-row:span 2; } }
+@media (max-width:520px){ .gallery{ grid-auto-rows:150px; } .tile.big{ grid-row:span 1; } }
+
+/* Lightbox */
+.lightbox{ position:fixed; inset:0; z-index:200; display:none; place-items:center; background:rgba(20,12,7,.85); padding:1.5rem; }
+.lightbox.is-open{ display:grid; }
+.lightbox__img{ width:min(960px,94vw); aspect-ratio:3/2; border-radius:18px; background-size:cover; background-position:center; box-shadow:0 30px 60px rgba(0,0,0,.5); }
+.lightbox__close{ position:absolute; top:1.2rem; right:1.4rem; width:48px; height:48px; border-radius:50%; border:none; background:var(--cream); color:var(--espresso); font-size:1.4rem; cursor:pointer; display:grid; place-items:center; }
+
+/* =========================================================
+   REVIEWS
+   ========================================================= */
+.reviews-head{ display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem 2rem; justify-content:space-between; margin-bottom:2.4rem; }
+.score{ display:flex; align-items:center; gap:1rem; }
+.score__num{ font-family:var(--display); font-weight:800; font-size:3.4rem; line-height:1; color:var(--honey); }
+.score small{ color:rgba(251,243,228,.7); }
+.review{ background:rgba(255,252,246,.05); border:1px solid rgba(251,243,228,.16); border-radius:var(--r); padding:1.8rem 1.6rem; height:100%; }
+.review .q{ font-family:var(--display); font-size:2.6rem; line-height:.7; color:var(--honey); display:block; margin-bottom:.3rem; }
+.review p{ color:rgba(251,243,228,.92); font-size:1.02rem; }
+.review .who{ display:flex; align-items:center; gap:.7rem; margin-top:1.1rem; }
+.review .av{ width:40px; height:40px; border-radius:50%; background:var(--honey); color:var(--espresso); display:grid; place-items:center; font-family:var(--display); font-weight:700; }
+.review .who b{ display:block; color:var(--cream); }
+.review .who span{ font-size:.82rem; color:rgba(251,243,228,.6); }
+
+/* =========================================================
+   VISIT
+   ========================================================= */
+.visit-card{ background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg); padding:clamp(1.6rem,3vw,2.4rem); box-shadow:var(--shadow-sm); height:100%; }
+.info-row{ display:flex; gap:.9rem; align-items:flex-start; padding:.85rem 0; border-bottom:1px solid var(--line-2); }
+.info-row:last-child{ border-bottom:none; }
+.info-row .ic{ width:42px; height:42px; border-radius:12px; background:rgba(232,155,46,.16); color:var(--mocha); display:grid; place-items:center; flex:none; font-size:1.15rem; }
+.info-row b{ font-family:var(--display); }
+.hours{ list-style:none; margin:.4rem 0 0; padding:0; }
+.hours li{ display:flex; justify-content:space-between; padding:.32rem 0; font-size:.97rem; border-bottom:1px dashed var(--line); }
+.hours li:last-child{ border-bottom:none; }
+.hours li.closed span:last-child{ color:var(--berry); font-weight:600; }
+.hours .day{ color:var(--coffee); }
+.map-frame{ border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow); border:7px solid var(--paper); height:100%; min-height:320px; background:var(--cream-2); }
+.map-frame iframe{ width:100%; height:100%; min-height:320px; border:0; display:block; filter:saturate(.92); }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer{ background:var(--espresso); color:var(--cream); padding:3.4rem 0 2rem; }
+.footer .brand{ color:var(--cream); }
+.footer h4{ color:var(--cream); font-size:1.05rem; margin-bottom:1rem; }
+.footer a{ color:rgba(251,243,228,.78); }
+.footer a:hover{ color:var(--honey); }
+.footer__links{ list-style:none; padding:0; margin:0; display:grid; gap:.45rem; }
+.footer__social a{ width:42px; height:42px; border-radius:50%; border:1px solid rgba(251,243,228,.25); display:inline-grid; place-items:center; margin-right:.5rem; font-size:1.1rem; transition:.2s; }
+.footer__social a:hover{ background:var(--honey); color:var(--espresso); border-color:var(--honey); transform:translateY(-2px); }
+.footer p{ color:rgba(251,243,228,.7); }
+.footer__bottom{ border-top:1px solid rgba(251,243,228,.16); margin-top:2.4rem; padding-top:1.4rem; display:flex; flex-wrap:wrap; gap:.6rem 1.5rem; justify-content:space-between; align-items:center; font-size:.86rem; color:rgba(251,243,228,.6); }
+
+/* Back to top */
+.totop{ position:fixed; right:1.2rem; bottom:1.2rem; z-index:90; width:50px; height:50px; border-radius:50%; border:none; background:var(--honey); color:var(--espresso); font-size:1.2rem; cursor:pointer; box-shadow:var(--shadow); opacity:0; pointer-events:none; transform:translateY(12px); transition:.25s; }
+.totop.is-show{ opacity:1; pointer-events:auto; transform:none; }
+
+/* =========================================================
+   REVEAL + KEYFRAMES
+   ========================================================= */
+.reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.is-in{ opacity:1; transform:none; }
+
+@keyframes spin{ to{ transform:rotate(360deg); } }
+@keyframes bob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(5px); } }
+@keyframes fade{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+@keyframes marquee{ to{ transform:translateX(-50%); } }
+.steam-path{ animation:steam 3.4s ease-in-out infinite; }
+.steam-path:nth-child(2){ animation-delay:.7s; }
+.steam-path:nth-child(3){ animation-delay:1.3s; }
+@keyframes steam{ 0%{ opacity:0; transform:translateY(8px) scaleY(.85); } 30%{ opacity:.85; } 100%{ opacity:0; transform:translateY(-12px) scaleY(1.15); } }
+
+@media (prefers-reduced-motion:reduce){
+  *{ scroll-behavior:auto; }
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .hero__sun, .scrolldown i, .marquee__track, .steam-path{ animation:none; }
+}
+</style>
+</head>
+
+<body id="top">
+
+<!-- ===================== TOP BAR ===================== -->
+<div class="topbar">
+  <div class="wrap">
+    <span><i class="bi bi-geo-alt-fill"></i> Rue Dancet 8, Plainpalais — Geneva</span>
+    <span class="dot hide-xs">•</span>
+    <span class="hide-xs"><i class="bi bi-clock-fill"></i> Open Mon–Fri from 7:30</span>
+    <span class="dot">•</span>
+    <span><span class="stars">★★★★★</span> 5.0 on Google</span>
+  </div>
+</div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top" aria-label="Yummy Coffee — home">
+      <!-- Brand mark: sun + steaming cup -->
+      <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <g stroke="#E89B2E" stroke-width="2.4" stroke-linecap="round">
+          <circle cx="24" cy="22" r="7.5" fill="#E89B2E" stroke="none"/>
+          <line x1="24" y1="6" x2="24" y2="10"/><line x1="24" y1="34" x2="24" y2="38"/>
+          <line x1="8" y1="22" x2="12" y2="22"/><line x1="36" y1="22" x2="40" y2="22"/>
+          <line x1="12.6" y1="10.6" x2="15.4" y2="13.4"/><line x1="32.6" y1="30.6" x2="35.4" y2="33.4"/>
+          <line x1="35.4" y1="10.6" x2="32.6" y2="13.4"/><line x1="15.4" y1="30.6" x2="12.6" y2="33.4"/>
+        </g>
+        <g stroke="#43301F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M13 30 h17 v5 a7 7 0 0 1 -7 7 h-3 a7 7 0 0 1 -7 -7 z"/>
+          <path d="M30 32 h3.5 a3.5 3.5 0 0 1 0 7 H30"/>
+        </g>
+      </svg>
+      Yummy <b>Coffee</b>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false"><span></span></button>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#story">Our story</a>
+      <a href="#favourites">Favourites</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#visit">Visit</a>
+      <a class="btn-yc btn-honey nav-cta" href="#visit"><i class="bi bi-cup-hot-fill"></i> Find us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="reveal">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+        bonjour, Geneva
+      </span>
+      <h1>Mornings taste <span class="swash">better</span> here.</h1>
+      <p class="lead">A tiny, much-loved café tucked just off the Plaine de Plainpalais — carefully brewed coffee, almond-milk chai and pastries baked in-house, served from half past seven. Pull up a chair, or grab it to go.</p>
+      <div class="hero__cta">
+        <a class="btn-yc btn-honey" href="#menu"><i class="bi bi-journal-text"></i> See the menu</a>
+        <a class="btn-yc btn-outline" href="#visit"><i class="bi bi-geo-alt"></i> Find us in Plainpalais</a>
+      </div>
+      <div class="hero__rating">
+        <span class="stars">★★★★★</span>
+        <span><strong>5.0</strong> from 88 happy regulars on Google</span>
+      </div>
+    </div>
+
+    <div class="hero__media reveal">
+      <!-- Hand-drawn sun -->
+      <svg class="hero__sun" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <circle cx="100" cy="100" r="44" fill="currentColor" opacity=".22"/>
+        <g stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".55">
+          <line x1="100" y1="20" x2="100" y2="42"/><line x1="100" y1="158" x2="100" y2="180"/>
+          <line x1="20" y1="100" x2="42" y2="100"/><line x1="158" y1="100" x2="180" y2="100"/>
+          <line x1="43" y1="43" x2="59" y2="59"/><line x1="141" y1="141" x2="157" y2="157"/>
+          <line x1="157" y1="43" x2="141" y2="59"/><line x1="59" y1="141" x2="43" y2="157"/>
+        </g>
+      </svg>
+
+      <div class="hero__photo" role="img" aria-label="A freshly poured cup of coffee at Yummy Coffee"></div>
+
+      <!-- Steam -->
+      <svg class="hero__steam" viewBox="0 0 60 80" fill="none" aria-hidden="true">
+        <path class="steam-path" d="M18 70 C10 56 26 50 18 36 C12 26 24 18 18 6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path class="steam-path" d="M30 72 C22 58 38 52 30 38 C24 28 36 20 30 8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path class="steam-path" d="M42 70 C34 56 50 50 42 36 C36 26 48 18 42 6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+
+      <!-- Croissant doodle -->
+      <svg class="hero__doodle croissant" viewBox="0 0 80 60" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M8 40 C18 14 62 14 72 40 C58 34 50 46 40 40 C30 34 22 46 8 40 Z"/>
+        <path d="M40 40 L40 30 M30 38 L27 31 M50 38 L53 31"/>
+      </svg>
+      <!-- Bean doodle -->
+      <svg class="hero__doodle bean" viewBox="0 0 40 56" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="3.4" stroke-linecap="round">
+        <ellipse cx="20" cy="28" rx="15" ry="24"/><path d="M20 6 C12 18 28 38 20 50"/>
+      </svg>
+
+      <div class="hero__tag">made by hand <small>fresh, every morning</small></div>
+    </div>
+  </div>
+
+  <div class="scrolldown">
+    <a href="#story" aria-label="Scroll to our story">scroll <i class="bi bi-arrow-down"></i></a>
+  </div>
+</section>
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track" id="marqueeTrack">
+    <!-- duplicated in JS for seamless loop -->
+    <span>Freshly brewed
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+      Homemade pastries
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+      Almond-milk chai
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+      Cosy corner
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+      Open from 7:30
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+      Takeaway welcome
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+    </span>
+  </div>
+</div>
+
+<!-- ===================== STORY ===================== -->
+<section class="section" id="story">
+  <div class="wrap">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="story__media reveal">
+          <div class="story__photo" role="img" aria-label="The cosy interior of Yummy Coffee"></div>
+          <div class="story__badge">
+            <div>
+              <div class="num">5.0</div>
+              <small>Google rating</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 reveal">
+        <span class="eyebrow">our little corner</span>
+        <h2>A small café with a <span class="underline-hand">big welcome
+          <svg viewBox="0 0 200 12" fill="none" preserveAspectRatio="none"><path d="M2 8 C40 2 80 2 120 7 C150 11 180 5 198 4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+        </span></h2>
+        <p>Yummy Coffee sits quietly on Rue Dancet, a couple of minutes from the Plaine de Plainpalais and just down the road from Uni Mail. It's the kind of place where the barista learns your order, the croissants come out warm, and a quiet "bonjour" greets you on the way in.</p>
+        <p>We keep things simple and made-with-care: proper coffee, an almond-milk chai people travel for, and a little counter of bakes and breakfast prepared fresh each morning. Nothing fussy — just good things, done well, in a room that feels like it's yours.</p>
+        <ul class="story__list">
+          <li><i class="bi bi-check-circle-fill"></i><span>Specialty coffee &amp; almond-milk chai, made to order</span></li>
+          <li><i class="bi bi-check-circle-fill"></i><span>Homemade croissants, apple cake, brownies &amp; sandwiches</span></li>
+          <li><i class="bi bi-check-circle-fill"></i><span>Sit-in or takeaway — and kind on the wallet (1–10 CHF)</span></li>
+        </ul>
+        <p class="signature">— see you in the morning ☕</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAVOURITES ===================== -->
+<section class="section section--cream2" id="favourites">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">what we're loved for</span>
+      <h2>Three good reasons to drop by</h2>
+    </div>
+    <div class="feat-grid">
+      <article class="feat reveal">
+        <div class="feat__icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 18 h24 v8 a10 10 0 0 1 -10 10 h-4 a10 10 0 0 1 -10 -10 z"/>
+            <path d="M34 20 h5 a5 5 0 0 1 0 10 H34"/>
+            <path class="steam-path" d="M18 12 c-3 -3 3 -5 0 -8" /><path class="steam-path" d="M26 12 c-3 -3 3 -5 0 -8" />
+          </svg>
+        </div>
+        <h3>Carefully brewed coffee</h3>
+        <p>From a quick morning espresso to a flat white worth slowing down for — plus the almond-milk chai latte our regulars keep coming back for.</p>
+      </article>
+
+      <article class="feat reveal">
+        <div class="feat__icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M6 32 C16 8 32 8 42 32 C34 26 28 38 24 32 C20 26 14 38 6 32 Z"/>
+            <path d="M24 32 V22 M16 30 L12 22 M32 30 L36 22"/>
+          </svg>
+        </div>
+        <h3>Homemade bakes</h3>
+        <p>All-butter croissants, fudgy brownies and that famous apple cake — baked in-house and best while they're still warm from the morning.</p>
+      </article>
+
+      <article class="feat reveal">
+        <div class="feat__icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+            <circle cx="24" cy="26" r="15"/><circle cx="24" cy="26" r="6" fill="currentColor" stroke="none"/>
+            <path d="M24 6 v4"/>
+          </svg>
+        </div>
+        <h3>A proper breakfast</h3>
+        <p>Open from 7:30 with everything from a smoked-salmon sandwich to granola and fresh juice — the gentlest possible start to a Geneva morning.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MENU ===================== -->
+<section class="section" id="menu">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">a few of our favourites</span>
+      <h2>The menu</h2>
+      <p class="lead">A taste of what's on the counter. Bakes change with the season and the baker's mood.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="menu-tabs reveal" role="tablist" aria-label="Menu categories">
+      <button class="menu-tab is-active" role="tab" aria-selected="true" data-pane="coffee">Coffee &amp; drinks</button>
+      <button class="menu-tab" role="tab" aria-selected="false" data-pane="breakfast">Breakfast</button>
+      <button class="menu-tab" role="tab" aria-selected="false" data-pane="sweet">Sweet things</button>
+      <button class="menu-tab" role="tab" aria-selected="false" data-pane="cold">Cold &amp; fresh</button>
+    </div>
+
+    <!-- MENU DATA — edit names / prices / descriptions freely -->
+    <div class="reveal">
+      <!-- Coffee -->
+      <div class="menu-pane is-active" id="pane-coffee" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-item"><div><span class="menu-item__name">Espresso</span></div><div class="menu-item__price">3.20</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Macchiato</span></div><div class="menu-item__price">3.80</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Cappuccino</span></div><div class="menu-item__price">4.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Flat white</span></div><div class="menu-item__price">5.00</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Caffè latte</span></div><div class="menu-item__price">4.80</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Almond-milk chai latte</span><span class="menu-item__tag">a favourite</span><div class="menu-item__desc">Spiced chai, gently steamed with almond milk.</div></div><div class="menu-item__price">5.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Hot chocolate</span></div><div class="menu-item__price">4.80</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Pot of tea</span></div><div class="menu-item__price">4.20</div></div>
+        </div>
+      </div>
+      <!-- Breakfast -->
+      <div class="menu-pane" id="pane-breakfast" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-item"><div><span class="menu-item__name">The Yummy breakfast</span><div class="menu-item__desc">Coffee, fresh orange juice and a croissant with jam.</div></div><div class="menu-item__price">9.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Smoked-salmon sandwich</span><span class="menu-item__tag">house favourite</span></div><div class="menu-item__price">9.00</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Avocado toast on sourdough</span></div><div class="menu-item__price">8.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Soft-boiled eggs &amp; soldiers</span></div><div class="menu-item__price">7.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Granola, yoghurt &amp; fruit</span></div><div class="menu-item__price">7.00</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Ham &amp; cheese toastie</span></div><div class="menu-item__price">6.50</div></div>
+        </div>
+      </div>
+      <!-- Sweet -->
+      <div class="menu-pane" id="pane-sweet" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-item"><div><span class="menu-item__name">All-butter croissant</span></div><div class="menu-item__price">2.80</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Pain au chocolat</span></div><div class="menu-item__price">3.20</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Homemade apple cake</span><span class="menu-item__tag">the famous one</span></div><div class="menu-item__price">4.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Fudgy brownie</span></div><div class="menu-item__price">4.00</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Carrot cake</span></div><div class="menu-item__price">4.80</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Cookie of the day</span></div><div class="menu-item__price">3.00</div></div>
+        </div>
+      </div>
+      <!-- Cold -->
+      <div class="menu-pane" id="pane-cold" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-item"><div><span class="menu-item__name">Fresh orange juice</span></div><div class="menu-item__price">5.00</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Iced latte</span></div><div class="menu-item__price">5.20</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Iced matcha</span></div><div class="menu-item__price">5.80</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Homemade lemonade</span></div><div class="menu-item__price">4.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Sparkling water</span></div><div class="menu-item__price">3.50</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note">All prices in CHF. Card &amp; contactless welcome. A sample menu — pop in to see today's bakes.</p>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="section section--cream2" id="gallery">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">a peek inside</span>
+      <h2>Snapshots from the counter</h2>
+    </div>
+
+    <!-- PHOTO: gallery — swap data-full + the background URL on each .tile__photo.
+         If a photo doesn't load, the warm gradient + label still look intentional. -->
+    <div class="gallery reveal">
+      <button class="tile big" style="--tile:linear-gradient(150deg,#C98A4A,#5a3c25)" data-full="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1100&q=80">
+        <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1100&q=80')"></span>
+        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Latte, just poured</span>
+      </button>
+      <button class="tile" style="--tile:linear-gradient(150deg,#caa06a,#7b5230)" data-full="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80">
+        <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80')"></span>
+        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Warm croissants</span>
+      </button>
+      <button class="tile" style="--tile:linear-gradient(150deg,#b9824a,#4a3220)" data-full="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80">
+        <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80')"></span>
+        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>The cosy corner</span>
+      </button>
+      <button class="tile wide" style="--tile:linear-gradient(150deg,#d6a35e,#6a4527)" data-full="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=80">
+        <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=80')"></span>
+        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Morning light</span>
+      </button>
+      <button class="tile" style="--tile:linear-gradient(150deg,#c79050,#583a23)" data-full="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=80">
+        <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=80')"></span>
+        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Avocado toast</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REVIEWS ===================== -->
+<section class="section section--dark" id="reviews">
+  <div class="wrap">
+    <div class="reviews-head reveal">
+      <div>
+        <span class="eyebrow">kind words</span>
+        <h2>Loved by the neighbourhood</h2>
+      </div>
+      <div class="score">
+        <div class="score__num">5.0</div>
+        <div>
+          <div class="stars" style="font-size:1.2rem">★★★★★</div>
+          <small>Based on 88 Google reviews</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- REVIEWS — replace with your real Google reviews when ready -->
+    <div class="row g-4">
+      <div class="col-md-4 reveal">
+        <div class="review">
+          <span class="q">&ldquo;</span>
+          <div class="stars" style="font-size:.95rem">★★★★★</div>
+          <p>The friendliest welcome in Geneva, and a flat white to match. My weekday mornings completely revolve around this little place.</p>
+          <div class="who"><div class="av">S</div><div><b>Sophie M.</b><span>Google review</span></div></div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="review">
+          <span class="q">&ldquo;</span>
+          <div class="stars" style="font-size:.95rem">★★★★★</div>
+          <p>That apple cake. The almond-milk chai. The little "bonjour" when you walk in. Five stars honestly isn't enough.</p>
+          <div class="who"><div class="av">M</div><div><b>Marco R.</b><span>Google review</span></div></div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="review">
+          <span class="q">&ldquo;</span>
+          <div class="stars" style="font-size:.95rem">★★★★★</div>
+          <p>Tucked just off the Plaine de Plainpalais — tiny, sunny and always worth the stop before class. My go-to in the quartier.</p>
+          <div class="who"><div class="av">L</div><div><b>Léa B.</b><span>Google review</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISIT ===================== -->
+<section class="section" id="visit">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">come say hello</span>
+      <h2>Find us</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-5 reveal">
+        <div class="visit-card">
+          <div class="info-row">
+            <div class="ic"><i class="bi bi-geo-alt-fill"></i></div>
+            <div><b>Where</b><br>Rue Dancet 8<br>1205 Genève, Switzerland</div>
+          </div>
+          <div class="info-row">
+            <div class="ic"><i class="bi bi-bus-front-fill"></i></div>
+            <div><b>Getting here</b><br>2 min from the Dancet stop · a short walk from Uni&nbsp;Mail and the Plaine&nbsp;de&nbsp;Plainpalais</div>
+          </div>
+          <div class="info-row">
+            <div class="ic"><i class="bi bi-clock-fill"></i></div>
+            <div style="flex:1">
+              <b>Opening hours</b>
+              <ul class="hours">
+                <li><span class="day">Monday</span><span>7:30 – 13:30</span></li>
+                <li><span class="day">Tuesday</span><span>7:30 – 16:30</span></li>
+                <li><span class="day">Wednesday</span><span>7:30 – 16:30</span></li>
+                <li><span class="day">Thursday</span><span>7:30 – 16:30</span></li>
+                <li><span class="day">Friday</span><span>7:30 – 16:30</span></li>
+                <li class="closed"><span class="day">Saturday</span><span>Closed</span></li>
+                <li class="closed"><span class="day">Sunday</span><span>Closed</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="ic"><i class="bi bi-instagram"></i></div>
+            <div><b>Say hi online</b><br><a href="https://www.instagram.com/yummycoffee.gva/" target="_blank" rel="noopener">@yummycoffee.gva</a></div>
+          </div>
+          <a class="btn-yc btn-honey w-100 justify-content-center mt-3" href="https://maps.google.com/?q=Rue+Dancet+8,+1205+Gen%C3%A8ve" target="_blank" rel="noopener"><i class="bi bi-map"></i> Open in Google Maps</a>
+        </div>
+      </div>
+      <div class="col-lg-7 reveal">
+        <div class="map-frame">
+          <iframe
+            title="Map showing Yummy Coffee at Rue Dancet 8, Geneva"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Rue+Dancet+8,+1205+Gen%C3%A8ve,+Switzerland&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <a class="brand mb-2 d-inline-flex" href="#top">
+          <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <g stroke="#E89B2E" stroke-width="2.4" stroke-linecap="round">
+              <circle cx="24" cy="22" r="7.5" fill="#E89B2E" stroke="none"/>
+              <line x1="24" y1="6" x2="24" y2="10"/><line x1="24" y1="34" x2="24" y2="38"/>
+              <line x1="8" y1="22" x2="12" y2="22"/><line x1="36" y1="22" x2="40" y2="22"/>
+            </g>
+            <g stroke="#FBF3E4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+              <path d="M13 30 h17 v5 a7 7 0 0 1 -7 7 h-3 a7 7 0 0 1 -7 -7 z"/><path d="M30 32 h3.5 a3.5 3.5 0 0 1 0 7 H30"/>
+            </g>
+          </svg>
+          Yummy <b style="color:var(--honey)">Coffee</b>
+        </a>
+        <p style="max-width:34ch">Your cosy corner of Plainpalais for carefully brewed coffee and homemade mornings. See you from 7:30.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/yummycoffee.gva/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://maps.google.com/?q=Rue+Dancet+8,+1205+Gen%C3%A8ve" target="_blank" rel="noopener" aria-label="Google Maps"><i class="bi bi-geo-alt-fill"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h4>Explore</h4>
+        <ul class="footer__links">
+          <li><a href="#story">Our story</a></li>
+          <li><a href="#favourites">Favourites</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#visit">Visit us</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-4">
+        <h4>Find us</h4>
+        <ul class="footer__links">
+          <li>Rue Dancet 8</li>
+          <li>1205 Genève, Switzerland</li>
+          <li class="mt-2">Mon 7:30–13:30</li>
+          <li>Tue–Fri 7:30–16:30</li>
+          <li>Sat &amp; Sun — closed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year"></span> Yummy Coffee · Rue Dancet 8, Geneva</span>
+      <span>Made with care &amp; good coffee ☕</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
+  <div class="lightbox__img" id="lightboxImg"></div>
+</div>
+
+<!-- Back to top -->
+<button class="totop" id="toTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+<!-- Bootstrap JS (bundle) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* =========================================================
+   INTERACTIONS (vanilla JS — works with or without Bootstrap JS)
+   ========================================================= */
+(function () {
+  "use strict";
+
+  /* ---- Footer year ---- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---- Mobile nav ---- */
+  var toggle = document.getElementById("navToggle");
+  var links  = document.getElementById("navLinks");
+  function closeNav() { links.classList.remove("is-open"); toggle.setAttribute("aria-expanded", "false"); }
+  toggle.addEventListener("click", function () {
+    var open = links.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeNav); });
+
+  /* ---- Sticky nav shadow ---- */
+  var nav = document.getElementById("nav");
+  var onScroll = function () {
+    nav.classList.toggle("is-scrolled", window.scrollY > 8);
+    document.getElementById("toTop").classList.toggle("is-show", window.scrollY > 600);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---- Back to top ---- */
+  document.getElementById("toTop").addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---- Seamless marquee (duplicate the track content) ---- */
+  var track = document.getElementById("marqueeTrack");
+  if (track && track.children.length === 1) {
+    track.appendChild(track.children[0].cloneNode(true));
+  }
+
+  /* ---- Menu tabs ---- */
+  var tabs  = document.querySelectorAll(".menu-tab");
+  var panes = document.querySelectorAll(".menu-pane");
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      tabs.forEach(function (t) { t.classList.remove("is-active"); t.setAttribute("aria-selected", "false"); });
+      panes.forEach(function (p) { p.classList.remove("is-active"); });
+      tab.classList.add("is-active");
+      tab.setAttribute("aria-selected", "true");
+      var pane = document.getElementById("pane-" + tab.dataset.pane);
+      if (pane) pane.classList.add("is-active");
+    });
+  });
+
+  /* ---- Gallery lightbox ---- */
+  var lb       = document.getElementById("lightbox");
+  var lbImg    = document.getElementById("lightboxImg");
+  var lbClose  = document.getElementById("lightboxClose");
+  function openLightbox(url) {
+    /* layer the photo over a warm gradient so a missing image still looks intentional */
+    lbImg.style.backgroundImage = "url('" + url + "'), linear-gradient(150deg,#C98A4A,#43301F)";
+    lb.classList.add("is-open");
+    lb.setAttribute("aria-hidden", "false");
+  }
+  function closeLightbox() { lb.classList.remove("is-open"); lb.setAttribute("aria-hidden", "true"); }
+  document.querySelectorAll(".tile").forEach(function (tile) {
+    tile.addEventListener("click", function () {
+      if (tile.dataset.full) openLightbox(tile.dataset.full);
+    });
+  });
+  lbClose.addEventListener("click", closeLightbox);
+  lb.addEventListener("click", function (e) { if (e.target === lb) closeLightbox(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLightbox(); });
+
+  /* ---- Scroll reveal ---- */
+  var reveal = document.querySelectorAll(".reveal");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) {
+    reveal.forEach(function (el) { el.classList.add("is-in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    reveal.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

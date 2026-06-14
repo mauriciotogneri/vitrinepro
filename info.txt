@@ -1,0 +1,61 @@
+W3C compliant
+Languages, analytics, booking, contact form, FAQ, call to action, etc
+What's the brand color, design system of the business?
+
+Requirements:
+• Responsive design: Works well on mobile first, then tablet/desktop. Most local searches happen with immediate intent.
+• Fast loading: Compressed images, minimal scripts, good hosting, no bloated theme. Google’s Core Web Vitals measure loading, interactivity, and visual stability.
+• Basic accessibility: Good contrast, readable font sizes, keyboard-friendly navigation, labels on forms, alt text, visible focus states. WCAG 2.2 organizes accessibility around content being perceivable, operable, understandable, and robust.
+• SEO basics: Unique title/meta description, clear headings, crawlable pages, descriptive URLs, internal links, image alt text. Google’s SEO starter guide focuses on helping search engines crawl, index, and understand content.
+• Structured data: Add LocalBusiness schema, and more specific schema where relevant, with name, address, phone, opening hours, geo/location, price range, services, menu, etc. Google says Local Business structured data can help search results understand hours, departments, reviews, and more.
+
+Loop:
+1. Extract list of businesses (free + paid)
+2. Enhance information for each business
+3. Create website
+
+Basic information to extract:
+• ID
+• Status
+• Type
+• Name
+• Website
+• Email
+• Address
+• Coordinates
+• Phones
+• Opening hours
+• Rating
+• Reviews
+• Prices
+• Services/Products/Menu
+• Logo
+• Photos
+• Social links
+
+Use https://www.local.ch
+Use enterprise directory
+
+Basic website structure:
+• One file (HTML) page
+• Header / Nav bar: with anchors to each section on the site
+• Hero:
+    •  Eyebrow / overline: tiny context label above the headline. short kicker text, often with an icon
+    •  Headline: the one big promise; also the page's main SEO heading. large display type
+    •  Subhead / lede: one or two sentences expanding the promise, paragraph
+    •  CTAs: the action(s) you want taken. one primary + one secondary button (book appointment/table, see menu, call us, get a quote, etc)
+    •  Trust/meta strip: quick credibility or key facts, rating, address, hours, badge
+    •  Visual: photo, illustration, or decorative shapes. image or SVG
+• Services / Menu / Products: Clear list, prices, durations, descriptions.
+• About:  Story, team, the place, certifications, photo gallery, trust signals.
+• Book / Order / Request Quote:  Form, booking widget, reservation link, WhatsApp/call button.
+• Reviews: Build trust through social proof. A heading, an aggregate rating (stars + review count), and a few short quotes each attributed to a named person.
+• Contact / Location:  Address, map, opening hours, phone, email, access, parking, transport. Contact form.
+• FAQ:  Cancellations, deposits, payment methods, accessibility, age restrictions, preparation instructions.
+• Footer:
+    •  Brand block: logo + one-line description — restates identity at the bottom
+    •  Contact / location: address, phone, opening hours — the #1 thing local-business visitors hunt for
+    •  Secondary navigation: repeat of the main section links, for people who scrolled to the end
+    •  Social / external links: Instagram, Facebook, Google Maps/reviews
+    •  Legal & utility: copyright, company registration, privacy/cookie note, terms
+    •  Closing touches: back-to-top, dynamic year, a sign-off, sometimes a final CTA

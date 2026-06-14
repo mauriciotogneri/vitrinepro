@@ -1,0 +1,74 @@
+Beauty & Wellness
+- Hairdressers
+- Beauty Salon
+- Barber Shop
+- Nail salons
+- Massage Spa
+- Tanning Salon
+- Tattoo Shop
+- Gym
+- Yoga Studio
+
+Food & Drink
+- Restaurant
+- Bar / Pub
+- Coffee Shop
+- Bakery
+- Brewery
+- Ice Cream Shop
+- Night Club
+- Donut Shop
+
+Auto Repair
+- Auto Repair Shop 
+- Mechanic
+- Car Wash
+- Tire Shop
+- Motorcycle Repair Shop
+- Bicycle Repair Shop
+- Car Paint Shop
+
+Craft & Hobbies
+- Haberdashery
+- Art Supply Store
+- Tailor
+- Hobby Shop
+- Craft Store
+- Board Game Cafe
+
+Pet Care
+- Veterinarian
+- Pet Groomer
+- Pet Supply Store
+
+Home Trades
+- Locksmith
+- Plumber
+- Electrician
+- Painter
+- Dry Cleaner
+- Laundromat
+
+Childcare & Education
+- Learning Center
+- Dance School
+- Martial Arts School
+- Music Instructor
+
+Local Retail
+- Florist
+- Jewelry Store
+- Hardware Store
+- Bookstore / Comic Book Store
+- Record Store
+- Shoe Store
+- Vape Shop
+- Cell Phone Repair Shop
+- Computer Repair Service
+
+Specialty Grocery
+- Butcher Shop
+- Seafood Market
+- Smoothie Shop
+- Candy Store
+- Liquor Store
