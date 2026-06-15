@@ -765,7 +765,10 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
   .hero-grid { grid-template-columns: 1.05fr 0.95fr; }
   .about-grid { grid-template-columns: 1.1fr 0.9fr; }
   .reviews-wrap { grid-template-columns: 0.85fr 1.15fr; }
-  .loc-grid { grid-template-columns: 1.1fr 0.9fr; }
+  .loc-grid { grid-template-columns: 1.1fr 0.9fr; align-items: stretch; }
+  /* drop the 4:3 ratio on desktop so the map stretches to the info column's
+     height (width stays tied to its track — no aspect-ratio width overflow). */
+  .map-frame { aspect-ratio: auto; }
   .contact-grid { grid-template-columns: 0.8fr 1.2fr; } /* info left, form right */
   .collection-grid { grid-template-columns: repeat(3, 1fr); }
   .collection-grid .cat-card.wide { grid-column: span 1; }
