@@ -2,6 +2,10 @@
 (function () {
   "use strict";
 
+  /* Dynamic copyright year */
+  var yearEl = document.getElementById("year");
+  if (yearEl) { yearEl.textContent = String(new Date().getFullYear()); }
+
   /* Header: solid background after scrolling past the hero top */
   var head = document.querySelector(".site-head");
   if (head) {

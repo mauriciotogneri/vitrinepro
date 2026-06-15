@@ -12,7 +12,7 @@ Turn one business's `extract-data` dossier into a deployable, bilingual (**fr-CH
 
 ## Inputs
 
-Ask the user for the **path to the dossier folder** (e.g. `data/razor_hairdresser`) — and nothing else. The path must always come from the user: **never assume, default to, or guess it**, and even if a path is passed in the skill arguments, treat it as a suggestion to confirm, not a path to use directly. **Validate** it before building — the folder must exist and contain the dossier markdown `<dir>/<slug>.md`; if it's missing, empty, or ambiguous, ask again rather than proceeding.
+Start by **proposing candidates**: list the `data/` dossier folders that have **no** matching `docs/webs/<slug>/` yet (the dossiers not built into a site) and offer them for the user to choose from. If every dossier already has a site, say so and ask which one to (re)build. Proposing is not deciding — the path must always be **confirmed by the user**: **never auto-pick, assume, default to, or guess it**, and even if a path is passed in the skill arguments, treat it as a suggestion to confirm, not a path to use directly. **Validate** the chosen folder before building — it must exist and contain the dossier markdown `<dir>/<slug>.md`; if it's missing, empty, or ambiguous, ask again rather than proceeding.
 
 From it:
 
@@ -85,12 +85,12 @@ Each `index.html`:
 - `<!DOCTYPE html>`, correct `<html lang>`, `<meta charset="utf-8">` first, responsive viewport (**never** disable zoom).
 - **Unique** `<title>` + `<meta name="description">` per locale; `theme-color`; `<meta name="author">`.
 - `<link rel="canonical">` + reciprocal `hreflang` (`fr`/`fr-CH`, `en`, `x-default`) + Open Graph + Twitter Card, all absolute under `<base>`; `og:image` = the generated OG image; `og:locale` `fr_CH` / `en`.
-- **JSON-LD** for the chosen subtype, with only properties backed by visible content (name, address, `geo`, hours, telephone, `priceRange`, services, ratings/reviews **only if present**). Its `image`/`logo`/`photo` properties reference only **real** media (the logo, `photo-*`) or the generated OG image — **never** `stock-*` fallback imagery.
+- **JSON-LD** for the chosen subtype, with only properties backed by visible content (name, address, `geo`, hours, telephone, `priceRange`, services, ratings/reviews **only if present**). Its `image`/`logo`/`photo` properties reference only **real** media (the logo, `photo-*`) or the generated OG image — **never** `stock-*` fallback imagery. **Never** include a tax or business-registration identifier (`taxID`, VAT/TVA number, Swiss UID / `CHE-…`) — not in JSON-LD, not anywhere on the page.
 - Fonts via **Google Fonts CDN**: `preconnect` to `fonts.googleapis.com` and `fonts.gstatic.com` (crossorigin), stylesheet with `&display=swap`. This is a deliberate exception to `best-practices.md`'s self-host guidance — do **not** self-host `@font-face` for these sites.
 - Semantic landmarks (`header`/`nav`/`main`/`section[id]`/`footer`), exactly one `<h1>`, ordered headings, skip-to-content link (parked fully off-screen — not a shallow offset that can peek — and revealed only on `:focus-visible`, never plain `:focus`, so pointer/programmatic focus never exposes it), `:focus-visible`, `prefers-reduced-motion`, `aria-current` on the active nav/locale, touch targets ≥24px.
 - A **language switcher** in the nav (and footer) — explicit links between the two locale URLs with `aria-current` on the current one (static host, so no server-side negotiation).
-- **Footer:** restate identity, contact/hours, secondary nav, social, language switcher, and legal/copyright with a dynamic year — but **never a "back-to-top" link/button** (the sticky header and logo already return users to the top).
-- `js/main.js` (end of body, IIFE, no inline `on*=` handlers): dynamic copyright year, scroll reveals via `IntersectionObserver` with a no-IO fallback, and — if hours are known — an Intl-based open/closed badge (`Europe/Zurich`).
+- **Footer:** restate identity, contact/hours, secondary nav, social (only link an Instagram profile the dossier shows is **public** — omit the link if it's private), language switcher, and legal/copyright with a **JS-rendered, never-hardcoded** year (see `js/main.js` below) — but **never** a tax/registration ID (UID / `CHE-…` / VAT) and **never a "back-to-top" link/button** (the sticky header and logo already return users to the top).
+- `js/main.js` (end of body, IIFE, no inline `on*=` handlers): the copyright year, set from `new Date().getFullYear()` into an **empty** `<span>` (the year is **never** written as a literal in the markup — no hardcoded fallback); scroll reveals via `IntersectionObserver` with a no-IO fallback; and — if hours are known — an Intl-based open/closed badge (`Europe/Zurich`).
 
 ### 8. Contact section
 
@@ -124,6 +124,9 @@ Don't report success without checking:
 - No fabricated **facts** anywhere — every factual claim (hours, prices, services, contact, reviews, copy) traces to the dossier; **imagery** is the sole exception, allowed only under the decorative-only guardrail below.
 - Fallback imagery obeys the guardrail: `stock-*` appears only as decoration, with honest generic `alt`, never captioned/alt-texted as this venue, and absent from JSON-LD `image`. Any generated logo and every used `stock-*` are flagged in the summary as replaceable.
 - Favicons/OG image were generated (or their absence was flagged); the `{{FORMSPREE_ID}}` (and `{{BASE_URL}}`, if used) placeholders are flagged.
+- No tax/registration ID anywhere (no Swiss UID / `CHE-…`, VAT/TVA, or `taxID`), in visible content **or** JSON-LD.
+- The footer/copyright year is produced by JS (`getFullYear()`) into an empty span — no literal year in the markup.
+- Instagram is linked only when the dossier shows the profile is public; a private profile is not linked.
 - `docs/index.html` links the new site.
 
 End with a short summary: the business, `<out>`, sections built vs. omitted (and why), any placeholders to replace before deploy, and anything the dossier lacked that would improve the site.
@@ -133,5 +136,8 @@ End with a short summary: the business, `<out>`, sections built vs. omitted (and
 - **Bilingual, multi-page** (fr-CH root + `/en/`) — every fact in both languages.
 - **No framework**: hand-written CSS + vanilla JS. Fonts via Google Fonts CDN (`display=swap` + preconnect).
 - **Truthful content only** — omit what the dossier doesn't support; never invent reviews, hours, prices, or copy. The one exception is **imagery**: labeled fallback assets from the dossier (a generated logo, `stock-*`) may be used as **decoration only** — honest generic `alt`, never presented as the real venue, never in JSON-LD, always flagged as replaceable.
+- **Never expose a tax/registration ID** — no Swiss UID / `CHE-…`, VAT/TVA number, or `taxID` anywhere on the site, neither in visible content nor in JSON-LD.
+- **Social links:** only link an Instagram account the dossier shows is **public/accessible**; if it's private (or flagged private in the dossier), omit the link.
+- **Year is always dynamic** — render the copyright/footer year with JS (`getFullYear()`) into an empty span; never hardcode a year in the markup.
 - **Accessibility + SEO + performance per `references/best-practices.md`** — it is the bar, not a suggestion.
 - **One business per invocation.** Does not commit, push, or deploy.
