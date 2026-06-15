@@ -138,15 +138,16 @@ p { text-wrap: pretty; }
 .skip-link {
   position: absolute;
   left: 1rem;
-  top: -3rem;
+  top: 1rem;
   background: var(--walnut);
   color: var(--on-walnut);
   padding: .65rem 1.1rem;
   border-radius: var(--r);
   z-index: 200;
-  transition: top var(--t-fast);
+  transform: translateY(calc(-100% - 2rem));
+  transition: transform var(--t-fast);
 }
-.skip-link:focus { top: 1rem; }
+.skip-link:focus-visible { transform: translateY(0); }
 
 /* ---------- Buttons ---------- */
 .btn {

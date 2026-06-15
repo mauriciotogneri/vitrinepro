@@ -156,7 +156,7 @@ body::after {
   font-size: 0.875rem;
 }
 
-.skip-link:focus {
+.skip-link:focus-visible {
   top: 1rem;
 }
 
