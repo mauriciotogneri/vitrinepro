@@ -216,7 +216,9 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
 .btn-wa:hover { background: #166b3c; transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
 /* ----- Decorative blossom + accents ------------------------------------ */
-.blossom { display: inline-block; flex: none; }
+/* overflow:visible so the petal tips (which extend a few units past the 48×48
+   viewBox) are not clipped to straight edges by the SVG's default overflow. */
+.blossom, .blossom svg { display: inline-block; flex: none; overflow: visible; }
 .accent-dot { position: absolute; border-radius: 50%; pointer-events: none; }
 
 /* ----- Header / nav ----------------------------------------------------- */
