@@ -76,9 +76,9 @@ No itemised prices published. Reviews describe prices as **affordable / "prix su
 
 ## Branding / Theme
 
-**Basis:** inferred from name/type _(low confidence — placeholder; no website existed to extract from, and no genuine logo was found. Replace once real brand assets are available.)_
+**Basis:** inferred from name/type _(low–medium confidence; no website or logo to extract from. The owner-supplied interior photos — esp. `photo-001`/`photo-003` — now **corroborate the direction** and could be used to set exact hex values.)_
 
-Rationale: "Fleur d'Oranger" = _orange blossom_ → a warm amber accent over cream; reviews repeatedly note an **"atmosphère orientale"** → a sophisticated, slightly exotic warm palette grounded by a jewel-tone teal. Deliberately avoids literal orange-flood / national-flag kitsch.
+Rationale: "Fleur d'Oranger" = _orange blossom_ → a warm amber accent over cream; reviews repeatedly note an **"atmosphère orientale"** → a sophisticated, slightly exotic warm palette grounded by a jewel-tone teal. Deliberately avoids literal orange-flood / national-flag kitsch. The genuine photos confirm the direction but show the real space runs **more saturated** than these muted hexes — a vermilion-orange feature wall, bright turquoise lighting, and a magenta accent wall — so a refinement pass could push `accent` toward true orange and add a magenta secondary.
 
 **Palette** (canonical; inferred)
 
@@ -111,21 +111,20 @@ Rationale: "Fleur d'Oranger" = _orange blossom_ → a warm amber accent over cre
 
 ### Logo
 
-- `assets/logo.svg` — **generated placeholder**, not an official logo. An orange-blossom motif (amber petals `#E0954E`, teal centre `#1F5E54`) over a "Fleur d'Oranger" wordmark, on cream `#FBF5EC`. Basis: the inferred name/type palette above. No genuine logo was found on any source (zip.ch's `logo_url` pointed to **zip.ch's own site logo**, not the business's; the Facebook page was login-walled).
+- `assets/logo.svg` — **generated placeholder**, not an official logo. An orange-blossom motif (amber petals `#E0954E`, teal centre `#1F5E54`) over a "Fleur d'Oranger" wordmark, on cream `#FBF5EC`. Basis: the inferred name/type palette above. No genuine logo asset exists — not on any queried source (zip.ch's `logo_url` was **zip.ch's own site logo**), and none among the owner-supplied photos, where the shop name appears only **handwritten on a mirror** (see `photo-004.jpg`). Replace if a real logo is created.
 
 ### Photos
 
-- **None** — no genuine photograph of this business was found on any of the 23 sources. The four image URLs returned by zip.ch were verified by visual inspection to be **zip.ch's generic category stock images** (a clothing-rack photo for the "vêtement" category and a hanging-necklaces photo for "bijoux"), not pictures of this shop, and were discarded. Google photos were consent-walled; the Facebook page was login-walled.
+_Genuine interior & product photos of the shop, **provided by the site owner** (downloaded from the business's own Facebook page, "Boutique Fleur d'Oranger"). These supersede the illustrative stock used in the first pass._
 
-### Illustrative / fallback imagery
+- `assets/photo-001.jpg` — **genuine** — wide interior: orange feature wall, turquoise pendant lamp, window display with a handbag & shoes, clothing racks both sides (2048×2048; hero shot) — source: the shop's Facebook page (Boutique Fleur d'Oranger), via owner
+- `assets/photo-002.jpg` — **genuine** — handbags on the counter (incl. a grey FURLA) above a rack of clothes on wooden hangers; magenta wall — source: Facebook (Boutique Fleur d'Oranger), via owner
+- `assets/photo-003.jpg` — **genuine** — brown leather crossbody bag with folded scarves/textiles on white shelving, racks behind, orange wall — source: Facebook (Boutique Fleur d'Oranger), via owner
+- `assets/photo-004.jpg` — **genuine** — vintage-jewellery display cases over a clothing rack; the shop name "Fleur d'Oranger" is **handwritten on the mirror** — source: Facebook (Boutique Fleur d'Oranger), via owner
+- `assets/photo-005.jpg` — **genuine** — earring/necklace display board (chicken-wire in a gilt frame) with an olive sequined tote — source: Facebook (Boutique Fleur d'Oranger), via owner
+- `assets/photo-006.jpg` — **genuine** — close-up of vintage jewellery (rings, pendants) in glass-topped display cases — source: Facebook (Boutique Fleur d'Oranger), via owner
 
-_Decorative stand-ins illustrating the second-hand-clothing category — **not** the actual business. All free-licensed (CC0 / CC BY / CC BY-SA) via Wikimedia Commons and Openverse, and each chosen to show **no people and no text**. CC BY / CC BY-SA items require attribution (CC BY-SA also share-alike); CC0 items need none._
-
-- `assets/stock-001.jpg` — **illustrative, not the actual business** — minimal clothes rack, neutral garments on wooden hangers against a plain wall (no people, no text) — [Openverse / rawpixel](https://www.rawpixel.com/image/3283850/free-photo-image-clothes-closet-dressing-room) — license: **CC0** (public-domain dedication; no attribution required)
-- `assets/stock-002.jpg` — **illustrative, not the actual business** — "Clothing racks in second hand shop, Prague" (no people, no text) — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Clothing_racks_in_second_hand_shop,_Prague.jpg) — license: **CC BY-SA 4.0**, attribution "MAKY.OREL, CC BY-SA 4.0, via Wikimedia Commons"
-- `assets/stock-003.jpg` — **illustrative, not the actual business** — "Fabric patterns of vintage clothing in second-hand shop" (close-up; no people, no text) — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Fabric_patterns_of_vintage_clothing_in_second-hand_shop.jpg) — license: **CC0** (public-domain dedication; no attribution required) — credit: MAKY.OREL, via Wikimedia Commons
-- `assets/stock-004.jpg` — **illustrative, not the actual business** — denim / jeans on a store rack with soft bokeh background (no people, no text) — [Openverse / rawpixel](https://www.rawpixel.com/image/6042149/jeans-pants-free-public-domain-cc0-photo) — license: **CC0** (public-domain dedication; no attribution required)
-- `assets/stock-005.jpg` — **illustrative, not the actual business** — "Kledingruil kledingrek" — colourful clothing rack on wooden hangers (no people, no text) — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kledingruil_kledingrek.jpg) — license: **CC BY 2.0**, attribution "Little Green Dress, CC BY 2.0, via Wikimedia Commons"
+_How obtained: the automated fan-out retrieved **0** usable photos (zip.ch's image URLs were generic category stock — discarded; Google photos consent-walled; the Facebook gallery login-walled, its public profile picture only the default avatar). The site owner then downloaded the genuine photos above from the shop's Facebook page and supplied them directly. No illustrative/stock imagery is used in this dossier._
 
 ## Sources queried
 
@@ -159,9 +158,9 @@ _Tally: 5 ok, 1 partial, 11 not_found, 6 blocked (23 total). The `ok`/`partial` 
 
 ## Notes
 
-- Photo cap: 20. **0 genuine photos** downloaded (none existed on any source); 1 logo candidate rejected (it was zip.ch's own site logo). 4 zip.ch image URLs inspected and discarded as generic category stock; 0 byte-duplicates removed among kept assets.
-- Download failures: none (all kept assets downloaded successfully).
-- Fallback imagery: **generated** `logo.svg` (no genuine logo); **5** `stock-*.jpg` free-license images (Wikimedia Commons + Openverse) because **no genuine photos** were found — all chosen to show **no people and no text**. Licences: stock-001/003/004 = **CC0** (no attribution); stock-005 = **CC BY 2.0** (attribution); stock-002 = **CC BY-SA 4.0** (attribution + share-alike).
+- Photos: **6 genuine** interior/product photos (`photo-001…006`, 960–2048 px, all byte-distinct) supplied by the site owner from the shop's Facebook page. The automated fan-out had found **0** usable photos (zip.ch URLs were generic category stock — discarded; 1 logo candidate rejected as zip.ch's own site logo; Google consent-walled; FB gallery login-walled), so the first pass used illustrative stock.
+- Download failures: none.
+- Fallback imagery: only the **generated** `logo.svg` remains (still no genuine logo). The 5 illustrative `stock-*.jpg` images were **removed** once the owner provided genuine photos — no stock/illustrative imagery is used in the dossier now.
 - Other relevant info: owner **Aamir Ali** also runs a **market/flea-market stall**; shop ambiance described by customers as an **"atmosphère orientale"**; **wheelchair access: no** _(OSM)_; **parking + public transport** nearby _(zip.ch)_.
 
 ## Missing information
@@ -171,8 +170,7 @@ _Standard fields no source could fill, or that are only low-confidence placehold
 - **Email:** only an unconfirmed `aamm71@icloud.com` from a resolution-time web search; not corroborated — verify or replace.
 - **Website:** none exists (Facebook page only) — confirm whether the business wants a site (this pipeline will build one).
 - **Genuine logo:** none found — `logo.svg` is a generated placeholder; replace with a real logo if one exists.
-- **Genuine photos:** none found — all imagery is illustrative stock; real interior/product photos should be supplied.
-- **Branding theme:** inferred from name/type (low confidence) — no website or logo to extract real colours/fonts from; confirm or replace the palette/typography.
+- **Branding theme:** still inferred (no website/logo to extract from), but the owner's genuine photos now corroborate the orange + turquoise + magenta direction — a refinement pass could set exact hex values from them.
 - **Legal identity:** no UID/CHE, registered legal name, or founding year found (likely an unregistered sole proprietorship).
 - **Opening hours:** only Mon–Sat 11:00–18:00 (Google/zip.ch); local.ch/search.ch blank — confirm current and holiday/market-day hours.
 - **Itemised prices:** none published (only qualitative "affordable" signals from reviews).
