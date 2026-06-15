@@ -437,17 +437,27 @@ Assemble the canonical theme from the chosen tier:
 
 Tag every value with its source/basis and an overall **confidence** (high / medium / low). When a real website theme exists, do **not** also run the name/type archetype — it only adds noise.
 
-### 9. Write the dossier
+### 9. Fallback imagery when none found
 
-Write `<dir>/<slug>.md` using the template below. Reference each downloaded asset by its **local path** _and_ its **source URL**.
+The dossier is the build's **single asset source**, so when genuine media is missing, produce **clearly-labeled fallback assets** here rather than leaving the build empty-handed. Fallback assets are **decorative stand-ins, never represented as the real business**; keep them in a separate lane — distinct filenames plus explicit dossier labels — so the build and any reader can tell them from official media. This is the **only** place non-sourced media enters the pipeline; facts, copy, hours, prices, and reviews stay strictly sourced — never fabricate those.
 
-### 10. Verify before finishing
+- **No genuine logo** (none downloaded in step 7) → generate a simple placeholder `assets/logo.svg`: a monogram or wordmark of the business name set in the **derived palette** (step 8). Hand-author the SVG; `convert`/ImageMagick or `inkscape` (whichever is present) can rasterize a PNG if needed. It is a generated placeholder **derived from the palette, not branding evidence** — it does **not** raise the branding **Basis**. Label it as generated in the Media section.
+- **Zero genuine photos** (none downloaded in step 7) → download ~3-6 **free-license** images thematically related to the business **type** (Unsplash, Pexels, Openverse, or Wikimedia Commons; same `curl` recipe as step 7) to `assets/stock-001.<ext>`, `stock-002.<ext>`, …. They illustrate the category, **not this specific venue**. For **each**, record the source URL, **license, and required attribution**. Use a clearly free-for-reuse license only; skip anything without one.
+
+Trigger only on a genuine absence (no logo, or no photos at all) — if real media exists, add no fallback. Record in the appendix what fallback was produced and why.
+
+### 10. Write the dossier
+
+Write `<dir>/<slug>.md` using the template below. Reference each official asset by its **local path** _and_ its **source URL**; reference each fallback asset by its local path with its generated/illustrative label (and license for `stock-*`).
+
+### 11. Verify before finishing
 
 A quick self-check — don't report success without it:
 
 - The dossier `<dir>/<slug>.md` exists and is non-empty.
 - Every `assets/…` path referenced in the markdown exists on disk, and every file in `<dir>/assets/` is referenced back (no danglers either way).
-- The downloaded photo/logo count matches the **Media** section and the appendix's "N downloaded".
+- The media count matches the **Media** section and the appendix: real `photo-*`/`logo` downloaded, plus any **generated logo** / `stock-*` fallback.
+- **Fallback imagery** (if any) sits in its own lane — a generated logo and `stock-*` are labeled as generated/illustrative (with license + attribution for `stock-*`) and stay distinguishable from official `logo`/`photo-*`. It was added only because genuine media was absent; facts/copy/hours/prices/reviews remain strictly sourced.
 - The **Sources queried** table lists _every_ selected source (`ok`/`partial`/`blocked`/`not_found`/`no_data`/`error`), including the `Official website` row when the shop has a site.
 - **Sanity-check the fan-out:** if _every_ source came back `blocked`/`no_data`/`error`, suspect the sub-agents lacked web access (no `WebSearch`/`WebFetch`) rather than a genuine data desert — flag it instead of writing a hollow dossier.
 - The **Branding / Theme** section exists with a labeled **Basis**, valid `#rrggbb` palette values, and named `display`/`body` fonts. If a usable website was found, the basis should be **extracted** — an **inferred** basis despite a known site means the branding agent failed; flag it.
@@ -546,11 +556,18 @@ _(On the logo/name tiers, shape/depth/spacing are tasteful defaults — mark the
 ### Logo
 
 - `assets/logo.<ext>` — source: <source> — <original url>
+- _(generated fallback, if no real logo:)_ `assets/logo.svg` — **generated placeholder**, not an official logo (basis: name/type; palette `#…`)
 
 ### Photos
 
 - `assets/photo-001.<ext>` — source: <source> — <original url>
 - `assets/photo-002.<ext>` — source: <source> — <original url>
+
+### Illustrative / fallback imagery
+
+_(only when no genuine logo/photos were found — decorative stand-ins, **not** the actual business)_
+
+- `assets/stock-001.<ext>` — **illustrative, not the actual business** — source: <source> — <url> — license: <license + required attribution>
 
 ## Sources queried
 
@@ -566,6 +583,7 @@ _(On the logo/name tiers, shape/depth/spacing are tasteful defaults — mark the
 
 - Photo cap: 20 (<N> downloaded, <M> skipped, <D> duplicates removed).
 - Download failures: <list or none>.
+- Fallback imagery: <none | generated `logo.svg`; <N> `stock-*` sourced (free-license) because no genuine logo/photos were found>.
 - Other relevant info: <anything captured outside the standard fields>.
 ```
 
@@ -575,4 +593,5 @@ _(On the logo/name tiers, shape/depth/spacing are tasteful defaults — mark the
 - **Original language preserved** — translation is the website-build step's job.
 - **Provenance everywhere** — every value carries its source(s); a registry fact must be distinguishable from an aggregator's guess.
 - **Partial results are expected** — most shops won't have all fields, and some sources will be blocked or empty. Record gaps in the appendix; never fail the run over a missing field or source.
+- **Fallback imagery is media-only, labeled, and free-license.** When no genuine logo/photos exist, generated/stock stand-ins may be added (step 9) — always free-license, attributed, kept in a separate lane (a generated `logo.svg`, `stock-*`), and never passed off as the real business. This never extends to facts: hours, prices, services, reviews, and copy stay strictly sourced.
 - **One business per invocation.**

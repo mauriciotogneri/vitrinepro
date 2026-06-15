@@ -48,7 +48,7 @@ If there is no remote or it can't be parsed, use a literal `{{BASE_URL}}` token 
 
 ### 4. Build with the frontend-design skill
 
-Invoke the **frontend-design** skill to design and implement the site (your global rule requires it for any UI). Feed it the dossier facts, the chosen palette, the section plan, and the `<base>` URL. Produce distinctive, production-grade output — a design unique to this business that doesn't resemble the other sites in `docs/webs/`.
+Invoke the **frontend-design** skill to design and implement the site (your global rule requires it for any UI). Feed it the dossier facts, the chosen palette, the section plan, and the `<base>` URL. Produce distinctive, production-grade output — a design unique to this business that doesn't resemble the other sites in `docs/webs/`. Tell it which assets are **real** (an official `logo`, `photo-*`) vs **fallback** (a generated `logo`, `stock-*`): when only fallback imagery exists, design **photo-light** — lead with brand color, type, and CSS/SVG art and icons rather than photography — and treat any `stock-*` as decorative background only (see step 6).
 
 ### 5. Write the files
 
@@ -59,7 +59,7 @@ index.html        fr-CH homepage  (lang="fr-CH")
 en/index.html     EN homepage     (lang="en")
 css/style.css     shared hand-written CSS (no framework)
 js/main.js        shared vanilla JS (no framework)
-assets/           logo, photos, favicons, og-image
+assets/           logo, photos, favicons, og-image (+ any decorative stock-*)
 robots.txt
 sitemap.xml
 404.html
@@ -71,7 +71,11 @@ Both locales share `css/`, `js/`, and `assets/` (the `/en/` pages reference them
 
 ### 6. Assets
 
-- Copy the needed `logo.*` and chosen `photo-*.*` from the dossier `<dir>/assets/` into `<out>/assets/`. Reference them locally with honest `alt` text, explicit `width`/`height`, `decoding="async"`, `loading="lazy"` below the fold, and `fetchpriority="high"` on the hero/LCP image (never lazy-load it).
+The dossier separates **official** media from **fallback** stand-ins (a generated `logo`, `stock-*`), labeled in its Media section — carry that distinction through to the build.
+
+- Copy the needed `logo.*` and chosen `photo-*.*` (and only the `stock-*` the design actually uses) from the dossier `<dir>/assets/` into `<out>/assets/`. Reference each with explicit `width`/`height`, `decoding="async"`, `loading="lazy"` below the fold, and `fetchpriority="high"` on the hero/LCP image (never lazy-load it).
+- **Official `photo-*`** depict the real business — their `alt`/captions may name it ("La terrasse du restaurant"). **`stock-*` are decorative stand-ins** — use them only as background/atmosphere, give them **honest, generic** `alt` that never claims to show this venue ("Ambiance de cantina mexicaine", not "Notre salle"), keep them out of JSON-LD `image`, and prefer the photo-light design (step 4) over leaning on them. Flag every `stock-*` used as replaceable placeholder imagery in the summary.
+- Copy the `logo` whether real or a **generated** placeholder; a generated logo serves as the brand mark for display and as the favicon/OG source, but flag it as a generated placeholder in the summary. If the dossier has **no logo at all** (e.g. it predates the fallback step), generate a simple SVG wordmark/monogram from the name in the brand palette at build time.
 - Generate from the logo, if `convert`/ImageMagick (or `sharp`) is available: `favicon.ico`, `favicon-32.png`, `favicon-512.png`, `apple-touch-icon.png`, and a `1200×630` `og-image.png`. **If no image tooling is available**, fall back to referencing the logo directly as a single favicon + OG image, and flag this in the summary.
 
 ### 7. Per-page requirements (apply `best-practices.md`)
@@ -81,7 +85,7 @@ Each `index.html`:
 - `<!DOCTYPE html>`, correct `<html lang>`, `<meta charset="utf-8">` first, responsive viewport (**never** disable zoom).
 - **Unique** `<title>` + `<meta name="description">` per locale; `theme-color`; `<meta name="author">`.
 - `<link rel="canonical">` + reciprocal `hreflang` (`fr`/`fr-CH`, `en`, `x-default`) + Open Graph + Twitter Card, all absolute under `<base>`; `og:image` = the generated OG image; `og:locale` `fr_CH` / `en`.
-- **JSON-LD** for the chosen subtype, with only properties backed by visible content (name, address, `geo`, hours, telephone, `priceRange`, services, ratings/reviews **only if present**).
+- **JSON-LD** for the chosen subtype, with only properties backed by visible content (name, address, `geo`, hours, telephone, `priceRange`, services, ratings/reviews **only if present**). Its `image`/`logo`/`photo` properties reference only **real** media (the logo, `photo-*`) or the generated OG image — **never** `stock-*` fallback imagery.
 - Fonts via **Google Fonts CDN**: `preconnect` to `fonts.googleapis.com` and `fonts.gstatic.com` (crossorigin), stylesheet with `&display=swap`. This is a deliberate exception to `best-practices.md`'s self-host guidance — do **not** self-host `@font-face` for these sites.
 - Semantic landmarks (`header`/`nav`/`main`/`section[id]`/`footer`), exactly one `<h1>`, ordered headings, skip-to-content link, `:focus-visible`, `prefers-reduced-motion`, `aria-current` on the active nav/locale, touch targets ≥24px.
 - A **language switcher** in the nav (and footer) — explicit links between the two locale URLs with `aria-current` on the current one (static host, so no server-side negotiation).
@@ -115,7 +119,8 @@ Don't report success without checking:
 - Every `assets/…`, `css/…`, `js/…` path referenced resolves on disk, and every file in `<out>/assets/` is referenced back (no danglers either way); `/en/` references resolve with `../`.
 - All in-page anchors and internal links resolve; the language switcher points each locale at the other.
 - JSON-LD reflects only visible content; absolute URLs all use `<base>` consistently; `hreflang` is reciprocal.
-- No fabricated facts anywhere — every claim traces to the dossier.
+- No fabricated **facts** anywhere — every factual claim (hours, prices, services, contact, reviews, copy) traces to the dossier; **imagery** is the sole exception, allowed only under the decorative-only guardrail below.
+- Fallback imagery obeys the guardrail: `stock-*` appears only as decoration, with honest generic `alt`, never captioned/alt-texted as this venue, and absent from JSON-LD `image`. Any generated logo and every used `stock-*` are flagged in the summary as replaceable.
 - Favicons/OG image were generated (or their absence was flagged); the `{{FORMSPREE_ID}}` (and `{{BASE_URL}}`, if used) placeholders are flagged.
 - `docs/index.html` links the new site.
 
@@ -125,6 +130,6 @@ End with a short summary: the business, `<out>`, sections built vs. omitted (and
 
 - **Bilingual, multi-page** (fr-CH root + `/en/`) — every fact in both languages.
 - **No framework**: hand-written CSS + vanilla JS. Fonts via Google Fonts CDN (`display=swap` + preconnect).
-- **Truthful content only** — omit what the dossier doesn't support; never invent reviews, hours, prices, or copy.
+- **Truthful content only** — omit what the dossier doesn't support; never invent reviews, hours, prices, or copy. The one exception is **imagery**: labeled fallback assets from the dossier (a generated logo, `stock-*`) may be used as **decoration only** — honest generic `alt`, never presented as the real venue, never in JSON-LD, always flagged as replaceable.
 - **Accessibility + SEO + performance per `references/best-practices.md`** — it is the bar, not a suggestion.
 - **One business per invocation.** Does not commit, push, or deploy.
