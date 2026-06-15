@@ -311,12 +311,15 @@ p { text-wrap: pretty; }
 
 /* ---- Accès (location) ------------------------------------------------- */
 .acces__grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(1.6rem, 4vw, 3rem); align-items: stretch; }
-/* grid items default to min-width:auto; a map iframe (a replaced element with a
-   ~300px intrinsic width) then refuses to shrink and overflows/overlaps its column.
-   min-width:0 lets the track shrink; the absolutely-positioned iframe below never
-   contributes to layout sizing, so it can never push past its container. */
 .acces__grid > * { min-width: 0; }
-.map { position: relative; border-radius: var(--corner-lg) var(--corner) var(--corner) var(--corner); overflow: hidden; box-shadow: var(--sh-2); border: 6px solid var(--surface); aspect-ratio: 4 / 3; min-height: 300px; }
+/* Map sizing — do NOT put aspect-ratio on this box. It is a grid item with
+   align-items:stretch, so it stretches to the (tall) card's height; combined with
+   aspect-ratio the browser then derives the WIDTH from that stretched height and the
+   map overflows its column, lapping over the card. Instead: no aspect-ratio, a
+   min-height floor (its height in the stacked 1-col layout), and the absolutely-
+   positioned iframe fills whatever box results. Width therefore always equals the
+   grid track — it can never overflow. */
+.map { position: relative; border-radius: var(--corner-lg) var(--corner) var(--corner) var(--corner); overflow: hidden; box-shadow: var(--sh-2); border: 6px solid var(--surface); min-height: 340px; }
 .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
 .acces__card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--corner); padding: clamp(1.5rem, 3vw, 2.2rem); box-shadow: var(--sh-1); }
 .acces__card h3 { font-size: 1.35rem; margin-bottom: .3rem; }
