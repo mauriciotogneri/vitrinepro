@@ -69,4 +69,4 @@ Answers the common pre-visit questions, e.g.:
 - **Secondary navigation** — repeat of the main section links; _for people who scrolled to the end._
 - **Social / external links** — Instagram, Facebook, Google Maps/reviews.
 - **Legal & utility** — copyright, company registration, privacy/cookie note, terms.
-- **Closing touches** — back-to-top, dynamic year, a sign-off, sometimes a final CTA.
+- **Closing touches** — dynamic year, a sign-off, sometimes a final CTA. _(No back-to-top link — the sticky header and logo already return to the top.)_

@@ -385,7 +385,7 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
 .hero-visual .badge { position: absolute; left: -14px; bottom: 26px; z-index: 2; }
 .hero-visual .blossom-float {
   position: absolute;
-  top: -26px; right: -18px;
+  top: -30px; right: 14px;
   width: 92px; height: 92px;
   filter: drop-shadow(0 8px 14px rgba(43,37,33,0.18));
   animation: float 7s ease-in-out infinite;
@@ -575,7 +575,9 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
 .quote .who span { color: var(--muted); font-size: 0.8rem; }
 
 /* ----- Location --------------------------------------------------------- */
-.loc-grid { display: grid; gap: clamp(1.6rem, 1rem + 3vw, 3rem); align-items: stretch; }
+/* align-items:start so the aspect-ratio map is sized from its column width,
+   never stretched to the taller info column (which would derive a too-wide map). */
+.loc-grid { display: grid; gap: clamp(1.6rem, 1rem + 3vw, 3rem); align-items: start; }
 .map-frame {
   position: relative;
   border-radius: var(--radius-lg);
@@ -744,19 +746,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
   color: var(--on-teal-muted);
 }
 .footer-bottom a { color: var(--on-teal-muted); }
-.to-top {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid rgba(255,255,255,0.22);
-  border-radius: 999px;
-  color: var(--on-teal);
-  text-decoration: none;
-  font-weight: 700;
-  transition: background var(--t-fast), transform var(--t-fast);
-}
-.to-top:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 
 /* ----- Section divider blossom ----------------------------------------- */
 .divider { display: flex; align-items: center; justify-content: center; gap: 1rem; color: var(--gold); padding-block: 0.5rem; }
@@ -777,7 +766,7 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
   .about-grid { grid-template-columns: 1.1fr 0.9fr; }
   .reviews-wrap { grid-template-columns: 0.85fr 1.15fr; }
   .loc-grid { grid-template-columns: 1.1fr 0.9fr; }
-  .contact-grid { grid-template-columns: 1.2fr 0.8fr; }
+  .contact-grid { grid-template-columns: 0.8fr 1.2fr; } /* info left, form right */
   .collection-grid { grid-template-columns: repeat(3, 1fr); }
   .collection-grid .cat-card.wide { grid-column: span 1; }
 }
