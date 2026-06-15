@@ -79,7 +79,7 @@ By appointment, for **dogs and cats**:
 
 ## Branding / Theme
 
-**Basis:** **logo-derived** _(confidence: high for palette; medium overall)_. There is no live website (so no extracted CSS/fonts), but a **genuine brand logo** was recovered from the official Facebook page and inspected directly (1046×1045). The palette below is read from that logo; typography, shape, depth and spacing are tasteful conventions informed by the logo's character, **not** extracted evidence.
+**Basis:** **logo-derived** _(confidence: high for palette; medium overall)_. There is no live website (so no extracted CSS/fonts), but a **genuine brand logo** was recovered from the official Facebook page and inspected directly (1046×1045). The palette below is read from that logo; typography, shape, depth and spacing are tasteful conventions informed by the logo's character, **not** extracted evidence. The dusty-rose accent is independently corroborated by the **pink salon furnishings and shopfront décor** visible in the genuine photos (`photo-001`, `photo-004`, `photo-005`).
 
 **Palette** (canonical; alternates noted) — sampled from `assets/logo.jpg`
 
@@ -118,17 +118,18 @@ By appointment, for **dogs and cats**:
 
 ### Photos
 
-- **None genuine.** No downloadable business photos exist on any source: the Facebook page (which reportedly shows groomed client dogs) is behind a login wall, Google Maps was blocked, and no directory exposed photo URLs. See illustrative imagery below.
+_All genuine — from Toutou-Club's own Facebook / Instagram, supplied manually by the site owner (filenames were FB/IG CDN media IDs)._
+
+- `assets/photo-001.jpg` — **storefront window**: the "TOUTOU CLUB · SALON DE TOILETTAGE" shopfront with the brand's seasonal (Noël) display — knitted stockings, pink wreaths, paw-print decals on the glass, product shelves inside — source: Toutou-Club Facebook/Instagram (user-supplied)
+- `assets/photo-002.jpg` — a freshly-groomed orange Pomeranian smiling on the grooming table, salon interior behind — source: Toutou-Club Facebook/Instagram (user-supplied)
+- `assets/photo-003.jpg` — a fluffy orange Pomeranian groomed, standing on the table against the salon's grey-tile / wood wall (4096×4096) — source: Toutou-Club Facebook/Instagram (user-supplied)
+- `assets/photo-004.jpg` — a small Biewer / Yorkshire-terrier-type dog groomed on the table, grooming arm + pink cabinet visible — source: Toutou-Club Facebook/Instagram (user-supplied)
+- `assets/photo-005.jpg` — a cream Pomeranian groomed on the table, pink grooming furniture behind — source: Toutou-Club Facebook/Instagram (user-supplied)
+- `assets/photo-006.jpg` — an orange Pomeranian in a Santa outfit in front of a Christmas tree (festive social post) — source: Toutou-Club Facebook/Instagram (user-supplied)
 
 ### Illustrative / fallback imagery
 
-_Decorative, free-license stand-ins illustrating the **pet-grooming category** — **not** the actual Toutou-Club premises, staff, or animals. Added only because no genuine photos were available._
-
-- `assets/stock-001.jpg` — **illustrative, not the actual business** — a dog being rinsed with a water jet — source: Wikimedia Commons, "A shower for a Cana Corso" by **בר (Bar)** — https://commons.wikimedia.org/wiki/File:A_shower_for_a_Cana_Corso.jpg — license: **CC BY-SA 3.0** (https://creativecommons.org/licenses/by-sa/3.0) — attribution + share-alike required
-- `assets/stock-002.jpg` — **illustrative, not the actual business** — Shih Tzu / Lhasa Apso shown before & after grooming — source: Wikimedia Commons, "6-month Lhasa Apso before and after grooming" by **SquarePeg** — https://commons.wikimedia.org/wiki/File:6-month_Lhasa_Apso_before_and_after_grooming.jpg — license: **CC BY-SA 3.0** (https://creativecommons.org/licenses/by-sa/3.0) — attribution + share-alike required
-- `assets/stock-003.jpg` — **illustrative, not the actual business** — a long-haired cat being scissor-groomed by a groomer in a grooming booth — source: Wikimedia Commons, "Pet being groomed (51288379216)" by **Reba Spike** — https://commons.wikimedia.org/wiki/File:Pet_being_groomed_(51288379216).jpg — license: **CC BY 2.0** (https://creativecommons.org/licenses/by/2.0) — attribution required
-- `assets/stock-004.jpg` — **illustrative, not the actual business** — a grey-and-white cat being brushed — source: Wikimedia Commons, "Brushing a female cat's hair - panoramio" by **Jiaqian AirplaneFan** — https://commons.wikimedia.org/wiki/File:Brushing_a_female_cat%27s_hair_-_panoramio.jpg — license: **CC BY 3.0** (https://creativecommons.org/licenses/by/3.0) — attribution required
-- `assets/stock-005.jpg` — **illustrative, not the actual business** — a tabby cat being combed with a slicker brush — source: Wikimedia Commons, "Hostess is combing fur scottish fold brown cat (cat grooming, veterinary)" by **Ofir9910** — https://commons.wikimedia.org/wiki/File:Hostess-is-combing-fur-scottish-fold-brown-cat-cat-grooming-veterinary-1.jpg — license: **CC BY-SA 4.0** (https://creativecommons.org/licenses/by-sa/4.0) — attribution + share-alike required
+- **None.** Genuine photos are available, so no stock/illustrative imagery is used. _(The 5 earlier `stock-*` Wikimedia placeholders were removed once the owner supplied real photos.)_
 
 ## Sources queried
 
@@ -156,9 +157,10 @@ _Decorative, free-license stand-ins illustrating the **pet-grooming category** �
 
 ## Notes
 
-- **Photo cap:** 20 (0 genuine photos found/downloaded, 0 skipped, 0 duplicates). Genuine **logo** downloaded (1, from Facebook); **5 illustrative `stock-*`** added as fallback.
-- **Download failures:** none — logo and all 5 stock images downloaded successfully (6 files, all SHA-256-distinct).
-- **Fallback imagery:** 5 `stock-*` free-license grooming images (Wikimedia Commons; CC BY / CC BY-SA, attributed above) were added **only because no genuine photos exist**. The logo is genuine, so **no placeholder logo was generated**. Facts, hours, services and contact remain strictly sourced.
+- **Photo cap:** 20 (**6 genuine photos**, 0 skipped, 0 duplicates — all 7 assets SHA-256-distinct). Genuine **logo** (1, downloaded from Facebook) + **6 genuine photos** (`photo-001…006`).
+- **Media update (2026-06-15):** the site owner removed the temporary `stock-*` placeholders and supplied **6 genuine photos** from the shop's own Facebook/Instagram (storefront + 5 groomed dogs); the dossier's Photos section was updated to use them.
+- **Download failures:** none.
+- **Fallback imagery:** **none** — the 5 earlier `stock-*` placeholders were removed once genuine photos were supplied. The logo is genuine, so no placeholder logo was generated. Facts, hours, services and contact remain strictly sourced.
 - **Two legitimate phone numbers:** the **022 734 31 78** salon landline (most directories) and the **079 266 82 91** mobile (on the owner-managed Bing listing + Facebook/WhatsApp booking) are both real business contacts.
 - **Defunct website:** `toutouclub.ch` shows up in old indexes but is dead (NXDOMAIN on apex + www). The build should **not** link it.
 - **Category noise to ignore:** Infobel additionally tags the listing "Vétérinaires Praticiens" — Toutou-Club is a **grooming salon, not a veterinary practice**; this is a directory miscategorisation.
@@ -175,6 +177,5 @@ _Standard fields no source could fill, or that are only low-confidence placehold
 - **Exact opening hours** — only "by appointment, Mon–Fri (from 8:00)" is known; precise daily open/close times and the Saturday policy are not published.
 - **Ratings & reviews** — no usable aggregate rating or any review text (Google Maps blocked; only Infobel 5.0/5 from 1 vote and 2 unread Facebook reviews).
 - **Prices** — no price list or price level published anywhere.
-- **Genuine photos** — none available; the 5 `stock-*` images are illustrative stand-ins, not the real premises/animals.
 - **Detailed service menu** — only "dog & cat grooming" + "parfums" are known; specific packages, breeds, bath/clip options and durations are unconfirmed.
 - **Extracted (website) branding** — no live site, so palette is logo-derived and typography/shape/depth are conventions, not extracted CSS.
