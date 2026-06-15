@@ -604,8 +604,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
 .access-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.95rem; color: var(--ink); }
 .access-list svg { width: 1.15em; height: 1.15em; flex: none; margin-top: 0.2em; }
 .access-list .yes svg { color: #1c8a4e; }
-.access-list .no svg { color: var(--verm); }
-.access-list .no { color: var(--muted); }
 
 /* ----- Contact ---------------------------------------------------------- */
 .contact-grid { display: grid; gap: clamp(1.6rem, 1rem + 3vw, 3rem); align-items: start; }
