@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vndly.github.io/websites/webs/gase-jean-robert_tailor/sitemap.xml
