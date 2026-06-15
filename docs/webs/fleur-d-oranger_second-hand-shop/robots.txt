@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vndly.github.io/websites/webs/fleur-d-oranger_second-hand-shop/sitemap.xml
