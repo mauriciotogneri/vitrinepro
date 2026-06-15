@@ -12,14 +12,14 @@
     closes: "ferme à", opens: "ouvre à", opensOn: "ouvre",
     today: "", tomorrow: "demain",
     sending: "Envoi…",
-    ok: "Merci ! Votre demande de réservation a bien été envoyée. Nous vous recontactons rapidement.",
+    ok: "Merci ! Votre message a bien été envoyé. Nous vous recontactons rapidement.",
     err: "Désolé, l’envoi a échoué. Appelez-nous au +41 22 320 82 29 ou réessayez."
   } : {
     open: "Open now", closed: "Closed",
     closes: "closes", opens: "opens", opensOn: "opens",
     today: "", tomorrow: "tomorrow",
     sending: "Sending…",
-    ok: "Thank you! Your reservation request has been sent. We’ll get back to you shortly.",
+    ok: "Thank you! Your message has been sent. We’ll get back to you shortly.",
     err: "Sorry, sending failed. Please call us on +41 22 320 82 29 or try again."
   };
 
@@ -174,9 +174,9 @@
     if (row) row.classList.add("today");
   })();
 
-  /* ---------- reservation form (progressive enhancement over Formspree) ---------- */
+  /* ---------- contact form (progressive enhancement over Formspree) ---------- */
   (function () {
-    var form = document.getElementById("reserve-form");
+    var form = document.getElementById("contact-form");
     if (!form) return;
     var status = form.querySelector(".form-status");
     var submit = form.querySelector('button[type="submit"]');

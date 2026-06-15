@@ -12,7 +12,7 @@ Single-page site — one HTML file, every section on one scrollable page, linked
 - **Eyebrow / overline** — tiny context label above the headline; short kicker text, often with an icon.
 - **Headline** — the one big promise, and the page's main SEO heading (`<h1>`); large display type.
 - **Subhead / lede** — one or two sentences expanding the promise; a short paragraph.
-- **CTAs** — the action(s) you want taken: one primary + one secondary button (book appointment/table, see menu, call us, get a quote, etc.).
+- **CTAs** — the action(s) you want taken: one primary + one secondary button (see menu, call us, get a quote, contact us, etc.).
 - **Trust / meta strip** — quick credibility or key facts: rating, address, hours, badge.
 - **Visual** — photo, illustration, or decorative shapes (image or SVG).
 
@@ -30,11 +30,11 @@ A clear, scannable list of what the business offers.
 - **Certifications & trust signals** — credentials and proof.
 - **Photo gallery** — images of the work, space, or products.
 
-## Book / Order / Request Quote
+## Contact
 
 The primary conversion point.
 
-- Form, booking widget, or reservation link.
+- **Contact form** — name, email, and message only. Never a reservation/booking widget or appointment picker, even for businesses that take bookings.
 - WhatsApp / call button.
 
 ## Reviews
@@ -45,13 +45,12 @@ Build trust through social proof.
 - **Aggregate rating** — stars + review count.
 - **Quotes** — a few short testimonials, each attributed to a named person.
 
-## Contact / Location
+## Location
 
 - **Address & map** — where to find the business.
 - **Opening hours.**
 - **Phone & email.**
 - **Access** — parking and transport.
-- **Contact form.**
 
 ## FAQ
 

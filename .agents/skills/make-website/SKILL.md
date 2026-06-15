@@ -87,12 +87,12 @@ Each `index.html`:
 - A **language switcher** in the nav (and footer) — explicit links between the two locale URLs with `aria-current` on the current one (static host, so no server-side negotiation).
 - `js/main.js` (end of body, IIFE, no inline `on*=` handlers): dynamic copyright year, scroll reveals via `IntersectionObserver` with a no-IO fallback, and — if hours are known — an Intl-based open/closed badge (`Europe/Zurich`).
 
-### 8. Conversion section
+### 8. Contact section
 
-A **Formspree** POST form plus native links:
+A **contact** form plus native links — **never a reservation/booking form**:
 
-- `<form action="https://formspree.io/f/{{FORMSPREE_ID}}" method="post">` with labelled (`<label for>`), `autocomplete`-tokened, typed, `required` fields. The `{{FORMSPREE_ID}}` is a placeholder — **flag it** in the summary as must-replace for the form to work.
-- Alongside it, the real contact paths from the dossier: `tel:`, `mailto:`, WhatsApp (`https://wa.me/<intl-number>`), and the booking/reservation link if the dossier has one.
+- A **Formspree** POST form `<form action="https://formspree.io/f/{{FORMSPREE_ID}}" method="post">` collecting **name, email, and message only**, with labelled (`<label for>`), `autocomplete`-tokened, typed, `required` fields. **Never** build a reservation/booking form or add its fields (date, time-slot, party size, appointment picker), even for restaurants or businesses that take bookings — a plain contact form only. The `{{FORMSPREE_ID}}` is a placeholder — **flag it** in the summary as must-replace for the form to work.
+- Alongside it, the real contact paths from the dossier: `tel:`, `mailto:`, and WhatsApp (`https://wa.me/<intl-number>`).
 - **Location map** (only when a map is shown): always embed **Google Maps**, **directly visible on page load with no click-to-load button** — a plain `<iframe>` (`https://www.google.com/maps?q=<lat>,<lng>&z=16&hl=<fr|en>&output=embed`) inside a fixed `aspect-ratio` box. This is a deliberate exception to `best-practices.md`'s click-to-load embed guidance — never use OpenStreetMap or a press-to-reveal placeholder.
 
 ### 9. SEO / deploy files

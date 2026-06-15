@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Le Mexicain — Restaurant mexicain à Genève (La Jonction)</title>
-  <meta name="description" content="Cantina mexicaine familiale à la Jonction, Genève. Tacos à la tortilla de maïs, fajitas, margaritas. 4,8/5 sur 504 avis Google. Réservez votre table.">
+  <meta name="description" content="Cantina mexicaine familiale à la Jonction, Genève. Tacos à la tortilla de maïs, fajitas, margaritas. 4,8/5 sur 504 avis Google.">
   <meta name="author" content="Le Mexicain">
   <meta name="theme-color" content="#b0502e">
   <meta name="robots" content="index, follow">
@@ -64,7 +64,7 @@
     "priceRange": "CHF 30–60",
     "currenciesAccepted": "CHF",
     "paymentAccepted": "Cash, Credit Card",
-    "acceptsReservations": true,
+    "acceptsReservations": false,
     "foundingDate": "2018",
     "areaServed": "Genève",
     "hasMap": "https://www.google.com/maps?cid=6660157025095375241",
@@ -134,7 +134,7 @@
           <a href="#about">La maison</a>
           <a href="#reviews">Avis</a>
           <a href="#visit">Nous trouver</a>
-          <a class="btn btn--lg" href="#reserve">Réserver</a>
+          <a class="btn btn--lg" href="#contact">Contact</a>
         </div>
 
         <div class="nav-tail">
@@ -164,7 +164,7 @@
           <h1 id="hero-title" class="anim anim-2">Le Mexique <span class="accent">fait maison</span>, à la Jonction.</h1>
           <p class="lede anim anim-3">Tacos à la tortilla de maïs véritable, fajitas, margaritas : depuis 2018, une cantina familiale chaleureuse au cœur de Genève — saluée par plus de 500 avis.</p>
           <div class="hero-cta anim anim-4">
-            <a class="btn btn--lg" href="#reserve">Réserver une table</a>
+            <a class="btn btn--lg" href="#contact">Nous contacter</a>
             <a class="btn btn--ghost btn--lg" href="#menu">Voir la carte</a>
           </div>
           <div class="trust anim anim-5">
@@ -335,13 +335,13 @@
       </div>
     </section>
 
-    <!-- ===================== RESERVE ===================== -->
-    <section class="section reserve" id="reserve" aria-labelledby="reserve-title">
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section reserve" id="contact" aria-labelledby="contact-title">
       <div class="container reserve-grid">
         <div class="reserve-intro reveal">
-          <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Réserver</p>
-          <h2 id="reserve-title">Réservez votre table</h2>
-          <p class="section-head" style="margin-bottom:0">Appelez-nous ou envoyez votre demande — nous confirmons rapidement. Réservation conseillée le soir et le week-end.</p>
+          <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/></svg> Contact</p>
+          <h2 id="contact-title">Contactez-nous</h2>
+          <p class="section-head" style="margin-bottom:0">Une question ou une demande particulière ? Appelez-nous, écrivez-nous, ou envoyez-nous un message ci-dessous.</p>
 
           <div class="contact-lines">
             <a class="contact-line" href="tel:+41223208229">
@@ -360,38 +360,25 @@
         </div>
 
         <div class="card reveal" data-d="1">
-          <form id="reserve-form" action="https://formspree.io/f/{{FORMSPREE_ID}}" method="post">
-            <input type="hidden" name="_subject" value="Nouvelle demande de réservation — Le Mexicain">
+          <form id="contact-form" action="https://formspree.io/f/{{FORMSPREE_ID}}" method="post">
+            <input type="hidden" name="_subject" value="Nouveau message — Le Mexicain">
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
             <div class="form-grid">
               <div class="field field--full">
                 <label for="f-name">Nom <span class="req" aria-hidden="true">*</span></label>
                 <input id="f-name" name="name" type="text" autocomplete="name" required>
               </div>
-              <div class="field">
+              <div class="field field--full">
                 <label for="f-email">E-mail <span class="req" aria-hidden="true">*</span></label>
                 <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
               </div>
-              <div class="field">
-                <label for="f-phone">Téléphone</label>
-                <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
-              </div>
-              <div class="field">
-                <label for="f-date">Date souhaitée</label>
-                <input id="f-date" name="date" type="date">
-              </div>
-              <div class="field">
-                <label for="f-guests">Personnes</label>
-                <input id="f-guests" name="guests" type="number" min="1" max="20" inputmode="numeric" placeholder="2">
-              </div>
               <div class="field field--full">
-                <label for="f-msg">Message</label>
-                <textarea id="f-msg" name="message" autocomplete="off" placeholder="Heure approximative, occasion, allergies…"></textarea>
+                <label for="f-msg">Message <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="f-msg" name="message" autocomplete="off" placeholder="Votre message…" required></textarea>
               </div>
             </div>
             <p class="form-status" role="status" aria-live="polite"></p>
-            <button class="btn btn--lg btn--block" type="submit" style="margin-top:1rem">Envoyer la demande</button>
-            <p class="form-note">Nous ne recevons jamais de paiement ici — la réservation est confirmée par nos soins, par téléphone ou e-mail.</p>
+            <button class="btn btn--lg btn--block" type="submit" style="margin-top:1rem">Envoyer le message</button>
           </form>
         </div>
       </div>
@@ -500,8 +487,8 @@
         </div>
         <div class="faq-list reveal">
           <details>
-            <summary>Faut-il réserver ?<span class="plus" aria-hidden="true"></span></summary>
-            <div class="faq-a">C’est conseillé, surtout le soir et le week-end. Réservez par téléphone au +41 22 320 82 29 ou via le formulaire ci-dessus.</div>
+            <summary>Prenez-vous les réservations ?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="faq-a">Non, nous ne prenons pas de réservation — passez directement nous voir. Pour toute question, appelez-nous au +41 22 320 82 29 ou écrivez-nous via le formulaire ci-dessus.</div>
           </details>
           <details>
             <summary>Quels sont vos jours d’ouverture ?<span class="plus" aria-hidden="true"></span></summary>
@@ -509,7 +496,7 @@
           </details>
           <details>
             <summary>Proposez-vous des plats végétariens ?<span class="plus" aria-hidden="true"></span></summary>
-            <div class="faq-a">Oui, plusieurs plats sans viande sont disponibles. N’hésitez pas à nous le préciser à la réservation.</div>
+            <div class="faq-a">Oui, plusieurs plats sans viande sont disponibles. N’hésitez pas à nous le préciser sur place.</div>
           </details>
           <details>
             <summary>Peut-on payer par carte ?<span class="plus" aria-hidden="true"></span></summary>
@@ -554,7 +541,7 @@
             <li><a href="#menu">La carte</a></li>
             <li><a href="#about">La maison</a></li>
             <li><a href="#reviews">Avis</a></li>
-            <li><a href="#reserve">Réserver</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li><a href="#faq">Questions fréquentes</a></li>
           </ul>
         </div>
