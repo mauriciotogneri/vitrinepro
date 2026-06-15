@@ -190,3 +190,13 @@ All 9 from TripAdvisor (the only source that exposed real image URLs; Google's ~
 - **Features** _(Google, TripAdvisor)_: credit cards accepted, outdoor seating (garden terrace), takeaway, table reservations, table service, serves alcohol, wheelchair accessible, free WiFi, vegetarian-friendly.
 - **Staff size:** 3–5 employees _(Esprit de Genève, per SITG)_.
 - **Opened:** 2018 _(TripAdvisor review; corroborated by ADELINO Sàrl's 2018 RC registration)_.
+
+## Missing information
+
+_Standard fields no source could fill, or that are only low-confidence placeholders — a human may be able to supply these manually._
+
+- **Live website** — none; the old `le-mexicain.business.site` returns HTTP 404.
+- **Social links** — none found on any source (no Instagram/Facebook located).
+- **Itemized menu & dish prices** — only an overall price band (~CHF 30–60 pp); no per-dish menu or prices published.
+- **Genuine logo** — none found; local.ch exposes only a generic "LM" placeholder.
+- **Extracted branding (palette/fonts)** — no live site or genuine logo to extract from; the current theme is an inferred placeholder (low confidence).

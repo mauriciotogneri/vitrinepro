@@ -448,7 +448,7 @@ Trigger only on a genuine absence (no logo, or no photos at all) — if real med
 
 ### 10. Write the dossier
 
-Write `<dir>/<slug>.md` using the template below. Reference each official asset by its **local path** _and_ its **source URL**; reference each fallback asset by its local path with its generated/illustrative label (and license for `stock-*`).
+Write `<dir>/<slug>.md` using the template below. Reference each official asset by its **local path** _and_ its **source URL**; reference each fallback asset by its local path with its generated/illustrative label (and license for `stock-*`). Fill the **Missing information** section with a simple bullet list of the standard fields no source could provide (or that are only low-confidence placeholders, e.g. an inferred theme or generated logo) so they can be completed manually; if nothing is missing, say so.
 
 ### 11. Verify before finishing
 
@@ -461,6 +461,7 @@ A quick self-check — don't report success without it:
 - The **Sources queried** table lists _every_ selected source (`ok`/`partial`/`blocked`/`not_found`/`no_data`/`error`), including the `Official website` row when the shop has a site.
 - **Sanity-check the fan-out:** if _every_ source came back `blocked`/`no_data`/`error`, suspect the sub-agents lacked web access (no `WebSearch`/`WebFetch`) rather than a genuine data desert — flag it instead of writing a hollow dossier.
 - The **Branding / Theme** section exists with a labeled **Basis**, valid `#rrggbb` palette values, and named `display`/`body` fonts. If a usable website was found, the basis should be **extracted** — an **inferred** basis despite a known site means the branding agent failed; flag it.
+- The **Missing information** section lists the standard fields that came back empty or low-confidence (e.g. website, opening hours, ratings, reviews, prices, email, social links, genuine logo, extracted branding) so a human knows what to chase — or states that none are missing.
 
 ## Output template
 
@@ -585,6 +586,13 @@ _(only when no genuine logo/photos were found — decorative stand-ins, **not** 
 - Download failures: <list or none>.
 - Fallback imagery: <none | generated `logo.svg`; <N> `stock-*` sourced (free-license) because no genuine logo/photos were found>.
 - Other relevant info: <anything captured outside the standard fields>.
+
+## Missing information
+
+_Standard fields no source could fill, or that are only low-confidence placeholders — a human may be able to supply these manually. If every standard field was found, write "- None — all standard fields were found."_
+
+- **<Field>:** <none found on any source | placeholder/inferred — needs a real value>
+- ...
 ```
 
 ## Constraints & conventions
@@ -592,6 +600,6 @@ _(only when no genuine logo/photos were found — decorative stand-ins, **not** 
 - **Web only, no credentialed APIs.** Never assume, invent, or use credentials; no paid APIs. Free keyless public endpoints (Overpass, Nominatim, Wikidata, Zefix public search, opendata.swiss) are allowed and preferred over HTML scraping. Best-effort fetch; no anti-bot bypass.
 - **Original language preserved** — translation is the website-build step's job.
 - **Provenance everywhere** — every value carries its source(s); a registry fact must be distinguishable from an aggregator's guess.
-- **Partial results are expected** — most shops won't have all fields, and some sources will be blocked or empty. Record gaps in the appendix; never fail the run over a missing field or source.
+- **Partial results are expected** — most shops won't have all fields, and some sources will be blocked or empty. Record field-level gaps in the **Missing information** section and source-access gaps in the appendix table; never fail the run over a missing field or source.
 - **Fallback imagery is media-only, labeled, and free-license.** When no genuine logo/photos exist, generated/stock stand-ins may be added (step 9) — always free-license, attributed, kept in a separate lane (a generated `logo.svg`, `stock-*`), and never passed off as the real business. This never extends to facts: hours, prices, services, reviews, and copy stay strictly sourced.
 - **One business per invocation.**

@@ -148,3 +148,14 @@ _All genuine, sourced; downloaded into `assets/`._
 - **Two phone numbers are both legitimate business contacts:** the **022 781 28 77** atelier landline and the **076 409 03 65** mobile both appear on his own market-stall sign (photo-002). The third number (022 329 49 88) belongs to the separate Pont-d'Arve **family/residential** listing and is **not** a business contact.
 - **Type note:** recorded under the **Tailor** taxonomy bucket (no millinery/chapellerie type exists in the taxonomy), but the business is a **hatter/milliner** — the website build should present him as **chapelier · modiste**, not a garment tailor.
 - **No fixed retail hours:** appointment-based atelier + market vendor — the build should avoid implying walk-in shop hours.
+
+## Missing information
+
+_Standard fields no source could fill, or that are only low-confidence placeholders — a human may be able to supply these manually._
+
+- **Website** — none exists; his only web presence is Instagram.
+- **Opening hours** — no fixed hours published; by appointment + market stalls. Exact appointment process and market days/times unknown.
+- **Ratings & reviews** — none found on any platform (Google Maps and Yelp blocked; not carried by any review site).
+- **Prices** — no price list or price level published for any pieces.
+- **Genuine logo** — none found; `assets/logo.svg` is a generated placeholder.
+- **Extracted branding (palette/fonts)** — no website to extract from; the current theme is photo-informed/inferred (low confidence).
