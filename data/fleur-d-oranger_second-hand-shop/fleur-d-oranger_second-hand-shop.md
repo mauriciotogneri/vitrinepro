@@ -119,13 +119,13 @@ Rationale: "Fleur d'Oranger" = _orange blossom_ → a warm amber accent over cre
 
 ### Illustrative / fallback imagery
 
-_Decorative stand-ins illustrating the second-hand-clothing category — **not** the actual business. All free-licensed via Wikimedia Commons. CC BY-SA items require attribution **and** share-alike on reuse._
+_Decorative stand-ins illustrating the second-hand-clothing category — **not** the actual business. All free-licensed (CC0 / CC BY / CC BY-SA) via Wikimedia Commons and Openverse, and each chosen to show **no people and no text**. CC BY / CC BY-SA items require attribution (CC BY-SA also share-alike); CC0 items need none._
 
-- `assets/stock-001.jpg` — **illustrative, not the actual business** — "Inside the second hand shop, clothing racks" — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Inside_the_second_hand_shop,_clothing_racks.jpg) — license: **CC BY-SA 4.0**, attribution "MAKY.OREL, CC BY-SA 4.0, via Wikimedia Commons"
-- `assets/stock-002.jpg` — **illustrative, not the actual business** — "Clothing racks in second hand shop, Prague" — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Clothing_racks_in_second_hand_shop,_Prague.jpg) — license: **CC BY-SA 4.0**, attribution "MAKY.OREL, CC BY-SA 4.0, via Wikimedia Commons"
-- `assets/stock-003.jpg` — **illustrative, not the actual business** — "Fabric patterns of vintage clothing in second-hand shop" — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Fabric_patterns_of_vintage_clothing_in_second-hand_shop.jpg) — license: **CC0** (public-domain dedication; no attribution required) — credit: MAKY.OREL, via Wikimedia Commons
-- `assets/stock-004.jpg` — **illustrative, not the actual business** — "Second hand clothing shop Textile house in Prague" — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Second_hand_clothing_shop_Textile_house_in_Prague.jpg) — license: **CC0** (no attribution required) — credit: MAKY.OREL, via Wikimedia Commons
-- `assets/stock-005.jpg` — **illustrative, not the actual business** — "Vintage SecondHand shop pricetag 01" — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Vintage_SecondHand_shop_pricetag_01.jpg) — license: **CC BY-SA 4.0**, attribution "Mictlancihuatl, CC BY-SA 4.0, via Wikimedia Commons"
+- `assets/stock-001.jpg` — **illustrative, not the actual business** — minimal clothes rack, neutral garments on wooden hangers against a plain wall (no people, no text) — [Openverse / rawpixel](https://www.rawpixel.com/image/3283850/free-photo-image-clothes-closet-dressing-room) — license: **CC0** (public-domain dedication; no attribution required)
+- `assets/stock-002.jpg` — **illustrative, not the actual business** — "Clothing racks in second hand shop, Prague" (no people, no text) — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Clothing_racks_in_second_hand_shop,_Prague.jpg) — license: **CC BY-SA 4.0**, attribution "MAKY.OREL, CC BY-SA 4.0, via Wikimedia Commons"
+- `assets/stock-003.jpg` — **illustrative, not the actual business** — "Fabric patterns of vintage clothing in second-hand shop" (close-up; no people, no text) — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Fabric_patterns_of_vintage_clothing_in_second-hand_shop.jpg) — license: **CC0** (public-domain dedication; no attribution required) — credit: MAKY.OREL, via Wikimedia Commons
+- `assets/stock-004.jpg` — **illustrative, not the actual business** — denim / jeans on a store rack with soft bokeh background (no people, no text) — [Openverse / rawpixel](https://www.rawpixel.com/image/6042149/jeans-pants-free-public-domain-cc0-photo) — license: **CC0** (public-domain dedication; no attribution required)
+- `assets/stock-005.jpg` — **illustrative, not the actual business** — "Kledingruil kledingrek" — colourful clothing rack on wooden hangers (no people, no text) — [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kledingruil_kledingrek.jpg) — license: **CC BY 2.0**, attribution "Little Green Dress, CC BY 2.0, via Wikimedia Commons"
 
 ## Sources queried
 
@@ -161,7 +161,7 @@ _Tally: 5 ok, 1 partial, 11 not_found, 6 blocked (23 total). The `ok`/`partial` 
 
 - Photo cap: 20. **0 genuine photos** downloaded (none existed on any source); 1 logo candidate rejected (it was zip.ch's own site logo). 4 zip.ch image URLs inspected and discarded as generic category stock; 0 byte-duplicates removed among kept assets.
 - Download failures: none (all kept assets downloaded successfully).
-- Fallback imagery: **generated** `logo.svg` (no genuine logo); **5** `stock-*.jpg` free-license images sourced from Wikimedia Commons because **no genuine photos** were found. All clearly labelled illustrative; CC BY-SA 4.0 items (stock-001/002/005) require attribution + share-alike downstream.
+- Fallback imagery: **generated** `logo.svg` (no genuine logo); **5** `stock-*.jpg` free-license images (Wikimedia Commons + Openverse) because **no genuine photos** were found — all chosen to show **no people and no text**. Licences: stock-001/003/004 = **CC0** (no attribution); stock-005 = **CC BY 2.0** (attribution); stock-002 = **CC BY-SA 4.0** (attribution + share-alike).
 - Other relevant info: owner **Aamir Ali** also runs a **market/flea-market stall**; shop ambiance described by customers as an **"atmosphère orientale"**; **wheelchair access: no** _(OSM)_; **parking + public transport** nearby _(zip.ch)_.
 
 ## Missing information
