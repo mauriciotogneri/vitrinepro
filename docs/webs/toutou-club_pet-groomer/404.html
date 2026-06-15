@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Page introuvable · Toutou-Club</title>
+  <style>
+    :root { --charcoal:#69615F; --ink:#2F2B2A; --muted:#8A807E; --rose:#E7B0B3; --bg:#FAF6F4; }
+    * { box-sizing:border-box; margin:0; }
+    body {
+      font-family:"Nunito Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:radial-gradient(120% 80% at 50% 0%, #F7E8E7, var(--bg) 60%);
+      color:var(--ink); min-height:100vh; min-height:100svh;
+      display:grid; place-items:center; text-align:center; padding:2rem;
+    }
+    main { max-width:34rem; }
+    .paw { width:70px; height:70px; color:var(--rose); margin:0 auto 1.5rem; }
+    .code { font-family:"Jost","Trebuchet MS",sans-serif; font-weight:300; font-size:clamp(3.5rem,12vw,6rem); color:var(--charcoal); line-height:1; letter-spacing:.05em; }
+    h1 { font-family:"Jost","Trebuchet MS",sans-serif; font-weight:400; color:var(--charcoal); font-size:clamp(1.4rem,4vw,1.9rem); margin:.6rem 0 1rem; }
+    p.lead { color:var(--muted); margin-bottom:2rem; line-height:1.6; }
+    p.lead span { display:block; }
+    a.home {
+      display:inline-flex; align-items:center; gap:.5em; padding:.9em 1.6em; min-height:48px;
+      background:var(--charcoal); color:#fff; text-decoration:none; border-radius:999px;
+      font-family:"Jost","Trebuchet MS",sans-serif; font-weight:500; box-shadow:0 14px 40px -18px rgba(120,86,88,.5);
+      transition:transform .2s ease;
+    }
+    a.home:hover { transform:translateY(-2px); }
+    a.home:focus-visible { outline:3px solid var(--charcoal); outline-offset:3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <svg class="paw" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+      <ellipse cx="12" cy="15.5" rx="4.6" ry="3.9"/><ellipse cx="5.6" cy="10.4" rx="2.05" ry="2.5"/>
+      <ellipse cx="18.4" cy="10.4" rx="2.05" ry="2.5"/><ellipse cx="9" cy="6.4" rx="1.85" ry="2.3"/>
+      <ellipse cx="15" cy="6.4" rx="1.85" ry="2.3"/>
+    </svg>
+    <p class="code">404</p>
+    <h1>Cette page s'est échappée · This page wandered off</h1>
+    <p class="lead">
+      <span>La page que vous cherchez est introuvable.</span>
+      <span>The page you’re looking for can’t be found.</span>
+    </p>
+    <a class="home" href="https://vndly.github.io/websites/webs/toutou-club_pet-groomer/">Retour à l'accueil · Back home</a>
+  </main>
+</body>
+</html>
