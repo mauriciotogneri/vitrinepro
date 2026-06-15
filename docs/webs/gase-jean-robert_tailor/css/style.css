@@ -241,7 +241,12 @@ p { text-wrap: pretty; }
 .lang-switch { display: inline-flex; align-items: center; gap: .15rem; font-size: .82rem; font-weight: 600; }
 .lang-switch a, .lang-switch span { padding: .3rem .45rem; border-radius: 5px; text-decoration: none; color: var(--muted); }
 .lang-switch a:hover { color: var(--walnut); background: var(--ivory-2); }
-.lang-switch [aria-current="true"] { color: var(--walnut); background: var(--ivory-2); }
+.lang-switch [aria-current="true"] {
+  color: var(--ecru);
+  background: var(--walnut);
+  font-weight: 800;
+  box-shadow: 0 2px 8px -4px rgba(43, 39, 34, .55);
+}
 .lang-switch .sep { color: var(--border-2); padding-inline: 0; }
 
 .nav-toggle {
@@ -467,9 +472,11 @@ p { text-wrap: pretty; }
 /* ---------- Galerie ---------- */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: 1fr;
-  gap: clamp(.8rem, 2vw, 1.4rem);
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: clamp(140px, 18vw, 208px);
+  gap: clamp(.7rem, 1.5vw, 1.1rem);
+  max-width: 860px;
+  margin-inline: auto;
 }
 .gallery figure {
   margin: 0;
@@ -493,15 +500,15 @@ p { text-wrap: pretty; }
 }
 .gallery figure:hover figcaption,
 .gallery figure:focus-within figcaption { opacity: 1; transform: translateY(0); }
-.g-a { grid-column: span 4; grid-row: span 2; }
+.g-a { grid-column: span 2; grid-row: span 2; }
 .g-b { grid-column: span 2; }
-.g-c { grid-column: span 2; }
-.g-d { grid-column: span 6; }
+.g-c { grid-column: span 1; }
+.g-d { grid-column: span 1; }
 
 /* ---------- Contact ---------- */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1.05fr .95fr;
+  grid-template-columns: .92fr 1.08fr;
   gap: clamp(2rem, 5vw, 4rem);
   align-items: start;
 }
@@ -727,8 +734,8 @@ p { text-wrap: pretty; }
   .hero-figure { max-width: 30rem; margin-inline: auto; order: -1; }
   .band-grid { grid-template-columns: 1fr; text-align: left; }
   .seal { width: 92px; height: 92px; }
-  .gallery { grid-template-columns: repeat(2, 1fr); }
-  .g-a, .g-b, .g-c, .g-d { grid-column: span 1; grid-row: span 1; aspect-ratio: 4 / 3; }
+  .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; max-width: 30rem; }
+  .g-a, .g-b, .g-c, .g-d { grid-column: span 1; grid-row: span 1; aspect-ratio: 1 / 1; }
   .g-a { grid-column: span 2; aspect-ratio: 16 / 10; }
   .g-d { grid-column: span 2; aspect-ratio: 16 / 9; }
 }
