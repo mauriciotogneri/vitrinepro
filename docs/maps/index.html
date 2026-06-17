@@ -298,20 +298,16 @@ body{
       return html + "</div>";
     }
 
-    function updateCount(mappable, total) {
-      countEl.innerHTML = "<strong>" + total + "</strong> place" + (total === 1 ? "" : "s")
-                        + " loaded · <strong>" + mappable + "</strong> mappable";
-    }
-
     function enableWhenReady() {
-      if (mapReady && poisReady) btn.disabled = false;
+      if (mapReady && poisReady) {
+        buildMarkers();
+        toggle.disabled = false;
+      }
     }
 
-    /* ---- show all markers (once) ---- */
-    btn.addEventListener("click", function () {
-      if (btn.disabled || !mapReady) return;
-      var shown = 0;
-
+    /* ---- build all markers once (hidden until the switch is on) ---- */
+    function buildMarkers() {
+      if (markers.length) return;
       pois.forEach(function (poi) {
         var pos = getLatLng(poi);
         if (!pos) return;
@@ -325,25 +321,37 @@ body{
           infoWindow.setContent(buildInfo(poi));
           infoWindow.open(map, marker);
         });
-
-        if (reduceMotion) {
-          marker.setMap(map);
-        } else {
-          /* gentle staggered drop */
-          (function (m, delay) {
-            window.setTimeout(function () { m.setMap(map); }, delay);
-          })(marker, shown * 18);
-        }
-        shown++;
+        markers.push(marker);
       });
+    }
 
-      btn.disabled = true;                 /* show once, then disable */
-      btnLabel.textContent = "Markers shown";
-      if (shown > 0) {
-        showStatus(shown + " marker" + (shown === 1 ? "" : "s") + " placed.", false);
-      } else {
-        showStatus("No POIs have a location to map.", false);
+    /* ---- show / hide every marker when the switch is toggled ---- */
+    function setMarkersVisible(visible) {
+      toggleGen++;                         /* invalidate any pending staggered drops */
+      var gen = toggleGen;
+
+      if (!visible) {
+        markers.forEach(function (m) { m.setMap(null); });
+        showStatus("");
+        return;
       }
+      if (markers.length === 0) {
+        showStatus("No locations to map.", false);
+        return;
+      }
+      if (reduceMotion) {
+        markers.forEach(function (m) { m.setMap(map); });
+      } else {
+        /* gentle staggered drop */
+        markers.forEach(function (m, i) {
+          window.setTimeout(function () { if (gen === toggleGen) m.setMap(map); }, i * 18);
+        });
+      }
+      showStatus(markers.length + " marker" + (markers.length === 1 ? "" : "s") + " shown.", false);
+    }
+
+    toggle.addEventListener("change", function () {
+      setMarkersVisible(toggle.checked);
     });
 
     /* ---- load POI data ---- */
@@ -351,13 +359,10 @@ body{
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then(function (data) {
         pois = Array.isArray(data) ? data : [];
-        var mappable = pois.filter(getLatLng).length;
-        updateCount(mappable, pois.length);
         poisReady = true;
         enableWhenReady();
       })
       .catch(function (err) {
-        countEl.textContent = "Could not load locations.";
         showStatus("Failed to load assets/hairdressers.json (" + err.message + ").", true);
       });
 

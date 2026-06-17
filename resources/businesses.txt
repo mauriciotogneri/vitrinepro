@@ -1,20 +1,22 @@
-Beauty & Wellness
+Beauty & Grooming
 - hair_salon
-- beauty_salon
-- nail_salon
 - hair_care
 - barber_shop
+- beauty_salon
+- nail_salon
+- beautician
+- makeup_artist
+- body_art_service
+- tanning_studio
+- foot_care
+
+Wellness & Fitness
 - massage_spa
 - massage
 - spa
-- tanning_studio
-- body_art_service
 - gym
 - fitness_center
 - yoga_studio
-- beautician
-- makeup_artist
-- foot_care
 
 Food & Drink
 - restaurant
