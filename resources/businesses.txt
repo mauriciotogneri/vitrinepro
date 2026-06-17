@@ -1,13 +1,20 @@
 Beauty & Wellness
-- Hairdressers
-- Beauty Salon
-- Barber Shop
-- Nail salons
-- Massage Spa
-- Tanning Salon
-- Tattoo Shop
-- Gym
-- Yoga Studio
+- hair_salon
+- hair_care
+- beauty_salon
+- barber_shop
+- nail_salon
+- massage_spa
+- massage
+- spa
+- tanning_studio
+- body_art_service
+- gym
+- fitness_center
+- yoga_studio
+- beautician
+- makeup_artist
+- foot_care
 
 Food & Drink
 - Restaurant
