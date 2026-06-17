@@ -17,7 +17,7 @@
                              Restrict the key by HTTP referrer to the
                              domain you deploy to (it is public here).
        2. COORDINATES ...... markers are plotted from each POI's
-                             "location": { "lat", "lng" } in assets/hair_salon.json.
+                             "location": { "lat", "lng" } in each assets/<type>.json file.
                              POIs without a numeric location are skipped.
        3. MAP DEFAULT ...... edit GENEVA / DEFAULT_ZOOM in the script.
        4. COLOURS / FONTS .. edit the variables in  :root { … }
@@ -80,7 +80,7 @@ body{
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding: 1.75rem 1.5rem;
+  padding: 1.25rem 1.15rem;
 }
 
 .map-wrap{ position: relative; min-height: 300px; }
@@ -138,30 +138,32 @@ body{
 .status{ margin: .85rem 0 0; font-size: .82rem; min-height: 1.1em; color: var(--ink-soft); }
 .status.is-error{ color: var(--accent-dk); font-weight: 600; }
 
-/* ---- Toggle switch --------------------------------------- */
-.toggle{
-  position: relative;
-  display: inline-flex; align-items: center; gap: .7rem;
-  cursor: pointer; user-select: none;
-  font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--ink);
+/* ---- Category filters (accordion) ------------------------ */
+.filters{ display: flex; flex-direction: column; gap: .4rem; }
+.cat{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.4);
+  overflow: hidden;
 }
-.toggle__input{ position: absolute; top: 0; left: 0; width: 1px; height: 1px; margin: 0; opacity: 0; }
-.toggle__track{
-  position: relative; flex: 0 0 auto;
-  width: 46px; height: 26px; border-radius: 999px;
-  background: var(--line);
-  transition: background .2s ease;
+.cat__head{
+  display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+  padding: .7rem .85rem; cursor: pointer; list-style: none; user-select: none;
+  font-family: var(--font-display); font-weight: 700; font-size: .92rem; color: var(--ink);
 }
-.toggle__thumb{
-  position: absolute; top: 3px; left: 3px;
-  width: 20px; height: 20px; border-radius: 50%;
-  background: #fff; box-shadow: 0 2px 5px -1px rgba(27,26,23,.4);
-  transition: transform .2s ease;
+.cat__head::-webkit-details-marker{ display: none; }
+.cat__head:hover{ background: rgba(27,26,23,.035); }
+.cat__head:focus-visible{ outline: 3px solid rgba(200,30,30,.3); outline-offset: -3px; }
+.cat__chev{ font-size: .8rem; color: var(--ink-soft); transition: transform .2s ease; }
+.cat[open] .cat__chev{ transform: rotate(180deg); }
+.cat__list{
+  list-style: none; margin: 0;
+  padding: .15rem .85rem .7rem;
+  display: flex; flex-direction: column; gap: .05rem;
 }
-.toggle__input:checked + .toggle__track{ background: var(--accent); }
-.toggle__input:checked + .toggle__track .toggle__thumb{ transform: translateX(20px); }
-.toggle__input:focus-visible + .toggle__track{ outline: 3px solid rgba(200,30,30,.35); outline-offset: 2px; }
-.toggle__input:disabled + .toggle__track{ opacity: .5; }
+.opt{ display: flex; align-items: center; gap: .55rem; padding: .3rem .1rem; cursor: pointer; font-size: .87rem; }
+.opt__cb{ width: 1.05rem; height: 1.05rem; flex: 0 0 auto; accent-color: var(--accent); cursor: pointer; }
+.opt:has(.opt__cb:disabled){ opacity: .45; cursor: default; }
 
 .foot{ margin-top: auto; padding-top: 1.5rem; font-size: .72rem; color: var(--ink-soft); }
 .foot__dot{ display: inline-block; width: .6rem; height: .6rem; border-radius: 50%; background: var(--accent); vertical-align: -1px; margin-right: .3rem; }
@@ -235,7 +237,7 @@ body{
 
 @media (prefers-reduced-motion: reduce){
   .sidebar__inner > *{ animation: none; }
-  .toggle__track, .toggle__thumb{ transition: none; }
+  .cat__chev{ transition: none; }
 }
 </style>
 </head>
@@ -247,11 +249,7 @@ body{
     <aside class="sidebar">
       <div class="sidebar__inner">
 
-        <label class="toggle">
-          <input type="checkbox" id="showToggle" class="toggle__input" role="switch" disabled />
-          <span class="toggle__track"><span class="toggle__thumb"></span></span>
-          <span class="toggle__label">Show hairdressers</span>
-        </label>
+        <div class="filters" id="filters"></div>
 
         <p class="status" id="status" role="status" aria-live="polite"></p>
       </div>
@@ -274,12 +272,27 @@ body{
     var DEFAULT_ZOOM = 13;
 
     var map = null, infoWindow = null;
-    var pois = [], markers = [];
-    var mapReady = false, poisReady = false;
+    var mapReady = false;
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    var toggle   = document.getElementById("showToggle");
-    var statusEl = document.getElementById("status");
+    /* One lazily-loaded map layer per business type. item -> { markers, loaded, loading } */
+    var layers = {};
+
+    /* Business types grouped by category (mirrors resources/businesses.txt). */
+    var CATEGORIES = [
+      { name: "Beauty & Grooming",  items: ["hair_salon","hair_care","barber_shop","beauty_salon","nail_salon","beautician","makeup_artist","body_art_service","tanning_studio","foot_care"] },
+      { name: "Wellness & Fitness", items: ["massage_spa","massage","spa","gym","fitness_center","yoga_studio"] },
+      { name: "Drink",              items: ["bar","pub","brewery","brewpub","irish_pub","gastropub","beer_garden","cocktail_bar","wine_bar","sports_bar","lounge_bar","hookah_bar","night_club","winery","coffee_shop","coffee_stand","coffee_roastery","tea_house","juice_shop"] },
+      { name: "Food",               items: ["restaurant","cafe","bistro","diner","deli","food_court","cafeteria","steak_house","snack_bar","kebab_shop","sandwich_shop","noodle_shop","salad_shop","meal_takeaway","meal_delivery","pizza_delivery","bakery","pastry_shop","cake_shop","donut_shop","bagel_shop","dessert_shop","ice_cream_shop","chocolate_shop","confectionery","acai_shop","butcher_shop"] },
+      { name: "Auto Repair",        items: ["car_repair","car_wash","car_dealer","car_rental","tire_shop","bicycle_store","auto_parts_store","ebike_charging_station"] },
+      { name: "Pet Care",           items: ["veterinary_care","pet_care","pet_store","pet_boarding_service"] },
+      { name: "Services & Trades",  items: ["tailor","locksmith","plumber","electrician","painter","laundry","art_studio"] },
+      { name: "Shops & Retail",     items: ["florist","garden_center","jewelry_store","hardware_store","book_store","shoe_store","cell_phone_store","electronics_store","clothing_store","womens_clothing_store","cosmetics_store","furniture_store","home_goods_store","thrift_store","sporting_goods_store","sportswear_store","toy_store","tea_store","candy_store","liquor_store"] }
+    ];
+    var allDetails = [];
+
+    var filtersEl = document.getElementById("filters");
+    var statusEl  = document.getElementById("status");
 
     /* ---- helpers ---- */
     function esc(s) {
@@ -387,61 +400,114 @@ body{
       update();
     }
 
-    function enableWhenReady() {
-      if (mapReady && poisReady) {
-        buildMarkers();
-        toggle.disabled = false;
-      }
+    /* ---- build the category accordion ---- */
+    function prettify(item) {
+      var s = item.replace(/_/g, " ");
+      return s.charAt(0).toUpperCase() + s.slice(1);
     }
 
-    /* ---- build all markers once (hidden until the switch is on) ---- */
-    function buildMarkers() {
-      if (markers.length) return;
-      pois.forEach(function (poi) {
+    function buildMenu() {
+      CATEGORIES.forEach(function (cat, idx) {
+        var details = document.createElement("details");
+        details.className = "cat";
+        if (idx === 0) details.open = true;
+
+        var summary = document.createElement("summary");
+        summary.className = "cat__head";
+        summary.innerHTML = esc(cat.name) + '<i class="bi bi-chevron-down cat__chev"></i>';
+        details.appendChild(summary);
+
+        /* keep only one category open at a time */
+        details.addEventListener("toggle", function () {
+          if (!details.open) return;
+          allDetails.forEach(function (d) { if (d !== details) d.open = false; });
+        });
+
+        var list = document.createElement("ul");
+        list.className = "cat__list";
+        cat.items.forEach(function (item) {
+          var cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.className = "opt__cb";
+          cb.value = item;
+          cb.disabled = true;                      /* enabled once the map is ready */
+          cb.addEventListener("change", function () { onToggleItem(item, cb); });
+
+          var span = document.createElement("span");
+          span.textContent = prettify(item);
+
+          var label = document.createElement("label");
+          label.className = "opt";
+          label.appendChild(cb);
+          label.appendChild(span);
+
+          var li = document.createElement("li");
+          li.appendChild(label);
+          list.appendChild(li);
+        });
+        details.appendChild(list);
+
+        allDetails.push(details);
+        filtersEl.appendChild(details);
+      });
+    }
+
+    function enableMenu() {
+      var cbs = filtersEl.querySelectorAll(".opt__cb");
+      Array.prototype.forEach.call(cbs, function (cb) { cb.disabled = false; });
+    }
+
+    /* ---- per-item map layers (each "<type>.json" loaded on first request) ---- */
+    function onToggleItem(item, cb) {
+      if (cb.checked) showLayer(item, cb);
+      else hideLayer(item);
+    }
+
+    function buildMarkersFor(list) {
+      var arr = [];
+      list.forEach(function (poi) {
         var pos = getLatLng(poi);
         if (!pos) return;
-
-        var marker = new google.maps.Marker({
-          position: pos,
-          title: poi.title || ""
-        });
+        var marker = new google.maps.Marker({ position: pos, title: poi.title || "" });
         marker.addListener("click", function () {
           infoWindow.setContent(buildInfo(poi));
           infoWindow.open(map, marker);
         });
-        markers.push(marker);
+        arr.push(marker);
       });
+      return arr;
     }
 
-    /* ---- show / hide every marker when the switch is toggled ---- */
-    function setMarkersVisible(visible) {
-      if (!visible) {
-        markers.forEach(function (m) { m.setMap(null); });
-        showStatus("");
+    function showLayer(item, cb) {
+      var layer = layers[item];
+      if (layer && layer.loaded) {
+        layer.markers.forEach(function (m) { m.setMap(map); });
         return;
       }
-      if (markers.length === 0) {
-        showStatus("No locations to map.", false);
-        return;
-      }
-      markers.forEach(function (m) { m.setMap(map); });
+      if (layer && layer.loading) return;
+      layers[item] = { markers: [], loaded: false, loading: true };
+
+      fetch("assets/" + item + ".json")
+        .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(function (data) {
+          var built = buildMarkersFor(Array.isArray(data) ? data : []);
+          layers[item] = { markers: built, loaded: true, loading: false };
+          if (cb.checked) built.forEach(function (m) { m.setMap(map); });
+          showStatus("");
+        })
+        .catch(function (err) {
+          layers[item] = { markers: [], loaded: false, loading: false };
+          cb.checked = false;
+          showStatus("Couldn't load " + prettify(item) + " (" + err.message + ").", true);
+        });
     }
 
-    toggle.addEventListener("change", function () {
-      setMarkersVisible(toggle.checked);
-    });
+    function hideLayer(item) {
+      var layer = layers[item];
+      if (layer && layer.markers) layer.markers.forEach(function (m) { m.setMap(null); });
+    }
 
-    /* ---- load POI data ---- */
-    fetch("assets/hair_salon.json")
-      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-      .then(function (data) {
-        pois = Array.isArray(data) ? data : [];
-        poisReady = true;
-        enableWhenReady();
-      })
-      .catch(function (err) {
-        showStatus("Failed to load assets/hair_salon.json (" + err.message + ").", true);
-      });
+    buildMenu();
 
     /* ---- Google Maps callback (global) ---- */
     window.initMap = function () {
@@ -463,7 +529,7 @@ body{
         if (car) wireCarousel(car);
       });
       mapReady = true;
-      enableWhenReady();
+      enableMenu();
     };
 
     /* ---- friendly message if the key is missing/invalid ---- */
