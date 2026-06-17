@@ -71,12 +71,8 @@ Auto Repair
 - ebike_charging_station
 
 Craft & Hobbies
-- Haberdashery
-- Art Supply Store
-- Tailor
-- Hobby Shop
-- Craft Store
-- Board Game Cafe
+- tailor
+- art_studio
 
 Pet Care
 - Veterinarian
