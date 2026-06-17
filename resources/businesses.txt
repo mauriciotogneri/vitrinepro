@@ -17,14 +17,48 @@ Beauty & Wellness
 - foot_care
 
 Food & Drink
-- Restaurant
-- Bar / Pub
-- Coffee Shop
-- Bakery
-- Brewery
-- Ice Cream Shop
-- Night Club
-- Donut Shop
+- restaurant
+- bar
+- pub
+- coffee_shop
+- cafe
+- bakery
+- brewery
+- brewpub
+- ice_cream_shop
+- night_club
+- donut_shop
+- coffee_stand
+- coffee_roastery
+- tea_house
+- juice_shop
+- cocktail_bar
+- wine_bar
+- sports_bar
+- beer_garden
+- gastropub
+- lounge_bar
+- hookah_bar
+- bistro
+- diner
+- deli
+- sandwich_shop
+- food_court
+- cafeteria
+- snack_bar
+- steak_house
+- noodle_shop
+- pastry_shop
+- cake_shop
+- dessert_shop
+- chocolate_shop
+- confectionery
+- bagel_shop
+- acai_shop
+- meal_takeaway
+- meal_delivery
+- pizza_delivery
+- winery
 
 Auto Repair
 - Auto Repair Shop 
