@@ -59,20 +59,20 @@ Food & Drink
 - meal_delivery
 - pizza_delivery
 - winery
+- butcher_shop
+- juice_shop
+- candy_store
+- liquor_store
 
 Auto Repair
 - car_repair
 - car_wash
+- car_dealer
+- car_rental
 - tire_shop
 - bicycle_store
 - auto_parts_store
-- car_dealer
-- car_rental
 - ebike_charging_station
-
-Craft & Hobbies
-- tailor
-- art_studio
 
 Pet Care
 - veterinary_care
@@ -80,33 +80,34 @@ Pet Care
 - pet_store
 - pet_boarding_service
 
-Home Trades
+Education
+- educational_institution
+- sports_school
+
+Local Retail
+- florist
+- jewelry_store
+- hardware_store
+- book_store
+- shoe_store
+- cell_phone_store
+- electronics_store
+- clothing_store
+- womens_clothing_store
+- cosmetics_store
+- furniture_store
+- home_goods_store
+- gift_shop
+- thrift_store
+- sporting_goods_store
+- sportswear_store
+- toy_store
+- garden_center
+- tea_store
+- tailor
+- art_studio
 - locksmith
 - plumber
 - electrician
 - painter
 - laundry
-
-Childcare & Education
-- Learning Center
-- Dance School
-- Martial Arts School
-- Music Instructor
-
-Local Retail
-- Florist
-- Jewelry Store
-- Hardware Store
-- Bookstore / Comic Book Store
-- Record Store
-- Shoe Store
-- Vape Shop
-- Cell Phone Repair Shop
-- Computer Repair Service
-
-Specialty Grocery
-- Butcher Shop
-- Seafood Market
-- Smoothie Shop
-- Candy Store
-- Liquor Store
