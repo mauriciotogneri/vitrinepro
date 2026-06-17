@@ -16,7 +16,7 @@
                              Restrict the key by HTTP referrer to the
                              domain you deploy to (it is public here).
        2. COORDINATES ...... markers are plotted from each POI's
-                             "location": { "lat", "lng" } in assets/pois.json.
+                             "location": { "lat", "lng" } in assets/hairdressers.json.
                              POIs without a numeric location are skipped.
        3. MAP DEFAULT ...... edit GENEVA / DEFAULT_ZOOM in the script.
        4. COLOURS / FONTS .. edit the variables in  :root { … }
@@ -180,18 +180,11 @@ body{
 
         <div class="brand">
           <span class="brand__pin"><i class="bi bi-geo-alt-fill"></i></span>
-          <div>
-            <h1 class="brand__title">Geneva</h1>
-            <p class="brand__sub">Points of interest</p>
-          </div>
         </div>
-
-        <p class="coords">46.2044° N · 6.1432° E · z12</p>
 
         <hr class="rule" />
 
         <p class="count" id="count">Loading locations…</p>
-        <p class="hint">Plot every location on the map, then click a pin for its details.</p>
 
         <button class="btn-show" id="showBtn" type="button" disabled>
           <i class="bi bi-pin-map-fill"></i>
@@ -199,8 +192,6 @@ body{
         </button>
 
         <p class="status" id="status" role="status" aria-live="polite"></p>
-
-        <p class="foot"><span class="foot__dot"></span>Source: Google Maps places · Geneva, Switzerland</p>
       </div>
     </aside>
 
@@ -339,7 +330,7 @@ body{
     });
 
     /* ---- load POI data ---- */
-    fetch("assets/pois.json")
+    fetch("assets/hairdressers.json")
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then(function (data) {
         pois = Array.isArray(data) ? data : [];
@@ -350,7 +341,7 @@ body{
       })
       .catch(function (err) {
         countEl.textContent = "Could not load locations.";
-        showStatus("Failed to load assets/pois.json (" + err.message + ").", true);
+        showStatus("Failed to load assets/hairdressers.json (" + err.message + ").", true);
       });
 
     /* ---- Google Maps callback (global) ---- */
