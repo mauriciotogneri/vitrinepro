@@ -81,12 +81,11 @@ Pet Care
 - pet_boarding_service
 
 Home Trades
-- Locksmith
-- Plumber
-- Electrician
-- Painter
-- Dry Cleaner
-- Laundromat
+- locksmith
+- plumber
+- electrician
+- painter
+- laundry
 
 Childcare & Education
 - Learning Center
