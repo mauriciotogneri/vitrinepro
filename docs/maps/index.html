@@ -190,6 +190,49 @@ body{
 .poi__link{ display: inline-flex; align-items: center; gap: .35rem; margin-top: .45rem; font-weight: 600; font-size: .85rem; color: var(--accent); text-decoration: none; }
 .poi__link:hover{ text-decoration: underline; }
 
+/* ---- POI image carousel ---------------------------------- */
+.poi__carousel{
+  position: relative;
+  width: 240px;
+  margin: 0 0 .55rem;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--line);
+}
+.poi__track{
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.poi__track::-webkit-scrollbar{ display: none; }
+.poi__slide{
+  flex: 0 0 100%;
+  width: 100%; height: 150px;
+  object-fit: cover; display: block;
+  scroll-snap-align: center;
+}
+.poi__nav{
+  position: absolute; top: 50%; transform: translateY(-50%);
+  display: grid; place-items: center;
+  width: 28px; height: 28px;
+  border: 0; border-radius: 50%;
+  background: rgba(27,26,23,.55); color: #fff;
+  cursor: pointer; font-size: .9rem;
+  transition: background .15s ease;
+}
+.poi__nav:hover{ background: rgba(27,26,23,.82); }
+.poi__nav:focus-visible{ outline: 2px solid #fff; outline-offset: 1px; }
+.poi__nav--prev{ left: 6px; }
+.poi__nav--next{ right: 6px; }
+.poi__counter{
+  position: absolute; right: 6px; bottom: 6px;
+  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .02em;
+  padding: .1rem .4rem; border-radius: 999px;
+  background: rgba(27,26,23,.6); color: #fff;
+}
+
 @media (prefers-reduced-motion: reduce){
   .sidebar__inner > *{ animation: none; }
   .toggle__track, .toggle__thumb{ transition: none; }
@@ -207,7 +250,7 @@ body{
         <label class="toggle">
           <input type="checkbox" id="showToggle" class="toggle__input" role="switch" disabled />
           <span class="toggle__track"><span class="toggle__thumb"></span></span>
-          <span class="toggle__label">Show markers</span>
+          <span class="toggle__label">Show hairdressers</span>
         </label>
 
         <p class="status" id="status" role="status" aria-live="polite"></p>
@@ -231,7 +274,7 @@ body{
     var DEFAULT_ZOOM = 13;
 
     var map = null, infoWindow = null;
-    var pois = [], markers = [], toggleGen = 0;
+    var pois = [], markers = [];
     var mapReady = false, poisReady = false;
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -269,17 +312,7 @@ body{
       var html = '<div class="poi">';
       html += '<h2 class="poi__name">' + esc(poi.title || "Unnamed place") + "</h2>";
 
-      if (poi.totalScore != null) {
-        html += '<div class="poi__rating"><span class="poi__star">★</span> <strong>'
-              + esc(String(poi.totalScore)) + "</strong>";
-        if (poi.reviewsCount != null) {
-          html += ' <span class="poi__reviews">(' + esc(String(poi.reviewsCount)) + " reviews)</span>";
-        }
-        html += "</div>";
-      }
-
-      var cat = poi.categoryName || (Array.isArray(poi.categories) && poi.categories[0]) || "";
-      if (cat) html += '<div class="poi__cat">' + esc(cat) + "</div>";
+      html += buildCarousel(poi);
 
       var addr = [poi.street, poi.city].filter(Boolean).join(", ");
       if (addr) html += '<div class="poi__row"><i class="bi bi-geo-alt"></i><span>' + esc(addr) + "</span></div>";
@@ -290,12 +323,68 @@ body{
               + esc(poi.phone) + "</a></div>";
       }
 
+      if (poi.totalScore != null) {
+        html += '<div class="poi__rating"><span class="poi__star">★</span> <strong>'
+              + esc(String(poi.totalScore)) + "</strong>";
+        if (poi.reviewsCount != null) {
+          html += ' <span class="poi__reviews">(' + esc(String(poi.reviewsCount)) + " reviews)</span>";
+        }
+        html += "</div>";
+      }
+
       if (poi.url) {
         html += '<a class="poi__link" href="' + esc(poi.url) + '" target="_blank" rel="noopener">'
               + 'View on Google Maps <i class="bi bi-box-arrow-up-right"></i></a>';
       }
 
       return html + "</div>";
+    }
+
+    /* Build the image carousel HTML for one POI; empty string when no images. */
+    function buildCarousel(poi) {
+      var imgs = Array.isArray(poi.imageUrls) ? poi.imageUrls.filter(Boolean) : [];
+      if (imgs.length === 0) return "";
+
+      var name = esc(poi.title || "");
+      var slides = imgs.map(function (src, i) {
+        return '<img class="poi__slide" src="' + esc(src) + '" alt="' + name + " photo " + (i + 1)
+             + '" loading="lazy" referrerpolicy="no-referrer" />';
+      }).join("");
+
+      var html = '<div class="poi__carousel"><div class="poi__track">' + slides + "</div>";
+      if (imgs.length > 1) {
+        html += '<button type="button" class="poi__nav poi__nav--prev" aria-label="Previous photo"><i class="bi bi-chevron-left"></i></button>'
+              + '<button type="button" class="poi__nav poi__nav--next" aria-label="Next photo"><i class="bi bi-chevron-right"></i></button>'
+              + '<span class="poi__counter">1 / ' + imgs.length + "</span>";
+      }
+      return html + "</div>";
+    }
+
+    /* Wire prev/next + counter for the carousel currently in the info window. */
+    function wireCarousel(root) {
+      var track = root.querySelector(".poi__track");
+      var slides = root.querySelectorAll(".poi__slide");
+      if (!track || slides.length < 2) return;
+
+      var counter = root.querySelector(".poi__counter");
+      var prev = root.querySelector(".poi__nav--prev");
+      var next = root.querySelector(".poi__nav--next");
+
+      function index() {
+        var w = track.clientWidth || 1;
+        return Math.round(track.scrollLeft / w);
+      }
+      function update() {
+        if (counter) counter.textContent = (index() + 1) + " / " + slides.length;
+      }
+      function go(step) {
+        var i = Math.max(0, Math.min(slides.length - 1, index() + step));
+        track.scrollTo({ left: i * track.clientWidth, behavior: reduceMotion ? "auto" : "smooth" });
+      }
+      if (prev) prev.addEventListener("click", function () { go(-1); });
+      if (next) next.addEventListener("click", function () { go(1); });
+      track.addEventListener("scroll", update);
+      update();
     }
 
     function enableWhenReady() {
@@ -314,8 +403,7 @@ body{
 
         var marker = new google.maps.Marker({
           position: pos,
-          title: poi.title || "",
-          animation: reduceMotion ? null : google.maps.Animation.DROP
+          title: poi.title || ""
         });
         marker.addListener("click", function () {
           infoWindow.setContent(buildInfo(poi));
@@ -327,9 +415,6 @@ body{
 
     /* ---- show / hide every marker when the switch is toggled ---- */
     function setMarkersVisible(visible) {
-      toggleGen++;                         /* invalidate any pending staggered drops */
-      var gen = toggleGen;
-
       if (!visible) {
         markers.forEach(function (m) { m.setMap(null); });
         showStatus("");
@@ -339,15 +424,8 @@ body{
         showStatus("No locations to map.", false);
         return;
       }
-      if (reduceMotion) {
-        markers.forEach(function (m) { m.setMap(map); });
-      } else {
-        /* gentle staggered drop */
-        markers.forEach(function (m, i) {
-          window.setTimeout(function () { if (gen === toggleGen) m.setMap(map); }, i * 18);
-        });
-      }
-      showStatus(markers.length + " marker" + (markers.length === 1 ? "" : "s") + " shown.", false);
+      markers.forEach(function (m) { m.setMap(map); });
+      showStatus(markers.length + " hairdresser" + (markers.length === 1 ? "" : "s") + " shown.", false);
     }
 
     toggle.addEventListener("change", function () {
@@ -381,6 +459,10 @@ body{
         ]
       });
       infoWindow = new google.maps.InfoWindow();
+      infoWindow.addListener("domready", function () {
+        var car = document.querySelector(".poi__carousel");
+        if (car) wireCarousel(car);
+      });
       mapReady = true;
       enableWhenReady();
     };
