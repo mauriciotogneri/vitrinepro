@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vndly.github.io/websites/webs/il-colosseo_restaurant/sitemap.xml
