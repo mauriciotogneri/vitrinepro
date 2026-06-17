@@ -82,20 +82,18 @@ Pet Care
 - pet_store
 - pet_boarding_service
 
-Education
-- educational_institution
-- sports_school
-
-Local Retail
-- florist
-- garden_center
+Services & Trades
 - tailor
-- art_studio
 - locksmith
 - plumber
 - electrician
 - painter
 - laundry
+- art_studio
+
+Shops & Retail
+- florist
+- garden_center
 - jewelry_store
 - hardware_store
 - book_store
