@@ -9640,5 +9640,177 @@
     ],
     "reviews": [],
     "leadsEnrichment": []
+  },
+  {
+    "title": "Salon de coiffure La formule de St-Jean",
+    "subTitle": null,
+    "description": null,
+    "price": null,
+    "categoryName": "Hair salon",
+    "address": "Rue de Saint-Jean 58, 1203 Genève, Switzerland",
+    "neighborhood": null,
+    "street": "Rue de Saint-Jean 58",
+    "city": "Geneva",
+    "postalCode": "1203",
+    "state": null,
+    "countryCode": "CH",
+    "phone": "+41 22 340 48 44",
+    "phoneUnformatted": "+41223404844",
+    "claimThisBusiness": false,
+    "location": {
+      "lat": 46.2052786,
+      "lng": 6.1322191
+    },
+    "locatedIn": null,
+    "floor": null,
+    "plusCode": "644J+4V Geneva, Switzerland",
+    "menu": null,
+    "servicesLink": null,
+    "totalScore": 3.9,
+    "permanentlyClosed": false,
+    "temporarilyClosed": false,
+    "placeId": "ChIJLQhbstFkjEcR0tCQEZONjho",
+    "categories": [
+      "Hair salon",
+      "Beauty salon",
+      "Nail salon",
+      "Hairdresser"
+    ],
+    "fid": "0x478c64d1b25b082d:0x1a8e8d931190d0d2",
+    "cid": "1913622554473451730",
+    "reviewsCount": 11,
+    "reviewsDistribution": {
+      "oneStar": 3,
+      "twoStar": 0,
+      "threeStar": 0,
+      "fourStar": 0,
+      "fiveStar": 8
+    },
+    "imagesCount": 6,
+    "imageCategories": [
+      "All",
+      "Hairstyle",
+      "By owner"
+    ],
+    "scrapedAt": "2026-06-17T18:58:17.848Z",
+    "reserveTableUrl": null,
+    "googleFoodUrl": null,
+    "hotelStars": null,
+    "hotelDescription": null,
+    "checkInDate": null,
+    "checkOutDate": null,
+    "hotelAds": [],
+    "popularTimesLiveText": null,
+    "popularTimesLivePercent": null,
+    "popularTimesHistogram": {},
+    "openingHours": [
+      {
+        "day": "Monday",
+        "hours": "9 AM to 6:30 PM"
+      },
+      {
+        "day": "Tuesday",
+        "hours": "9 AM to 6:30 PM"
+      },
+      {
+        "day": "Wednesday",
+        "hours": "9 AM to 6:30 PM"
+      },
+      {
+        "day": "Thursday",
+        "hours": "9 AM to 6:30 PM"
+      },
+      {
+        "day": "Friday",
+        "hours": "9 AM to 6:30 PM"
+      },
+      {
+        "day": "Saturday",
+        "hours": "9:30 AM to 2:30 PM"
+      },
+      {
+        "day": "Sunday",
+        "hours": "Closed"
+      }
+    ],
+    "peopleAlsoSearch": [
+      {
+        "category": "People also search for",
+        "title": "Méline Coiffure Genève",
+        "reviewsCount": 14,
+        "totalScore": 4.9
+      },
+      {
+        "category": "People also search for",
+        "title": "Flash Coiffure",
+        "reviewsCount": 77,
+        "totalScore": 4.8
+      },
+      {
+        "category": "People also search for",
+        "title": "Look Coiffure",
+        "reviewsCount": 20,
+        "totalScore": 5
+      },
+      {
+        "category": "People also search for",
+        "title": "FR Coiffure",
+        "reviewsCount": 71,
+        "totalScore": 4.7
+      },
+      {
+        "category": "People also search for",
+        "title": "Salon de coiffure Métamorphose",
+        "reviewsCount": 62,
+        "totalScore": 4.8
+      }
+    ],
+    "placesTags": [],
+    "reviewsTags": [],
+    "additionalInfo": {
+      "Amenities": [
+        {
+          "Restroom": true
+        }
+      ]
+    },
+    "gasPrices": [],
+    "url": "https://www.google.com/maps/search/?api=1&query=Salon%20de%20coiffure%20La%20formule%20de%20St-Jean&query_place_id=ChIJLQhbstFkjEcR0tCQEZONjho",
+    "searchPageUrl": "https://www.google.com/maps/search/haidresser/@46.20782355351899,6.131008070624397,17z?hl=en",
+    "searchString": "haidresser",
+    "language": "en",
+    "rank": 49,
+    "isAdvertisement": false,
+    "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFHh8OfWfe135c8XawlehcrwpnRaNbtILYf8Ohsy4d7smIZS4_vGeL8BW9CGH9RY39XtdLJ5zb0DZsDD0mQKKBL7HK6Bk7XDuknJjqLt_EaFK75b2qpDluVoSojNjxs9aiUHOE=w408-h272-k-no",
+    "kgmid": "/g/1tncrt45",
+    "questionsAndAnswers": [],
+    "webResults": [],
+    "tableReservationLinks": [],
+    "bookingLinks": [],
+    "restaurantData": {
+      "tableReservationProvider": null
+    },
+    "ownerUpdates": [],
+    "emails": [],
+    "phones": [],
+    "phonesUncertain": [],
+    "linkedIns": [],
+    "twitters": [],
+    "instagrams": [],
+    "facebooks": [],
+    "youtubes": [],
+    "tiktoks": [],
+    "pinterests": [],
+    "discords": [],
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFHh8OfWfe135c8XawlehcrwpnRaNbtILYf8Ohsy4d7smIZS4_vGeL8BW9CGH9RY39XtdLJ5zb0DZsDD0mQKKBL7HK6Bk7XDuknJjqLt_EaFK75b2qpDluVoSojNjxs9aiUHOE=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEMgFTUXzXTY7oG5CgaC04MBNMqZWxxGdCr7lErNS0x-H3oboRUZEIjPvfWQCUVRZI8h54wuTS_ew-4Q9LffyApYtaZQ45HBxYmK2btfCsVKXgq7NLIUf49XmAi9j73nh7DLJEeRw=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFuI3QYW2X2PoCTYjLN_nhwm5rbJxAfvg3CrvdLubVWSpFBarocan8GbHX3W9MnKFq8qcOPq9wdr-Uy38Hy1JWtNUOh6Zd_AsM4ySXkJSBmsO3D1sJQMGo_K-rvpvcl76EmO6I=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHJai40stn0isKsC20GnXSwdDFklYahuuN-ped1RgLMgVCIG5mUlN-3UehIsvdwJwsH3cyxAkBK70Uq_HDrfSnDUz4eQIMHjUTRwAsfS9-fwHWkO3bF7_tOqOI8cALBDigJT1qM=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEMgrlvgluImiF5JlD0YmJzIHD3ZtzuDAtzg7tVT5DxB__-uMh3oSvRY3GarNwtJakQ16nmOn4PuvrGZ4KnnFCtvlHFy7lM1A10AEeew7rAEnyCnFr_xG_i3KYRoPWkgat1QKhThQ=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAErRt0d6WhCcuD5UhA6aHdF9pd-Zge9MspNZSPiSS6BIy5VvO8Fd0M79_hRgNC23gCQ6rjVeP0qKdLRdEGUkg7oXtRVcsNXEXWCAZ7X8JFbkJNbPZpz3xKmj3Bp4E9gm28vOvkU=w1920-h1080-k-no"
+    ],
+    "reviews": [],
+    "leadsEnrichment": []
   }
 ]
