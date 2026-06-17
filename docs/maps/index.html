@@ -17,7 +17,7 @@
                              Restrict the key by HTTP referrer to the
                              domain you deploy to (it is public here).
        2. COORDINATES ...... markers are plotted from each POI's
-                             "location": { "lat", "lng" } in assets/hairdressers.json.
+                             "location": { "lat", "lng" } in assets/hair_salon.json.
                              POIs without a numeric location are skipped.
        3. MAP DEFAULT ...... edit GENEVA / DEFAULT_ZOOM in the script.
        4. COLOURS / FONTS .. edit the variables in  :root { … }
@@ -425,7 +425,6 @@ body{
         return;
       }
       markers.forEach(function (m) { m.setMap(map); });
-      showStatus(markers.length + " hairdresser" + (markers.length === 1 ? "" : "s") + " shown.", false);
     }
 
     toggle.addEventListener("change", function () {
@@ -433,7 +432,7 @@ body{
     });
 
     /* ---- load POI data ---- */
-    fetch("assets/hairdressers.json")
+    fetch("assets/hair_salon.json")
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then(function (data) {
         pois = Array.isArray(data) ? data : [];
@@ -441,7 +440,7 @@ body{
         enableWhenReady();
       })
       .catch(function (err) {
-        showStatus("Failed to load assets/hairdressers.json (" + err.message + ").", true);
+        showStatus("Failed to load assets/hair_salon.json (" + err.message + ").", true);
       });
 
     /* ---- Google Maps callback (global) ---- */
