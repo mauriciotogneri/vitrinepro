@@ -75,9 +75,10 @@ Craft & Hobbies
 - art_studio
 
 Pet Care
-- Veterinarian
-- Pet Groomer
-- Pet Supply Store
+- veterinary_care
+- pet_care
+- pet_store
+- pet_boarding_service
 
 Home Trades
 - Locksmith
