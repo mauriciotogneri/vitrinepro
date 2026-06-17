@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Geneva — Points of Interest</title>
+<meta name="description" content="An interactive Google map of points of interest around Geneva, Switzerland." />
+<meta name="theme-color" content="#F6F3EC" />
+
+<!-- ============================================================
+     GENEVA — POINTS OF INTEREST  (single-file static page)
+     ------------------------------------------------------------
+     SETUP (everything lives in this one file):
+       1. GOOGLE MAPS KEY ... search "YOUR_API_KEY" near the bottom
+                             and replace it with your own key.
+                             Restrict the key by HTTP referrer to the
+                             domain you deploy to (it is public here).
+       2. COORDINATES ...... markers are plotted from each POI's
+                             "location": { "lat", "lng" } in assets/pois.json.
+                             POIs without a numeric location are skipped.
+       3. MAP DEFAULT ...... edit GENEVA / DEFAULT_ZOOM in the script.
+       4. COLOURS / FONTS .. edit the variables in  :root { … }
+     ============================================================ -->
+
+<!-- Bootstrap 5 (reset · grid · utilities) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Bootstrap Icons (pin, star, phone, link) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+<!-- Fonts: Archivo (display) · DM Sans (body) · Space Mono (coordinate labels) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+/* =========================================================
+   DESIGN TOKENS — "refined cartographic"
+   ========================================================= */
+:root{
+  --paper:      #F6F3EC;   /* warm paper sidebar            */
+  --ink:        #1B1A17;   /* near-black text               */
+  --ink-soft:   #6B6557;   /* muted captions                */
+  --line:       #DAD3C4;   /* hairlines                     */
+  --accent:     #C81E1E;   /* deep Geneva red (markers/CTA) */
+  --accent-dk:  #9E1414;   /* hover / pressed               */
+  --radius:     12px;
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'Space Mono', ui-monospace, monospace;
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Layout ---------------------------------------------- */
+.app{ overflow: hidden; }            /* vh-100 + flex via Bootstrap utilities */
+
+.sidebar{
+  background:
+    radial-gradient(circle at 1px 1px, rgba(27,26,23,.05) 1px, transparent 0) 0 0 / 22px 22px,
+    var(--paper);
+  border-bottom: 1px solid var(--line);
+  overflow-y: auto;
+}
+@media (min-width: 768px){
+  .sidebar{
+    flex: 0 0 340px;
+    width: 340px;
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+  }
+}
+.sidebar__inner{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 1.75rem 1.5rem;
+}
+
+.map-wrap{ position: relative; min-height: 300px; }
+#map{ position: absolute; inset: 0; background: #E8E4DA; }
+
+/* ---- Sidebar content ------------------------------------- */
+.brand{ display: flex; align-items: center; gap: .75rem; }
+.brand__pin{
+  display: grid; place-items: center;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff; font-size: 1.25rem;
+  box-shadow: 0 8px 18px -8px rgba(200,30,30,.7);
+}
+.brand__title{
+  font-family: var(--font-display);
+  font-weight: 800; font-size: 1.55rem;
+  letter-spacing: -.02em; line-height: 1; margin: 0;
+}
+.brand__sub{
+  margin: .15rem 0 0;
+  font-size: .82rem; color: var(--ink-soft);
+}
+
+.coords{
+  margin-top: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: .72rem; letter-spacing: .03em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+
+.rule{ height: 1px; background: var(--line); margin: 1.25rem 0; border: 0; }
+
+.count{ margin: 0 0 .35rem; font-size: .95rem; }
+.count strong{ font-weight: 700; }
+.hint{ margin: 0 0 1rem; font-size: .82rem; color: var(--ink-soft); }
+
+.btn-show{
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  width: 100%;
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1rem; letter-spacing: .01em;
+  color: #fff; background: var(--accent);
+  border: 0; border-radius: var(--radius);
+  padding: .85rem 1rem; cursor: pointer;
+  box-shadow: 0 8px 20px -10px rgba(200,30,30,.6);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn-show:hover:not(:disabled){ transform: translateY(-2px); background: var(--accent-dk); box-shadow: 0 14px 26px -12px rgba(200,30,30,.7); }
+.btn-show:active:not(:disabled){ transform: translateY(0); }
+.btn-show:focus-visible{ outline: 3px solid rgba(200,30,30,.35); outline-offset: 2px; }
+.btn-show:disabled{ background: var(--ink-soft); opacity: .55; cursor: default; box-shadow: none; }
+
+.status{ margin: .85rem 0 0; font-size: .82rem; min-height: 1.1em; color: var(--ink-soft); }
+.status.is-error{ color: var(--accent-dk); font-weight: 600; }
+
+.foot{ margin-top: auto; padding-top: 1.5rem; font-size: .72rem; color: var(--ink-soft); }
+.foot__dot{ display: inline-block; width: .6rem; height: .6rem; border-radius: 50%; background: var(--accent); vertical-align: -1px; margin-right: .3rem; }
+
+/* ---- Staggered load reveal ------------------------------- */
+@keyframes rise{ from{ opacity: 0; transform: translateY(8px); } to{ opacity: 1; transform: none; } }
+.sidebar__inner > *{ animation: rise .5s both; }
+.sidebar__inner > *:nth-child(1){ animation-delay: .04s; }
+.sidebar__inner > *:nth-child(2){ animation-delay: .10s; }
+.sidebar__inner > *:nth-child(3){ animation-delay: .16s; }
+.sidebar__inner > *:nth-child(4){ animation-delay: .22s; }
+.sidebar__inner > *:nth-child(5){ animation-delay: .28s; }
+.sidebar__inner > *:nth-child(6){ animation-delay: .34s; }
+
+/* ---- Marker info bubble ---------------------------------- */
+.poi{ font-family: var(--font-body); color: var(--ink); max-width: 244px; padding: 2px 2px 4px; }
+.poi__name{ font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; line-height: 1.15; margin: 0 0 .35rem; }
+.poi__rating{ font-size: .9rem; margin-bottom: .25rem; }
+.poi__rating strong{ font-weight: 700; }
+.poi__star{ color: var(--accent); }
+.poi__reviews{ color: var(--ink-soft); }
+.poi__cat{ font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); margin-bottom: .55rem; }
+.poi__row{ display: flex; gap: .45rem; align-items: flex-start; font-size: .88rem; margin-bottom: .3rem; }
+.poi__row i{ color: var(--accent); margin-top: .12rem; flex: 0 0 auto; }
+.poi__row a{ color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.poi__link{ display: inline-flex; align-items: center; gap: .35rem; margin-top: .45rem; font-weight: 600; font-size: .85rem; color: var(--accent); text-decoration: none; }
+.poi__link:hover{ text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce){
+  .sidebar__inner > *{ animation: none; }
+  .btn-show{ transition: none; }
+}
+</style>
+</head>
+
+<body>
+  <div class="app d-flex flex-column flex-md-row vh-100">
+
+    <!-- ============ LEFT: navigation menu ============ -->
+    <aside class="sidebar">
+      <div class="sidebar__inner">
+
+        <div class="brand">
+          <span class="brand__pin"><i class="bi bi-geo-alt-fill"></i></span>
+          <div>
+            <h1 class="brand__title">Geneva</h1>
+            <p class="brand__sub">Points of interest</p>
+          </div>
+        </div>
+
+        <p class="coords">46.2044° N · 6.1432° E · z12</p>
+
+        <hr class="rule" />
+
+        <p class="count" id="count">Loading locations…</p>
+        <p class="hint">Plot every location on the map, then click a pin for its details.</p>
+
+        <button class="btn-show" id="showBtn" type="button" disabled>
+          <i class="bi bi-pin-map-fill"></i>
+          <span id="showBtnLabel">Show markers</span>
+        </button>
+
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+
+        <p class="foot"><span class="foot__dot"></span>Source: Google Maps places · Geneva, Switzerland</p>
+      </div>
+    </aside>
+
+    <!-- ============ RIGHT: Google map ============ -->
+    <div class="map-wrap flex-grow-1">
+      <div id="map"></div>
+    </div>
+
+  </div>
+
+  <!-- ============ APP LOGIC ============ -->
+  <script>
+  (function () {
+    "use strict";
+
+    /* Map defaults (edit to recenter) */
+    var GENEVA = { lat: 46.2044, lng: 6.1432 };
+    var DEFAULT_ZOOM = 12;
+
+    var map = null, infoWindow = null;
+    var pois = [];
+    var mapReady = false, poisReady = false;
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var btn      = document.getElementById("showBtn");
+    var btnLabel = document.getElementById("showBtnLabel");
+    var countEl  = document.getElementById("count");
+    var statusEl = document.getElementById("status");
+
+    /* ---- helpers ---- */
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    }
+
+    function showStatus(msg, isError) {
+      statusEl.textContent = msg;
+      statusEl.classList.toggle("is-error", !!isError);
+    }
+
+    /* Return {lat,lng} from a POI's location object if both are real numbers, else null. */
+    function getLatLng(p) {
+      var loc = p && p.location;
+      if (!loc) return null;
+      var lat = toNum(loc.lat), lng = toNum(loc.lng);
+      if (lat === null || lng === null) return null;
+      return { lat: lat, lng: lng };
+    }
+    function toNum(v) {
+      if (v === null || v === undefined || v === "") return null;
+      var n = Number(v);
+      return isFinite(n) ? n : null;
+    }
+
+    /* Build the info-bubble HTML for one POI; empty fields are omitted. */
+    function buildInfo(poi) {
+      var html = '<div class="poi">';
+      html += '<h2 class="poi__name">' + esc(poi.title || "Unnamed place") + "</h2>";
+
+      if (poi.totalScore != null) {
+        html += '<div class="poi__rating"><span class="poi__star">★</span> <strong>'
+              + esc(String(poi.totalScore)) + "</strong>";
+        if (poi.reviewsCount != null) {
+          html += ' <span class="poi__reviews">(' + esc(String(poi.reviewsCount)) + " reviews)</span>";
+        }
+        html += "</div>";
+      }
+
+      var cat = poi.categoryName || (Array.isArray(poi.categories) && poi.categories[0]) || "";
+      if (cat) html += '<div class="poi__cat">' + esc(cat) + "</div>";
+
+      var addr = [poi.street, poi.city].filter(Boolean).join(", ");
+      if (addr) html += '<div class="poi__row"><i class="bi bi-geo-alt"></i><span>' + esc(addr) + "</span></div>";
+
+      if (poi.phone) {
+        var tel = String(poi.phone).replace(/[^+0-9]/g, "");
+        html += '<div class="poi__row"><i class="bi bi-telephone"></i><a href="tel:' + esc(tel) + '">'
+              + esc(poi.phone) + "</a></div>";
+      }
+
+      if (poi.url) {
+        html += '<a class="poi__link" href="' + esc(poi.url) + '" target="_blank" rel="noopener">'
+              + 'View on Google Maps <i class="bi bi-box-arrow-up-right"></i></a>';
+      }
+
+      return html + "</div>";
+    }
+
+    function updateCount(mappable, total) {
+      countEl.innerHTML = "<strong>" + total + "</strong> place" + (total === 1 ? "" : "s")
+                        + " loaded · <strong>" + mappable + "</strong> mappable";
+    }
+
+    function enableWhenReady() {
+      if (mapReady && poisReady) btn.disabled = false;
+    }
+
+    /* ---- show all markers (once) ---- */
+    btn.addEventListener("click", function () {
+      if (btn.disabled || !mapReady) return;
+      var shown = 0;
+
+      pois.forEach(function (poi) {
+        var pos = getLatLng(poi);
+        if (!pos) return;
+
+        var marker = new google.maps.Marker({
+          position: pos,
+          title: poi.title || "",
+          animation: reduceMotion ? null : google.maps.Animation.DROP
+        });
+        marker.addListener("click", function () {
+          infoWindow.setContent(buildInfo(poi));
+          infoWindow.open(map, marker);
+        });
+
+        if (reduceMotion) {
+          marker.setMap(map);
+        } else {
+          /* gentle staggered drop */
+          (function (m, delay) {
+            window.setTimeout(function () { m.setMap(map); }, delay);
+          })(marker, shown * 18);
+        }
+        shown++;
+      });
+
+      btn.disabled = true;                 /* show once, then disable */
+      btnLabel.textContent = "Markers shown";
+      if (shown > 0) {
+        showStatus(shown + " marker" + (shown === 1 ? "" : "s") + " placed.", false);
+      } else {
+        showStatus("No POIs have a location to map.", false);
+      }
+    });
+
+    /* ---- load POI data ---- */
+    fetch("assets/pois.json")
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (data) {
+        pois = Array.isArray(data) ? data : [];
+        var mappable = pois.filter(getLatLng).length;
+        updateCount(mappable, pois.length);
+        poisReady = true;
+        enableWhenReady();
+      })
+      .catch(function (err) {
+        countEl.textContent = "Could not load locations.";
+        showStatus("Failed to load assets/pois.json (" + err.message + ").", true);
+      });
+
+    /* ---- Google Maps callback (global) ---- */
+    window.initMap = function () {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: GENEVA,
+        zoom: DEFAULT_ZOOM,
+        clickableIcons: false,
+        mapTypeControl: false,
+        streetViewControl: false,
+        styles: [
+          { featureType: "poi", stylers: [{ visibility: "off" }] },
+          { featureType: "transit", elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+          { featureType: "road", elementType: "labels.icon", stylers: [{ visibility: "off" }] }
+        ]
+      });
+      infoWindow = new google.maps.InfoWindow();
+      mapReady = true;
+      enableWhenReady();
+    };
+
+    /* ---- friendly message if the key is missing/invalid ---- */
+    window.gm_authFailure = function () {
+      showStatus("Google Maps failed to load — check the API key.", true);
+    };
+  })();
+  </script>
+
+  <!-- Google Maps JS API — replace YOUR_API_KEY with your own (referrer-restricted) key -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD954T11L5bwh_34rHR4S79dy4DrdVrCCY&loading=async&callback=initMap">
+  </script>
+</body>
+</html>
