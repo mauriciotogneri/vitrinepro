@@ -61,13 +61,14 @@ Food & Drink
 - winery
 
 Auto Repair
-- Auto Repair Shop 
-- Mechanic
-- Car Wash
-- Tire Shop
-- Motorcycle Repair Shop
-- Bicycle Repair Shop
-- Car Paint Shop
+- car_repair
+- car_wash
+- tire_shop
+- bicycle_store
+- auto_parts_store
+- car_dealer
+- car_rental
+- ebike_charging_station
 
 Craft & Hobbies
 - Haberdashery
