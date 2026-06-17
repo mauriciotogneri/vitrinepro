@@ -1,9 +1,9 @@
 Beauty & Wellness
 - hair_salon
-- hair_care
 - beauty_salon
-- barber_shop
 - nail_salon
+- hair_care
+- barber_shop
 - massage_spa
 - massage
 - spa
