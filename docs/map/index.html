@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Geneva — Points of Interest</title>
+<title>Map</title>
 <meta name="description" content="An interactive Google map of points of interest around Geneva, Switzerland." />
 <meta name="theme-color" content="#F6F3EC" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23C81E1E' d='M12 2C8.1 2 5 5.1 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.9-3.1-7-7-7z'/%3E%3Ccircle cx='12' cy='9' r='2.6' fill='%23F6F3EC'/%3E%3C/svg%3E" />
@@ -410,7 +410,6 @@ body{
       CATEGORIES.forEach(function (cat, idx) {
         var details = document.createElement("details");
         details.className = "cat";
-        if (idx === 0) details.open = true;
 
         var summary = document.createElement("summary");
         summary.className = "cat__head";
