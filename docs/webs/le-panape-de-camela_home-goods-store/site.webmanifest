@@ -1,0 +1,16 @@
+{
+  "name": "Le Panapé de Caméla",
+  "short_name": "Le Panapé",
+  "description": "Boutique d'objets de décoration et de cadeaux originaux au cœur de Genève.",
+  "lang": "fr-CH",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBF8EE",
+  "theme_color": "#1F1C1C",
+  "icons": [
+    { "src": "assets/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "assets/favicon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" },
+    { "src": "assets/apple-touch-icon.png", "type": "image/png", "sizes": "180x180", "purpose": "any" }
+  ]
+}
