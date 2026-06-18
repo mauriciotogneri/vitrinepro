@@ -452,18 +452,20 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
 .review-card .when { color: var(--ink-soft); font-size: 0.82rem; }
 .review-card .src { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
 
-/* aggregate rating tile — light, brand-gold (the lead cell of the grid) */
+/* aggregate rating tile — black, the lead cell of the grid */
 .review-score {
   justify-content: center;
   align-items: flex-start;
   gap: 0.5rem;
-  background: #fbf2d9;
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
   border-left-color: var(--gold);
 }
-.review-score .big { font-family: var(--font-display); font-weight: 700; font-size: 2.9rem; line-height: 1; color: var(--gold-deep); }
-.review-score .big span { font-size: 1.05rem; color: var(--ink-soft); font-weight: 600; }
+.review-score .big { font-family: var(--font-display); font-weight: 700; font-size: 2.9rem; line-height: 1; color: var(--paper); }
+.review-score .big span { font-size: 1.05rem; color: #d9d4c4; font-weight: 600; }
 .review-score .stars { color: var(--gold); font-size: 1.2rem; }
-.review-score p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
+.review-score p { margin: 0; color: #d9d4c4; font-size: 0.9rem; }
 
 /* ---------- Location ---------- */
 .location-grid {
