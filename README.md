@@ -1,5 +1,1 @@
 # Websites
-
-## TODO
-
-- Analytics
