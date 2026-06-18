@@ -281,7 +281,7 @@ p { text-wrap: pretty; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(1.6rem, 4vw, 3.4rem); align-items: start; }
 .contact-info .lede { margin-bottom: 1.8rem; }
 .contact-list { list-style: none; padding: 0; display: grid; gap: .9rem; }
-.contact-list a, .contact-row {
+.contact-list a {
   display: flex; align-items: center; gap: 1rem; padding: 1.05rem 1.25rem;
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--corner);
   transition: border-color var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
