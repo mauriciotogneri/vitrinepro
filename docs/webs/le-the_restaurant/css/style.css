@@ -22,7 +22,6 @@
   --seal-deep: #7f2d20;   /* darker red for hover/depth */
   --ember:     #e08a5f;   /* clay-coral: links/accents as TEXT on dark (~6.6:1) */
   --ember-2:   #ec9d72;   /* brighter coral for large display accents */
-  --clay:      #a8663d;   /* Yixing terracotta — decorative / large only */
   --glow:      rgba(211,154,90,.30); /* warm lantern radial */
 
   /* --- cream "paper" panels & text on them --- */
