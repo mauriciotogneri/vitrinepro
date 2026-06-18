@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vndly.github.io/websites/webs/le-the_restaurant/sitemap.xml

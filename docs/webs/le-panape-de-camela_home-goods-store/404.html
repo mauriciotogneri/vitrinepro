@@ -4,34 +4,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#15508c">
   <title>Page introuvable — Le Panapé de Caméla</title>
   <style>
-    :root { --ink:#1f1c1c; --cream:#fdf4e1; --accent:#c40c0c; --soft:#5e5b52; }
+    :root { --ink:#2a1a17; --bone:#fbf0da; --cobalt:#15508c; --chili:#d62828; --soft:#6c4a3f; }
     * { box-sizing: border-box; }
     body {
       margin: 0; min-height: 100vh;
       display: grid; place-items: center; padding: 2rem;
-      background: var(--cream); color: var(--ink);
-      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background-color: var(--bone);
+      background-image:
+        radial-gradient(circle at 20% 15%, rgba(244,168,29,0.10), transparent 45%),
+        radial-gradient(circle at 82% 80%, rgba(21,80,140,0.08), transparent 45%);
+      color: var(--ink);
+      font-family: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
       text-align: center; line-height: 1.6;
     }
-    .mark { width: 64px; height: 64px; margin: 0 auto 1.5rem; }
-    h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin: 0 0 .5rem; letter-spacing: -.02em; }
-    p { margin: .25rem 0; color: var(--soft); max-width: 42ch; }
-    .home { display: inline-block; margin-top: 1.5rem; padding: .75rem 1.5rem;
-      background: var(--ink); color: #fff; text-decoration: none; border-radius: 999px; font-weight: 600; }
-    .home:hover { background:#000; }
-    .alt { display:block; margin-top:.9rem; color: var(--accent); font-size:.9rem; }
+    .mark { width: 74px; height: 74px; margin: 0 auto 1.5rem; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(3rem, 9vw, 4.5rem); margin: 0 0 .5rem; letter-spacing: -.02em; color: var(--cobalt); }
+    p { margin: .25rem 0; color: var(--soft); max-width: 44ch; }
+    .home { display: inline-block; margin-top: 1.5rem; padding: .8rem 1.6rem;
+      background: var(--chili); color: #fffaf0; text-decoration: none; border: 2px solid var(--ink);
+      border-radius: 999px; font-weight: 700; box-shadow: 3px 4px 0 rgba(42,26,23,.25); }
+    .home:hover { background:#ab1f1f; transform: translate(-1px,-2px); }
+    .alt { display:block; margin-top:1rem; color: var(--cobalt); font-size:.9rem; font-weight: 600; }
   </style>
 </head>
 <body>
   <main>
     <svg class="mark" viewBox="0 0 512 512" aria-hidden="true">
-      <rect width="512" height="512" rx="96" fill="#1F1C1C"/>
-      <rect x="96" y="96" width="144" height="144" rx="24" fill="#C40C0C"/>
-      <rect x="272" y="96" width="144" height="144" rx="24" fill="#FF6500"/>
-      <rect x="96" y="272" width="144" height="144" rx="24" fill="#CC561E"/>
-      <rect x="272" y="272" width="144" height="144" rx="24" fill="#F6CE71"/>
+      <rect width="512" height="512" rx="112" fill="#15508c"/>
+      <rect x="28" y="28" width="456" height="456" rx="86" fill="none" stroke="#f4a81d" stroke-width="14"/>
+      <path d="M256 198C230 170 246 148 256 116 266 148 282 170 256 198Z" fill="#f4a81d" stroke="#2a1a17" stroke-width="9" stroke-linejoin="round"/>
+      <path d="M256 432C150 354 110 286 110 222c0-46 36-74 76-74 34 0 58 22 70 52 12-30 36-52 70-52 40 0 76 28 76 74 0 64-40 132-146 210z" fill="#d62828" stroke="#2a1a17" stroke-width="16" stroke-linejoin="round"/>
+      <path d="M256 250c-16 26 14 38 0 64-20-12-22-44 0-64z" fill="#f4a81d"/>
     </svg>
     <h1>404</h1>
     <p><strong>Cette page n'existe pas.</strong> · <strong>This page doesn't exist.</strong></p>
