@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html lang="fr-CH">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Yummy Coffee — Café cosy &amp; petit-déjeuner maison à Plainpalais, Genève</title>
-<meta name="description" content="Yummy Coffee est un petit café très apprécié de la rue Dancet, à Plainpalais (Genève). Café préparé avec soin, chai au lait d'amande et pâtisseries maison dès 7h30, du lundi au vendredi. Noté 5,0 sur Google." />
+<title>Yummy Coffee — Cosy coffee &amp; homemade breakfast in Plainpalais, Geneva</title>
+<meta name="description" content="Yummy Coffee is a small, much-loved café on Rue Dancet in Geneva's Plainpalais. Carefully brewed coffee, almond-milk chai and homemade pastries from 7:30, weekday mornings. Rated 5.0 on Google." />
 <meta name="theme-color" content="#FBF3E4" />
 
 <!-- ============================================================
-     YUMMY COFFEE — site statique bilingue (FR par défaut, EN sous /en/)
+     YUMMY COFFEE — bilingual static site (FR default, EN under /en/)
      ------------------------------------------------------------
-     STRUCTURE :
-       • index.html      → cette page (français, langue par défaut)
-       • en/index.html   → version anglaise
-       • css/style.css   → tous les styles (partagés)
-       • js/main.js      → toutes les interactions (partagées)
-     POUR PERSONNALISER :
-       1. COULEURS / POLICES → css/style.css, bloc :root { … }
-       2. PHOTOS ........... cherchez "PHOTO:" ci-dessous (URL à remplacer).
-                             Si une photo ne charge pas, un dégradé chaud
-                             s'affiche — jamais d'image cassée.
-       3. CARTE / PRIX ..... cherchez "MENU DATA" — simple HTML.
-       4. HORAIRES / ADRESSE cherchez "VISIT".
-       5. AVIS ............. cherchez "REVIEWS".
+     STRUCTURE:
+       • ../index.html   → French (default language)
+       • index.html      → this page (English)
+       • ../css/style.css → all styles (shared)
+       • ../js/main.js    → all interactions (shared)
+     TO CUSTOMISE:
+       1. COLOURS / FONTS → ../css/style.css, :root { … } block
+       2. PHOTOS ........ search "PHOTO:" below (URL to swap).
+                          A warm gradient shows if a photo fails.
+       3. MENU / PRICES . search "MENU DATA" — plain HTML.
+       4. HOURS / ADDRESS search "VISIT".
+       5. REVIEWS ....... search "REVIEWS".
      ============================================================ -->
 
-<link rel="canonical" href="https://vndly.github.io/websites/webs/yummy_coffee/" />
+<link rel="canonical" href="https://vndly.github.io/websites/webs/yummy_coffee/en/" />
 <link rel="alternate" hreflang="fr-CH" href="https://vndly.github.io/websites/webs/yummy_coffee/" />
 <link rel="alternate" hreflang="fr" href="https://vndly.github.io/websites/webs/yummy_coffee/" />
 <link rel="alternate" hreflang="en" href="https://vndly.github.io/websites/webs/yummy_coffee/en/" />
@@ -33,25 +32,25 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Yummy Coffee" />
-<meta property="og:locale" content="fr_CH" />
-<meta property="og:locale:alternate" content="en" />
-<meta property="og:title" content="Yummy Coffee — Café cosy &amp; petit-déjeuner maison à Plainpalais, Genève" />
-<meta property="og:description" content="Café préparé avec soin, chai au lait d'amande et pâtisseries maison, dès 7h30 à Plainpalais. Noté 5,0 sur Google." />
-<meta property="og:url" content="https://vndly.github.io/websites/webs/yummy_coffee/" />
+<meta property="og:locale" content="en" />
+<meta property="og:locale:alternate" content="fr_CH" />
+<meta property="og:title" content="Yummy Coffee — Cosy coffee &amp; homemade breakfast in Plainpalais, Geneva" />
+<meta property="og:description" content="Carefully brewed coffee, almond-milk chai and homemade pastries from 7:30 in Plainpalais. Rated 5.0 on Google." />
+<meta property="og:url" content="https://vndly.github.io/websites/webs/yummy_coffee/en/" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Yummy Coffee — Café cosy à Plainpalais, Genève" />
-<meta name="twitter:description" content="Café préparé avec soin, chai au lait d'amande et pâtisseries maison, dès 7h30 à Plainpalais." />
+<meta name="twitter:title" content="Yummy Coffee — Cosy coffee in Plainpalais, Geneva" />
+<meta name="twitter:description" content="Carefully brewed coffee, almond-milk chai and homemade pastries from 7:30 in Plainpalais." />
 
-<!-- Bootstrap 5 (grille + utilitaires) -->
+<!-- Bootstrap 5 (grid + utilities) -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-<!-- Bootstrap Icons (petites icônes : instagram, horloge, épingle, flèche) -->
+<!-- Bootstrap Icons (small UI icons: instagram, clock, pin, arrow) -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-<!-- Polices : Bricolage Grotesque (titres) · DM Sans (texte) · Caveat (accents manuscrits) -->
+<!-- Fonts: Bricolage Grotesque (display) · DM Sans (body) · Caveat (handwritten accents) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Caveat:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="../css/style.css" />
 </head>
 
 <body id="top">
@@ -59,19 +58,19 @@
 <!-- ===================== TOP BAR ===================== -->
 <div class="topbar">
   <div class="wrap">
-    <span><i class="bi bi-geo-alt-fill"></i> Rue Dancet 8, Plainpalais — Genève</span>
+    <span><i class="bi bi-geo-alt-fill"></i> Rue Dancet 8, Plainpalais — Geneva</span>
     <span class="dot hide-xs">•</span>
-    <span class="hide-xs"><i class="bi bi-clock-fill"></i> Ouvert du lundi au vendredi dès 7h30</span>
+    <span class="hide-xs"><i class="bi bi-clock-fill"></i> Open Mon–Fri from 7:30</span>
     <span class="dot">•</span>
-    <span><span class="stars">★★★★★</span> 5,0 sur Google</span>
+    <span><span class="stars">★★★★★</span> 5.0 on Google</span>
   </div>
 </div>
 
 <!-- ===================== NAV ===================== -->
 <header class="nav" id="nav">
   <div class="wrap nav__inner">
-    <a class="brand" href="#top" aria-label="Yummy Coffee — accueil">
-      <!-- Logo : soleil + tasse fumante -->
+    <a class="brand" href="#top" aria-label="Yummy Coffee — home">
+      <!-- Brand mark: sun + steaming cup -->
       <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
         <g stroke="#E89B2E" stroke-width="2.4" stroke-linecap="round">
           <circle cx="24" cy="22" r="7.5" fill="#E89B2E" stroke="none"/>
@@ -88,20 +87,20 @@
       Yummy <b>Coffee</b>
     </a>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false"><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false"><span></span></button>
 
-    <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
-      <a href="#story">Notre histoire</a>
-      <a href="#favourites">Nos favoris</a>
-      <a href="#menu">Carte</a>
-      <a href="#gallery">Galerie</a>
-      <a href="#visit">Nous trouver</a>
-      <span class="lang" aria-label="Langue">
-        <a href="index.html" hreflang="fr-CH" aria-current="true">FR</a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#story">Our story</a>
+      <a href="#favourites">Favourites</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#visit">Visit</a>
+      <span class="lang" aria-label="Language">
+        <a href="../index.html" hreflang="fr-CH">FR</a>
         <span class="sep" aria-hidden="true">/</span>
-        <a href="en/index.html" hreflang="en">EN</a>
+        <a href="index.html" hreflang="en" aria-current="true">EN</a>
       </span>
-      <a class="btn-yc btn-honey nav-cta" href="#visit"><i class="bi bi-cup-hot-fill"></i> Venez nous voir</a>
+      <a class="btn-yc btn-honey nav-cta" href="#visit"><i class="bi bi-cup-hot-fill"></i> Find us</a>
     </nav>
   </div>
 </header>
@@ -112,22 +111,22 @@
     <div class="reveal">
       <span class="eyebrow">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
-        bonjour, Genève
+        bonjour, Geneva
       </span>
-      <h1>Les matins ont <span class="swash">meilleur</span> goût ici.</h1>
-      <p class="lead">Un petit café très apprécié, à deux pas de la Plaine de Plainpalais — café préparé avec soin, chai au lait d'amande et pâtisseries maison, servis dès 7h30. Installez-vous, ou emportez.</p>
+      <h1>Mornings taste <span class="swash">better</span> here.</h1>
+      <p class="lead">A tiny, much-loved café tucked just off the Plaine de Plainpalais — carefully brewed coffee, almond-milk chai and pastries baked in-house, served from half past seven. Pull up a chair, or grab it to go.</p>
       <div class="hero__cta">
-        <a class="btn-yc btn-honey" href="#menu"><i class="bi bi-journal-text"></i> Voir la carte</a>
-        <a class="btn-yc btn-outline" href="#visit"><i class="bi bi-geo-alt"></i> Nous trouver à Plainpalais</a>
+        <a class="btn-yc btn-honey" href="#menu"><i class="bi bi-journal-text"></i> See the menu</a>
+        <a class="btn-yc btn-outline" href="#visit"><i class="bi bi-geo-alt"></i> Find us in Plainpalais</a>
       </div>
       <div class="hero__rating">
         <span class="stars">★★★★★</span>
-        <span><strong>5,0</strong> — 88 habitués ravis sur Google</span>
+        <span><strong>5.0</strong> from 88 happy regulars on Google</span>
       </div>
     </div>
 
     <div class="hero__media reveal">
-      <!-- Soleil dessiné à la main -->
+      <!-- Hand-drawn sun -->
       <svg class="hero__sun" viewBox="0 0 200 200" fill="none" aria-hidden="true">
         <circle cx="100" cy="100" r="44" fill="currentColor" opacity=".22"/>
         <g stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".55">
@@ -138,50 +137,50 @@
         </g>
       </svg>
 
-      <!-- PHOTO : tasse de café du hero — remplacer cette URL -->
-      <div class="hero__photo" role="img" aria-label="Une tasse de café fraîchement servie chez Yummy Coffee"></div>
+      <!-- PHOTO: hero cup of coffee — replace this URL -->
+      <div class="hero__photo" role="img" aria-label="A freshly poured cup of coffee at Yummy Coffee"></div>
 
-      <!-- Vapeur -->
+      <!-- Steam -->
       <svg class="hero__steam" viewBox="0 0 60 80" fill="none" aria-hidden="true">
         <path class="steam-path" d="M18 70 C10 56 26 50 18 36 C12 26 24 18 18 6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
         <path class="steam-path" d="M30 72 C22 58 38 52 30 38 C24 28 36 20 30 8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
         <path class="steam-path" d="M42 70 C34 56 50 50 42 36 C36 26 48 18 42 6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
       </svg>
 
-      <!-- Doodle croissant -->
+      <!-- Croissant doodle -->
       <svg class="hero__doodle croissant" viewBox="0 0 80 60" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
         <path d="M8 40 C18 14 62 14 72 40 C58 34 50 46 40 40 C30 34 22 46 8 40 Z"/>
         <path d="M40 40 L40 30 M30 38 L27 31 M50 38 L53 31"/>
       </svg>
-      <!-- Doodle grain de café -->
+      <!-- Bean doodle -->
       <svg class="hero__doodle bean" viewBox="0 0 40 56" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="3.4" stroke-linecap="round">
         <ellipse cx="20" cy="28" rx="15" ry="24"/><path d="M20 6 C12 18 28 38 20 50"/>
       </svg>
 
-      <div class="hero__tag">fait main <small>frais, chaque matin</small></div>
+      <div class="hero__tag">made by hand <small>fresh, every morning</small></div>
     </div>
   </div>
 
   <div class="scrolldown">
-    <a href="#story" aria-label="Défiler vers notre histoire">défiler <i class="bi bi-arrow-down"></i></a>
+    <a href="#story" aria-label="Scroll to our story">scroll <i class="bi bi-arrow-down"></i></a>
   </div>
 </section>
 
 <!-- ===================== MARQUEE ===================== -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track" id="marqueeTrack">
-    <!-- dupliqué en JS pour une boucle continue -->
-    <span>Fraîchement préparé
+    <!-- duplicated in JS for seamless loop -->
+    <span>Freshly brewed
       <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-      Pâtisseries maison
+      Homemade pastries
       <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-      Chai au lait d'amande
+      Almond-milk chai
       <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-      Coin cosy
+      Cosy corner
       <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-      Ouvert dès 7h30
+      Open from 7:30
       <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-      Vente à l'emporter
+      Takeaway welcome
       <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
     </span>
   </div>
@@ -193,29 +192,29 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6">
         <div class="story__media reveal">
-          <!-- PHOTO : intérieur du café / barista — remplacer cette URL -->
-          <div class="story__photo" role="img" aria-label="L'intérieur cosy de Yummy Coffee"></div>
+          <!-- PHOTO: café interior / barista — replace this URL -->
+          <div class="story__photo" role="img" aria-label="The cosy interior of Yummy Coffee"></div>
           <div class="story__badge">
             <div>
-              <div class="num">5,0</div>
-              <small>note Google</small>
+              <div class="num">5.0</div>
+              <small>Google rating</small>
             </div>
           </div>
         </div>
       </div>
       <div class="col-lg-6 reveal">
-        <span class="eyebrow">notre petit coin</span>
-        <h2>Un petit café au <span class="underline-hand">grand accueil
+        <span class="eyebrow">our little corner</span>
+        <h2>A small café with a <span class="underline-hand">big welcome
           <svg viewBox="0 0 200 12" fill="none" preserveAspectRatio="none"><path d="M2 8 C40 2 80 2 120 7 C150 11 180 5 198 4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
         </span></h2>
-        <p>Yummy Coffee se niche tranquillement à la rue Dancet, à quelques minutes de la Plaine de Plainpalais et tout près d'Uni Mail. C'est le genre d'endroit où le barista connaît votre commande, où les croissants sortent tièdes du four, et où un petit « bonjour » vous accueille à l'entrée.</p>
-        <p>On fait simple et avec soin : un vrai bon café, un chai au lait d'amande pour lequel on traverse la ville, et un petit comptoir de pâtisseries et de petits-déjeuners préparés frais chaque matin. Rien de compliqué — juste de bonnes choses, bien faites, dans un lieu où l'on se sent chez soi.</p>
+        <p>Yummy Coffee sits quietly on Rue Dancet, a couple of minutes from the Plaine de Plainpalais and just down the road from Uni Mail. It's the kind of place where the barista learns your order, the croissants come out warm, and a quiet "bonjour" greets you on the way in.</p>
+        <p>We keep things simple and made-with-care: proper coffee, an almond-milk chai people travel for, and a little counter of bakes and breakfast prepared fresh each morning. Nothing fussy — just good things, done well, in a room that feels like it's yours.</p>
         <ul class="story__list">
-          <li><i class="bi bi-check-circle-fill"></i><span>Café de spécialité &amp; chai au lait d'amande, préparés à la commande</span></li>
-          <li><i class="bi bi-check-circle-fill"></i><span>Croissants, gâteau aux pommes, brownies &amp; sandwichs maison</span></li>
-          <li><i class="bi bi-check-circle-fill"></i><span>Sur place ou à l'emporter — et doux pour le porte-monnaie (1–10 CHF)</span></li>
+          <li><i class="bi bi-check-circle-fill"></i><span>Specialty coffee &amp; almond-milk chai, made to order</span></li>
+          <li><i class="bi bi-check-circle-fill"></i><span>Homemade croissants, apple cake, brownies &amp; sandwiches</span></li>
+          <li><i class="bi bi-check-circle-fill"></i><span>Sit-in or takeaway — and kind on the wallet (1–10 CHF)</span></li>
         </ul>
-        <p class="signature">— à demain matin ☕</p>
+        <p class="signature">— see you in the morning ☕</p>
       </div>
     </div>
   </div>
@@ -225,8 +224,8 @@
 <section class="section section--cream2" id="favourites">
   <div class="wrap">
     <div class="section-head center reveal">
-      <span class="eyebrow">ce qu'on aime chez nous</span>
-      <h2>Trois bonnes raisons de passer</h2>
+      <span class="eyebrow">what we're loved for</span>
+      <h2>Three good reasons to drop by</h2>
     </div>
     <div class="feat-grid">
       <article class="feat reveal">
@@ -237,8 +236,8 @@
             <path class="steam-path" d="M18 12 c-3 -3 3 -5 0 -8" /><path class="steam-path" d="M26 12 c-3 -3 3 -5 0 -8" />
           </svg>
         </div>
-        <h3>Un café préparé avec soin</h3>
-        <p>De l'espresso vite fait du matin au flat white qui mérite qu'on prenne son temps — sans oublier le chai latte au lait d'amande dont nos habitués raffolent.</p>
+        <h3>Carefully brewed coffee</h3>
+        <p>From a quick morning espresso to a flat white worth slowing down for — plus the almond-milk chai latte our regulars keep coming back for.</p>
       </article>
 
       <article class="feat reveal">
@@ -248,8 +247,8 @@
             <path d="M24 32 V22 M16 30 L12 22 M32 30 L36 22"/>
           </svg>
         </div>
-        <h3>Des pâtisseries maison</h3>
-        <p>Croissants pur beurre, brownies fondants et ce fameux gâteau aux pommes — préparés sur place et meilleurs encore tièdes, au sortir du four.</p>
+        <h3>Homemade bakes</h3>
+        <p>All-butter croissants, fudgy brownies and that famous apple cake — baked in-house and best while they're still warm from the morning.</p>
       </article>
 
       <article class="feat reveal">
@@ -259,8 +258,8 @@
             <path d="M24 6 v4"/>
           </svg>
         </div>
-        <h3>Un vrai petit-déjeuner</h3>
-        <p>Ouvert dès 7h30, du sandwich au saumon fumé au granola et au jus frais — la façon la plus douce de commencer une matinée genevoise.</p>
+        <h3>A proper breakfast</h3>
+        <p>Open from 7:30 with everything from a smoked-salmon sandwich to granola and fresh juice — the gentlest possible start to a Geneva morning.</p>
       </article>
     </div>
   </div>
@@ -270,22 +269,22 @@
 <section class="section" id="menu">
   <div class="wrap">
     <div class="section-head center reveal">
-      <span class="eyebrow">quelques-uns de nos favoris</span>
-      <h2>La carte</h2>
-      <p class="lead">Un aperçu de ce qui vous attend au comptoir. Les pâtisseries changent au gré des saisons et de l'humeur du jour.</p>
+      <span class="eyebrow">a few of our favourites</span>
+      <h2>The menu</h2>
+      <p class="lead">A taste of what's on the counter. Bakes change with the season and the baker's mood.</p>
     </div>
 
-    <!-- Onglets -->
-    <div class="menu-tabs reveal" role="tablist" aria-label="Catégories de la carte">
-      <button class="menu-tab is-active" role="tab" aria-selected="true" data-pane="coffee">Cafés &amp; boissons</button>
-      <button class="menu-tab" role="tab" aria-selected="false" data-pane="breakfast">Petit-déjeuner</button>
-      <button class="menu-tab" role="tab" aria-selected="false" data-pane="sweet">Douceurs</button>
-      <button class="menu-tab" role="tab" aria-selected="false" data-pane="cold">Frais &amp; glacé</button>
+    <!-- Tabs -->
+    <div class="menu-tabs reveal" role="tablist" aria-label="Menu categories">
+      <button class="menu-tab is-active" role="tab" aria-selected="true" data-pane="coffee">Coffee &amp; drinks</button>
+      <button class="menu-tab" role="tab" aria-selected="false" data-pane="breakfast">Breakfast</button>
+      <button class="menu-tab" role="tab" aria-selected="false" data-pane="sweet">Sweet things</button>
+      <button class="menu-tab" role="tab" aria-selected="false" data-pane="cold">Cold &amp; fresh</button>
     </div>
 
-    <!-- MENU DATA — modifiez librement noms / prix / descriptions -->
+    <!-- MENU DATA — edit names / prices / descriptions freely -->
     <div class="reveal">
-      <!-- Cafés -->
+      <!-- Coffee -->
       <div class="menu-pane is-active" id="pane-coffee" role="tabpanel">
         <div class="menu-grid">
           <div class="menu-item"><div><span class="menu-item__name">Espresso</span></div><div class="menu-item__price">3.20</div></div>
@@ -293,45 +292,45 @@
           <div class="menu-item"><div><span class="menu-item__name">Cappuccino</span></div><div class="menu-item__price">4.50</div></div>
           <div class="menu-item"><div><span class="menu-item__name">Flat white</span></div><div class="menu-item__price">5.00</div></div>
           <div class="menu-item"><div><span class="menu-item__name">Caffè latte</span></div><div class="menu-item__price">4.80</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Chai latte au lait d'amande</span><span class="menu-item__tag">le chouchou</span><div class="menu-item__desc">Chai épicé, doucement moussé au lait d'amande.</div></div><div class="menu-item__price">5.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Chocolat chaud</span></div><div class="menu-item__price">4.80</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Théière</span></div><div class="menu-item__price">4.20</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Almond-milk chai latte</span><span class="menu-item__tag">a favourite</span><div class="menu-item__desc">Spiced chai, gently steamed with almond milk.</div></div><div class="menu-item__price">5.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Hot chocolate</span></div><div class="menu-item__price">4.80</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Pot of tea</span></div><div class="menu-item__price">4.20</div></div>
         </div>
       </div>
-      <!-- Petit-déjeuner -->
+      <!-- Breakfast -->
       <div class="menu-pane" id="pane-breakfast" role="tabpanel">
         <div class="menu-grid">
-          <div class="menu-item"><div><span class="menu-item__name">Le petit-déjeuner Yummy</span><div class="menu-item__desc">Café, jus d'orange frais et croissant avec confiture.</div></div><div class="menu-item__price">9.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Sandwich au saumon fumé</span><span class="menu-item__tag">la star de la maison</span></div><div class="menu-item__price">9.00</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Tartine d'avocat sur pain au levain</span></div><div class="menu-item__price">8.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Œufs à la coque &amp; mouillettes</span></div><div class="menu-item__price">7.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Granola, yaourt &amp; fruits</span></div><div class="menu-item__price">7.00</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Croque jambon-fromage</span></div><div class="menu-item__price">6.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">The Yummy breakfast</span><div class="menu-item__desc">Coffee, fresh orange juice and a croissant with jam.</div></div><div class="menu-item__price">9.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Smoked-salmon sandwich</span><span class="menu-item__tag">house favourite</span></div><div class="menu-item__price">9.00</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Avocado toast on sourdough</span></div><div class="menu-item__price">8.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Soft-boiled eggs &amp; soldiers</span></div><div class="menu-item__price">7.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Granola, yoghurt &amp; fruit</span></div><div class="menu-item__price">7.00</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Ham &amp; cheese toastie</span></div><div class="menu-item__price">6.50</div></div>
         </div>
       </div>
-      <!-- Douceurs -->
+      <!-- Sweet -->
       <div class="menu-pane" id="pane-sweet" role="tabpanel">
         <div class="menu-grid">
-          <div class="menu-item"><div><span class="menu-item__name">Croissant pur beurre</span></div><div class="menu-item__price">2.80</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">All-butter croissant</span></div><div class="menu-item__price">2.80</div></div>
           <div class="menu-item"><div><span class="menu-item__name">Pain au chocolat</span></div><div class="menu-item__price">3.20</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Gâteau aux pommes maison</span><span class="menu-item__tag">le fameux</span></div><div class="menu-item__price">4.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Brownie fondant</span></div><div class="menu-item__price">4.00</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Gâteau aux carottes</span></div><div class="menu-item__price">4.80</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Cookie du jour</span></div><div class="menu-item__price">3.00</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Homemade apple cake</span><span class="menu-item__tag">the famous one</span></div><div class="menu-item__price">4.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Fudgy brownie</span></div><div class="menu-item__price">4.00</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Carrot cake</span></div><div class="menu-item__price">4.80</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Cookie of the day</span></div><div class="menu-item__price">3.00</div></div>
         </div>
       </div>
-      <!-- Frais -->
+      <!-- Cold -->
       <div class="menu-pane" id="pane-cold" role="tabpanel">
         <div class="menu-grid">
-          <div class="menu-item"><div><span class="menu-item__name">Jus d'orange frais</span></div><div class="menu-item__price">5.00</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Latte glacé</span></div><div class="menu-item__price">5.20</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Matcha glacé</span></div><div class="menu-item__price">5.80</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Limonade maison</span></div><div class="menu-item__price">4.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Eau gazeuse</span></div><div class="menu-item__price">3.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Fresh orange juice</span></div><div class="menu-item__price">5.00</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Iced latte</span></div><div class="menu-item__price">5.20</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Iced matcha</span></div><div class="menu-item__price">5.80</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Homemade lemonade</span></div><div class="menu-item__price">4.50</div></div>
+          <div class="menu-item"><div><span class="menu-item__name">Sparkling water</span></div><div class="menu-item__price">3.50</div></div>
         </div>
       </div>
     </div>
-    <p class="menu-note">Tous les prix en CHF. Carte &amp; sans contact acceptés. Carte indicative — passez découvrir les pâtisseries du jour.</p>
+    <p class="menu-note">All prices in CHF. Card &amp; contactless welcome. A sample menu — pop in to see today's bakes.</p>
   </div>
 </section>
 
@@ -339,32 +338,32 @@
 <section class="section section--cream2" id="gallery">
   <div class="wrap">
     <div class="section-head center reveal">
-      <span class="eyebrow">un coup d'œil à l'intérieur</span>
-      <h2>Instantanés du comptoir</h2>
+      <span class="eyebrow">a peek inside</span>
+      <h2>Snapshots from the counter</h2>
     </div>
 
-    <!-- PHOTO : galerie — remplacez data-full + l'URL de fond de chaque .tile__photo.
-         Si une photo ne charge pas, le dégradé chaud + le libellé restent élégants. -->
+    <!-- PHOTO: gallery — swap data-full + the background URL on each .tile__photo.
+         If a photo doesn't load, the warm gradient + label still look intentional. -->
     <div class="gallery reveal">
       <button class="tile big" style="--tile:linear-gradient(150deg,#C98A4A,#5a3c25)" data-full="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1100&q=80">
         <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1100&q=80')"></span>
-        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Latte, fraîchement servi</span>
+        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Latte, just poured</span>
       </button>
       <button class="tile" style="--tile:linear-gradient(150deg,#caa06a,#7b5230)" data-full="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80">
         <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80')"></span>
-        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Croissants tièdes</span>
+        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Warm croissants</span>
       </button>
       <button class="tile" style="--tile:linear-gradient(150deg,#b9824a,#4a3220)" data-full="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80">
         <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80')"></span>
-        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Le coin cosy</span>
+        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>The cosy corner</span>
       </button>
       <button class="tile" style="--tile:linear-gradient(150deg,#d6a35e,#6a4527)" data-full="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=80">
         <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=80')"></span>
-        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Lumière du matin</span>
+        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Morning light</span>
       </button>
       <button class="tile" style="--tile:linear-gradient(150deg,#c79050,#583a23)" data-full="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=80">
         <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=80')"></span>
-        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Tartine d'avocat</span>
+        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Avocado toast</span>
       </button>
     </div>
   </div>
@@ -375,42 +374,42 @@
   <div class="wrap">
     <div class="reviews-head reveal">
       <div>
-        <span class="eyebrow">vos petits mots</span>
-        <h2>Adoré par le quartier</h2>
+        <span class="eyebrow">kind words</span>
+        <h2>Loved by the neighbourhood</h2>
       </div>
       <div class="score">
-        <div class="score__num">5,0</div>
+        <div class="score__num">5.0</div>
         <div>
           <div class="stars" style="font-size:1.2rem">★★★★★</div>
-          <small>Sur la base de 88 avis Google</small>
+          <small>Based on 88 Google reviews</small>
         </div>
       </div>
     </div>
 
-    <!-- REVIEWS — remplacez par vos vrais avis Google quand vous voulez -->
+    <!-- REVIEWS — replace with your real Google reviews when ready -->
     <div class="row g-4">
       <div class="col-md-4 reveal">
         <div class="review">
           <span class="q">&ldquo;</span>
           <div class="stars" style="font-size:.95rem">★★★★★</div>
-          <p>L'accueil le plus chaleureux de Genève, et un flat white à la hauteur. Mes matins de semaine tournent entièrement autour de ce petit endroit.</p>
-          <div class="who"><div class="av">S</div><div><b>Sophie M.</b><span>Avis Google</span></div></div>
+          <p>The friendliest welcome in Geneva, and a flat white to match. My weekday mornings completely revolve around this little place.</p>
+          <div class="who"><div class="av">S</div><div><b>Sophie M.</b><span>Google review</span></div></div>
         </div>
       </div>
       <div class="col-md-4 reveal">
         <div class="review">
           <span class="q">&ldquo;</span>
           <div class="stars" style="font-size:.95rem">★★★★★</div>
-          <p>Ce gâteau aux pommes. Le chai au lait d'amande. Le petit « bonjour » quand on entre. Cinq étoiles, ce n'est honnêtement pas assez.</p>
-          <div class="who"><div class="av">M</div><div><b>Marco R.</b><span>Avis Google</span></div></div>
+          <p>That apple cake. The almond-milk chai. The little "bonjour" when you walk in. Five stars honestly isn't enough.</p>
+          <div class="who"><div class="av">M</div><div><b>Marco R.</b><span>Google review</span></div></div>
         </div>
       </div>
       <div class="col-md-4 reveal">
         <div class="review">
           <span class="q">&ldquo;</span>
           <div class="stars" style="font-size:.95rem">★★★★★</div>
-          <p>Niché juste à côté de la Plaine de Plainpalais — minuscule, ensoleillé et toujours une halte qui vaut le détour avant les cours. Mon adresse dans le quartier.</p>
-          <div class="who"><div class="av">L</div><div><b>Léa B.</b><span>Avis Google</span></div></div>
+          <p>Tucked just off the Plaine de Plainpalais — tiny, sunny and always worth the stop before class. My go-to in the quartier.</p>
+          <div class="who"><div class="av">L</div><div><b>Léa B.</b><span>Google review</span></div></div>
         </div>
       </div>
     </div>
@@ -421,49 +420,49 @@
 <section class="section" id="visit">
   <div class="wrap">
     <div class="section-head center reveal">
-      <span class="eyebrow">venez nous dire bonjour</span>
-      <h2>Nous trouver</h2>
+      <span class="eyebrow">come say hello</span>
+      <h2>Find us</h2>
     </div>
     <div class="row g-4 align-items-stretch">
       <div class="col-lg-5 reveal">
         <div class="visit-card">
           <div class="info-row">
             <div class="ic"><i class="bi bi-geo-alt-fill"></i></div>
-            <div><b>Où</b><br>Rue Dancet 8<br>1205 Genève, Suisse</div>
+            <div><b>Where</b><br>Rue Dancet 8<br>1205 Geneva, Switzerland</div>
           </div>
           <div class="info-row">
             <div class="ic"><i class="bi bi-bus-front-fill"></i></div>
-            <div><b>Pour venir</b><br>À 2 min de l'arrêt Dancet · à quelques pas d'Uni&nbsp;Mail et de la Plaine&nbsp;de&nbsp;Plainpalais</div>
+            <div><b>Getting here</b><br>2 min from the Dancet stop · a short walk from Uni&nbsp;Mail and the Plaine&nbsp;de&nbsp;Plainpalais</div>
           </div>
           <div class="info-row">
             <div class="ic"><i class="bi bi-clock-fill"></i></div>
             <div style="flex:1">
-              <b>Horaires</b>
+              <b>Opening hours</b>
               <ul class="hours">
-                <li><span class="day">Lundi</span><span>7h30 – 13h30</span></li>
-                <li><span class="day">Mardi</span><span>7h30 – 16h30</span></li>
-                <li><span class="day">Mercredi</span><span>7h30 – 16h30</span></li>
-                <li><span class="day">Jeudi</span><span>7h30 – 16h30</span></li>
-                <li><span class="day">Vendredi</span><span>7h30 – 16h30</span></li>
-                <li class="closed"><span class="day">Samedi</span><span>Fermé</span></li>
-                <li class="closed"><span class="day">Dimanche</span><span>Fermé</span></li>
+                <li><span class="day">Monday</span><span>7:30 – 13:30</span></li>
+                <li><span class="day">Tuesday</span><span>7:30 – 16:30</span></li>
+                <li><span class="day">Wednesday</span><span>7:30 – 16:30</span></li>
+                <li><span class="day">Thursday</span><span>7:30 – 16:30</span></li>
+                <li><span class="day">Friday</span><span>7:30 – 16:30</span></li>
+                <li class="closed"><span class="day">Saturday</span><span>Closed</span></li>
+                <li class="closed"><span class="day">Sunday</span><span>Closed</span></li>
               </ul>
             </div>
           </div>
           <div class="info-row">
             <div class="ic"><i class="bi bi-instagram"></i></div>
-            <div><b>Dites bonjour en ligne</b><br><a href="https://www.instagram.com/yummycoffee.gva/" target="_blank" rel="noopener">@yummycoffee.gva</a></div>
+            <div><b>Say hi online</b><br><a href="https://www.instagram.com/yummycoffee.gva/" target="_blank" rel="noopener">@yummycoffee.gva</a></div>
           </div>
-          <a class="btn-yc btn-honey w-100 justify-content-center mt-3" href="https://maps.google.com/?q=Rue+Dancet+8,+1205+Gen%C3%A8ve" target="_blank" rel="noopener"><i class="bi bi-map"></i> Ouvrir dans Google Maps</a>
+          <a class="btn-yc btn-honey w-100 justify-content-center mt-3" href="https://maps.google.com/?q=Rue+Dancet+8,+1205+Gen%C3%A8ve" target="_blank" rel="noopener"><i class="bi bi-map"></i> Open in Google Maps</a>
         </div>
       </div>
       <div class="col-lg-7 reveal">
         <div class="map-frame">
           <iframe
-            title="Carte indiquant Yummy Coffee à la rue Dancet 8, Genève"
+            title="Map showing Yummy Coffee at Rue Dancet 8, Geneva"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Rue+Dancet+8,+1205+Gen%C3%A8ve,+Switzerland&z=16&hl=fr&output=embed"></iframe>
+            src="https://www.google.com/maps?q=Rue+Dancet+8,+1205+Gen%C3%A8ve,+Switzerland&z=16&hl=en&output=embed"></iframe>
         </div>
       </div>
     </div>
@@ -488,56 +487,56 @@
           </svg>
           Yummy <b style="color:var(--honey)">Coffee</b>
         </a>
-        <p style="max-width:34ch">Votre coin cosy de Plainpalais pour un café préparé avec soin et des matins faits maison. À partir de 7h30.</p>
+        <p style="max-width:34ch">Your cosy corner of Plainpalais for carefully brewed coffee and homemade mornings. See you from 7:30.</p>
         <div class="footer__social">
           <a href="https://www.instagram.com/yummycoffee.gva/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
           <a href="https://maps.google.com/?q=Rue+Dancet+8,+1205+Gen%C3%A8ve" target="_blank" rel="noopener" aria-label="Google Maps"><i class="bi bi-geo-alt-fill"></i></a>
         </div>
       </div>
       <div class="col-6 col-lg-3">
-        <h4>Explorer</h4>
+        <h4>Explore</h4>
         <ul class="footer__links">
-          <li><a href="#story">Notre histoire</a></li>
-          <li><a href="#favourites">Nos favoris</a></li>
-          <li><a href="#menu">Carte</a></li>
-          <li><a href="#gallery">Galerie</a></li>
-          <li><a href="#visit">Nous trouver</a></li>
+          <li><a href="#story">Our story</a></li>
+          <li><a href="#favourites">Favourites</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#visit">Visit us</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-4">
-        <h4>Nous trouver</h4>
+        <h4>Find us</h4>
         <ul class="footer__links">
           <li>Rue Dancet 8</li>
-          <li>1205 Genève, Suisse</li>
-          <li class="mt-2">Lun 7h30–13h30</li>
-          <li>Mar–Ven 7h30–16h30</li>
-          <li>Sam &amp; Dim — fermé</li>
+          <li>1205 Geneva, Switzerland</li>
+          <li class="mt-2">Mon 7:30–13:30</li>
+          <li>Tue–Fri 7:30–16:30</li>
+          <li>Sat &amp; Sun — closed</li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© <span id="year"></span> Yummy Coffee · Rue Dancet 8, Genève</span>
+      <span>© <span id="year"></span> Yummy Coffee · Rue Dancet 8, Geneva</span>
       <span class="f-lang">
-        <a href="index.html" aria-current="true">Français</a>
+        <a href="../index.html">Français</a>
         <span class="sep" aria-hidden="true">·</span>
-        <a href="en/index.html">English</a>
+        <a href="index.html" aria-current="true">English</a>
       </span>
-      <span>Fait avec soin &amp; un bon café ☕</span>
+      <span>Made with care &amp; good coffee ☕</span>
     </div>
   </div>
 </footer>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightbox__close" id="lightboxClose" aria-label="Fermer">&times;</button>
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
   <div class="lightbox__img" id="lightboxImg"></div>
 </div>
 
-<!-- Retour en haut -->
-<button class="totop" id="toTop" aria-label="Haut de page"><i class="bi bi-arrow-up"></i></button>
+<!-- Back to top -->
+<button class="totop" id="toTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
 
 <!-- Bootstrap JS (bundle) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/main.js"></script>
+<script src="../js/main.js"></script>
 </body>
 </html>
