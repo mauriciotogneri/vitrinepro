@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Café Chez Martins">
+  <!-- Square brand mark: a pastel de nata (Portuguese custard tart) in the storefront palette.
+       Generated mark to match the placeholder logo; aubergine ground, gold pastry, custard top. -->
+  <rect width="512" height="512" rx="96" fill="#312B45"/>
+  <rect x="26" y="26" width="460" height="460" rx="74" fill="none" stroke="#C29A3B" stroke-width="6"/>
+  <!-- pastry base -->
+  <circle cx="256" cy="262" r="150" fill="#B98232"/>
+  <!-- fluted rim ticks -->
+  <g stroke="#8c5f1f" stroke-width="7" stroke-linecap="round">
+    <line x1="256" y1="118" x2="256" y2="150"/>
+    <line x1="354" y1="138" x2="338" y2="166"/>
+    <line x1="420" y1="206" x2="392" y2="222"/>
+    <line x1="406" y1="320" x2="376" y2="306"/>
+    <line x1="158" y1="138" x2="174" y2="166"/>
+    <line x1="92" y1="206" x2="120" y2="222"/>
+    <line x1="106" y1="320" x2="136" y2="306"/>
+  </g>
+  <!-- custard top -->
+  <circle cx="256" cy="262" r="116" fill="#E8C56A"/>
+  <circle cx="256" cy="262" r="116" fill="none" stroke="#cda84f" stroke-width="5"/>
+  <!-- caramelised spots -->
+  <g fill="#6f3f17">
+    <ellipse cx="214" cy="224" rx="22" ry="16"/>
+    <ellipse cx="300" cy="246" rx="18" ry="13"/>
+    <ellipse cx="240" cy="300" rx="20" ry="14"/>
+    <ellipse cx="306" cy="304" rx="13" ry="10"/>
+    <ellipse cx="196" cy="278" rx="11" ry="8"/>
+  </g>
+</svg>
