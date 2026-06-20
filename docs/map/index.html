@@ -311,6 +311,13 @@ body{
       { name: "Services & Trades",  items: ["tailor","locksmith","plumber","electrician","painter","laundry","art_studio"] },
       { name: "Shops & Retail",     items: ["florist","garden_center","jewelry_store","hardware_store","book_store","shoe_store","cell_phone_store","electronics_store","clothing_store","womens_clothing_store","cosmetics_store","furniture_store","home_goods_store","thrift_store","sporting_goods_store","sportswear_store","toy_store","tea_store","candy_store","liquor_store"] }
     ];
+
+    /* Business types that have an assets/<type>.json file. Only these checkboxes
+       are enabled; the rest stay disabled. Keep in sync when adding a data file. */
+    var AVAILABLE = {
+      coffee_shop: 1,
+      hair_salon: 1
+    };
     var allDetails = [];
 
     var filtersEl = document.getElementById("filters");
@@ -475,7 +482,7 @@ body{
 
     function enableMenu() {
       var cbs = filtersEl.querySelectorAll(".opt__cb");
-      Array.prototype.forEach.call(cbs, function (cb) { cb.disabled = false; });
+      Array.prototype.forEach.call(cbs, function (cb) { cb.disabled = !AVAILABLE[cb.value]; });
     }
 
     /* ---- hover tooltip showing each checkbox's raw business type ---- */
