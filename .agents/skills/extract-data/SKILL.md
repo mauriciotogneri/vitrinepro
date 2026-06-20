@@ -546,8 +546,7 @@ Then make two edits:
      </tr>
      ```
 
-     Website placeholder when no site exists yet: `<td class="c-act"><span class="na" title="No website built">—</span></td>`. Then set the header count `<span class="tag">N storefronts</span>` to the new total number of `<tr>` rows.
-
+     Website placeholder when no site exists yet: `<td class="c-act"><span class="na" title="No website built">—</span></td>`.
 Match on the **data slug** only. A legacy row whose website slug differs from the data slug (e.g. `webs/miro_barbershop` vs the dossier `miro-barber-shop_barber-shop`) won't match, so a fresh row is added — note it in the final summary for the human to reconcile rather than guessing a fuzzy name match.
 
 ### 12. Verify before finishing
@@ -563,7 +562,7 @@ A quick self-check — don't report success without it:
 - The **Branding / Theme** section exists with a labeled **Basis**, valid `#rrggbb` palette values, and named `display`/`body` fonts. If a usable website was found, the basis should be **extracted** — an **inferred** basis despite a known site means both the branding agent and the render assist (step 4b) failed; flag it.
 - The **Missing information** section lists the standard fields that came back empty or low-confidence (e.g. website, opening hours, ratings, reviews, email, social links, genuine logo, extracted branding) so a human knows what to chase — or states that none are missing.
 - When the business has **no working website**, a **Suggested domains** section lists up to 3 available `.ch` candidates (each confirmed available via a DNS NXDOMAIN check) — or, if 3 couldn't be confirmed within the cap, the ones found plus a note. It is **absent** when a working own-site exists.
-- The business is **registered in the portfolio index**: `docs/data.html`'s `SHOPS` map has the `<slug>` entry, and `docs/index.html` has **exactly one** row for it with a working **Data** link (`data.html?slug=<slug>`) — no duplicate row — and the header `… storefronts` count equals the number of `<tr>` rows.
+- The business is **registered in the portfolio index**: `docs/data.html`'s `SHOPS` map has the `<slug>` entry, and `docs/index.html` has **exactly one** row for it with a working **Data** link (`data.html?slug=<slug>`) — no duplicate row.
 
 ## Output template
 

@@ -114,8 +114,7 @@ Register the site in the portfolio index `docs/index.html` — **idempotently, k
 Find the row whose `<slug>` appears in its Website href (`webs/<slug>`) or Data href (`data.html?slug=<slug>`):
 
 - **Row exists** → set its **Website** cell to the live button (below) and refresh the name/trade; **leave the Data cell untouched** — it belongs to `extract-data`.
-- **No row** (e.g. a dossier that predates index registration) → append one matching the existing markup, with the **Website** button and the **Data** cell as a `—` placeholder. Do **not** fabricate a Data link — it only works once the slug is in `docs/data.html`'s `SHOPS` map, which `extract-data` owns. Then set the header count `<span class="tag">N storefronts</span>` to the new total number of `<tr>` rows.
-
+- **No row** (e.g. a dossier that predates index registration) → append one matching the existing markup, with the **Website** button and the **Data** cell as a `—` placeholder. Do **not** fabricate a Data link — it only works once the slug is in `docs/data.html`'s `SHOPS` map, which `extract-data` owns.
 Use the **Business Name** from the dossier and a short **trade** label for the primary type, matching the style of the existing rows. Cell markup:
 
 ```html
@@ -139,7 +138,7 @@ Don't report success without checking:
 - No tax/registration ID anywhere (no Swiss UID / `CHE-…`, VAT/TVA, or `taxID`), in visible content **or** JSON-LD.
 - The footer/copyright year is produced by JS (`getFullYear()`) into an empty span — no literal year in the markup.
 - Instagram is linked only when the dossier shows the profile is public; a private profile is not linked.
-- `docs/index.html` has **exactly one** row for this business with a working **Website** link (`webs/<slug>`) — no duplicate row — and the header `… storefronts` count equals the number of `<tr>` rows.
+- `docs/index.html` has **exactly one** row for this business with a working **Website** link (`webs/<slug>`) — no duplicate row.
 
 End with a short summary: the business, `<out>`, sections built vs. omitted (and why), any placeholders to replace before deploy, and anything the dossier lacked that would improve the site.
 
