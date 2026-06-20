@@ -492,6 +492,26 @@ The dossier is the build's **single asset source**, so when genuine media is mis
 
 Trigger only on a genuine absence (no logo, or no photos at all) — if real media exists, add no fallback. Record in the appendix what fallback was produced and why.
 
+### 9b. Propose available .ch domains (when no working website)
+
+When the business has **no working own official website** — step 1b found none or you marked the candidate **broken**, and no own-site surfaced in the merge — propose **3 available `.ch` domains** for the new site. Skip this step entirely when a working own-site exists.
+
+**Build candidates from the business name only** (not the locality):
+
+- ASCII-fold, lowercase, drop punctuation and spaces. **`.ch` only**; **never add a locality token, and strip any `geneve`/`geneva` already in the name** — e.g. `ultrabeautygeneve` → `ultrabeauty.ch`.
+- Generate natural variants: the full name, the spaceless name, a hyphenated form, the name + **a word that fits the business's own type(s)** from `resources/businesses.txt` (e.g. `-coiffure`/`-salon` for `hair_salon`/`barber_shop`, `-cafe` for `coffee_shop`, `-resto` for `restaurant`, `-boulangerie` for `bakery`, `-fleurs` for `florist`), or a short brandable abbreviation. **Never append a type word that doesn't match the business** (e.g. no `-salon` for a café). Prefer natural Swiss-French terms (the sites are fr-CH). Keep them readable.
+
+**Check each for availability via DNS** — the reliable keyless signal for `.ch`, verified in this environment (only confirmed-available domains count):
+
+- **DNS status (decisive):** `dig +noall +comments <name>.ch SOA | grep -oE 'status: [A-Z]+'` — **`NXDOMAIN` = available**, **`NOERROR` = taken** (the name exists in DNS). SWITCH (the `.ch` registry) returns NXDOMAIN only for unregistered names, so this is authoritative; don't rely on `+short NS`/`SOA` having output (a registered domain can answer NOERROR with neither).
+- If a query errors or times out, retry once; if still inconclusive, mark the candidate **uncertain** and don't count it toward the 3.
+
+**Don't** use RDAP or `whois` for `.ch`: `rdap.org` returns 404 for *every* `.ch` name (registered or not — it has no `.ch` service), and the `whois` CLI is usually not installed, so an RDAP 404 or a missing `whois` must **never** be read as "available". (If the skill is later extended past `.ch`, `curl https://rdap.org/domain/<d>` — 404 = available, 200 = taken — works for TLDs RDAP actually serves.)
+
+**Reach 3.** Keep generating and checking until **3 confirmed-available** `.ch` domains are collected, replacing any taken/uncertain candidate with a fresh name variant. **Cap total checks at ~12**: if 3 can't be confirmed within the cap, record whatever was found (even 0–2) and flag that the cap was hit. Never loop indefinitely.
+
+Carry the result into step 10's **Suggested domains** section, each tagged with how and when it was checked.
+
 ### 10. Write the dossier
 
 Write `<dir>/<slug>.md` using the template below. Reference each official asset by its **local path** _and_ its **source URL**; reference each fallback asset by its local path with its generated/illustrative label (and license for `stock-*`). Fill the **Missing information** section with a simple bullet list of the standard fields no source could provide (or that are only low-confidence placeholders, e.g. an inferred theme or generated logo) so they can be completed manually; if nothing is missing, say so.
@@ -508,6 +528,7 @@ A quick self-check — don't report success without it:
 - **Sanity-check the fan-out:** if _every_ source came back `blocked`/`no_data`/`error`, suspect the sub-agents lacked web access (no `WebSearch`/`WebFetch`) rather than a genuine data desert — flag it instead of writing a hollow dossier.
 - The **Branding / Theme** section exists with a labeled **Basis**, valid `#rrggbb` palette values, and named `display`/`body` fonts. If a usable website was found, the basis should be **extracted** — an **inferred** basis despite a known site means both the branding agent and the render assist (step 4b) failed; flag it.
 - The **Missing information** section lists the standard fields that came back empty or low-confidence (e.g. website, opening hours, ratings, reviews, email, social links, genuine logo, extracted branding) so a human knows what to chase — or states that none are missing.
+- When the business has **no working website**, a **Suggested domains** section lists up to 3 available `.ch` candidates (each confirmed available via a DNS NXDOMAIN check) — or, if 3 couldn't be confirmed within the cap, the ones found plus a note. It is **absent** when a working own-site exists.
 
 ## Output template
 
@@ -628,9 +649,19 @@ _(only when no genuine logo/photos were found — decorative stand-ins, **not** 
 - Fallback imagery: <none | generated `logo.svg`; <N> `stock-*` sourced (free-license) because no genuine logo/photos were found>.
 - Other relevant info: <anything captured outside the standard fields>.
 
+## Suggested domains
+
+_(Only when the business has no working website — candidate `.ch` names for the new site, built from the business name and confirmed available at check time. Availability is point-in-time; re-verify before registering.)_
+
+- `<name>.ch` — **available** (DNS: NXDOMAIN, <YYYY-MM-DD>)
+- `<name>-<type-word>.ch` — **available** (DNS: NXDOMAIN, <YYYY-MM-DD>)
+- `<altname>.ch` — **available** (DNS: NXDOMAIN, <YYYY-MM-DD>)
+
+_(If fewer than 3 could be confirmed within the check cap, list those found and say so.)_
+
 ## Missing information
 
-_Standard fields no source could fill, or that are only low-confidence placeholders — a human may be able to supply these manually. If every standard field was found, write "- None — all standard fields were found."_
+_Standard fields no source could fill, or that are only low-confidence placeholders — a human may be able to supply these manually. When **Website** is among them, the **Suggested domains** section above lists available `.ch` candidates for the new build. If every standard field was found, write "- None — all standard fields were found."_
 
 - **<Field>:** <none found on any source | placeholder/inferred — needs a real value>
 - ...
