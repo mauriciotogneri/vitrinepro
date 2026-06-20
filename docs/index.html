@@ -4,61 +4,357 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Websites</title>
+    <meta name="color-scheme" content="dark" />
+    <title>VitrinePro — Storefronts</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
+        :root {
+            --navy: #0f1b2d;
+            --navy2: #162236;
+            --navy3: #1a2a3e;
+            --gold: #c9a84c;
+            --gold2: #e8c97a;
+            --cream: #faf7f2;
+            --gray: #94a0b3;
+            --border: rgba(201, 168, 76, 0.2);
+            --hair: rgba(201, 168, 76, 0.13);
+            --serif: "DM Serif Display", Georgia, serif;
+            --sans: "Inter", system-ui, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
         body {
             margin: 0;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
+            font-family: var(--sans);
+            color: var(--cream);
+            background:
+                radial-gradient(75% 55% at 50% -12%, rgba(201, 168, 76, 0.10), transparent 60%),
+                linear-gradient(180deg, transparent 52%, rgba(0, 0, 0, 0.32)),
+                var(--navy);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Header --- */
+        .top {
+            padding: 0.85rem 2.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bar {
+            display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             gap: 1rem;
-            font-family: system-ui, sans-serif;
-            background: #f4f4f5;
-            color: #18181b;
         }
 
-        h1 {
-            margin: 0 0 1rem;
+        .brand {
+            font-family: var(--serif);
             font-size: 1.5rem;
+            letter-spacing: 0.01em;
+            color: var(--cream);
+        }
+
+        .brand span {
+            color: var(--gold);
+        }
+
+        .tag {
+            font-size: 0.72rem;
             font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold2);
+            padding: 0.4rem 0.85rem;
+            border: 1px solid var(--border);
+            border-radius: 100px;
         }
 
-        a {
-            display: block;
-            width: 260px;
-            padding: 0.9rem 1.25rem;
-            border: 1px solid #d4d4d8;
-            border-radius: 8px;
-            background: #fff;
-            color: #18181b;
+        /* --- Board (the table) --- */
+        .board {
+            flex: 1 1 auto;
+            overflow: auto;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            padding: 0.9rem 2.5rem;
+            background: var(--navy);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gray);
             text-align: center;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: background 0.15s, border-color 0.15s;
+            box-shadow: inset 0 -1px 0 var(--border);
         }
 
-        a:hover {
-            background: #18181b;
-            border-color: #18181b;
-            color: #fff;
+        thead th.h-name {
+            text-align: left;
+        }
+
+        tbody td {
+            border-bottom: 1px solid var(--hair);
+            vertical-align: middle;
+        }
+
+        tbody tr {
+            transition: background 0.15s ease;
+        }
+
+        tbody tr:hover {
+            background: var(--navy2);
+        }
+
+        .c-name {
+            padding: 0 1.5rem 0 2.5rem;
+        }
+
+        .name {
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            letter-spacing: 0.01em;
+            color: var(--cream);
+        }
+
+        .trade {
+            display: block;
+            margin-top: 0.35rem;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .c-act {
+            width: 23%;
+            padding: 0 1.25rem;
+            text-align: center;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.68rem 1.2rem;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-family: var(--sans);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .btn .arr {
+            transition: transform 0.15s ease;
+        }
+
+        .btn:hover .arr {
+            transform: translate(2px, -2px);
+        }
+
+        .btn-site {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--navy);
+        }
+
+        .btn-site:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 22px -8px rgba(201, 168, 76, 0.55);
+        }
+
+        .btn-data {
+            background: transparent;
+            color: var(--gold2);
+            border-color: var(--border);
+        }
+
+        .btn-data:hover {
+            background: rgba(201, 168, 76, 0.12);
+            border-color: var(--gold);
+            transform: translateY(-1px);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--gold2);
+            outline-offset: 2px;
+        }
+
+        .na {
+            color: #4b5568;
+            font-size: 1.1rem;
+            user-select: none;
+        }
+
+        /* --- Mobile: stack each storefront into a card --- */
+        @media (max-width: 620px) {
+            .top {
+                padding: 1.3rem 1.4rem 1.4rem;
+            }
+
+            .board {
+                padding: 1.1rem 1.1rem 0.3rem;
+            }
+
+            table,
+            tbody,
+            tr,
+            td {
+                display: block;
+                width: 100%;
+            }
+
+            table {
+                height: auto;
+            }
+
+            thead {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                padding: 0;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+            }
+
+            tbody tr {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 0.6rem;
+                margin-bottom: 0.85rem;
+                padding: 1.1rem 1.15rem;
+                border: 1px solid var(--border);
+                border-radius: 10px;
+                background: var(--navy2);
+            }
+
+            tbody td {
+                border: none;
+            }
+
+            .c-name {
+                flex: 1 1 100%;
+                padding: 0 0 0.35rem;
+            }
+
+            .c-act {
+                width: auto;
+                padding: 0;
+                text-align: left;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+
+            .btn:hover,
+            .btn:hover .arr {
+                transform: none;
+            }
         }
     </style>
 </head>
 
 <body>
-    <a href="webs/miro_barbershop" target="_blank" rel="noopener">Miro Barber Shop</a>
-    <a href="webs/yummy_coffee" target="_blank" rel="noopener">Yummy Coffee</a>
-    <a href="webs/le-mexicain_restaurant" target="_blank" rel="noopener">Le Mexicain</a>
-    <a href="webs/gase-jean-robert_tailor" target="_blank" rel="noopener">Jean-Robert Gase</a>
-    <a href="webs/fleur-d-oranger_second-hand-shop" target="_blank" rel="noopener">Fleur d'Oranger</a>
-    <a href="webs/toutou-club_pet-groomer" target="_blank" rel="noopener">Toutou-Club</a>
-    <a href="webs/il-colosseo_restaurant" target="_blank" rel="noopener">Il Colosseo</a>
-    <a href="webs/le-panape-de-camela_home-goods-store" target="_blank" rel="noopener">Le Panapé de Caméla</a>
-    <a href="webs/le-the_restaurant" target="_blank" rel="noopener">Le Thé</a>
-    <a href="webs/cafe-chez-martins_cafe" target="_blank" rel="noopener">Café Chez Martins</a>
+    <header class="top">
+        <div class="bar">
+            <span class="brand">Vitrine<span>Pro</span></span>
+            <span class="tag">10 storefronts</span>
+        </div>
+    </header>
+
+    <main class="board">
+        <table>
+            <thead>
+                <tr>
+                    <th class="h-name">Business</th>
+                    <th>Website</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="c-name"><span class="name">Miro Barber Shop</span><span class="trade">Barbershop</span></td>
+                    <td class="c-act"><a class="btn btn-site" href="webs/miro_barbershop" target="_blank" rel="noopener">Visit site<span class="arr">↗</span></a></td>
+                    <td class="c-act"><span class="na" title="No data extracted">—</span></td>
+                </tr>
+                <tr>
+                    <td class="c-name"><span class="name">Yummy Coffee</span><span class="trade">Coffee shop</span></td>
+                    <td class="c-act"><a class="btn btn-site" href="webs/yummy_coffee" target="_blank" rel="noopener">Visit site<span class="arr">↗</span></a></td>
+                    <td class="c-act"><span class="na" title="No data extracted">—</span></td>
+                </tr>
+                <tr>
+                    <td class="c-name"><span class="name">Le Mexicain</span><span class="trade">Restaurant</span></td>
+                    <td class="c-act"><a class="btn btn-site" href="webs/le-mexicain_restaurant" target="_blank" rel="noopener">Visit site<span class="arr">↗</span></a></td>
+                    <td class="c-act"><a class="btn btn-data" href="https://github.com/mauriciotogneri/vitrinepro/blob/main/data/le-mexicain_restaurant/le-mexicain_restaurant.md" target="_blank" rel="noopener">Data<span class="arr">↗</span></a></td>
+                </tr>
+                <tr>
+                    <td class="c-name"><span class="name">Jean-Robert Gase</span><span class="trade">Tailor</span></td>
+                    <td class="c-act"><a class="btn btn-site" href="webs/gase-jean-robert_tailor" target="_blank" rel="noopener">Visit site<span class="arr">↗</span></a></td>
+                    <td class="c-act"><a class="btn btn-data" href="https://github.com/mauriciotogneri/vitrinepro/blob/main/data/gase-jean-robert_tailor/gase-jean-robert_tailor.md" target="_blank" rel="noopener">Data<span class="arr">↗</span></a></td>
+                </tr>
+                <tr>
+                    <td class="c-name"><span class="name">Fleur d'Oranger</span><span class="trade">Second-hand shop</span></td>
+                    <td class="c-act"><a class="btn btn-site" href="webs/fleur-d-oranger_second-hand-shop" target="_blank" rel="noopener">Visit site<span class="arr">↗</span></a></td>
+                    <td class="c-act"><a class="btn btn-data" href="https://github.com/mauriciotogneri/vitrinepro/blob/main/data/fleur-d-oranger_second-hand-shop/fleur-d-oranger_second-hand-shop.md" target="_blank" rel="noopener">Data<span class="arr">↗</span></a></td>
+                </tr>
+                <tr>
+                    <td class="c-name"><span class="name">Toutou-Club</span><span class="trade">Pet groomer</span></td>
+                    <td class="c-act"><a class="btn btn-site" href="webs/toutou-club_pet-groomer" target="_blank" rel="noopener">Visit site<span class="arr">↗</span></a></td>
+                    <td class="c-act"><a class="btn btn-data" href="https://github.com/mauriciotogneri/vitrinepro/blob/main/data/toutou-club_pet-groomer/toutou-club_pet-groomer.md" target="_blank" rel="noopener">Data<span class="arr">↗</span></a></td>
+                </tr>
+                <tr>
+                    <td class="c-name"><span class="name">Il Colosseo</span><span class="trade">Restaurant</span></td>
+                    <td class="c-act"><a class="btn btn-site" href="webs/il-colosseo_restaurant" target="_blank" rel="noopener">Visit site<span class="arr">↗</span></a></td>
+                    <td class="c-act"><a class="btn btn-data" href="https://github.com/mauriciotogneri/vitrinepro/blob/main/data/il-colosseo_restaurant/il-colosseo_restaurant.md" target="_blank" rel="noopener">Data<span class="arr">↗</span></a></td>
+                </tr>
+                <tr>
+                    <td class="c-name"><span class="name">Le Panapé de Caméla</span><span class="trade">Home goods</span></td>
+                    <td class="c-act"><a class="btn btn-site" href="webs/le-panape-de-camela_home-goods-store" target="_blank" rel="noopener">Visit site<span class="arr">↗</span></a></td>
+                    <td class="c-act"><a class="btn btn-data" href="https://github.com/mauriciotogneri/vitrinepro/blob/main/data/le-panape-de-camela_home-goods-store/le-panape-de-camela_home-goods-store.md" target="_blank" rel="noopener">Data<span class="arr">↗</span></a></td>
+                </tr>
+                <tr>
+                    <td class="c-name"><span class="name">Le Thé</span><span class="trade">Restaurant</span></td>
+                    <td class="c-act"><a class="btn btn-site" href="webs/le-the_restaurant" target="_blank" rel="noopener">Visit site<span class="arr">↗</span></a></td>
+                    <td class="c-act"><a class="btn btn-data" href="https://github.com/mauriciotogneri/vitrinepro/blob/main/data/le-the_restaurant/le-the_restaurant.md" target="_blank" rel="noopener">Data<span class="arr">↗</span></a></td>
+                </tr>
+                <tr>
+                    <td class="c-name"><span class="name">Café Chez Martins</span><span class="trade">Café</span></td>
+                    <td class="c-act"><a class="btn btn-site" href="webs/cafe-chez-martins_cafe" target="_blank" rel="noopener">Visit site<span class="arr">↗</span></a></td>
+                    <td class="c-act"><a class="btn btn-data" href="https://github.com/mauriciotogneri/vitrinepro/blob/main/data/cafe-chez-martins_cafe/cafe-chez-martins_cafe.md" target="_blank" rel="noopener">Data<span class="arr">↗</span></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
 </body>
 
 </html>
