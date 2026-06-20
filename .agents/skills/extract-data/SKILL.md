@@ -1,14 +1,14 @@
 ---
 name: extract-data
 description: >-
-  Enrich a single Geneva business by gathering publicly-available data in parallel from many web sources, then write a structured markdown dossier (with downloaded logo/photos) to data/<slug>/. Use when the user wants to collect, enhance, or research all available information about a specific shop/business — name, address, hours, ratings, reviews, services/menu, prices, photos, social links, branding (colors/fonts), etc. This is step 2 (“enhance”) of the websites pipeline: extract → enhance → build.
+  Enrich a single Geneva business by gathering publicly-available data in parallel from many web sources, then write a structured markdown dossier (with downloaded logo/photos) to data/<slug>/ and register the business in the portfolio index (docs/index.html). Use when the user wants to collect, enhance, or research all available information about a specific shop/business — name, address, hours, ratings, reviews, services/menu, prices, photos, social links, branding (colors/fonts), etc. This is step 2 (“enhance”) of the websites pipeline: extract → enhance → build.
 ---
 
 # extract-data
 
 Gather everything publicly available about **one** Geneva business and write it to a structured markdown dossier under `data/<slug>/`, with the logo and photos downloaded into an `assets/` subfolder. The dossier feeds the downstream website build.
 
-**Scope:** this skill ends when the dossier is written. It does **not** build the website. **One business per invocation** — the caller iterates over a business list. **Paths** are relative to the repo root (the working directory), not this skill folder: `references/` and `resources/` live at the repo root and are shared with `make-website`.
+**Scope:** this skill ends when the dossier is written **and the business is registered in the portfolio index** (`docs/index.html`, plus the `docs/data.html` dossier-viewer allow-list). It does **not** build the website. **One business per invocation** — the caller iterates over a business list. **Paths** are relative to the repo root (the working directory), not this skill folder: `references/` and `resources/` live at the repo root and are shared with `make-website`.
 
 ## Inputs
 
@@ -516,7 +516,41 @@ Carry the result into step 10's **Suggested domains** section, each tagged with 
 
 Write `<dir>/<slug>.md` using the template below. Reference each official asset by its **local path** _and_ its **source URL**; reference each fallback asset by its local path with its generated/illustrative label (and license for `stock-*`). Fill the **Missing information** section with a simple bullet list of the standard fields no source could provide (or that are only low-confidence placeholders, e.g. an inferred theme or generated logo) so they can be completed manually; if nothing is missing, say so.
 
-### 11. Verify before finishing
+### 11. Register in the portfolio index
+
+The dossier now backs the public **portfolio index** (`docs/index.html`) and its dossier viewer (`docs/data.html`), so register this business there. Work **idempotently, keyed by `<slug>`** (the output folder name) — re-running must not duplicate anything.
+
+Derive two display strings (neither is the raw slug):
+
+- **Name** — the dossier's **canonical name** (the `# <Canonical Name>` heading / Summary), verbatim. E.g. folder `gase-jean-robert_tailor` → "Jean-Robert Gase".
+- **Trade** — a short, human-readable label for the **primary type** (`types[0]`): turn `_`/`-` into spaces and Title-case, matching the editorial style of the existing entries — e.g. `barber_shop` → "Barbershop", `coffee_shop` → "Coffee shop", `cafe` → "Café", `home_goods_store` → "Home goods", `second_hand_shop` → "Second-hand shop", `pet_groomer` → "Pet groomer".
+
+Then make two edits:
+
+1. **`docs/data.html` — viewer allow-list (required).** The viewer only renders a slug listed in its hardcoded `SHOPS` map; an unknown slug shows "Dossier not found", so the index's Data link is dead without this. Add or update the entry (keep the file's existing formatting):
+
+   ```js
+   "<slug>": { name: "<Name>", trade: "<Trade>" },
+   ```
+
+2. **`docs/index.html` — the table row (upsert).** Each business is one `<tr>` with a **Website** cell and a **Data** cell, each a button or a `—` placeholder. Find the row whose `<slug>` appears in its Data href (`data.html?slug=<slug>`) or Website href (`webs/<slug>`):
+
+   - **Row exists** → set its **Data** cell to the button (turning a `—` into a link if needed) and refresh the name/trade; **leave the Website cell untouched** — it belongs to `make-website`.
+   - **No row** → append one matching the existing markup. Its **Website** cell is the live button when `docs/webs/<slug>/` already exists, else the placeholder:
+
+     ```html
+     <tr>
+         <td class="c-name"><span class="name"><Name></span><span class="trade"><Trade></span></td>
+         <td class="c-act"><a class="btn btn-site" href="webs/<slug>" target="_blank" rel="noopener">Website</a></td>
+         <td class="c-act"><a class="btn btn-data" href="data.html?slug=<slug>" target="_blank" rel="noopener">Data</a></td>
+     </tr>
+     ```
+
+     Website placeholder when no site exists yet: `<td class="c-act"><span class="na" title="No website built">—</span></td>`. Then set the header count `<span class="tag">N storefronts</span>` to the new total number of `<tr>` rows.
+
+Match on the **data slug** only. A legacy row whose website slug differs from the data slug (e.g. `webs/miro_barbershop` vs the dossier `miro-barber-shop_barber-shop`) won't match, so a fresh row is added — note it in the final summary for the human to reconcile rather than guessing a fuzzy name match.
+
+### 12. Verify before finishing
 
 A quick self-check — don't report success without it:
 
@@ -529,6 +563,7 @@ A quick self-check — don't report success without it:
 - The **Branding / Theme** section exists with a labeled **Basis**, valid `#rrggbb` palette values, and named `display`/`body` fonts. If a usable website was found, the basis should be **extracted** — an **inferred** basis despite a known site means both the branding agent and the render assist (step 4b) failed; flag it.
 - The **Missing information** section lists the standard fields that came back empty or low-confidence (e.g. website, opening hours, ratings, reviews, email, social links, genuine logo, extracted branding) so a human knows what to chase — or states that none are missing.
 - When the business has **no working website**, a **Suggested domains** section lists up to 3 available `.ch` candidates (each confirmed available via a DNS NXDOMAIN check) — or, if 3 couldn't be confirmed within the cap, the ones found plus a note. It is **absent** when a working own-site exists.
+- The business is **registered in the portfolio index**: `docs/data.html`'s `SHOPS` map has the `<slug>` entry, and `docs/index.html` has **exactly one** row for it with a working **Data** link (`data.html?slug=<slug>`) — no duplicate row — and the header `… storefronts` count equals the number of `<tr>` rows.
 
 ## Output template
 
