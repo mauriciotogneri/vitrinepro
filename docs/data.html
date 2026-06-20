@@ -215,6 +215,17 @@
             word-break: break-word;
         }
 
+        /* Color swatch shown before a hex value (e.g. ▪ #1f1b18) */
+        .md .swatch {
+            display: inline-block;
+            width: 0.8em;
+            height: 0.8em;
+            margin-right: 0.4em;
+            vertical-align: -0.1em;
+            border-radius: 3px;
+            border: 1px solid rgba(201, 168, 76, 0.35);
+        }
+
         .md pre {
             background: var(--navy2);
             border: 1px solid var(--hair);
@@ -390,6 +401,16 @@
                     content.innerHTML = window.marked.parse(md);
                     content.querySelectorAll('a[href^="http"]').forEach(function (a) {
                         a.target = "_blank"; a.rel = "noopener";
+                    });
+                    var HEX = /^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/;
+                    content.querySelectorAll("code").forEach(function (c) {
+                        var hex = c.textContent.trim();
+                        if (!HEX.test(hex)) return;
+                        var sw = document.createElement("span");
+                        sw.className = "swatch";
+                        sw.style.background = hex;
+                        sw.setAttribute("aria-hidden", "true");
+                        c.parentNode.insertBefore(sw, c);
                     });
                     status.hidden = true;
                     content.hidden = false;
