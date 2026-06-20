@@ -44,6 +44,21 @@ If name, Geneva, or type(s) are missing, ask once for the missing piece. Do not 
 
 **Pin the identity before fanning out.** If neither address nor website is known, first do a quick resolution pass — search Google Business Profile / Maps and local.ch for the name + "Geneva" + type — to lock the canonical address (and website, if found), then add it to the shop record so every source agent matches against the same business. If it can't be resolved confidently, proceed anyway but treat matching as lower-confidence and flag ambiguous results in the merge. The canonical **website**, if found, is also the primary source for the **branding theme** (step 8), so resolving it pays off twice.
 
+### 1b. Check for an existing official website (early gate)
+
+This pipeline builds a site for businesses that **don't already have a working one**, so before sinking any effort into the gather, find any **own official website** the business may already have — and if one exists, let the **user** judge whether it works and whether to go on. Do this **first**, right after identity is pinned.
+
+1. **Search hard for an own-site.** Start from anything step 1 already surfaced (the Maps listing's `website`, the pin-identity pass). If no site is known yet, look specifically for one and try as hard as public web search reasonably allows before concluding there is none: web-search the name + "Geneva" + type(s); read the website field on the Google Business Profile / Maps listing; check the business's local.ch (and other directory) listings for an outbound site link; check the Facebook / Instagram bio for a linked site.
+
+2. **Keep only a genuine own-site.** A directory or aggregator listing (local.ch, Yelp, Tripadvisor, …), a social-media profile (a Facebook / Instagram page), a Linktree, and a booking / marketplace page are **not** official websites — they do not trip the gate. Only the business's **own** site does (its own domain, self-hosted content).
+
+3. **No own-site found → continue as usual.** Leave `shop.website` unset and proceed to step 2. This is the expected case — most targets are website-less.
+
+4. **An own-site found → ask the user; don't judge it yourself.** Best-effort fetch the candidate and note what you saw (loads normally / 404 / parked / hosting-error / empty shell), then call the **AskUserQuestion** tool — **showing the exact URL** and your observation — to let the user decide whether the site is **working (available and reachable)** or **broken**, and how to proceed. Three outcomes:
+   - **Broken** — the site is down, parked, lapsed, or errored, so the business effectively has no site: continue building as usual and leave `shop.website` unset.
+   - **Working — build anyway** — the site is live, but build the dossier regardless. Seed `shop.website` with the URL (it then feeds the official-website source in steps 3, 4, 4b, 5 and the branding theme in step 8) and proceed to step 2.
+   - **Working — abort** — the site is live, so the business already has a website: stop the skill immediately — run nothing further, write no dossier — and report the abort with the URL.
+
 ### 2. Read the source reference
 
 Read `references/data-extraction.md` in full. It catalogs every source, its Geneva coverage, the fields it exposes, and its access method/ToS notes.
