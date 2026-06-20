@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" role="img" aria-label="Chez Martins — Boulangerie · Café, Genève (generated placeholder logo)">
-  <!-- GENERATED PLACEHOLDER LOGO — not an official logo. Wordmark in the storefront-signage-derived palette
-       (aubergine #312B45 awning, gold #C29A3B/#AD9952 signage, cream #F4EEE1 stone). Decorative stand-in only. -->
-  <rect x="20" y="20" width="600" height="240" rx="18" fill="#312B45"/>
-  <rect x="33" y="33" width="574" height="214" rx="11" fill="none" stroke="#C29A3B" stroke-width="2"/>
-  <text x="320" y="116" text-anchor="middle" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="32" letter-spacing="10" fill="#C29A3B">BOULANGERIE · CAFÉ</text>
-  <text x="320" y="182" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="70" fill="#F4EEE1">Chez Martins</text>
-  <rect x="214" y="202" width="212" height="2.5" fill="#C29A3B"/>
-  <text x="320" y="234" text-anchor="middle" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="20" letter-spacing="7" fill="#E7D9B0">GENÈVE</text>
+  <!-- GENERATED PLACEHOLDER LOGO — not an official logo. Wordmark in the café palette
+       (espresso #4a200f ground, caramel #d49b62 + sage #b0c09c, cream #f5efdc). Decorative stand-in only. -->
+  <rect x="20" y="20" width="600" height="240" rx="18" fill="#4a200f"/>
+  <rect x="33" y="33" width="574" height="214" rx="11" fill="none" stroke="#b0c09c" stroke-width="2"/>
+  <text x="320" y="116" text-anchor="middle" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="32" letter-spacing="10" fill="#d49b62">BOULANGERIE · CAFÉ</text>
+  <text x="320" y="182" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="70" fill="#f5efdc">Chez Martins</text>
+  <rect x="214" y="202" width="212" height="2.5" fill="#b0c09c"/>
+  <text x="320" y="234" text-anchor="middle" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="20" letter-spacing="7" fill="#e2c187">GENÈVE</text>
 </svg>

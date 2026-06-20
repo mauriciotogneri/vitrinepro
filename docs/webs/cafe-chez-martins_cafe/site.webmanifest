@@ -1,0 +1,16 @@
+{
+  "name": "Café Chez Martins",
+  "short_name": "Chez Martins",
+  "description": "Boulangerie & café portugais à la Jonction, Genève — depuis ~1999.",
+  "lang": "fr-CH",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5efdc",
+  "theme_color": "#a8682f",
+  "icons": [
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "assets/favicon.svg", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

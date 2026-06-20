@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Café Chez Martins — boulangerie & café portugais, Genève">
+  <!-- Social card in the café palette: espresso ground, sage frame, golden pastel-de-nata mark, cream wordmark. Generated. -->
+  <defs>
+    <radialGradient id="glow" cx="86%" cy="6%" r="70%">
+      <stop offset="0%" stop-color="#a8682f" stop-opacity="0.42"/>
+      <stop offset="55%" stop-color="#a8682f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#4a200f"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="28" y="28" width="1144" height="574" rx="28" fill="none" stroke="#b0c09c" stroke-width="3" opacity="0.7"/>
+
+  <!-- pastel de nata mark -->
+  <g transform="translate(330 315)">
+    <circle cx="0" cy="0" r="168" fill="#B98232"/>
+    <g stroke="#8c5f1f" stroke-width="8" stroke-linecap="round">
+      <line x1="0" y1="-160" x2="0" y2="-196"/>
+      <line x1="110" y1="-116" x2="135" y2="-142"/>
+      <line x1="160" y1="0" x2="196" y2="0"/>
+      <line x1="110" y1="116" x2="135" y2="142"/>
+      <line x1="0" y1="160" x2="0" y2="196"/>
+      <line x1="-110" y1="116" x2="-135" y2="142"/>
+      <line x1="-160" y1="0" x2="-196" y2="0"/>
+      <line x1="-110" y1="-116" x2="-135" y2="-142"/>
+    </g>
+    <circle cx="0" cy="0" r="130" fill="#E8C56A"/>
+    <circle cx="0" cy="0" r="130" fill="none" stroke="#cda84f" stroke-width="5"/>
+    <g fill="#6f3f17">
+      <ellipse cx="-46" cy="-42" rx="24" ry="17"/>
+      <ellipse cx="48" cy="-16" rx="19" ry="14"/>
+      <ellipse cx="-26" cy="42" rx="22" ry="15"/>
+      <ellipse cx="52" cy="44" rx="14" ry="11"/>
+      <ellipse cx="-64" cy="18" rx="12" ry="9"/>
+    </g>
+  </g>
+
+  <!-- wordmark -->
+  <text x="560" y="258" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="31" letter-spacing="9" fill="#d49b62">BOULANGERIE · CAFÉ</text>
+  <text x="558" y="360" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="86" fill="#f5efdc">Chez Martins</text>
+  <rect x="562" y="392" width="288" height="3" fill="#b0c09c"/>
+  <text x="560" y="444" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="27" letter-spacing="6" fill="#e2c187">GENÈVE · DEPUIS 1999</text>
+</svg>

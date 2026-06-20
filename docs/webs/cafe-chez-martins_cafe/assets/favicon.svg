@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Café Chez Martins">
-  <!-- Square brand mark: a pastel de nata (Portuguese custard tart) in the storefront palette.
-       Generated mark to match the placeholder logo; aubergine ground, gold pastry, custard top. -->
-  <rect width="512" height="512" rx="96" fill="#312B45"/>
-  <rect x="26" y="26" width="460" height="460" rx="74" fill="none" stroke="#C29A3B" stroke-width="6"/>
+  <!-- Square brand mark: a pastel de nata (Portuguese custard tart) in the café palette.
+       Generated mark; espresso ground, golden pastry, sage border. -->
+  <rect width="512" height="512" rx="96" fill="#4a200f"/>
+  <rect x="26" y="26" width="460" height="460" rx="74" fill="none" stroke="#b0c09c" stroke-width="6"/>
   <!-- pastry base -->
   <circle cx="256" cy="262" r="150" fill="#B98232"/>
   <!-- fluted rim ticks -->

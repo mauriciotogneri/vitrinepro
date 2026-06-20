@@ -1,34 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr-CH">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Page introuvable — Café Chez Martins</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#a8682f">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <style>
     :root { color-scheme: light; }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; }
     body {
-      margin: 0; min-height: 100vh; min-height: 100dvh;
-      display: grid; place-content: center; gap: 1.2rem; text-align: center;
-      padding: 2rem; background: #f4eee1; color: #1a1620;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      min-height: 100svh;
+      display: grid;
+      place-content: center;
+      gap: 1.1rem;
+      justify-items: center;
+      text-align: center;
+      padding: 2rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: #3c2114;
+      background:
+        radial-gradient(120% 80% at 85% -10%, rgba(168,104,47,.18), transparent 60%),
+        radial-gradient(90% 70% at 0% 5%, rgba(94,110,68,.15), transparent 55%),
+        #f5efdc;
     }
-    .code { font-family: "Arial Narrow", sans-serif; font-weight: 700; letter-spacing: .3em; color: #7d6322; text-transform: uppercase; font-size: .9rem; }
-    h1 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.6rem); color: #312b45; font-family: Georgia, serif; }
-    p { margin: 0 auto; max-width: 34rem; color: #6e6657; line-height: 1.6; }
-    a.home {
-      display: inline-block; margin-top: .4rem; padding: .8rem 1.6rem; border-radius: 6px;
-      background: #312b45; color: #f4eee1; text-decoration: none; font-weight: 600; letter-spacing: .04em;
+    img { width: 76px; height: 76px; border-radius: 16px; box-shadow: 0 10px 30px rgba(58,28,12,.16); }
+    h1 { font-size: clamp(2.4rem, 8vw, 3.6rem); font-weight: 800; letter-spacing: -.02em; color: #8a4f22; }
+    p { color: #66503c; max-width: 34rem; font-size: 1.05rem; line-height: 1.6; }
+    .row { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; margin-top: .6rem; }
+    a.btn {
+      display: inline-flex; align-items: center; min-height: 48px;
+      padding: .8em 1.5em; border-radius: 999px;
+      background: #8a4f22; color: #f5efdc; font-weight: 700; text-decoration: none;
+      border: 1.5px solid #8a4f22;
     }
-    a.home:hover { background: #271f38; }
+    a.btn.ghost { background: transparent; color: #8a4f22; border-color: #e7dbc2; }
+    a:focus-visible { outline: 3px solid #5e6e44; outline-offset: 3px; }
   </style>
 </head>
+
 <body>
-  <p class="code">404</p>
-  <h1>Page introuvable · Page not found</h1>
-  <p>La page demandée n'existe pas (ou plus). Retournez à l'accueil de Café Chez Martins. — The page you're looking for can't be found. Head back to the Café Chez Martins home page.</p>
-  <a class="home" href="https://mauriciotogneri.github.io/vitrinepro/webs/cafe-chez-martins_cafe/">Accueil · Home</a>
+  <img src="assets/favicon-512.png" alt="Café Chez Martins">
+  <h1>404</h1>
+  <p>
+    <strong>Cette page n’existe pas.</strong> Revenons au comptoir.<br>
+    <span lang="en">This page doesn’t exist. Let’s head back to the counter.</span>
+  </p>
+  <div class="row">
+    <a class="btn" href="https://mauriciotogneri.github.io/vitrinepro/webs/cafe-chez-martins_cafe/">Accueil</a>
+    <a class="btn ghost" href="https://mauriciotogneri.github.io/vitrinepro/webs/cafe-chez-martins_cafe/en/" lang="en">English home</a>
+  </div>
 </body>
+
 </html>
