@@ -1,0 +1,13 @@
+{
+  "name": "extract-data-render",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "No-login headless render assist for the extract-data skill.",
+  "bin": {
+    "render": "render.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  }
+}

@@ -373,6 +373,23 @@ return {
 };
 ```
 
+### 4b. Render assist — no-login browser (main agent)
+
+After the fan-out returns, recover data a plain fetch missed from **public, JS-rendered** sources using the committed headless-browser helper. This is a best-effort fetch of a **public** page — **no login, no anti-bot bypass**, the same posture as `curl` but with a JS engine — so it does **not** reach login-walled content (Facebook/Instagram photo tabs stay out of scope by design). It runs in the **main agent** only (the fan-out sub-agents have web tools, not a browser).
+
+Run it for:
+
+- **The official website**, when its `Official website` agent came back `blocked`/`no_data` or visibly thin (an empty SPA shell) — re-extract self-reported facts (hours, services/menu, itemized prices, contact, social links) from the rendered DOM, and capture branding for step 8.
+- **Any selected source flagged "JS-rendered"** in `data-extraction.md` (e.g. SFF Member Register, Caran d'Ache locator) that returned empty.
+
+Skip it when the cheap fetch already yielded good data — it is a targeted fallback, not a default pass.
+
+```sh
+node .agents/skills/extract-data/scripts/render.mjs <url>   # → JSON { facts, branding }
+```
+
+One-time setup (Chromium may already be cached): run `npm install && npx playwright install chromium` in `scripts/` — see `scripts/README.md`. The JSON carries rendered **facts** (`title`, `metas`, `jsonLd`, `bodyText`, `links`) and **branding** (computed-style palette `roles`, CSS `cssVars`, `themeColor`, font hints). Fold the facts into the merge (step 5) under the **same source**, tagged "(rendered)" (e.g. `Official website (rendered)`); pass the branding to step 8 tier 1. A `--follow-posts` mode additionally harvests post images from an Instagram/Facebook profile via each post's public `og:image` (no login) — see step 7's media notes. If the helper prints `{"ok":false,…}` or exits non-zero, record that source as `blocked`/`error` and move on — never abort the run.
+
 ### 5. Merge with provenance
 
 Combine the per-source results into one record. Rules:
@@ -381,6 +398,7 @@ Combine the per-source results into one record. Rules:
 - **Ratings:** always list **per source** (score/scale/count).
 - **Identity fields** (name, status, address, coordinates, types): choose one **canonical** value by authority — Google over directories over aggregators — and list the rest as alternates.
 - **Official website authority:** the business's own site is the **top** authority for **self-reported facts** — opening hours, services/menu, itemized prices, contact details, social links, and its own logo/photos — outranking directories and aggregators. For **operational status** (permanently/temporarily closed) keep the **Google** canonical, since a site can be stale; for **ratings**, defer to the review platforms (an official site won't carry impartial ratings).
+- **Rendered official site:** if the render assist (step 4b) re-extracted the official site, fold its facts in under that same top authority, tagged `Official website (rendered)`.
 - **Reviews / photos:** pool across sources and **deduplicate** (same text/author, same image URL).
 - **Logo:** pick one canonical `logo_url` (prefer the official website or Google, else the highest-resolution candidate) — this is the one step 7 downloads; keep other candidates as alternates. If no candidate was found but a Facebook page is known, leave it unset — step 7 will derive a genuine logo from the Facebook Graph picture endpoint.
 - **Website / social links:** choose the canonical website by authority (official over directories); union social links by network, keeping distinct URLs tagged by source.
@@ -403,6 +421,8 @@ After the folder is fixed, in the **main agent** (not the source agents), downlo
   - **Still no logo, and an Instagram account is known?** Best-effort only: fetch the profile (`https://www.instagram.com/<handle>/`) and, if the login wall hasn't stripped the markup, read `og:image` for the avatar CDN URL and download it as the logo, attributed **"Instagram (og:image)"**. There is no keyless Graph equivalent and this is flaky and degrading, so treat a miss as normal and fall through to step 9.
 - Up to **20 deduplicated photos** → `assets/photo-001.<ext>`, `photo-002.<ext>`, … (extension from the content-type or URL). Dedup is by image URL, so the same photo served as resized CDN variants can slip through — don't treat the 20 as guaranteed-distinct.
   - **Few or no photos from the fan-out?** A keyless supplemental pass (main agent; this yields genuine imagery of the real place, so they are photos, **not** `stock-*` fallback): a **Google Images** search for the business name + "Genève" often surfaces directly-downloadable `googleusercontent`/`fbcdn`/`cdninstagram` URLs even when the origin page is walled — `googleusercontent` links are stable, while `fbcdn`/Instagram ones are signature-stamped and may 403 once expired. Confirm each image actually shows THIS business before keeping it, and attribute it to where it was found.
+  - **Facebook photos are partially recoverable, no login.** Run `node .agents/skills/extract-data/scripts/render.mjs <page-or-/photos-url> --follow-posts`: it follows each `fbid=` photo permalink and scans the page markup for the embedded `scontent…fbcdn.net` image URL (FB leaves `og:image` empty behind its logged-out wall, but the photo URL is still in the page) — returned in each post's `images[]`. Use the Facebook Graph profile picture for the **logo**. Caveats: it's behind a wall so it's **fragile** (FB can close the leak), the page also embeds the cover + adjacent thumbnails so candidates need confirming (does it show THIS business?), and URLs are signed/expiring. Aggregators (Restaurant Guru) and Google stay good fallbacks.
+  - **Instagram post photos ARE recoverable, no login.** When an Instagram account is known and photos are thin, run `node .agents/skills/extract-data/scripts/render.mjs <profile-url> --follow-posts` (the step-4b helper). It reads each post's public `og:image` and returns a `posts[]` array — the first page (~12 most-recent) of **genuine venue images** (attribute to Instagram). Download them with step 7's `curl` recipe. Caveats: carousels give the cover image only, reels give the thumbnail frame, the og:image URLs are time-signed and **expire** (download promptly), and older posts beyond the first page need auth (out of scope). The profile **avatar** is still available via the profile's own `og:image`.
 
 Use `curl` via Bash with a normal browser User-Agent and a Referer matching the source page (plain browser headers — not rotation or bypass) plus a timeout, since many image CDNs reject header-less requests:
 
@@ -416,7 +436,7 @@ After downloading, drop byte-for-byte duplicates that URL-dedup missed (the same
 
 In the **main agent**, synthesize one canonical visual **theme** for the business, keeping the evidence as alternates. Work the tiers in priority order and fix the _canonical_ value at the first that yields real signal — but keep lower tiers as cross-checks/alternates:
 
-1. **Website (highest authority)** — if the step-4 branding agent returned usable data, canonicalize from it: palette roles, fonts, `theme-color`, shape/depth/spacing, vibe. Basis = **extracted**.
+1. **Website (highest authority)** — if the step-4 branding agent **or the render assist (step 4b)** returned usable data, canonicalize from it: palette roles, fonts, `theme-color`, shape/depth/spacing, vibe. Prefer the render assist's **computed-style** values when present (its `roles`/`cssVars`/`themeColor` reflect what the browser actually paints, so they beat static-CSS parsing on JS-rendered sites). Basis = **extracted**.
 2. **Logo-derived** — else (or as a cross-check), inspect the downloaded `<dir>/assets/logo.*` **with your own vision** (read the image file) and name its dominant colors; assign them to primary/accent/background/text. `convert`/ImageMagick may refine this with a colour histogram if available, but vision alone suffices. For type, describe the lettering and nominate a Google-Fonts match only if it's a clear wordmark. Basis = **logo-derived**.
 3. **Name/type archetype (last resort)** — else infer a **category-fitting, cliché-averse** palette and type mood from the name + type(s) (e.g. a taqueria → warm terracotta + deep green + cream, friendly rounded display; a fine French restaurant → muted, restrained, elegant). Avoid literal national-flag / stereotype kitsch. Basis = **inferred** (low confidence — a replaceable placeholder).
 
@@ -453,7 +473,7 @@ A quick self-check — don't report success without it:
 - **Fallback imagery** (if any) sits in its own lane — a generated logo and `stock-*` are labeled as generated/illustrative (with license + attribution for `stock-*`) and stay distinguishable from official `logo`/`photo-*`. It was added only because genuine media was absent; facts/copy/hours/prices/reviews remain strictly sourced.
 - The **Sources queried** table lists _every_ selected source (`ok`/`partial`/`blocked`/`not_found`/`no_data`/`error`), including the `Official website` row when the shop has a site.
 - **Sanity-check the fan-out:** if _every_ source came back `blocked`/`no_data`/`error`, suspect the sub-agents lacked web access (no `WebSearch`/`WebFetch`) rather than a genuine data desert — flag it instead of writing a hollow dossier.
-- The **Branding / Theme** section exists with a labeled **Basis**, valid `#rrggbb` palette values, and named `display`/`body` fonts. If a usable website was found, the basis should be **extracted** — an **inferred** basis despite a known site means the branding agent failed; flag it.
+- The **Branding / Theme** section exists with a labeled **Basis**, valid `#rrggbb` palette values, and named `display`/`body` fonts. If a usable website was found, the basis should be **extracted** — an **inferred** basis despite a known site means both the branding agent and the render assist (step 4b) failed; flag it.
 - The **Missing information** section lists the standard fields that came back empty or low-confidence (e.g. website, opening hours, ratings, reviews, email, social links, genuine logo, extracted branding) so a human knows what to chase — or states that none are missing.
 
 ## Output template
@@ -586,6 +606,7 @@ _Standard fields no source could fill, or that are only low-confidence placehold
 ## Constraints & conventions
 
 - **Web only, no credentialed APIs.** Never assume, invent, or use credentials; no paid APIs. Free keyless public endpoints (Overpass, Nominatim, Wikidata) are allowed and preferred over HTML scraping. Best-effort fetch; no anti-bot bypass.
+- **No-login render assist (headless browser).** A committed Playwright helper (`scripts/render.mjs`) may render a **public**, JS-rendered page in headless Chromium to recover facts/branding a plain fetch misses (the business's own site, JS-rendered directories). Same best-effort/public posture — **no login, no bypass** — so it does **not** reach content that truly requires a session. Its `--follow-posts` mode harvests an Instagram/Facebook profile's first-page post images — Instagram via each post's public `og:image`, Facebook by scanning the `scontent…fbcdn.net` URL embedded in the logged-out photo page (still no login; see step 7); deeper/private content needs auth and stays out of scope. Main-agent only (sub-agents have web tools, not a browser).
 - **Original language preserved** — translation is the website-build step's job.
 - **Provenance everywhere** — every value carries its source(s); a primary-source fact must be distinguishable from an aggregator's guess.
 - **Partial results are expected** — most shops won't have all fields, and some sources will be blocked or empty. Record field-level gaps in the **Missing information** section and source-access gaps in the appendix table; never fail the run over a missing field or source.
