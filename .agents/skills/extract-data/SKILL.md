@@ -16,6 +16,8 @@ Accept the shop info from the skill arguments or by asking the user. Parse whate
 
 **Google Maps URL shortcut.** The user may instead (or also) paste a **Google Maps link** — a full `…google.com/maps/place/…` URL or a short `maps.app.goo.gl/…` / `goo.gl/maps/…` link. Treat it as the identity seed: step 1 resolves it, parses name/coordinates from the URL, and best-effort extracts the listing (address, phone, website, hours, category), so the user usually needn't type those.
 
+**Google-Maps-Scraper record (JSON).** The user may instead provide a single **Apify Google-Maps-Scraper record** — the JSON object shape used in `docs/map/assets/<type>.json` (fields like `title`, `categoryName`, `address`, `location`, `openingHours`, `totalScore`, `imageUrls`, `instagrams`, …). It is the richest seed: a pre-fetched Google listing that hands step 1 the name, type, address, coordinates, phone, hours, ratings, photos, and socials directly, so it ingests the record instead of resolving a Maps URL. Pass it inline or as a path to a one-record `.json`. **One business per invocation** — if an array (e.g. a whole category file) is given, select the single intended entry; the skill does not batch.
+
 **Required to proceed:** business **name**, that it is in **Geneva, Switzerland**, and its **type(s)** (from the `resources/businesses.txt` taxonomy, e.g. `Barber Shop`, `Restaurant`). Ask the user **only** for whichever of these is missing — don't interrogate field-by-field. A Google Maps URL usually supplies the **name** and confirms **Geneva** (via coordinates), so often only the **type(s)** needs inferring/confirming.
 
 Everything else is optional and just improves matching.
@@ -24,7 +26,21 @@ Everything else is optional and just improves matching.
 
 ### 1. Collect & confirm identity
 
-**If the input is (or contains) a Google Maps URL, resolve and extract it first:**
+**If the input is a Google-Maps-Scraper record (JSON), ingest it directly** — skip the Maps-URL steps below; the record already carries the listing. Map only the in-scope fields into the shop record and into a pre-filled source result named `Google Maps (record)` (shaped like the step-4 `SCHEMA`, with `access_status: "ok"`):
+
+- `title` → **name** (canonical); `categoryName` + `searchString` → **type(s)**, mapped to the `resources/businesses.txt` taxonomy (e.g. `Hair salon` / "hair salon" → `hair_salon`).
+- `address` (or `street` + `postalCode` + `city`) → **address**; `location {lat,lng}` → **coordinates** — **validate** they fall in the Geneva area (≈ lat 46.1–46.3, lng 6.0–6.3); if not, flag it (the pipeline is Geneva-only).
+- `phone` / `phoneUnformatted` / `phones` → **phones**; `emails` → **emails**; `website` → **website**.
+- `openingHours` (`[{day,hours}]`) → **opening_hours**; `permanentlyClosed` / `temporarilyClosed` → **status**.
+- `totalScore` + `reviewsCount` + `reviewsDistribution` → **rating** (`score`, `scale: 5`, `count`); `reviews` → **reviews** (usually empty — the fan-out supplies review text).
+- `imageUrl` / `imageUrls` → **photo_urls**; `instagramProfiles[].profilePictureURL`, when present → **logo_url** candidate.
+- `instagrams` / `facebooks` / `twitters` / `youtubes` / `tiktoks` / `linkedIns` / `pinterests` → **social_links**; `menu` / `servicesLink` → **services**.
+- `additionalInfo` (payments, parking, amenities, planning) → **notes** (FAQ-useful extras); keep `scrapedAt` as a staleness marker.
+- **Drop (out of scope):** `placeId` / `cid` / `fid` / `kgmid` (stable platform IDs), `price` (price level), `peopleAlsoSearch`.
+
+The record supplies name, Geneva, and type(s), so do **not** ask the user for identity and do **not** run the Maps-URL or pin-identity resolution passes. The pre-filled `Google Maps (record)` source is carried into the merge (step 5), and the live Google source is dropped from the fan-out (step 3).
+
+**Otherwise, if the input is (or contains) a Google Maps URL, resolve and extract it first:**
 
 1. **Resolve short links.** For `maps.app.goo.gl/…` or `goo.gl/maps/…`, follow redirects to the canonical place URL — e.g. `curl -sIL -o /dev/null -w '%{url_effective}' "<short-url>"` (or WebFetch, which follows redirects).
 2. **Parse the URL string** (reliable, no page render needed):
@@ -76,6 +92,7 @@ Then prune:
 - **Drop** any entry the doc marks defunct, "do not use", "none"/no-CH-coverage, or "not a usable source".
 - **Drop redundant aggregators** when a primary source they re-publish is already in the list (the doc flags these, e.g. yellowpages.swiss, companyfinder.ch, Restaurant Guru, infoisinfo). **Exception for website-less targets:** when the only primary an aggregator re-hosts is a login-walled Facebook/Instagram page (so its photos aren't reachable any other way), keep the aggregator — it may be the sole reachable copy of those images (e.g. Restaurant Guru re-publishes Google/Facebook photos). Tag anything taken this way with the aggregator as the source.
 - **Drop sources the doc flags as actively bot-blocking / 403** (phrases like "actively blocks bots (HTTP 403)", "returns 403 to bots", "returned HTTP 403 to automated fetch"). A best-effort fetch will almost certainly fail on these, so they don't earn an agent (e.g. Cylex). Scan the doc for these phrases rather than a fixed name list, which goes stale as the reference changes.
+- **When a Google-Maps-Scraper record was provided** (step 1): drop the live **Google Business Profile / Maps** source — the record stands in for it and is folded into the merge as `Google Maps (record)`. Every other source still runs (full pipeline).
 
 The result is typically ~15–30 sources. For each, keep: `{ name, url, access_notes }` (url = the source's site or its Geneva page if the doc gives one; access_notes = the doc's access/ToS line).
 
@@ -412,6 +429,7 @@ Combine the per-source results into one record. Rules:
 - **Keep every distinct value**, each tagged with the source(s) that reported it. Never silently pick a single winner.
 - **Ratings:** always list **per source** (score/scale/count).
 - **Identity fields** (name, status, address, coordinates, types): choose one **canonical** value by authority — Google over directories over aggregators — and list the rest as alternates.
+- **Provided Google-Maps record:** when step 1 ingested a record, fold its pre-filled `Google Maps (record)` source in as the **Google** authority — it gives the canonical identity/status and is the Google entry for ratings/photos/socials. List it in the **Sources queried** appendix as `ok`, and treat its `scrapedAt` as a staleness signal when it disagrees with fresher live sources.
 - **Official website authority:** the business's own site is the **top** authority for **self-reported facts** — opening hours, services/menu, itemized prices, contact details, social links, and its own logo/photos — outranking directories and aggregators. For **operational status** (permanently/temporarily closed) keep the **Google** canonical, since a site can be stale; for **ratings**, defer to the review platforms (an official site won't carry impartial ratings).
 - **Rendered official site:** if the render assist (step 4b) re-extracted the official site, fold its facts in under that same top authority, tagged `Official website (rendered)`.
 - **Reviews / photos:** pool across sources and **deduplicate** (same text/author, same image URL).
