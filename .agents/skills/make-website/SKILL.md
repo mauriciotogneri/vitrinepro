@@ -1,12 +1,12 @@
 ---
 name: make-website
 description: >-
-  Build a bilingual (Swiss-French + English) static marketing website for one Geneva business from the dossier produced by extract-data, and write the deployable multi-page site to docs/webs/<slug>/. This is step 3 ("build") of the websites pipeline: extract → enhance → build. Use when the user wants to generate, build, or create the website for a shop whose dossier already exists under data/.
+  Build a Swiss-French (fr-CH) static marketing website for one Geneva business from the dossier produced by extract-data, and write the deployable site to docs/webs/<slug>/. This is step 3 ("build") of the websites pipeline: extract → enhance → build. Use when the user wants to generate, build, or create the website for a shop whose dossier already exists under data/.
 ---
 
 # make-website
 
-Turn one business's `extract-data` dossier into a deployable, bilingual (**fr-CH** + **EN**) static website under `docs/webs/<web-slug>/`, and add it to the portfolio index.
+Turn one business's `extract-data` dossier into a deployable, Swiss-French (**fr-CH**) static website under `docs/webs/<web-slug>/`, and add it to the portfolio index.
 
 **Scope:** this skill starts from an existing dossier and ends when the site is written, self-verified, and linked from `docs/index.html`. It does **not** gather data (that's `extract-data`) and does **not** commit or deploy. **One business per invocation.** **Paths** are relative to the repo root (the working directory): `references/`, `resources/`, `data/`, and `docs/` all live there.
 
@@ -23,7 +23,7 @@ From it:
 
 1. `references/site-structure.md` — the section menu and top-to-bottom order.
 2. `references/best-practices.md` — the **quality bar**. The site must satisfy it. Don't restate it; apply it.
-3. `docs/webs/` — survey the **sites already built** there, but as an **anti-reference**: note their palettes, layout archetypes, type pairings, and motion so the new site comes out **visibly distinct** from every one of them. Don't borrow design from any of them — the aim is a portfolio of unique sites, not variations on a theme. (The technical conventions — file layout, head/meta, JSON-LD, hreflang, language switcher, `js/main.js`, `404.html` — come from steps 5, 7 and 9 below and `best-practices.md`, not from copying a sample site.)
+3. `docs/webs/` — survey the **sites already built** there, but as an **anti-reference**: note their palettes, layout archetypes, type pairings, and motion so the new site comes out **visibly distinct** from every one of them. Don't borrow design from any of them — the aim is a portfolio of unique sites, not variations on a theme. (The technical conventions — file layout, head/meta, JSON-LD, `js/main.js`, `404.html` — come from steps 5, 7 and 9 below and `best-practices.md`, not from copying a sample site.)
 
 ## Procedure
 
@@ -33,10 +33,9 @@ Fix `<out>` = `docs/webs/<web-slug>/`. **If `<out>` already exists, stop and ask
 
 ### 2. Derive the base URL
 
-The site deploys to GitHub Pages, so absolute URLs (canonical, hreflang, `og:url`, `og:image`, sitemap `<loc>`) use the real deploy origin. Run `git remote get-url origin`, parse `github.com[:/]<org>/<repo>`, and build:
+The site deploys to GitHub Pages, so absolute URLs (canonical, `og:url`, `og:image`, sitemap `<loc>`) use the real deploy origin. Run `git remote get-url origin`, parse `github.com[:/]<org>/<repo>`, and build:
 
 - `<base>` = `https://<org>.github.io/<repo>/webs/<web-slug>/` (e.g. `https://vndly.github.io/websites/webs/<web-slug>/`).
-- `/en/` lives at `<base>en/`.
 
 If there is no remote or it can't be parsed, use a literal `{{BASE_URL}}` token instead and flag it in the final summary.
 
@@ -56,9 +55,8 @@ Create this layout under `<out>`:
 
 ```
 index.html        fr-CH homepage  (lang="fr-CH")
-en/index.html     EN homepage     (lang="en")
-css/style.css     shared hand-written CSS (no framework)
-js/main.js        shared vanilla JS (no framework)
+css/style.css     hand-written CSS (no framework)
+js/main.js        vanilla JS (no framework)
 assets/           logo, photos, favicons, og-image (+ any decorative stock-*)
 robots.txt
 sitemap.xml
@@ -66,8 +64,6 @@ sitemap.xml
 .nojekyll         empty file (serve dotfiles / skip Jekyll)
 favicon.ico
 ```
-
-Both locales share `css/`, `js/`, and `assets/` (the `/en/` pages reference them with `../`).
 
 ### 6. Assets
 
@@ -80,36 +76,35 @@ The dossier separates **official** media from **fallback** stand-ins (a generate
 
 ### 7. Per-page requirements (apply `best-practices.md`)
 
-Each `index.html`:
+The `index.html`:
 
-- `<!DOCTYPE html>`, correct `<html lang>`, `<meta charset="utf-8">` first, responsive viewport (**never** disable zoom).
-- **Unique** `<title>` + `<meta name="description">` per locale; `theme-color`; `<meta name="author">`.
-- `<link rel="canonical">` + reciprocal `hreflang` (`fr`/`fr-CH`, `en`, `x-default`) + Open Graph + Twitter Card, all absolute under `<base>`; `og:image` = the generated OG image; `og:locale` `fr_CH` / `en`.
+- `<!DOCTYPE html>`, `<html lang="fr-CH">`, `<meta charset="utf-8">` first, responsive viewport (**never** disable zoom).
+- A descriptive `<title>` + `<meta name="description">`; `theme-color`; `<meta name="author">`.
+- `<link rel="canonical">` + Open Graph + Twitter Card, all absolute under `<base>`; `og:image` = the generated OG image; `og:locale` `fr_CH`.
 - **JSON-LD** for the chosen subtype, with only properties backed by visible content (name, address, `geo`, hours, telephone, `priceRange`, services, ratings/reviews **only if present**). Its `image`/`logo`/`photo` properties reference only **real** media (the logo, `photo-*`) or the generated OG image — **never** `stock-*` fallback imagery. **Never** include a tax or business-registration identifier (`taxID`, VAT/TVA number, Swiss UID / `CHE-…`) — not in JSON-LD, not anywhere on the page.
 - Fonts via **Google Fonts CDN**: `preconnect` to `fonts.googleapis.com` and `fonts.gstatic.com` (crossorigin), stylesheet with `&display=swap`. This is a deliberate exception to `best-practices.md`'s self-host guidance — do **not** self-host `@font-face` for these sites.
-- Semantic landmarks (`header`/`nav`/`main`/`section[id]`/`footer`), exactly one `<h1>`, ordered headings, skip-to-content link (parked fully off-screen — not a shallow offset that can peek — and revealed only on `:focus-visible`, never plain `:focus`, so pointer/programmatic focus never exposes it), `:focus-visible`, `prefers-reduced-motion`, `aria-current` on the active nav/locale, touch targets ≥24px.
-- A **language switcher** in the nav (and footer) — explicit links between the two locale URLs with `aria-current` on the current one (static host, so no server-side negotiation).
-- **Footer:** restate identity, contact/hours, secondary nav, social (only link an Instagram profile the dossier shows is **public** — omit the link if it's private), language switcher, and legal/copyright with a **JS-rendered, never-hardcoded** year (see `js/main.js` below) — but **never** a tax/registration ID (UID / `CHE-…` / VAT) and **never a "back-to-top" link/button** (the sticky header and logo already return users to the top).
+- Semantic landmarks (`header`/`nav`/`main`/`section[id]`/`footer`), exactly one `<h1>`, ordered headings, skip-to-content link (parked fully off-screen — not a shallow offset that can peek — and revealed only on `:focus-visible`, never plain `:focus`, so pointer/programmatic focus never exposes it), `:focus-visible`, `prefers-reduced-motion`, `aria-current` on the active nav, touch targets ≥24px.
+- **Footer:** restate identity, contact/hours, secondary nav, social (only link an Instagram profile the dossier shows is **public** — omit the link if it's private), and legal/copyright with a **JS-rendered, never-hardcoded** year (see `js/main.js` below) — but **never** a tax/registration ID (UID / `CHE-…` / VAT) and **never a "back-to-top" link/button** (the sticky header and logo already return users to the top).
 - `js/main.js` (end of body, IIFE, no inline `on*=` handlers): the copyright year, set from `new Date().getFullYear()` into an **empty** `<span>` (the year is **never** written as a literal in the markup — no hardcoded fallback); scroll reveals via `IntersectionObserver` with a no-IO fallback; and — if hours are known — an Intl-based open/closed badge (`Europe/Zurich`).
 
 ### 8. Contact section
 
 A **contact** form plus native links — **never a reservation/booking form**:
 
-- **CTA labels — contact, never booking:** every call-to-action button or link anywhere on the site (hero, sticky header, inter-section CTAs, footer) uses contact-oriented wording — "Nous contacter" / "Contact us" (or "Écrivez-nous", "Prendre contact" / "Get in touch") — pointing to `#contact` or a native `tel:`/`mailto:`/WhatsApp path. **Never** label a button "Réserver" / "Reserve", "Réservez une table" / "Book a table", "Prendre rendez-vous" / "Book an appointment", or any wording implying an on-site booking/reservation the site doesn't offer.
+- **CTA labels — contact, never booking:** every call-to-action button or link anywhere on the site (hero, sticky header, inter-section CTAs, footer) uses contact-oriented wording — "Nous contacter" (or "Écrivez-nous", "Prendre contact") — pointing to `#contact` or a native `tel:`/`mailto:`/WhatsApp path. **Never** label a button "Réserver", "Réservez une table", "Prendre rendez-vous", or any wording implying an on-site booking/reservation the site doesn't offer.
 - A **Formspree** POST form `<form action="https://formspree.io/f/{{FORMSPREE_ID}}" method="post">` collecting **name, email, and message only**, with labelled (`<label for>`), `autocomplete`-tokened, typed, `required` fields. **Never** build a reservation/booking form or add its fields (date, time-slot, party size, appointment picker), even for restaurants or businesses that take bookings — a plain contact form only. The `{{FORMSPREE_ID}}` is a placeholder — **flag it** in the summary as must-replace for the form to work.
 - Alongside it, the real contact paths from the dossier: `tel:`, `mailto:`, and WhatsApp (`https://wa.me/<intl-number>`).
-- **Address → Google Maps directions (always):** wherever the page shows the venue's street address — the contact "visit us / in store" block **and/or** the location/"find us" section beside the map — render it as a **link to driving directions**, never plain static text: `<a href="https://www.google.com/maps/dir/?api=1&destination=<lat>,<lng>" target="_blank" rel="noopener noreferrer">…address…</a>`, reusing the **same `<lat>,<lng>` as the map embed**. If the business has no map/coords, fall back to `destination=<URL-encoded "Street nº, postcode City">`. Give it a visible affordance ("Voir l'itinéraire" / "Get directions" — a `dir/?api=1` link, **not** a `?q=` "open in Maps" link). Apply it in **both** locales, even when the map is also embedded on the page.
+- **Address → Google Maps directions (always):** wherever the page shows the venue's street address — the contact "visit us / in store" block **and/or** the location/"find us" section beside the map — render it as a **link to driving directions**, never plain static text: `<a href="https://www.google.com/maps/dir/?api=1&destination=<lat>,<lng>" target="_blank" rel="noopener noreferrer">…address…</a>`, reusing the **same `<lat>,<lng>` as the map embed**. If the business has no map/coords, fall back to `destination=<URL-encoded "Street nº, postcode City">`. Give it a visible affordance ("Voir l'itinéraire" — a `dir/?api=1` link, **not** a `?q=` "open in Maps" link). Apply it even when the map is also embedded on the page.
 - **Two-column layout (always):** put the **contact form on the right** and the **contact info on the left** (the native links — phone, WhatsApp, address / "visit in store" block). Keep the **DOM/source order matching this visual order** (info block first, then the form) so reading and focus order stay aligned — never reorder with CSS `order`/`grid-column`. On narrow screens they stack in that same order (info, then form).
-- **Location map** (only when a map is shown): always embed **Google Maps**, **directly visible on page load with no click-to-load button** — a plain `<iframe>` (`https://www.google.com/maps?q=<lat>,<lng>&z=16&hl=<fr|en>&output=embed`) inside a fixed `aspect-ratio` box. This is a deliberate exception to `best-practices.md`'s click-to-load embed guidance — never use OpenStreetMap or a press-to-reveal placeholder.
+- **Location map** (only when a map is shown): always embed **Google Maps**, **directly visible on page load with no click-to-load button** — a plain `<iframe>` (`https://www.google.com/maps?q=<lat>,<lng>&z=16&hl=fr&output=embed`) inside a fixed `aspect-ratio` box. This is a deliberate exception to `best-practices.md`'s click-to-load embed guidance — never use OpenStreetMap or a press-to-reveal placeholder.
   - **Never let the map box overflow / overlap the neighbouring card** (a recurring bug). Root cause: the map wrapper is a grid item, the grid stretches it (`align-items:stretch`, the default) to the height of the **taller** sibling card, and if the wrapper also has an `aspect-ratio` the browser then derives the wrapper's **width from that stretched height** (`height × ratio`) — far wider than its track — so it laps over the card. (`min-width:0` does **not** help: the box is *growing*, not failing to shrink.) Correct pattern: **do not put `aspect-ratio` on a stretched map wrapper.** Make the wrapper `position:relative; overflow:hidden` with a **`min-height`** (its height in the stacked 1-col layout and a floor); let `align-items:stretch` give it the row height in 2-col (equal-height columns, no ratio to inflate the width); and make the iframe `position:absolute; inset:0; width:100%; height:100%`. The wrapper's width then always equals its grid track. (If you instead want a fixed map ratio, keep `aspect-ratio` but add `align-self:start` so the ratio derives the height *from* the track-bound width, never the reverse.)
   - **Verify the map by measuring, not just screenshotting.** The iframe won't load offline and a blank/slow iframe (plus fallback-font card heights) can hide the overflow in a screenshot. Check the computed `.map` width ≤ its grid track (e.g. compare `getBoundingClientRect()` of the map vs the card, expecting a gap not an overlap) at desktop **and** mid/tablet widths.
 
 ### 9. SEO / deploy files
 
 - `robots.txt`: `User-agent: * / Allow: /` + absolute `Sitemap:` line under `<base>`.
-- `sitemap.xml`: both locale URLs, each with `xhtml:link` hreflang alternates.
-- `404.html`: self-contained (inline `<style>`), `<meta name="robots" content="noindex">`, bilingual one-liner, link home.
+- `sitemap.xml`: the homepage URL under `<base>`.
+- `404.html`: self-contained (inline `<style>`), `<meta name="robots" content="noindex">`, a Swiss-French one-liner, link home.
 - `.nojekyll`: empty.
 
 ### 10. Portfolio index
@@ -121,10 +116,10 @@ Append the new site to `docs/index.html` if not already listed, matching the exi
 
 Don't report success without checking:
 
-- Both `index.html` and `en/index.html` exist and are **content-complete in their own language** (full parity — no untranslated leftovers, no empty sections that the other locale fills).
-- Every `assets/…`, `css/…`, `js/…` path referenced resolves on disk, and every file in `<out>/assets/` is referenced back (no danglers either way); `/en/` references resolve with `../`.
-- All in-page anchors and internal links resolve; the language switcher points each locale at the other.
-- JSON-LD reflects only visible content; absolute URLs all use `<base>` consistently; `hreflang` is reciprocal.
+- `index.html` exists and is **content-complete** (no empty or placeholder sections).
+- Every `assets/…`, `css/…`, `js/…` path referenced resolves on disk, and every file in `<out>/assets/` is referenced back (no danglers either way).
+- All in-page anchors and internal links resolve.
+- JSON-LD reflects only visible content; absolute URLs all use `<base>` consistently.
 - No fabricated **facts** anywhere — every factual claim (hours, prices, services, contact, reviews, copy) traces to the dossier; **imagery** is the sole exception, allowed only under the decorative-only guardrail below.
 - Fallback imagery obeys the guardrail: `stock-*` appears only as decoration, with honest generic `alt`, never captioned/alt-texted as this venue, and absent from JSON-LD `image`. Any generated logo and every used `stock-*` are flagged in the summary as replaceable.
 - Favicons/OG image were generated (or their absence was flagged); the `{{FORMSPREE_ID}}` (and `{{BASE_URL}}`, if used) placeholders are flagged.
@@ -137,7 +132,7 @@ End with a short summary: the business, `<out>`, sections built vs. omitted (and
 
 ## Constraints & conventions
 
-- **Bilingual, multi-page** (fr-CH root + `/en/`) — every fact in both languages.
+- **Swiss-French only** (`fr-CH`) — a single-locale site at the root.
 - **No framework**: hand-written CSS + vanilla JS. Fonts via Google Fonts CDN (`display=swap` + preconnect).
 - **Truthful content only** — omit what the dossier doesn't support; never invent reviews, hours, prices, or copy. The one exception is **imagery**: labeled fallback assets from the dossier (a generated logo, `stock-*`) may be used as **decoration only** — honest generic `alt`, never presented as the real venue, never in JSON-LD, always flagged as replaceable.
 - **Never expose a tax/registration ID** — no Swiss UID / `CHE-…`, VAT/TVA number, or `taxID` anywhere on the site, neither in visible content nor in JSON-LD.
