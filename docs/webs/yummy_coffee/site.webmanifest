@@ -1,0 +1,16 @@
+{
+  "name": "Yummy Coffee",
+  "short_name": "Yummy Coffee",
+  "description": "Café cosy & petit-déjeuner maison à Plainpalais, Genève — café préparé avec soin dès 7h30.",
+  "lang": "fr-CH",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBF3E4",
+  "theme_color": "#E89B2E",
+  "icons": [
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "assets/favicon.svg", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

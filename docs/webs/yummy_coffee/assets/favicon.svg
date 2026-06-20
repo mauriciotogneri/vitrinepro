@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Yummy Coffee">
+  <!-- Square brand mark: a steaming cup of coffee in the Yummy Coffee palette.
+       Espresso ground, cream cup, honey steam & frame (signature accent). -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3A2616"/>
+      <stop offset="1" stop-color="#1E130A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- roasted-bean background + honey frame -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <rect x="26" y="26" width="460" height="460" rx="74" fill="none" stroke="#E89B2E" stroke-width="6" opacity="0.9"/>
+
+  <!-- steam — honey wisps rising from the cup -->
+  <g fill="none" stroke="#E89B2E" stroke-width="18" stroke-linecap="round" opacity="0.85">
+    <path d="M212 204 C188 176 232 160 208 130 C194 112 218 98 208 84"/>
+    <path d="M256 210 C232 182 276 166 252 134 C238 116 262 102 252 84"/>
+    <path d="M300 204 C276 176 320 160 296 130 C282 112 306 98 296 84"/>
+  </g>
+
+  <!-- handle (drawn first so the cup body hides the joint) -->
+  <path d="M358 266 C428 260 452 304 452 330 C452 364 416 374 344 356"
+        fill="none" stroke="#FBF3E4" stroke-width="34" stroke-linecap="round"/>
+
+  <!-- cup body -->
+  <path d="M136 238 L182 372 Q189 398 216 398 H296 Q323 398 330 372 L376 238 Z" fill="#FBF3E4"/>
+
+  <!-- coffee surface + warm crema ring + glossy highlight -->
+  <ellipse cx="256" cy="238" rx="98" ry="25" fill="#1A0F08"/>
+  <ellipse cx="256" cy="238" rx="98" ry="25" fill="none" stroke="#E89B2E" stroke-width="7" opacity="0.55"/>
+  <ellipse cx="232" cy="230" rx="34" ry="8" fill="#B17B45" opacity="0.4"/>
+</svg>
