@@ -31,7 +31,7 @@ The baseline set of fields we want to capture for each business. These are **des
 - **Rating** — aggregate score, kept per source (Google, Foursquare, TripAdvisor, …).
 - **Reviews** — individual user reviews.
 - **Services / Products / Menu**
-- **Prices** — price level and/or itemized prices.
+- **Prices** — itemized prices for individual products/services (not an overall price level/range).
 - **Logo**
 - **Photos**
 - **Social links** — Facebook, Instagram, X/Twitter, etc.
@@ -40,7 +40,7 @@ The baseline set of fields we want to capture for each business. These are **des
 
 ## Generic sites (any business)
 
-These work as a first pass for essentially any shop. For most small Geneva businesses, the realistic core stack is **Google + local.ch/search.ch**, with **Zefix/UID/Geneva RC + moneyhouse** for legal/company data.
+These work as a first pass for essentially any shop. For most small Geneva businesses, the realistic core stack is **Google + local.ch/search.ch**.
 
 ### Global platforms
 
@@ -57,7 +57,6 @@ These work as a first pass for essentially any shop. For most small Geneva busin
 - **[local.ch](https://www.local.ch)** — _Coverage (Geneva/CH):_ strong — flagship CH directory (Swisscom Directories/localsearch), 500k+ profiles incl. Geneva; also a booking platform. _Data:_ name, address, geo, phone, website, opening hours, category, photos, services, online booking, some ratings. _Access:_ Shares data infra with search.ch; programmatic access via the tel.search.ch API (key on request; ~1,000 req/month, ≤20 results/req; mandatory "Swisscom Directories AG" attribution). Direct site scraping is ToS-restricted.
 - **[search.ch / tel.search.ch](https://tel.search.ch)** — _Coverage (Geneva/CH):_ strong — second flagship CH directory (same owner as local.ch). _Data:_ name, address, geo, phone, category, website; structured records. _Access:_ Official API: tel.search.ch REST API — free API key by application to localsearch; without key ≤10 results, with key ≤200; Atom/OpenSearch (+JSON) responses; "Swisscom Directories AG" attribution required; ~1,000 req/month quota. Also a map/route API.
 - **[comparis.ch](https://www.comparis.ch)** — _Coverage (Geneva/CH):_ weak — a price-comparison portal (insurance, banking, telecom, real estate, cars), not a general business directory; relevant only for specific verticals. _Data:_ provider/company name, product/price comparisons, some contact info, in-vertical user ratings. _Access:_ Scrape-only (HTML); no public data API.
-- **[moneyhouse.ch](https://www.moneyhouse.ch)** — _Coverage (Geneva/CH):_ strong (legal/financial company data) — 600k+ Swiss companies incl. all Geneva RC entries; NZZ-owned. _Data:_ legal name, UID/CHE, legal form, address, registered office, purpose, management/board, signatories, share capital, SOGC notices, credit rating. _Access:_ Free web profiles exist but scraping is ToS-restricted.
 - **[tel.help.ch (HELP.CH)](https://tel.help.ch/)** — _Coverage (Geneva/CH):_ strong — ~850,000 Swiss companies, operating since 1996; Geneva well covered. _Data:_ name, address, phone, website, category, often opening hours, map/geo, sometimes email. _Access:_ Scrape-only (HTML); ToS restrict bulk extraction. Its data also powers yellowpages.swiss, companyfinder.ch and handelsregister.help.ch (overlapping, not independent sources).
 - **[Cylex Schweiz](https://www.cylex-swiss.ch/)** — _Coverage (Geneva/CH):_ moderate — international Cylex network, free listings + user reviews, covers Geneva. _Data:_ name, address, geo, phone, website, hours, category, photos, ratings/reviews. _Access:_ Scrape-restricted — actively blocks bots (HTTP 403); honor robots/ToS.
 - **[Infobel / InfobelPRO](https://local.infobel.ch/)** — _Coverage (Geneva/CH):_ moderate–strong — free Swiss consumer directory plus a large verified business DB covering Geneva. _Data:_ name, address, geo, phone, website, hours, category, reviews (free site). _Access:_ Free HTML site scrape-only/ToS-restricted.
@@ -67,13 +66,6 @@ These work as a first pass for essentially any shop. For most small Geneva busin
 
 - **[Esprit de Genève](https://espritdegeneve.ch/)** — _Coverage (Geneva):_ moderate — Geneva-only showcase/directory of local artisans & merchants (retail, gastronomy, services) + lifestyle/tourism blog; opt-in registration, so coverage is partial/self-selected. _Data:_ business name, category, description, address/contact on profile pages; light structured data (no consistent hours/ratings). _Access:_ Scrape-only (HTML); no API.
 - **[CCIG member directory](https://www.ccig.ch/liste-membres)** — _Coverage (Geneva):_ moderate — Geneva Chamber of Commerce, ~2,800 members (A–Z searchable); B2B-skewed, members only. _Data:_ company name, address, sector/category, website, contact; no ratings/hours. _Access:_ Scrape-only (HTML); membership directory, reuse ToS-restricted; no API.
-
-### Official registries & open data
-
-- **[Zefix (Federal Central Business Name Index)](https://www.zefix.ch)** — _Coverage (Geneva/CH):_ strong — all CH legal entities incl. Geneva; authoritative legal data. _Data:_ legal name, UID (CHE-…), legal form, registered office/canton, status, RC-canton link, SOGC publications, address. _Access:_ Official API: ZefixPublicREST JSON API (base `https://www.zefix.admin.ch/ZefixPublicREST/api/v1`) — **requires HTTP Basic Auth (returns HTTP 401 without credentials, so NOT keyless)**; free credentials by request to zefix@bj.admin.ch. The zefix.ch web search needs no account **but is a client-rendered Angular SPA with no business data in the static HTML, so it can't be fetched headlessly** (confirmed 2026-06-17). For keyless open access to the same data use the Zefix Linked Data/SPARQL endpoint or the opendata.swiss dataset — Open data / bulk.
-- **[UID-Register (BFS/FSO)](https://www.uid.admin.ch)** — _Coverage (Geneva/CH):_ strong — every entity holding a Swiss UID, incl. Geneva. _Data:_ UID (CHE-…), name, address, legal form, status, VAT (MWST) status, commercial-register status. _Access:_ Official API: UID Web Service (SOAP/XML at uid.admin.ch; free, ~20 req/min public limit; eCH-0108 schema) + public WebGUI search. No REST, but free.
-- **[opendata.swiss](https://opendata.swiss)** — _Coverage (Geneva/CH):_ moderate — national OGD catalog; hosts the Zefix index, BFS enterprise data, and Canton de Genève datasets, but not per-shop marketing data. _Data:_ company registers, enterprise statistics, geodata, POI datasets (dataset-dependent). _Access:_ Open data / bulk download; CKAN API (free, no key) for catalog/dataset queries.
-- **[SITG — Système d'information du territoire à Genève](https://www.ge.ch/sitg)** — _Coverage (Geneva/CH):_ moderate (Geneva-only) — cantonal geodata network; useful for premises/location/POI layers, not ratings/contacts. _Data:_ addresses, parcels, building/premises and points-of-interest geodata (varies by layer). _Access:_ Open data — free download/extractor (Shapefile, GeoJSON, etc.) + OGC web services (WMS/WFS); also mirrored on opendata.swiss. Free, anonymous, commercial use allowed.
 
 ### Reviews & social
 

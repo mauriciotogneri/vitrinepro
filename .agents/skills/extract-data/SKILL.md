@@ -14,7 +14,7 @@ Gather everything publicly available about **one** Geneva business and write it 
 
 Accept the shop info from the skill arguments or by asking the user. Parse whatever free-form details are given (name, address, website, phone, etc.).
 
-**Google Maps URL shortcut.** The user may instead (or also) paste a **Google Maps link** — a full `…google.com/maps/place/…` URL or a short `maps.app.goo.gl/…` / `goo.gl/maps/…` link. Treat it as the identity seed: step 1 resolves it, parses name/coordinates/place-id from the URL, and best-effort extracts the listing (address, phone, website, hours, category), so the user usually needn't type those.
+**Google Maps URL shortcut.** The user may instead (or also) paste a **Google Maps link** — a full `…google.com/maps/place/…` URL or a short `maps.app.goo.gl/…` / `goo.gl/maps/…` link. Treat it as the identity seed: step 1 resolves it, parses name/coordinates from the URL, and best-effort extracts the listing (address, phone, website, hours, category), so the user usually needn't type those.
 
 **Required to proceed:** business **name**, that it is in **Geneva, Switzerland**, and its **type(s)** (from the `resources/businesses.txt` taxonomy, e.g. `Barber Shop`, `Restaurant`). Ask the user **only** for whichever of these is missing — don't interrogate field-by-field. A Google Maps URL usually supplies the **name** and confirms **Geneva** (via coordinates), so often only the **type(s)** needs inferring/confirming.
 
@@ -30,7 +30,6 @@ Everything else is optional and just improves matching.
 2. **Parse the URL string** (reliable, no page render needed):
    - **Name** — the `/place/<Name>/` segment (URL-decode; `+` → space).
    - **Coordinates** — `@<lat>,<lng>,…` or the `!3d<lat>!4d<lng>` data params.
-   - **Place identifier** — the `0x…:0x…` hex (CID), `!1s0x…` (ftid), and/or `…%2Fg%2F…` (Knowledge-Graph mid) → store under `identifiers` as `google_cid` / `google_maps_ftid` / `google_kg_mid`, plus the canonical `google_maps_url`.
    - **Validate** the coordinates fall in the Geneva area (≈ lat 46.1–46.3, lng 6.0–6.3); if not, flag it — the pipeline is Geneva-only.
 3. **Extract the listing (best-effort).** Fetch the resolved place page for **address, phone, website, opening hours, category, rating**. Google Maps is JS-rendered and bot-protected, so if the fetch is blocked or thin, fall back to a **web search** for the place (parsed name + "Geneva" + street) and read the Google knowledge-panel details. Capture whatever is available, tagged source **"Google Maps (URL)"**. Do **not** fail if blocked — the fan-out's Google source agent (step 4) re-extracts and corroborates, so this is a head-start, not a single point of failure.
 4. **Map the category → taxonomy type.** Translate the Google category (e.g. "Barber shop", "Coffee shop") to the `resources/businesses.txt` type(s); propose it and let the user confirm. If no category was obtained, ask the user for the type(s) only.
@@ -164,22 +163,12 @@ const SCHEMA = {
         },
       },
     },
-    prices: {
-      type: ["string", "null"],
-      description: "Overall price level and/or notable prices",
-    },
     logo_url: { type: ["string", "null"] },
     photo_urls: { type: "array", items: { type: "string" } },
     social_links: {
       type: ["object", "null"],
       description:
         "Map of network -> URL (facebook, instagram, x, tiktok, linkedin, youtube, ...)",
-      additionalProperties: { type: "string" },
-    },
-    identifiers: {
-      type: ["object", "null"],
-      description:
-        "Stable IDs this source exposes, e.g. google_place_id, uid_che",
       additionalProperties: { type: "string" },
     },
     notes: {
@@ -304,7 +293,7 @@ const thunks = sources.map(
         `Reference access notes: ${s.access_notes || "none"}`,
         "",
         "RULES:",
-        "- Web only: use web search + public page fetches. Do NOT use paid or credentialed APIs and never invent or use credentials — but where THIS source exposes a free keyless endpoint (e.g. Overpass/Nominatim for OpenStreetMap at <=1 req/s, the Zefix public REST search, the Wikidata/Wikipedia APIs, opendata.swiss/CKAN), prefer it over scraping the source's HTML. Don't substitute a different source's API for the one you're assigned.",
+        "- Web only: use web search + public page fetches. Do NOT use paid or credentialed APIs and never invent or use credentials — but where THIS source exposes a free keyless endpoint (e.g. Overpass/Nominatim for OpenStreetMap at <=1 req/s, the Wikidata/Wikipedia APIs), prefer it over scraping the source's HTML. Don't substitute a different source's API for the one you're assigned.",
         "- Pragmatic best-effort: if the page loads, extract it; do NOT attempt anti-bot bypass (proxies, UA rotation).",
         "- If the source blocks you, the business is not listed, or the page is empty, report it via access_status and stop — don't guess.",
         "- Match carefully: confirm name + Geneva (+ address/website if known) so you extract the RIGHT business.",
@@ -313,6 +302,7 @@ const thunks = sources.map(
         "- Logo/photos: return absolute image URLs only (resolve relative paths against the page URL); do NOT download anything. Photos: up to ~15 representative ones.",
         "- Reviews: at most ~5-10 representative ones.",
         "- Also capture FAQ-useful extras when the source shows them — payment methods, parking/access, accessibility, age limits, booking/deposit policy, founding year — in `notes`.",
+        "- Do NOT collect these (out of scope): legal/registry identity (registered legal name, UID/CHE, VAT or tax number, legal form); stable platform IDs (Google place_id/CID, Foursquare venue_id, EGID, etc.); or an overall price level / price range (e.g. '$$', 'CHF 30-60 per person'). Staff size/headcount is also out of scope. Itemized prices for specific products/services ARE wanted: attach them to the relevant `services` entry.",
         "- Do NOT merge in knowledge from other sources or your own memory; only this source.",
       ].join("\n"),
       {
@@ -389,12 +379,11 @@ Combine the per-source results into one record. Rules:
 
 - **Keep every distinct value**, each tagged with the source(s) that reported it. Never silently pick a single winner.
 - **Ratings:** always list **per source** (score/scale/count).
-- **Identity fields** (name, status, address, coordinates, types): choose one **canonical** value by authority — official registry (Zefix/UID/RC Genève) or Google over directories over aggregators — and list the rest as alternates.
-- **Official website authority:** the business's own site is the **top** authority for **self-reported facts** — opening hours, services/menu, prices, contact details, social links, and its own logo/photos — outranking directories and aggregators. For **legal identity & status** (registered name, permanently/temporarily closed) keep the **registry** (Zefix/UID) or Google canonical, since a site can be stale; for **ratings**, defer to the review platforms (an official site won't carry impartial ratings).
+- **Identity fields** (name, status, address, coordinates, types): choose one **canonical** value by authority — Google over directories over aggregators — and list the rest as alternates.
+- **Official website authority:** the business's own site is the **top** authority for **self-reported facts** — opening hours, services/menu, itemized prices, contact details, social links, and its own logo/photos — outranking directories and aggregators. For **operational status** (permanently/temporarily closed) keep the **Google** canonical, since a site can be stale; for **ratings**, defer to the review platforms (an official site won't carry impartial ratings).
 - **Reviews / photos:** pool across sources and **deduplicate** (same text/author, same image URL).
 - **Logo:** pick one canonical `logo_url` (prefer the official website or Google, else the highest-resolution candidate) — this is the one step 7 downloads; keep other candidates as alternates. If no candidate was found but a Facebook page is known, leave it unset — step 7 will derive a genuine logo from the Facebook Graph picture endpoint.
-- **Website / social links:** choose the canonical website by authority (registry/official over directories); union social links by network, keeping distinct URLs tagged by source.
-- **Identifiers:** collect all (google_place_id, uid_che, …).
+- **Website / social links:** choose the canonical website by authority (official over directories); union social links by network, keeping distinct URLs tagged by source.
 - Track each source's `access_status` for the appendix. The step-4 Workflow now returns `{ perSource, branding }`; `perSource` has one object per source in the original order, and a source whose agent died comes back as `access_status: "error"` (never dropped), so every selected source appears in the appendix. Normalize `status` tokens to spaced form (`temporarily_closed` → "temporarily closed") when rendering.
 - **Branding:** set the `branding` object (the website agent's result, or `null` when the shop had no known site) aside — it is **not** merged into the per-source record; it feeds the **Derive the branding theme** step (step 8).
 
@@ -403,14 +392,14 @@ Combine the per-source results into one record. Rules:
 Fix the destination directory `<dir>` **before** writing anything, so assets and dossier land together:
 
 - Default `<dir>` = `data/<slug>`.
-- If `data/<slug>/` already exists, read its existing dossier first: if it's the **same** business (matching name / address / identifiers), reuse `<dir>` and **overwrite** it — delete the old `<dir>/assets/` first so stale photos from the previous run don't linger; if a genuinely **different** business that happens to share the slug, set `<dir>` = `data/<slug>-2` (then `-3`, … if that also exists).
+- If `data/<slug>/` already exists, read its existing dossier first: if it's the **same** business (matching name / address), reuse `<dir>` and **overwrite** it — delete the old `<dir>/assets/` first so stale photos from the previous run don't linger; if a genuinely **different** business that happens to share the slug, set `<dir>` = `data/<slug>-2` (then `-3`, … if that also exists).
 
 ### 7. Download media
 
 After the folder is fixed, in the **main agent** (not the source agents), download into `<dir>/assets/`:
 
 - The chosen **logo** → `assets/logo.<ext>`.
-  - **No logo resolved, or its download failed?** If a **Facebook page** is known (`social_links.facebook`, or a page id under `identifiers`), fetch its profile picture from the keyless Graph endpoint and keep it as a **genuine** logo _before_ falling back to a generated one (step 9): `https://graph.facebook.com/<vanity-or-id>/picture?width=1024&height=1024`. It 302-redirects to the fbcdn image, so keep `curl -L` (the recipe below already includes it) and take the extension from the response content-type (usually `jpg`). Derive `<vanity-or-id>` from the Facebook URL path (`facebook.com/MyShopGeneva` → `MyShopGeneva`); the **numeric** page id is the most reliable form, so use it when captured and resolve it (e.g. from the page source) if a vanity fetch comes back empty. Keep the `width`/`height` params — `?type=large` caps at 200px. Attribute it as source **"Facebook (Graph picture)"** with the Graph URL. Being the real uploaded profile image, it counts as a genuine logo: it feeds logo-derived branding (step 8) and suppresses the step-9 placeholder. If it returns the generic silhouette, an empty body, or a block, discard it and try the Instagram fallback below.
+  - **No logo resolved, or its download failed?** If a **Facebook page** is known (`social_links.facebook`), fetch its profile picture from the keyless Graph endpoint and keep it as a **genuine** logo _before_ falling back to a generated one (step 9): `https://graph.facebook.com/<vanity-or-id>/picture?width=1024&height=1024`. It 302-redirects to the fbcdn image, so keep `curl -L` (the recipe below already includes it) and take the extension from the response content-type (usually `jpg`). Derive `<vanity-or-id>` from the Facebook URL path (`facebook.com/MyShopGeneva` → `MyShopGeneva`); the **numeric** page id is the most reliable form, so use it when captured and resolve it (e.g. from the page source) if a vanity fetch comes back empty. Keep the `width`/`height` params — `?type=large` caps at 200px. Attribute it as source **"Facebook (Graph picture)"** with the Graph URL. Being the real uploaded profile image, it counts as a genuine logo: it feeds logo-derived branding (step 8) and suppresses the step-9 placeholder. If it returns the generic silhouette, an empty body, or a block, discard it and try the Instagram fallback below.
   - **Still no logo, and an Instagram account is known?** Best-effort only: fetch the profile (`https://www.instagram.com/<handle>/`) and, if the login wall hasn't stripped the markup, read `og:image` for the avatar CDN URL and download it as the logo, attributed **"Instagram (og:image)"**. There is no keyless Graph equivalent and this is flaky and degrading, so treat a miss as normal and fall through to step 9.
 - Up to **20 deduplicated photos** → `assets/photo-001.<ext>`, `photo-002.<ext>`, … (extension from the content-type or URL). Dedup is by image URL, so the same photo served as resized CDN variants can slip through — don't treat the 20 as guaranteed-distinct.
   - **Few or no photos from the fan-out?** A keyless supplemental pass (main agent; this yields genuine imagery of the real place, so they are photos, **not** `stock-*` fallback): a **Google Images** search for the business name + "Genève" often surfaces directly-downloadable `googleusercontent`/`fbcdn`/`cdninstagram` URLs even when the origin page is walled — `googleusercontent` links are stable, while `fbcdn`/Instagram ones are signature-stamped and may 403 once expired. Confirm each image actually shows THIS business before keeping it, and attribute it to where it was found.
@@ -465,7 +454,7 @@ A quick self-check — don't report success without it:
 - The **Sources queried** table lists _every_ selected source (`ok`/`partial`/`blocked`/`not_found`/`no_data`/`error`), including the `Official website` row when the shop has a site.
 - **Sanity-check the fan-out:** if _every_ source came back `blocked`/`no_data`/`error`, suspect the sub-agents lacked web access (no `WebSearch`/`WebFetch`) rather than a genuine data desert — flag it instead of writing a hollow dossier.
 - The **Branding / Theme** section exists with a labeled **Basis**, valid `#rrggbb` palette values, and named `display`/`body` fonts. If a usable website was found, the basis should be **extracted** — an **inferred** basis despite a known site means the branding agent failed; flag it.
-- The **Missing information** section lists the standard fields that came back empty or low-confidence (e.g. website, opening hours, ratings, reviews, prices, email, social links, genuine logo, extracted branding) so a human knows what to chase — or states that none are missing.
+- The **Missing information** section lists the standard fields that came back empty or low-confidence (e.g. website, opening hours, ratings, reviews, email, social links, genuine logo, extracted branding) so a human knows what to chase — or states that none are missing.
 
 ## Output template
 
@@ -484,7 +473,6 @@ A quick self-check — don't report success without it:
 ## Identity
 
 - **Name:** <canonical> _(sources)_ — alt: "<other>" _(source)_
-- **Identifiers:** Google `place_id` `<...>`; UID `<CHE-...>` _(sources)_
 
 ## Contact
 
@@ -516,10 +504,6 @@ A quick self-check — don't report success without it:
 ## Services / Products / Menu
 
 - **<name>** — <description> — <price> _(source)_
-
-## Prices
-
-<overall price level / notable prices> _(sources)_
 
 ## Branding / Theme
 
@@ -601,9 +585,9 @@ _Standard fields no source could fill, or that are only low-confidence placehold
 
 ## Constraints & conventions
 
-- **Web only, no credentialed APIs.** Never assume, invent, or use credentials; no paid APIs. Free keyless public endpoints (Overpass, Nominatim, Wikidata, Zefix public search, opendata.swiss) are allowed and preferred over HTML scraping. Best-effort fetch; no anti-bot bypass.
+- **Web only, no credentialed APIs.** Never assume, invent, or use credentials; no paid APIs. Free keyless public endpoints (Overpass, Nominatim, Wikidata) are allowed and preferred over HTML scraping. Best-effort fetch; no anti-bot bypass.
 - **Original language preserved** — translation is the website-build step's job.
-- **Provenance everywhere** — every value carries its source(s); a registry fact must be distinguishable from an aggregator's guess.
+- **Provenance everywhere** — every value carries its source(s); a primary-source fact must be distinguishable from an aggregator's guess.
 - **Partial results are expected** — most shops won't have all fields, and some sources will be blocked or empty. Record field-level gaps in the **Missing information** section and source-access gaps in the appendix table; never fail the run over a missing field or source.
 - **Fallback imagery is media-only, labeled, and free-license.** When no genuine logo/photos exist, generated/stock stand-ins may be added (step 9) — always free-license, attributed, kept in a separate lane (a generated `logo.svg`, `stock-*`), and never passed off as the real business. This never extends to facts: hours, prices, services, reviews, and copy stay strictly sourced.
 - **One business per invocation.**
