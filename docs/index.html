@@ -71,17 +71,6 @@
             color: var(--gold);
         }
 
-        .tag {
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--gold2);
-            padding: 0.4rem 0.85rem;
-            border: 1px solid var(--border);
-            border-radius: 100px;
-        }
-
         /* --- Board (the table) --- */
         .board {
             flex: 1 1 auto;
@@ -180,13 +169,15 @@
             box-shadow: 0 8px 22px -8px rgba(201, 168, 76, 0.55);
         }
 
-        .btn-data {
+        .btn-data,
+        .btn-map {
             background: transparent;
             color: var(--gold2);
             border-color: var(--border);
         }
 
-        .btn-data:hover {
+        .btn-data:hover,
+        .btn-map:hover {
             background: rgba(201, 168, 76, 0.12);
             border-color: var(--gold);
             transform: translateY(-1px);
@@ -279,7 +270,7 @@
     <header class="top">
         <div class="bar">
             <span class="brand">Vitrine<span>Pro</span></span>
-            <span class="tag">10 storefronts</span>
+            <a class="btn btn-map" href="map/"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="#C81E1E" d="M12 2C8.1 2 5 5.1 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#F6F3EC"/></svg>Map</a>
         </div>
     </header>
 
@@ -296,7 +287,7 @@
                 <tr>
                     <td class="c-name"><span class="name">Miro Barber Shop</span><span class="trade">Barbershop</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/miro_barbershop" target="_blank" rel="noopener">Website</a></td>
-                    <td class="c-act"><span class="na" title="No data extracted">—</span></td>
+                    <td class="c-act"><a class="btn btn-data" href="data.html?slug=miro-barber-shop_barber-shop" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
                     <td class="c-name"><span class="name">Yummy Coffee</span><span class="trade">Coffee shop</span></td>
