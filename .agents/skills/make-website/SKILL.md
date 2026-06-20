@@ -42,7 +42,7 @@ If there is no remote or it can't be parsed, use a literal `{{BASE_URL}}` token 
 ### 3. Plan content from the dossier
 
 - Map the dossier's available data onto the sections in `site-structure.md`. **Omit any section with no backing data — never fabricate.** No reviews in the dossier → no Reviews section (and no `Review`/`aggregateRating` in the JSON-LD). The structure adapts per business.
-- Choose the brand palette (per `resources/info.txt`): use the dossier's stated brand colors if present → else derive from the **logo** → else infer from the business **type/name**.
+- Choose the brand palette: use the dossier's stated brand colors if present → else derive from the **logo** → else infer from the business **type/name**.
 - Decide the most specific schema.org `LocalBusiness` subtype for the business type (e.g. `BarberShop`, `HairSalon`, `Restaurant`, `Bakery`, `BarOrPub`, `VeterinaryCare`, …); fall back to `LocalBusiness`.
 
 ### 4. Build with the frontend-design skill

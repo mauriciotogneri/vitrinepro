@@ -1,0 +1,116 @@
+### Beauty & Grooming (10)
+- hair_salon
+- hair_care
+- barber_shop
+- beauty_salon
+- nail_salon
+- beautician
+- makeup_artist
+- body_art_service
+- tanning_studio
+- foot_care
+
+### Wellness & Fitness (6)
+- massage_spa
+- massage
+- spa
+- gym
+- fitness_center
+- yoga_studio
+
+### Drink (19)
+- bar
+- pub
+- brewery
+- brewpub
+- irish_pub
+- gastropub
+- beer_garden
+- cocktail_bar
+- wine_bar
+- sports_bar
+- lounge_bar
+- hookah_bar
+- night_club
+- winery
+- coffee_shop
+- coffee_stand
+- coffee_roastery
+- tea_house
+- juice_shop
+
+### Food (27)
+- restaurant
+- cafe
+- bistro
+- diner
+- deli
+- food_court
+- cafeteria
+- steak_house
+- snack_bar
+- kebab_shop
+- sandwich_shop
+- noodle_shop
+- salad_shop
+- meal_takeaway
+- meal_delivery
+- pizza_delivery
+- bakery
+- pastry_shop
+- cake_shop
+- donut_shop
+- bagel_shop
+- dessert_shop
+- ice_cream_shop
+- chocolate_shop
+- confectionery
+- acai_shop
+- butcher_shop
+
+### Auto Repair (8)
+- car_repair
+- car_wash
+- car_dealer
+- car_rental
+- tire_shop
+- bicycle_store
+- auto_parts_store
+- ebike_charging_station
+
+### Pet Care (4)
+- veterinary_care
+- pet_care
+- pet_store
+- pet_boarding_service
+
+### Services & Trades (7)
+- tailor
+- locksmith
+- plumber
+- electrician
+- painter
+- laundry
+- art_studio
+
+### Shops & Retail (20)
+- florist
+- garden_center
+- jewelry_store
+- hardware_store
+- book_store
+- shoe_store
+- cell_phone_store
+- electronics_store
+- clothing_store
+- womens_clothing_store
+- cosmetics_store
+- furniture_store
+- home_goods_store
+- thrift_store
+- sporting_goods_store
+- sportswear_store
+- toy_store
+- tea_store
+- candy_store
+- liquor_store
