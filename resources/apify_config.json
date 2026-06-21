@@ -1,0 +1,29 @@
+{
+    "categoryFilterWords": ["pub"],
+    "city": "geneva",
+    "countryCode": "ch",
+    "includeWebResults": false,
+    "locationQuery": "geneva switzerland",
+    "maxImages": 20,
+    "maxReviews": 10,
+    "maximumLeadsEnrichmentRecords": 0,
+    "reviewsOrigin": "all",
+    "reviewsSort": "highestRanking",
+    "scrapeContacts": false,
+    "scrapeDirectories": false,
+    "scrapeImageAuthors": false,
+    "scrapeOrderOnline": false,
+    "scrapePlaceDetailPage": true,
+    "scrapeReviewsPersonalData": true,
+    "scrapeSocialMediaProfiles": {
+        "facebooks": true,
+        "instagrams": true,
+        "tiktoks": false,
+        "twitters": false,
+        "youtubes": false
+    },
+    "scrapeTableReservationProvider": false,
+    "skipClosedPlaces": true,
+    "verifyLeadsEnrichmentEmails": false,
+    "website": "withoutWebsite"
+}

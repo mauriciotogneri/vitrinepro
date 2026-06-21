@@ -32,7 +32,7 @@ Everything else is optional and just improves matching.
 - `address` (or `street` + `postalCode` + `city`) → **address**; `location {lat,lng}` → **coordinates** — **validate** they fall in the Geneva area (≈ lat 46.1–46.3, lng 6.0–6.3); if not, flag it (the pipeline is Geneva-only).
 - `phone` / `phoneUnformatted` / `phones` → **phones**; `emails` → **emails**; `website` → **website**.
 - `openingHours` (`[{day,hours}]`) → **opening_hours**; `permanentlyClosed` / `temporarilyClosed` → **status**.
-- `totalScore` + `reviewsCount` + `reviewsDistribution` → **rating** (`score`, `scale: 5`, `count`); `reviews` → **reviews** (usually empty — the fan-out supplies review text).
+- `totalScore` + `reviewsCount` + `reviewsDistribution` → **rating** (`score`, `scale: 5`, `count`); `reviews[]` → **reviews** — often populated with full review objects: map each entry's `name` → author, `publishedAtDate` → date, `stars` → rating, `text` (the **original-language** field, **not** `textTranslated`) → excerpt, `reviewUrl` → url. The fan-out may add more, so dedupe in the merge (step 5).
 - `imageUrl` / `imageUrls` → **photo_urls**; `instagramProfiles[].profilePictureURL`, when present → **logo_url** candidate.
 - `instagrams` / `facebooks` / `twitters` / `youtubes` / `tiktoks` / `linkedIns` / `pinterests` → **social_links**; `menu` / `servicesLink` → **services**.
 - `additionalInfo` (payments, parking, amenities, planning) → **notes** (FAQ-useful extras); keep `scrapedAt` as a staleness marker.
