@@ -22,8 +22,9 @@ From it:
 ## Read before building
 
 1. `references/site-structure.md` — the section menu and top-to-bottom order.
-2. `references/best-practices.md` — the **quality bar**. The site must satisfy it. Don't restate it; apply it.
-3. `docs/webs/` — survey the **sites already built** there, but as an **anti-reference**: note their palettes, layout archetypes, type pairings, and motion so the new site comes out **visibly distinct** from every one of them. Don't borrow design from any of them — the aim is a portfolio of unique sites, not variations on a theme. (The technical conventions — file layout, head/meta, JSON-LD, `js/main.js`, `404.html` — come from steps 5, 7 and 9 below and `best-practices.md`, not from copying a sample site.)
+2. `references/best-practices.md` — the generic **quality bar** (web/a11y/SEO/performance standards). The site must satisfy it. Don't restate it; apply it.
+3. `references/site-conventions.md` — this project's **conventions and overrides** (what's specific to these sites). Apply them too; **on any conflict with `best-practices.md`, the conventions win**.
+4. `docs/webs/` — survey the **sites already built** there, but as an **anti-reference**: note their palettes, layout archetypes, type pairings, and motion so the new site comes out **visibly distinct** from every one of them. Don't borrow design from any of them — the aim is a portfolio of unique sites, not variations on a theme. (The technical conventions — file layout, head/meta, JSON-LD, `js/main.js`, `404.html` — come from steps 5, 7 and 9 below, `best-practices.md`, and `site-conventions.md`, not from copying a sample site.)
 
 ## Procedure
 
@@ -74,18 +75,9 @@ The dossier separates **official** media from **fallback** stand-ins (a generate
 - Copy the `logo` whether real or a **generated** placeholder; a generated logo serves as the brand mark for display and as the favicon/OG source, but flag it as a generated placeholder in the summary. If the dossier has **no logo at all** (e.g. it predates the fallback step), generate a simple SVG wordmark/monogram from the name in the brand palette at build time.
 - Generate from the logo, if `convert`/ImageMagick (or `sharp`) is available: `favicon.ico`, `favicon-32.png`, `favicon-512.png`, `apple-touch-icon.png`, and a `1200×630` `og-image.png`. **If no image tooling is available**, fall back to referencing the logo directly as a single favicon + OG image, and flag this in the summary.
 
-### 7. Per-page requirements (apply `best-practices.md`)
+### 7. Per-page requirements
 
-The `index.html`:
-
-- `<!DOCTYPE html>`, `<html lang="fr-CH">`, `<meta charset="utf-8">` first, responsive viewport (**never** disable zoom).
-- A descriptive `<title>` + `<meta name="description">`; `theme-color`; `<meta name="author">`.
-- `<link rel="canonical">` + Open Graph + Twitter Card, all absolute under `<base>`; `og:image` = the generated OG image; `og:locale` `fr_CH`.
-- **JSON-LD** for the chosen subtype, with only properties backed by visible content (name, address, `geo`, hours, telephone, `priceRange`, services, ratings/reviews **only if present**). Its `image`/`logo`/`photo` properties reference only **real** media (the logo, `photo-*`) or the generated OG image — **never** `stock-*` fallback imagery. **Never** include a tax or business-registration identifier (`taxID`, VAT/TVA number, Swiss UID / `CHE-…`) — not in JSON-LD, not anywhere on the page.
-- Fonts via **Google Fonts CDN** — load the dossier theme's nominated `display` + `body` families: `preconnect` to `fonts.googleapis.com` and `fonts.gstatic.com` (crossorigin), stylesheet with `&display=swap`. This is a deliberate exception to `best-practices.md`'s self-host guidance — do **not** self-host `@font-face` for these sites.
-- Semantic landmarks (`header`/`nav`/`main`/`section[id]`/`footer`), exactly one `<h1>`, ordered headings, skip-to-content link (parked fully off-screen — not a shallow offset that can peek — and revealed only on `:focus-visible`, never plain `:focus`, so pointer/programmatic focus never exposes it), `:focus-visible`, `prefers-reduced-motion`, `aria-current` on the active nav, touch targets ≥24px.
-- **Footer:** restate identity, contact/hours, secondary nav, social (only link an Instagram profile the dossier shows is **public** — omit the link if it's private), and legal/copyright with a **JS-rendered, never-hardcoded** year (see `js/main.js` below) — but **never** a tax/registration ID (UID / `CHE-…` / VAT) and **never a "back-to-top" link/button** (the sticky header and logo already return users to the top).
-- `js/main.js` (end of body, IIFE, no inline `on*=` handlers): the copyright year, set from `new Date().getFullYear()` into an **empty** `<span>` (the year is **never** written as a literal in the markup — no hardcoded fallback); scroll reveals via `IntersectionObserver` with a no-IO fallback; and — if hours are known — an Intl-based open/closed badge (`Europe/Zurich`).
+Build `index.html` to satisfy both references read above — `best-practices.md` (generic web/a11y/SEO/performance standards) **and** `site-conventions.md` (this project's conventions + overrides, which **win on any conflict**). Apply them; don't restate them here.
 
 ### 8. Contact section
 
