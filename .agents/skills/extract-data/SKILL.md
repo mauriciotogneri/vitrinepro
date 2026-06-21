@@ -590,7 +590,7 @@ A quick self-check — don't report success without it:
 - **Phone(s):** <p1> _(sources)_, <p2> _(source)_
 - **Email(s):** <e1> _(sources)_
 - **Website:** <url> _(sources)_
-- **Social links:** Instagram <url> _(source)_, Facebook <url> _(source)_
+- **Social links:** one entry per network found — Instagram <url> _(source)_, Facebook <url> _(source)_, TikTok <url> _(source)_, YouTube <url> _(source)_, X <url> _(source)_, LinkedIn <url> _(source)_, Pinterest <url> _(source)_, … (omit any network with no link)
 
 ## Opening hours
 
