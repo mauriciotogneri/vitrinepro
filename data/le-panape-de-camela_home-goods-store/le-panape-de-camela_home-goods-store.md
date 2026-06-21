@@ -45,7 +45,7 @@
 | Google    | 4.8 / 5        | 10    |
 | search.ch | — (no reviews) | 0     |
 
-_Google distribution: 9×5★, 1×3★, 0×4/2/1★ _(via Wanderlog, which sources from Google)_. No TripAdvisor / Yelp / Trustpilot / Foursquare presence found._
+_Google distribution: 9×5★, 1×3★, 0×4/2/1★ _(via Wanderlog, which sources from Google)_. No TripAdvisor / Yelp / presence found._
 
 ## Reviews
 
@@ -143,11 +143,9 @@ None — a genuine logo and genuine photos were found, so no generated or stock 
 | ---------------------------- | --------- | ----------------------------------------------------------------------------------------- |
 | Official website             | no_data   | Site broken — PHP fatal errors, no HTML; sub-pages 404                                    |
 | Google Business Profile/Maps | partial   | Consent-walled to bots; data via Wanderlog fallback (hours, 4.8★/10, 5 reviews, 3 photos) |
-| Bing Places                  | blocked   | JS-rendered SPA; only static shell returned                                               |
 | Wikidata                     | not_found | No item (typical for a small shop)                                                        |
 | Wikipedia                    | not_found | No article                                                                                |
 | OpenStreetMap                | not_found | Business not mapped; address building node exists (coords used)                           |
-| Foursquare Places            | blocked   | Venue pages require login; API 401                                                        |
 | local.ch                     | partial   | Name, address, phone; no hours/website/photos; listing unclaimed                          |
 | search.ch / tel.search.ch    | ok        | Name, address, phone, payment methods; 0 reviews; updated 2026-05-24                      |
 | lokal.ch                     | blocked   | All requests timed out (site unreachable)                                                 |
@@ -159,13 +157,11 @@ None — a genuine logo and genuine photos were found, so no generated or stock 
 | Kompass Suisse               | blocked   | Listing exists (ch374056) but all requests 403; only title visible                        |
 | Esprit de Genève             | ok        | Name, address, phone, email, website, NOGA; SITG-sourced; 1–2 staff                       |
 | geneve-annuaire.ch           | not_found | Not listed                                                                                |
-| CCIG member directory        | blocked   | Login wall; membership undeterminable                                                     |
 | GenèveAvenue                 | blocked   | Connection closed on all requests (profile known to exist)                                |
 | Genève Commerces             | not_found | Directory readable; not a member                                                          |
 | Zefix                        | ok        | Legal name, UID, legal form, status, purpose (via LINDAS linked-data)                     |
 | UID-Register (BFS/FSO)       | ok        | UID, status active, VAT active since 2014, EGID                                           |
 | Yelp                         | blocked   | 403; almost certainly not listed                                                          |
-| Trustpilot                   | blocked   | 403; no profile found                                                                     |
 
 ## Notes
 
@@ -187,4 +183,4 @@ _Standard fields no source could fill, or only available as low-confidence place
 - **Review text in original language:** only English translated/paraphrased Google excerpts (via Wanderlog) are available; original French not recoverable.
 - **Extracted website branding:** unavailable (site broken) — palette is logo-derived (medium confidence) and typography is nominated, not observed.
 - **Special / holiday hours:** only the regular weekly schedule is published.
-- **Ratings beyond Google:** no TripAdvisor / Yelp / Trustpilot / Foursquare presence.
+- **Ratings beyond Google:** no TripAdvisor / Yelp presence.

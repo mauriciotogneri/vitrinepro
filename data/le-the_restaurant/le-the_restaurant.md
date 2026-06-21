@@ -5,7 +5,7 @@
 
 ## Summary
 
-- **Status:** operational _(UID register — active; Google, OpenStreetMap, local.ch, TripAdvisor, Foursquare, Restaurant Guru, mapstr, GaultMillau)_
+- **Status:** operational _(UID register — active; Google, OpenStreetMap, local.ch, TripAdvisor, Restaurant Guru, mapstr, GaultMillau)_
 - **Type(s):** Restaurant + Tea house — Chinese / Cantonese **dim sum** house with 100+ Chinese teas (Yam-Cha culture); also tagged café / tea-room _(all sources; cuisine "chinese" on OSM)_
 - **Canonical name:** Le Thé _(all sources)_ — registered legal name **Lam** (sole proprietorship) _(UID register, Esprit de Genève/SITG)_
 
@@ -20,18 +20,17 @@
   - Building `EGID` `1013258`; municipality `6621` (Genève), canton GE _(UID register)_
   - Google `CID` `3763613456449613664` (`0x343b0a7f878f2f60`); `ftid` `0x478c64d5b34d708f:0x343b0a7f878f2f60`; KG `mid` `/g/1t_tj5r7` _(Google Maps URL)_
   - OpenStreetMap node `2169156791` _(OSM)_
-  - Foursquare venue `4af1dee1f964a520f6e321e3` _(Foursquare)_
   - local.ch ID `LNMVmXqGg6TVxytb8Cm7zQ` _(local.ch)_
   - TripAdvisor `d948454` _(TripAdvisor)_
 
 ## Contact
 
 - **Address:** Rue des Bains 65, 1205 Genève, Switzerland _(consensus — Google, OSM, local.ch, search.ch, TripAdvisor, Esprit de Genève, UID register, Just-Tag, Restaurant Guru, mapstr, choisistonresto, quandestcequonmange, Yelp)_
-- **Neighbourhood:** Quartier des Bains — Jonction / Plainpalais _(Foursquare, Genève Tourisme, gvafoodie, OSM)_
+- **Neighbourhood:** Quartier des Bains — Jonction / Plainpalais _(Genève Tourisme, gvafoodie, OSM)_
 - **Coordinates:** 46.2011335, 6.1375968 _(Google Maps URL)_ — alt: 46.2011884, 6.1375706 _(OSM, Just-Tag)_; 46.201203, 6.137535 _(local.ch)_; 46.2009949, 6.1374788 _(mapstr)_
-- **Phone:** +41 79 436 77 18 / 079 436 77 18 _(consensus — Google, OSM, Foursquare, local.ch, search.ch, TripAdvisor, GaultMillau, choisistonresto, quandestcequonmange, mapstr, Esprit de Genève, Just-Tag, Restaurant Guru)_ — reservations are **by phone only** _(local.ch)_
+- **Phone:** +41 79 436 77 18 / 079 436 77 18 _(consensus — Google, OSM, local.ch, search.ch, TripAdvisor, GaultMillau, choisistonresto, quandestcequonmange, mapstr, Esprit de Genève, Just-Tag, Restaurant Guru)_ — reservations are **by phone only** _(local.ch)_
 - **Email:** none found _(no source had a genuine address; the `contact@pierreetjean.ch` shown by Infobel belongs to a different business — see Notes)_
-- **Website:** **none operational.** A former site `dragon-t.jimdo.com/français/restaurant-le-thé` is listed by Foursquare but is **dead** (connection refused / DNS released, confirmed 2026-06-18). Two directory-listed sites are **data errors for other businesses**: `pierreetjean.ch` _(Infobel)_ and `boulangeriedesbains.ch` _(mapstr)_ — do not use.
+- **Website:** **none operational.** Two directory-listed sites are **data errors for other businesses**: `pierreetjean.ch` _(Infobel)_ and `boulangeriedesbains.ch` _(mapstr)_ — do not use.
 - **Social links:**
   - Instagram **https://www.instagram.com/lethe_geneva** — 2,224 followers, 37 posts _(Instagram, GaultMillau, Genève Tourisme, quandestcequonmange)_ — the business's only active online presence.
   - Facebook (auto-generated place page, **unmanaged**) https://www.facebook.com/pages/Le-The/622142134525457 _(web search)_ — carries the generic FB map-pin placeholder, not a real profile picture; not actively used.
@@ -59,7 +58,6 @@ _Note: quandestcequonmange reports the evening **~19:00 seating is time-limited*
 | TripAdvisor         | 4.1 / 5  | 184     | direct; ranked **#249 of 1,883** Geneva restaurants; "unclaimed"             |
 | Restaurant Guru     | 4.2 / 5  | 353     | aggregate; ranked **#16 of 84** Chinese restaurants in Geneva                |
 | Just-Tag            | 4.2 / 5  | 350     | unclaimed listing                                                            |
-| Foursquare          | 8.5 / 10 | 15 tips | Restaurant Guru cites 8.7/10 from 53 reviews                                 |
 | quandestcequonmange | 18 / 20  | —       | the reviewer's subjective appreciation score                                 |
 | choisistonresto     | 4 / 5    | —       | score cited in the 2015 article                                              |
 | Yelp                | —        | 10      | 10 reviews exist; score not recoverable (HTTP 403)                           |
@@ -84,13 +82,6 @@ _Note: quandestcequonmange reports the evening **~19:00 seating is time-limited*
 - Nadine Abid, ~Apr 2026, ★5: "Wonderful authentic Chinese food, with great dumplings and many vegan options. The tea room is very cute, small and cozy. You have to book a couple of days in advance because it's very popular… try the coconut Padang crepe!"
 - Masayo, ~Apr 2026, ★5: "One of the best authentic bistro specialized in Dim-sum & Chinese tea."
 - Riccardo Daidone, ~2020, ★5: "Amazingly cozy place… a bit of China in Geneva. The food is homemade, and they have a good tea offer. Just be aware that the owner is not super welcoming ;)"
-
-**Foursquare** _(tips, anonymous)_
-
-- "Super small place with very tasty dim sums, especially BBQ pork buns."
-- "They serve a lot of different tea." · "Roasted pork dumplings are amazing."
-- "The place is very small so you'll need to book a table before going there."
-- "Cash only but they will take euros." · "Ask for the homemade ice tea. You'll have to wait 10 minutes but it's a good and tasty one."
 
 **mapstr** _(user tags)_
 
@@ -120,7 +111,7 @@ A homemade-**dim sum** house in the Cantonese **Yam-Cha** tradition (tea + dim s
 
 **Tea retail** — Yixing-style cast-iron & stoneware **teapots and cups sold on-site** _(choisistonresto)_
 
-**Features:** **cash only** (no cards; euros accepted) · reservation strongly advised (≈9 tables, "always full") · takeaway available · vegetarian / vegan / gluten-free options · wine & beer · TV · **no WiFi** · **not wheelchair accessible** _(TripAdvisor, Foursquare, Restaurant Guru, choisistonresto, quandestcequonmange)_
+**Features:** **cash only** (no cards; euros accepted) · reservation strongly advised (≈9 tables, "always full") · takeaway available · vegetarian / vegan / gluten-free options · wine & beer · TV · **no WiFi** · **not wheelchair accessible** _(TripAdvisor, Restaurant Guru, choisistonresto, quandestcequonmange)_
 
 ## Prices
 
@@ -201,7 +192,6 @@ _20 of 26 downloaded candidates kept; **all visually verified** as the real Le T
 | Google Business Profile / Maps | blocked   | GDPR consent wall; rating 4.2/5 via Wanderlog, identifiers/coords/hours only                              |
 | Wikidata                       | not_found | Only artworks named "Le Thé"; no business item                                                            |
 | OpenStreetMap                  | ok        | Node 2169156791; address, geo, `Mo-Sa 12:00-22:00`, cuisine=chinese, phone                                |
-| Foursquare Places              | partial   | Via search snippets; venue id, 8.5/10 (15 tips), the dead Jimdo URL, cash-only                            |
 | local.ch                       | ok        | Rich FR description (Mr. Lam, 9 tables, 100+ teas, bamboo decor); hours; 0 ratings; placeholder "LT" logo |
 | search.ch / tel.search.ch      | partial   | Name + address only; data attributed to "Tripadvisor Crawler"                                             |
 | tel.help.ch                    | not_found | 302 → dummy.help.ch (canonical "no match")                                                                |
@@ -233,9 +223,8 @@ _20 of 26 downloaded candidates kept; **all visually verified** as the real Le T
 - **Data-quality flags:**
   - **Infobel** mixed this listing with **"Pierre & Jean"** (a different restaurant): its phone `022 328 41 70`, website `pierreetjean.ch`, email `contact@pierreetjean.ch`, and the **4.1 / 523** rating all belong to that other business — excluded from the merge.
   - **mapstr** listed `boulangeriedesbains.ch` as the website — a different business at/near the same street; excluded.
-  - The **former Jimdo site** `dragon-t.jimdo.com` (from old Foursquare data) is **dead** (connection refused).
 - **Branding is logo-derived + photo-grounded, not extracted** (no live site): the palette is well-evidenced by the venue photos, but type and shape/depth/spacing are conventions to confirm or replace at build time.
-- **Source behaviour matched the reference doc** (Google/Bing-class GDPR walls, Yelp/Michelin 403s. No major reference-doc drift to flag.
+- **Source behaviour matched the reference doc** (Google GDPR walls, Yelp/Michelin 403s. No major reference-doc drift to flag.
 
 ## Missing information
 

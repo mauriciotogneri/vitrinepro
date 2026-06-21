@@ -6,12 +6,12 @@
 ## Summary
 
 - **Status:** **operational** _(UID-Register — sole proprietorship "Actif"; corroborated by local.ch, search.ch, OpenStreetMap, Infobel, Facebook)_
-- **Type(s):** **Pet Groomer** (taxonomy classification) — real-world: **salon de toilettage canin et félin** (dog **and** cat grooming, by appointment) _(local.ch "grooming parlor", search.ch "Hundesalon", Bing "Tierfrisör(in)", Infobel "Toilettage de chiens et chats", Tipaw "Toiletteur", Facebook "salon de toilettage")_
+- **Type(s):** **Pet Groomer** (taxonomy classification) — real-world: **salon de toilettage canin et félin** (dog **and** cat grooming, by appointment) _(local.ch "grooming parlor", search.ch "Hundesalon", Infobel "Toilettage de chiens et chats", Tipaw "Toiletteur", Facebook "salon de toilettage")_
 - **Canonical name:** **Toutou-Club** _(local.ch, search.ch, UID-Register trade name, Google Maps, Infobel, Tipaw, geneve.directory)_
 
 ## Identity
 
-- **Name:** **Toutou-Club** _(local.ch, search.ch, Google Maps, UID-Register, Infobel, Tipaw, geneve.directory)_ — variants: "**Toutou Club**" (no hyphen) _(OpenStreetMap, Bing)_; "**Toutou club toilettage genève**" (Facebook page name) _(Facebook)_
+- **Name:** **Toutou-Club** _(local.ch, search.ch, Google Maps, UID-Register, Infobel, Tipaw, geneve.directory)_ — variants: "**Toutou Club**" (no hyphen) _(OpenStreetMap)_; "**Toutou club toilettage genève**" (Facebook page name) _(Facebook)_
 - **Owner / operator:** **Alexandra Mathilde Brière** — sole proprietor; the business is the trade name of her _entreprise individuelle_ _(UID-Register)_. Listed as **"Briere Alexandra"** on local.ch, search.ch and Esprit de Genève; **"Alexandra Brière"** on Facebook. Operates alone — **"Sans travailleur"** (no employees) _(Esprit de Genève / SITG)_
   - ⚠️ geneve.directory instead names the manager **"Petit Celine"** — this contradicts every authoritative source (UID-Register, the two flagship directories, Facebook) and is treated as a **stale/erroneous directory entry**, not the canonical operator.
 - **Identifiers:**
@@ -25,12 +25,12 @@
 
 ## Contact
 
-- **Address:** **Route de Meyrin 6, 1202 Genève** (district **Servette**) _(local.ch, search.ch, Bing, Infobel, Esprit de Genève, UID-Register, geneve.directory, Tipaw, Facebook, Google Maps — unanimous)_
+- **Address:** **Route de Meyrin 6, 1202 Genève** (district **Servette**) _(local.ch, search.ch, Infobel, Esprit de Genève, UID-Register, geneve.directory, Tipaw, Facebook, Google Maps — unanimous)_
   - _(OpenStreetMap's node reverse-geocodes to postcode "1211" via Nominatim, but the node has no `addr:` tags; **1202** is the correct postcode per all directory sources.)_
 - **Coordinates:** **46.2143362, 6.1287769** _(Google Maps URL; local.ch)_ — OSM node at 46.214313, 6.1286486 (same point) _(OpenStreetMap)_
 - **Phone(s):**
   - **022 734 31 78** (+41 22 734 31 78) — main salon line _(local.ch, search.ch, OpenStreetMap, Esprit de Genève, geneve.directory, Tipaw; Infobel lists it click-gated)_. Marked **"nopromo"** — the business declines unsolicited advertising calls _(search.ch, local.ch)_
-  - **079 266 82 91** (+41 79 266 82 91) — mobile / booking number _(Bing Places owner-managed listing; Facebook — used for phone & WhatsApp booking)_
+  - **079 266 82 91** (+41 79 266 82 91) — mobile / booking number _(Facebook — used for phone & WhatsApp booking)_
 - **Email:** **none found** on any queried source.
 - **Website:** **none in use.** No live site on any source. A former domain **`toutouclub.ch`** appears in stale search results but now returns **NXDOMAIN** (apex and `www` both fail DNS resolution — checked during extraction), i.e. the domain has lapsed. geneve.directory shows a generic "Site Web" link but the underlying URL is not exposed.
 - **Social links:**
@@ -46,7 +46,6 @@
   - **local.ch:** Mon–Fri "open all day"; Sat–Sun closed _(the "open all day" is a directory default — the business is in fact appointment-only)_
   - **Infobel:** Mon–Fri "open all day"; Sat–Sun closed
   - **search.ch:** Mon–Fri, shows "00:00–24:00" — a data placeholder, not real hours
-  - **Bing:** "sur rendez-vous" (by appointment)
 
 ## Ratings
 
@@ -71,7 +70,7 @@ By appointment, for **dogs and cats**:
 - **Animals accepted:** dogs (chiens) and cats (chats); **accepting new clients: yes** _(Tipaw)_
 - **Pet fragrances ("parfums")** — product announcements on the Facebook page _(Facebook)_
 - **Booking:** by phone or **WhatsApp** _(Facebook)_; appointment booking is also offered via the local.ch platform _(local.ch)_. **No online/instant booking** on Tipaw _(Tipaw)_
-- Self-description: _"un salon de toilettage qui accueille vos compagnons à 4 pattes sur rendez-vous du lundi au vendredi"_ _(Bing listing; Facebook page about-text)_
+- Self-description: _"un salon de toilettage qui accueille vos compagnons à 4 pattes sur rendez-vous du lundi au vendredi"_ _(Facebook page about-text)_
 
 ## Prices
 
@@ -139,8 +138,6 @@ _All genuine — from Toutou-Club's own Facebook / Instagram, supplied manually 
 | local.ch                        | ok         | Address, landline, hours, owner "Briere Alexandra", operational, in-platform booking        |
 | search.ch / tel.search.ch       | ok         | Address, landline (nopromo), "Hundesalon", owner, uuid; feed updated 2026-05-24             |
 | OpenStreetMap                   | ok         | ⭐ Node 12104886339; coords, landline, "by appointment Mon–Fri from 8am", shop=pet_grooming |
-| Foursquare Places               | blocked    | All venue pages require login (308 → app.foursquare.com login/404)                          |
-| Bing Places / Bing Maps         | partial    | Owner-claimed listing; mobile **079 266 82 91**, FR self-description, "Tierfrisör(in)"; JS/CAPTCHA blocked the rest |
 | moneyhouse.ch                   | not_found  | Not in the commercial-register DB (expected for a sub-threshold sole proprietorship)        |
 | tel.help.ch (HELP.CH)           | blocked    | JS-rendered AJAX search; no indexed page — listing presence unconfirmable                   |
 | lokalesgewerbe.ch               | not_found  | "Kein Eintrag gefunden" — never self-registered                                             |
@@ -161,7 +158,7 @@ _All genuine — from Toutou-Club's own Facebook / Instagram, supplied manually 
 - **Media update (2026-06-15):** the site owner removed the temporary `stock-*` placeholders and supplied **6 genuine photos** from the shop's own Facebook/Instagram (storefront + 5 groomed dogs); the dossier's Photos section was updated to use them.
 - **Download failures:** none.
 - **Fallback imagery:** **none** — the 5 earlier `stock-*` placeholders were removed once genuine photos were supplied. The logo is genuine, so no placeholder logo was generated. Facts, hours, services and contact remain strictly sourced.
-- **Two legitimate phone numbers:** the **022 734 31 78** salon landline (most directories) and the **079 266 82 91** mobile (on the owner-managed Bing listing + Facebook/WhatsApp booking) are both real business contacts.
+- **Two legitimate phone numbers:** the **022 734 31 78** salon landline (most directories) and the **079 266 82 91** mobile (on the owner-managed Facebook/WhatsApp booking) are both real business contacts.
 - **Defunct website:** `toutouclub.ch` shows up in old indexes but is dead (NXDOMAIN on apex + www). The build should **not** link it.
 - **Category noise to ignore:** Infobel additionally tags the listing "Vétérinaires Praticiens" — Toutou-Club is a **grooming salon, not a veterinary practice**; this is a directory miscategorisation.
 - **Manager discrepancy:** geneve.directory's "Petit Celine" conflicts with the authoritative owner **Alexandra Brière** (UID-Register + everywhere else) — treat "Petit Celine" as erroneous/stale.

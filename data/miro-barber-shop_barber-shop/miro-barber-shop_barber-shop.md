@@ -32,7 +32,7 @@
 
 - Per source:
   - **Fresha:** Lundi–Samedi 09:00–19:00 · Dimanche fermé (Mon–Sat 9:00–19:00, Sun closed)
-  - _No other source published opening hours (Google/Bing blocked; local.ch, Planity, Esprit show none)._
+  - _No other source published opening hours (Google blocked; local.ch, Planity, Esprit show none)._
 
 ## Ratings
 
@@ -118,16 +118,12 @@ _All from the Facebook page (Miro Barber shop), recovered via the no-login rende
 | Source                            | Access    | Notes                                                                         |
 | --------------------------------- | --------- | ----------------------------------------------------------------------------- |
 | Google Business Profile / Maps    | blocked   | GDPR consent gate (CH); confirmed name/address/coords only, no ratings/photos |
-| Bing Places for Business          | blocked   | JS-rendered + CAPTCHA; no data                                                |
 | OpenStreetMap                     | partial   | Node 12400082480: name=Miro, shop=hairdresser, coords only                    |
-| Foursquare Places                 | not_found | No public venue page                                                          |
 | local.ch                          | partial   | Listing "Barber Miro Sàrl", address only (registry-style, no advertising)     |
 | search.ch / tel.search.ch         | not_found | Only the _other_ Miro Barber (1201/Rue Chaponnière) is listed                 |
 | tel.help.ch (HELP.CH)             | not_found | Not listed                                                                    |
 | Infobel                           | not_found | Not in Geneva coiffeurs index; later rate-limited                             |
 | Esprit de Genève                  | ok        | "BARER Miro (titulaire Ahmad)", address; from SITG cadastre (2021)            |
-| CCIG member directory             | blocked   | Login-walled; likely not a member                                             |
-| Trustpilot                        | not_found | No profile (local barber, no website)                                         |
 | Treatwell                         | not_found | Not listed                                                                    |
 | Fresha                            | partial   | Phone + hours + operational status (non-partner "call to book" entry)         |
 | Planity                           | partial   | Listed, online booking not enabled; no hours/prices/reviews                   |
@@ -141,7 +137,7 @@ _All from the Facebook page (Miro Barber shop), recovered via the no-login rende
 - Photo cap: 20. Harvested 9 fbcdn images via the no-login Facebook render; after byte-for-byte dedup (2 identical pairs) → 6 distinct; reclassified 1 as the logo and dropped 1 dated 2020 text card (below) → **4 venue photos + 1 logo** kept. 0 download failures.
 - **Dropped image:** a 2020 promotional text card ("Bonjour nous avons le plaisir de vous informer de la réouverture du salon dès ce samedi 21/11/2020 chez Miro Coiffeur", white text on a hearts background) — not venue imagery, but it dates the **reopening to 21 Nov 2020** and shows the "Miro Coiffeur" name variant.
 - The Facebook Graph profile-picture endpoint returned the generic default silhouette (no custom avatar); the genuine logo is the "MERO BARBER SHOP" watermark badge instead.
-- Google & Bing were both blocked, but the rest of the fan-out (Fresha, local.ch, Esprit, OSM, Facebook, Yandex) corroborated identity, so this is genuine thin coverage, not a web-access failure.
+- Google was both blocked, but the rest of the fan-out (Fresha, local.ch, Esprit, OSM, Facebook, Yandex) corroborated identity, so this is genuine thin coverage, not a web-access failure.
 - FAQ-useful extras: Facebook page category "Beauté, cosmétique et soins"; 215 likes / 173 following; operating since at least 2020 (reopened 21/11/2020).
 
 ## Suggested domains

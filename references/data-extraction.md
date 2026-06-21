@@ -28,7 +28,7 @@ The baseline set of fields we want to capture for each business. These are **des
 - **Coordinates** — latitude / longitude.
 - **Phone(s)** — may be more than one.
 - **Opening hours** — including special/holiday hours where published.
-- **Rating** — aggregate score, kept per source (Google, Foursquare, TripAdvisor, …).
+- **Rating** — aggregate score, kept per source (Google, TripAdvisor, …).
 - **Reviews** — individual user reviews.
 - **Services / Products / Menu**
 - **Prices** — itemized prices for individual products/services (not an overall price level/range).
@@ -45,12 +45,10 @@ These work as a first pass for essentially any shop. For most small Geneva busin
 ### Global platforms
 
 - **[Google Business Profile / Google Maps](https://www.google.com/maps)** — _Coverage (Geneva/CH):_ strong — nearly every Geneva business has a listing; the single richest source. _Data:_ name, address, geo, phone, website, opening hours (+ special hours), category & attributes, photos, rating & review count, individual reviews, popular times, price level, business description. _Access:_ Official API: Places API (New) for reads (Text/Nearby Search, Place Details) — API key with per-SKU free monthly caps; returns max 5 reviews/place. Google Business Profile API (OAuth) edits only listings you own/manage. Knowledge Panel is rendered HTML (no API).
-- **[Bing Places for Business](https://www.bing.com/forbusiness)** — _Coverage (Geneva/CH):_ moderate — secondary to Google; relaunched Oct 2025 at bing.com/forbusiness with auto-migration of old listings. _Data:_ name, address, phone, hours, photos, categories, aggregated reviews. _Access:_ Free owner portal to claim/verify/edit; no public read API for third-party businesses. Programmatic geocoding/local search via Azure Maps Search API (key; free quota; succeeds the deprecated Bing Maps APIs). Otherwise scrape-only (ToS-restricted).
 
 ### Maps & local directories
 
 - **[OpenStreetMap](https://www.openstreetmap.org)** — _Coverage (Geneva/CH):_ moderate — good for cafes/shops/amenities the community has mapped; many small shops missing or partial. _Data:_ name, address tags, geo, phone, website, email, opening*hours, shop/amenity/cuisine type, wheelchair & other attributes (no ratings/reviews/photos). \_Access:* Open data (ODbL — attribution + share-alike). Official APIs: Overpass API (free, fair-use) for tag/area queries; Nominatim (free, max 1 req/s, User-Agent required, no systematic/bulk scraping) for geocoding. Bulk via Geofabrik Switzerland extracts.
-- **[Foursquare Places](https://foursquare.com/products/places-api/)** — _Coverage (Geneva/CH):_ moderate — solid global POI DB; Geneva present, but consumer usage low in CH. _Data:_ name, address, geo, category, hours, phone, website, popularity, attributes; limited tips/ratings. _Access:_ Official API: Foursquare Places API (free dev tier, API key). 2025 shift: FSQ Open Source Places now free under Apache-2.0 (100M+ POIs, ~22 attributes, monthly releases) via Places Portal token / Hugging Face / S3 — Open data / bulk download.
 
 ### Swiss directories
 
@@ -64,11 +62,6 @@ These work as a first pass for essentially any shop. For most small Geneva busin
 ### Geneva-specific directories
 
 - **[Esprit de Genève](https://espritdegeneve.ch/)** — _Coverage (Geneva):_ moderate — Geneva-only showcase/directory of local artisans & merchants (retail, gastronomy, services) + lifestyle/tourism blog; opt-in registration, so coverage is partial/self-selected. _Data:_ business name, category, description, address/contact on profile pages; light structured data (no consistent hours/ratings). _Access:_ Scrape-only (HTML); no API.
-- **[CCIG member directory](https://www.ccig.ch/liste-membres)** — _Coverage (Geneva):_ moderate — Geneva Chamber of Commerce, ~2,800 members (A–Z searchable); B2B-skewed, members only. _Data:_ company name, address, sector/category, website, contact; no ratings/hours. _Access:_ Scrape-only (HTML); membership directory, reuse ToS-restricted; no API.
-
-### Reviews & social
-
-- **[Trustpilot](https://www.trustpilot.com)** — _Coverage (Geneva/CH):_ weak/moderate — varies; some Geneva (esp. online-facing) businesses have profiles, many don't. _Data:_ business name, website/domain, aggregate TrustScore, review count, individual reviews, star ratings, business replies. _Access:_ Public profile pages readable.
 
 ---
 

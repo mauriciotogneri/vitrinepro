@@ -50,7 +50,6 @@ _Note: the local.ch/search.ch/Restaurant Guru "11:30–17:00" lunch block likely
 | Google               | 4.6 / 5  | 411   | via Restaurant Guru — Google Maps direct extraction was blocked (GDPR wall) |
 | TripAdvisor          | 4.4 / 5  | 100   | direct; "Travelers' Choice"; ranked #176 of 1,883 Geneva restaurants        |
 | Facebook             | 4.8 / 5  | 31    | via Restaurant Guru                                                         |
-| Foursquare           | 8.6 / 10 | 33    | via Restaurant Guru (login-walled directly)                                 |
 | local.ch / search.ch | 4.9 / 5  | 14    | same localsearch data on both sites                                         |
 | Just-Tag             | 5.0 / 5  | 5     | unclaimed listing                                                           |
 
@@ -167,10 +166,8 @@ _8 from TripAdvisor (the venue's own photo gallery), 12 re-published via Restaur
 | Source                         | Access    | Notes                                                                      |
 | ------------------------------ | --------- | -------------------------------------------------------------------------- |
 | Google Business Profile / Maps | blocked   | GDPR consent wall + JS-rendered SPA; got identifiers/coords only           |
-| Bing Places                    | blocked   | JS-rendered shell; business indexed but no content extractable             |
 | Wikidata                       | not_found | No item (expected for a local restaurant)                                  |
 | OpenStreetMap                  | ok        | Address, geo, hours, cuisine, seating; field-surveyed 2025-07-07           |
-| Foursquare Places              | blocked   | Venue page redirects to login-walled app; v2 API 400 without key           |
 | local.ch                       | ok        | Address, phone, hours, rating 4.9/14, 3 reviews, reservation               |
 | search.ch / tel.search.ch      | ok        | Same localsearch data; + 3rd-party website link, tel UUID                  |
 | moneyhouse.ch                  | not_found | No RC entry (sole proprietorship below registration threshold)             |
@@ -198,7 +195,7 @@ _8 from TripAdvisor (the venue's own photo gallery), 12 re-published via Restaur
 - **Download failures:** 1 Facebook fbcdn photo (signature expired → 403). All else succeeded.
 - **Fallback imagery:** none — a genuine logo (Facebook Graph picture) and 20 genuine photos were obtained, so no generated logo or `stock-*` images were needed.
 - **Branding accent is inferred**, not extracted (no website; monochrome logo) — treat the terracotta accent and shape/depth/spacing as a tasteful placeholder to confirm or replace at build time.
-- **Heavy source blocking:** Google, Bing, Foursquare, Yelp, Uber Eats, Just Eat, and Zefix all blocked automated access (GDPR walls, 403s, auth-gated APIs). The substantive data was recovered via local.ch / search.ch, TripAdvisor, Restaurant Guru (aggregator), OpenStreetMap, and Esprit de Genève — so the dossier is well-populated despite the blocks.
+- **Heavy source blocking:** Google, Yelp, Uber Eats, Just Eat, and Zefix all blocked automated access (GDPR walls, 403s, auth-gated APIs). The substantive data was recovered via local.ch / search.ch, TripAdvisor, Restaurant Guru (aggregator), OpenStreetMap, and Esprit de Genève — so the dossier is well-populated despite the blocks.
 
 ## Missing information
 

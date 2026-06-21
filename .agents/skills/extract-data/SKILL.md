@@ -87,6 +87,8 @@ Select the sources to query for **this** shop:
 - **All Generic sites** with plausible Geneva coverage for this business (skip ones whose coverage note says this type won't appear).
 - **All category-specific sites** for the shop's type(s). Map type → category using `resources/businesses.txt` (its category headers match the `## <Category>` sections in `data-extraction.md`); if the shop has multiple types spanning categories, include all matching category sections.
 
+**The list is closed to those three** — `data-extraction.md` entries plus the official website, nothing else. Do **not** add off-doc sources to "confirm" the business; in particular, **never add a commercial-registry / legal-identity lookup** (Zefix, UID-Register / BFS-FSO, moneyhouse.ch, the cantonal Registre du commerce, Kompass, …). Registered legal name, UID/CHE, VAT, legal form, capital and registry status are **out of scope** (step 4), so such a source can only return discardable data — it earns no agent and just wastes the call.
+
 Then prune:
 
 - **Drop** any entry the doc marks defunct, "do not use", "none"/no-CH-coverage, or "not a usable source".
@@ -334,7 +336,7 @@ const thunks = sources.map(
         "- Logo/photos: return absolute image URLs only (resolve relative paths against the page URL); do NOT download anything. Photos: up to ~15 representative ones.",
         "- Reviews: at most ~5-10 representative ones.",
         "- Also capture FAQ-useful extras when the source shows them — payment methods, parking/access, accessibility, age limits, booking/deposit policy, founding year — in `notes`.",
-        "- Do NOT collect these (out of scope): legal/registry identity (registered legal name, UID/CHE, VAT or tax number, legal form); stable platform IDs (Google place_id/CID, Foursquare venue_id, EGID, etc.); or an overall price level / price range (e.g. '$$', 'CHF 30-60 per person'). Staff size/headcount is also out of scope. Itemized prices for specific products/services ARE wanted: attach them to the relevant `services` entry.",
+        "- Do NOT collect these (out of scope): legal/registry identity (registered legal name, UID/CHE, VAT or tax number, legal form, capital) — so do NOT query a commercial registry (Zefix, UID-Register/BFS, moneyhouse.ch, the cantonal Registre du commerce) to obtain it; stable platform IDs (Google place_id/CID, EGID, etc.); or an overall price level / price range (e.g. '$$', 'CHF 30-60 per person'). Staff size/headcount is also out of scope. Itemized prices for specific products/services ARE wanted: attach them to the relevant `services` entry.",
         "- Do NOT merge in knowledge from other sources or your own memory; only this source.",
       ].join("\n"),
       {

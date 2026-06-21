@@ -135,8 +135,6 @@ _How obtained: the automated fan-out retrieved **0** usable photos (zip.ch's ima
 | local.ch                              | ok        | Confirmed listed ("Second hand, dépôt vente", 4.1/5 ×10, manager Aamir Ali)           |
 | search.ch / tel.search.ch             | ok        | Confirmed listed; SwisscomDirectories; last updated 2026-02-12                        |
 | OpenStreetMap                         | ok        | Node 2497492085, `shop=clothes`, Jonction; wheelchair=no; last edited ~3 yr ago       |
-| Foursquare Places                     | not_found | Login-walled venue pages; no indexed listing for this shop                            |
-| Bing Places / Bing Maps               | blocked   | JS-rendered; static fetch yields no business data; no keyless API                     |
 | moneyhouse.ch                         | not_found | No registration; only a different, deleted "Institut La Fleur d'Oranger" (nail salon) |
 | tel.help.ch (HELP.CH)                 | blocked   | Search needs JS; www.help.ch returns HTTP 403                                         |
 | lokalesgewerbe.ch                     | not_found | "Kein Eintrag gefunden"                                                               |

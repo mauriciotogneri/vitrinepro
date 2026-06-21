@@ -6,7 +6,7 @@
 ## Summary
 
 - **Status:** operational _(Google, local.ch, search.ch, TripAdvisor, Just-Tag; corroborated by Zefix — operating entity ADELINO Sàrl is active)_
-- **Type(s):** Restaurant — Mexican _(Google, TripAdvisor, Foursquare, local.ch, search.ch)_
+- **Type(s):** Restaurant — Mexican _(Google, TripAdvisor, local.ch, search.ch)_
 - **Canonical name:** Le Mexicain _(all sources, unanimous)_
 
 ## Identity
@@ -15,7 +15,6 @@
 - **Operating legal entity:** ADELINO Sàrl _(Esprit de Genève, sourced from cantonal SITG data; corroborated via Zefix follow-up — see Notes)_
 - **Identifiers:**
   - Google `CID` `6660157025095375241`; `ftid` `0x478c65979d280631:0x5c6da186fd21d989`; Knowledge-Graph `mid` `/g/11g1kthc1m` _(Google Maps URL)_
-  - Foursquare `venue_id` `5d1f3a907cf25000307b1e8b` _(Foursquare)_
   - UID `CHE-378.247.551` (ADELINO Sàrl); `CHID` `CH-660-0717018-0`; `ehraid` `1341274`; legal form Sàrl; registered office **Vernier (GE)**; RC registration **2018-06-18**; status **active (EXISTIEREND)** _(Zefix)_
 
 ## Contact
@@ -159,9 +158,7 @@ All 9 from TripAdvisor (the only source that exposed real image URLs; Google's ~
 | ----------------------- | --------- | ---------------------------------------------------------------------------- |
 | Official website        | not_found | `le-mexicain.business.site` → HTTP 404; Google discontinued business.site    |
 | Google Business Profile | partial   | Maps consent-walled; rich data via knowledge panel / aggregator              |
-| Bing Places             | blocked   | Fully JS-rendered; only page shell returned                                  |
 | OpenStreetMap           | not_found | Not mapped (nearest Mexican = "Yamba", a different business)                 |
-| Foursquare Places       | blocked   | Login wall (308 → app.foursquare.com); venue_id captured                     |
 | local.ch                | ok        | Address, phone, email, hours, rating 5.0 (2), reservation                    |
 | search.ch               | ok        | Address, phone, hours, types Café/Restaurant                                 |
 | moneyhouse.ch           | not_found | No company under the trade name (see ADELINO Sàrl follow-up)                 |

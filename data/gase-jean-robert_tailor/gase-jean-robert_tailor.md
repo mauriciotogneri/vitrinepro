@@ -122,7 +122,6 @@ _All genuine, sourced; downloaded into `assets/`._
 | Wikidata                          | not_found | No item (below notability)                                                           |
 | Wikipedia                         | not_found | No article (below notability)                                                        |
 | OpenStreetMap                     | not_found | Building (way 181521320) exists but no POI/business tags                             |
-| Foursquare Places                 | not_found | Login wall; no venue found                                                           |
 | local.ch                          | ok        | Address, mobile, category, services; flagged the separate Pont-d'Arve family listing |
 | search.ch / tel.search.ch         | ok        | Address, mobile, DE/FR categories; updated 2026-05-24; same family-listing note      |
 | tel.help.ch                       | not_found | Address indexes a different firm (Etwein Creation); Gase not listed                  |
