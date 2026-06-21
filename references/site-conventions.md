@@ -29,12 +29,6 @@ Beyond the generic rule (chosen `LocalBusiness` subtype, visible-content-backed 
 
 - Park it **fully off-screen** (not a shallow offset that can peek), revealed only on `:focus-visible` — never plain `:focus`, so pointer/programmatic focus never exposes it.
 
-## Footer
-
-- Restate identity, contact/hours, secondary nav, and social — but **only link an Instagram profile the dossier shows is public** (omit the link if it's private).
-- Legal/copyright with a **JS-rendered, never-hardcoded** year (see `js/main.js`).
-- **Never** a tax/registration ID (UID / `CHE-…` / VAT). **Never a "back-to-top" link/button** — the sticky header and logo already return users to the top.
-
 ## `js/main.js`
 
 End-of-body, IIFE, no inline `on*=` handlers. It must:
@@ -42,3 +36,11 @@ End-of-body, IIFE, no inline `on*=` handlers. It must:
 - Set the copyright year from `new Date().getFullYear()` into an **empty** `<span>` — never write the year as a literal in the markup (no hardcoded fallback).
 - Run scroll reveals via `IntersectionObserver`, with a no-`IntersectionObserver` fallback.
 - When hours are known, render an `Intl`-based open/closed badge in `Europe/Zurich`.
+
+## Deploy files
+
+Generic shapes come from `best-practices.md` (`robots.txt` `Allow:`+`Sitemap:`, `sitemap.xml`, branded `404.html` with `noindex`, self-contained single file). Project specifics:
+
+- `robots.txt` `Sitemap:` and `sitemap.xml` `<loc>` are absolute under `<base>`; the sitemap lists the **single homepage URL** (these are one-page sites).
+- `404.html` copy is in **fr-CH**.
+- `.nojekyll` (empty) — required because the sites deploy to **GitHub Pages**.

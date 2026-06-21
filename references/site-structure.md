@@ -57,6 +57,5 @@ Build trust through social proof.
 - **Brand block** — logo + one-line description; _restates identity at the bottom._
 - **Contact / location** — address, phone, opening hours; _the #1 thing local-business visitors hunt for._
 - **Secondary navigation** — repeat of the main section links; _for people who scrolled to the end._
-- **Social / external links** — Instagram, Facebook, Google Maps/reviews.
-- **Legal & utility** — copyright, company registration, privacy/cookie note, terms.
-- **Closing touches** — dynamic year, a sign-off, sometimes a final CTA. _(No back-to-top link — the sticky header and logo already return to the top.)_
+- **Social / external links** — Instagram, Facebook, Google Maps/reviews. _(Only link an Instagram profile the dossier shows is public — omit it if private.)_
+- **Closing touches** — a dynamic copyright year (JS-rendered, never hardcoded) and a sign-off, sometimes a final CTA. _(No back-to-top link — the sticky header and logo already return to the top. No "legal & utility" block — no company registration, privacy/cookie note, or terms.)_

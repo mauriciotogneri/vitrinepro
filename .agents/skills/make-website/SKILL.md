@@ -94,10 +94,7 @@ A **contact** form plus native links — **never a reservation/booking form**:
 
 ### 9. SEO / deploy files
 
-- `robots.txt`: `User-agent: * / Allow: /` + absolute `Sitemap:` line under `<base>`.
-- `sitemap.xml`: the homepage URL under `<base>`.
-- `404.html`: self-contained (inline `<style>`), `<meta name="robots" content="noindex">`, a Swiss-French one-liner, link home.
-- `.nojekyll`: empty.
+Emit `robots.txt`, `sitemap.xml`, `404.html`, and `.nojekyll` (all in step 5's layout) per `best-practices.md` (generic shapes) + `site-conventions.md` (project specifics — `<base>`-absolute, single-page sitemap, fr-CH `404`, GitHub-Pages `.nojekyll`). Don't restate them here.
 
 ### 10. Portfolio index
 
