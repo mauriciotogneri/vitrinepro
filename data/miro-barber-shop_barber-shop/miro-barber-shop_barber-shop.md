@@ -121,7 +121,6 @@ _All from the Facebook page (Miro Barber shop), recovered via the no-login rende
 | OpenStreetMap                     | partial   | Node 12400082480: name=Miro, shop=hairdresser, coords only                    |
 | local.ch                          | partial   | Listing "Barber Miro Sàrl", address only (registry-style, no advertising)     |
 | search.ch / tel.search.ch         | not_found | Only the _other_ Miro Barber (1201/Rue Chaponnière) is listed                 |
-| tel.help.ch (HELP.CH)             | not_found | Not listed                                                                    |
 | Infobel                           | not_found | Not in Geneva coiffeurs index; later rate-limited                             |
 | Esprit de Genève                  | ok        | "BARER Miro (titulaire Ahmad)", address; from SITG cadastre (2021)            |
 | Treatwell                         | not_found | Not listed                                                                    |

@@ -162,7 +162,6 @@ All 9 from TripAdvisor (the only source that exposed real image URLs; Google's ~
 | local.ch                | ok        | Address, phone, email, hours, rating 5.0 (2), reservation                    |
 | search.ch               | ok        | Address, phone, hours, types Café/Restaurant                                 |
 | moneyhouse.ch           | not_found | No company under the trade name (see ADELINO Sàrl follow-up)                 |
-| tel.help.ch             | not_found | Not listed                                                                   |
 | lokalesgewerbe.ch       | not_found | "Kein Eintrag gefunden"                                                      |
 | branchenbuch.ch         | not_found | "Keine Treffer im Verzeichnis"                                               |
 | Infobel                 | not_found | Browsed all 182 Geneva restaurant entries; absent                            |

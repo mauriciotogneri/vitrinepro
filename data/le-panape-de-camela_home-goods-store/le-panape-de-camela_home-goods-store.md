@@ -149,7 +149,6 @@ None — a genuine logo and genuine photos were found, so no generated or stock 
 | search.ch / tel.search.ch    | ok        | Name, address, phone, payment methods; 0 reviews; updated 2026-05-24                      |
 | lokal.ch                     | blocked   | All requests timed out (site unreachable)                                                 |
 | moneyhouse.ch                | ok        | Full legal/company data (UID, founders, capital, purpose, history)                        |
-| tel.help.ch                  | not_found | Not listed                                                                                |
 | lokalesgewerbe.ch            | not_found | Not listed                                                                                |
 | branchenbuch.ch              | not_found | "Keine Treffer im Verzeichnis"                                                            |
 | Infobel                      | not_found | No page found                                                                             |

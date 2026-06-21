@@ -139,7 +139,6 @@ _All genuine — from Toutou-Club's own Facebook / Instagram, supplied manually 
 | search.ch / tel.search.ch       | ok         | Address, landline (nopromo), "Hundesalon", owner, uuid; feed updated 2026-05-24             |
 | OpenStreetMap                   | ok         | ⭐ Node 12104886339; coords, landline, "by appointment Mon–Fri from 8am", shop=pet_grooming |
 | moneyhouse.ch                   | not_found  | Not in the commercial-register DB (expected for a sub-threshold sole proprietorship)        |
-| tel.help.ch (HELP.CH)           | blocked    | JS-rendered AJAX search; no indexed page — listing presence unconfirmable                   |
 | lokalesgewerbe.ch               | not_found  | "Kein Eintrag gefunden" — never self-registered                                             |
 | branchenbuch.ch                 | not_found  | "Keine Treffer im Verzeichnis"; site search also flagged temporarily unavailable            |
 | Infobel / InfobelPRO            | partial    | Address, **rating 5.0/5 (1)**, hours, grooming categories; phone click-gated; updated 2026-05-29 |

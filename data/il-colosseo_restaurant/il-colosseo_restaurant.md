@@ -170,7 +170,6 @@ _8 from TripAdvisor (the venue's own photo gallery), 12 re-published via Restaur
 | local.ch                       | ok        | Address, phone, hours, rating 4.9/14, 3 reviews, reservation               |
 | search.ch / tel.search.ch      | ok        | Same localsearch data; + 3rd-party website link, tel UUID                  |
 | moneyhouse.ch                  | not_found | No RC entry (sole proprietorship below registration threshold)             |
-| tel.help.ch                    | not_found | Not listed                                                                 |
 | lokalesgewerbe.ch              | not_found | "Kein Eintrag gefunden"                                                    |
 | branchenbuch.ch                | not_found | Not listed (only namesakes in Basel / Münsingen)                           |
 | Infobel                        | not_found | Not listed                                                                 |

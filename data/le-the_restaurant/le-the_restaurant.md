@@ -193,7 +193,6 @@ _20 of 26 downloaded candidates kept; **all visually verified** as the real Le T
 | OpenStreetMap                  | ok        | Node 2169156791; address, geo, `Mo-Sa 12:00-22:00`, cuisine=chinese, phone                                |
 | local.ch                       | ok        | Rich FR description (Mr. Lam, 9 tables, 100+ teas, bamboo decor); hours; 0 ratings; placeholder "LT" logo |
 | search.ch / tel.search.ch      | partial   | Name + address only; data attributed to "Tripadvisor Crawler"                                             |
-| tel.help.ch                    | not_found | 302 → dummy.help.ch (canonical "no match")                                                                |
 | lokalesgewerbe.ch              | not_found | "Kein Eintrag gefunden"                                                                                   |
 | Infobel                        | partial   | Listed, but contact/website/email/rating cross-contaminated with "Pierre & Jean" — untrustworthy          |
 | Esprit de Genève               | partial   | Legal name "Lam", staff 1–2 (SITG 2021-11-26); category incl. tea-room                                    |

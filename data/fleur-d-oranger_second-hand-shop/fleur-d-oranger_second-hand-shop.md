@@ -136,7 +136,6 @@ _How obtained: the automated fan-out retrieved **0** usable photos (zip.ch's ima
 | search.ch / tel.search.ch             | ok        | Confirmed listed; SwisscomDirectories; last updated 2026-02-12                        |
 | OpenStreetMap                         | ok        | Node 2497492085, `shop=clothes`, Jonction; wheelchair=no; last edited ~3 yr ago       |
 | moneyhouse.ch                         | not_found | No registration; only a different, deleted "Institut La Fleur d'Oranger" (nail salon) |
-| tel.help.ch (HELP.CH)                 | blocked   | Search needs JS; www.help.ch returns HTTP 403                                         |
 | lokalesgewerbe.ch                     | not_found | "Kein Eintrag gefunden"                                                               |
 | branchenbuch.ch                       | not_found | "Keine Treffer im Verzeichnis"                                                        |
 | Infobel                               | not_found | Not indexed (category browse of Geneva dépôts-vente returned 9, none matching)        |

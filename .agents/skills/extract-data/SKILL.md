@@ -169,7 +169,7 @@ const SCHEMA = {
     },
     reviews: {
       type: "array",
-      description: "Up to ~5-10 representative reviews",
+      description: "Up to ~5-10 of the most positive (highest-rated) reviews",
       items: {
         type: "object",
         additionalProperties: false,
@@ -332,7 +332,7 @@ const thunks = sources.map(
         "- Preserve original language; do NOT translate names, services, or menu text.",
         "- Mine STRUCTURED METADATA for image URLs, not just rendered markup: JSON-LD (`schema.org` `logo`/`image`), `og:image`/`twitter:image`, and `<link rel=icon>` often expose clean absolute logo/photo URLs even when the visible HTML hides them.",
         "- Logo/photos: return absolute image URLs only (resolve relative paths against the page URL); do NOT download anything. Photos: up to ~15 representative ones.",
-        "- Reviews: at most ~5-10 representative ones.",
+        "- Reviews: at most ~5-10, and only the most positive (highest-rated) ones — skip critical/negative reviews.",
         "- Also capture FAQ-useful extras when the source shows them — payment methods, parking/access, accessibility, age limits, booking/deposit policy, founding year — in `notes`.",
         "- Do NOT collect these (out of scope): legal/registry identity (registered legal name, UID/CHE, VAT or tax number, legal form, capital) — so do NOT query a commercial registry (Zefix, UID-Register/BFS, moneyhouse.ch, the cantonal Registre du commerce) to obtain it; stable platform IDs (Google place_id/CID, EGID, etc.); or an overall price level / price range (e.g. '$$', 'CHF 30-60 per person'). Staff size/headcount is also out of scope. Itemized prices for specific products/services ARE wanted: attach them to the relevant `services` entry.",
         "- Do NOT merge in knowledge from other sources or your own memory; only this source.",
@@ -432,7 +432,7 @@ Combine the per-source results into one record. Rules:
 - **Provided Google-Maps record:** when step 1 ingested a record, fold its pre-filled `Google Maps (record)` source in as the **Google** authority — it gives the canonical identity/status and is the Google entry for ratings/photos/socials. List it in the **Sources queried** appendix as `ok`, and treat its `scrapedAt` as a staleness signal when it disagrees with fresher live sources.
 - **Official website authority:** the business's own site is the **top** authority for **self-reported facts** — opening hours, services/menu, itemized prices, contact details, social links, and its own logo/photos — outranking directories and aggregators. For **operational status** (permanently/temporarily closed) keep the **Google** canonical, since a site can be stale; for **ratings**, defer to the review platforms (an official site won't carry impartial ratings).
 - **Rendered official site:** if the render assist (step 4b) re-extracted the official site, fold its facts in under that same top authority, tagged `Official website (rendered)`.
-- **Reviews / photos:** pool across sources and **deduplicate** (same text/author, same image URL).
+- **Reviews / photos:** pool across sources and **deduplicate** (same text/author, same image URL); for reviews, keep only the most positive (highest-rated) and drop critical/negative ones, since the dossier feeds a marketing site.
 - **Logo:** pick one canonical `logo_url` (prefer the official website or Google, else the highest-resolution candidate) — this is the one step 7 downloads; keep other candidates as alternates. If no candidate was found but a Facebook page is known, leave it unset — step 7 will derive a genuine logo from the Facebook Graph picture endpoint.
 - **Website / social links:** choose the canonical website by authority (official over directories); union social links by network, keeping distinct URLs tagged by source.
 - Track each source's `access_status` for the appendix. The step-4 Workflow now returns `{ perSource, branding }`; `perSource` has one object per source in the original order, and a source whose agent died comes back as `access_status: "error"` (never dropped), so every selected source appears in the appendix. Normalize `status` tokens to spaced form (`temporarily_closed` → "temporarily closed") when rendering.

@@ -123,7 +123,6 @@ _All genuine, sourced; downloaded into `assets/`._
 | OpenStreetMap                     | not_found | Building (way 181521320) exists but no POI/business tags                             |
 | local.ch                          | ok        | Address, mobile, category, services; flagged the separate Pont-d'Arve family listing |
 | search.ch / tel.search.ch         | ok        | Address, mobile, DE/FR categories; updated 2026-05-24; same family-listing note      |
-| tel.help.ch                       | not_found | Address indexes a different firm (Etwein Creation); Gase not listed                  |
 | lokalesgewerbe.ch                 | not_found | "Kein Eintrag gefunden"                                                              |
 | branchenbuch.ch                   | not_found | "Keine Treffer im Verzeichnis"                                                       |
 | Infobel                           | blocked   | Serves T&C/404 to bots instead of listings                                           |
