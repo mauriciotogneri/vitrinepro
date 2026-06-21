@@ -1,0 +1,906 @@
+[
+  {
+    "title": "holisticam",
+    "subTitle": null,
+    "description": null,
+    "price": null,
+    "categoryName": "Yoga studio",
+    "address": "Rue de la Coulouvrenière 8, 1204 Genève, Switzerland",
+    "neighborhood": null,
+    "street": "Rue de la Coulouvrenière 8",
+    "city": "Geneva",
+    "postalCode": "1204",
+    "state": null,
+    "countryCode": "CH",
+    "phone": "+41 78 329 59 58",
+    "phoneUnformatted": "+41783295958",
+    "claimThisBusiness": true,
+    "location": {
+      "lat": 46.2035656,
+      "lng": 6.1352805
+    },
+    "locatedIn": null,
+    "floor": null,
+    "plusCode": "643P+C4 Geneva, Switzerland",
+    "menu": null,
+    "servicesLink": null,
+    "totalScore": null,
+    "permanentlyClosed": false,
+    "temporarilyClosed": false,
+    "placeId": "ChIJgZc8aNBljEcRF7T2XzcKWX0",
+    "categories": [
+      "Yoga studio"
+    ],
+    "fid": "0x478c65d0683c9781:0x7d590a375ff6b417",
+    "cid": "9032261760617722903",
+    "reviewsCount": null,
+    "imagesCount": 1,
+    "imageCategories": [
+      "All",
+      "Street View & 360°"
+    ],
+    "scrapedAt": "2026-06-21T12:01:34.244Z",
+    "reserveTableUrl": null,
+    "googleFoodUrl": null,
+    "hotelStars": null,
+    "hotelDescription": null,
+    "checkInDate": null,
+    "checkOutDate": null,
+    "hotelAds": [],
+    "popularTimesLiveText": null,
+    "popularTimesLivePercent": null,
+    "popularTimesHistogram": {},
+    "openingHours": [
+      {
+        "day": "Monday",
+        "hours": "8 AM to 8 PM"
+      },
+      {
+        "day": "Tuesday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Wednesday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Thursday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Friday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Saturday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Sunday",
+        "hours": "Closed"
+      }
+    ],
+    "peopleAlsoSearch": [],
+    "placesTags": [],
+    "reviewsTags": [],
+    "additionalInfo": {
+      "Amenities": [
+        {
+          "Restroom": true
+        }
+      ]
+    },
+    "gasPrices": [],
+    "url": "https://www.google.com/maps/search/?api=1&query=holisticam&query_place_id=ChIJgZc8aNBljEcRF7T2XzcKWX0",
+    "searchPageUrl": "https://www.google.com/maps/search/yoga%20studio/@46.20187964648101,6.131008070624397,17z?hl=en",
+    "searchString": "yoga studio",
+    "language": "en",
+    "rank": 12,
+    "isAdvertisement": false,
+    "imageUrl": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=sOZmicktnA_En2zKCjVt_w&cb_client=search.gws-prod.gps&w=408&h=240&yaw=136.17374&pitch=0&thumbfov=100",
+    "kgmid": "/g/11y0cy5k30",
+    "questionsAndAnswers": [],
+    "webResults": [],
+    "tableReservationLinks": [],
+    "tableReservationProviders": [],
+    "bookingLinks": [],
+    "restaurantData": {
+      "tableReservationProvider": null
+    },
+    "ownerUpdates": [],
+    "emails": [],
+    "phones": [],
+    "phonesUncertain": [],
+    "linkedIns": [],
+    "twitters": [],
+    "instagrams": [],
+    "facebooks": [],
+    "youtubes": [],
+    "tiktoks": [],
+    "pinterests": [],
+    "discords": [],
+    "imageUrls": [
+      "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=sOZmicktnA_En2zKCjVt_w&cb_client=search.gws-prod.gps&w=1920&h=1129&yaw=136.17374&pitch=0&thumbfov=100"
+    ],
+    "reviews": [],
+    "leadsEnrichment": []
+  },
+  {
+    "title": "Iyengar Yoga",
+    "subTitle": "Anahata école de Yoga Iyengar",
+    "description": null,
+    "price": null,
+    "categoryName": "Yoga studio",
+    "address": "Rue de la Poterie 14, 1202 Genève, Switzerland",
+    "neighborhood": null,
+    "street": "Rue de la Poterie 14",
+    "city": "Geneva",
+    "postalCode": "1202",
+    "state": null,
+    "countryCode": "CH",
+    "phone": "+41 79 777 07 57",
+    "phoneUnformatted": "+41797770757",
+    "claimThisBusiness": false,
+    "location": {
+      "lat": 46.2099255,
+      "lng": 6.1331964
+    },
+    "locatedIn": null,
+    "floor": null,
+    "plusCode": "645M+X7 Geneva, Switzerland",
+    "menu": null,
+    "servicesLink": null,
+    "totalScore": 4.4,
+    "permanentlyClosed": false,
+    "temporarilyClosed": false,
+    "placeId": "ChIJlcUxSSFljEcRsob9kbjLf8c",
+    "categories": [
+      "Yoga studio"
+    ],
+    "fid": "0x478c65214931c595:0xc77fcbb891fd86b2",
+    "cid": "14375432529173644978",
+    "reviewsCount": 5,
+    "imagesCount": 3,
+    "imageCategories": [
+      "All",
+      "By owner",
+      "Street View & 360°"
+    ],
+    "scrapedAt": "2026-06-21T12:01:45.469Z",
+    "reserveTableUrl": null,
+    "googleFoodUrl": null,
+    "hotelStars": null,
+    "hotelDescription": null,
+    "checkInDate": null,
+    "checkOutDate": null,
+    "hotelAds": [],
+    "popularTimesLiveText": null,
+    "popularTimesLivePercent": null,
+    "popularTimesHistogram": {},
+    "openingHours": [],
+    "peopleAlsoSearch": [
+      {
+        "category": "People also search for",
+        "title": "YOGARTAMIS",
+        "reviewsCount": 10,
+        "totalScore": 5
+      },
+      {
+        "category": "People also search for",
+        "title": "Yogalac",
+        "reviewsCount": 2,
+        "totalScore": 4.5
+      },
+      {
+        "category": "People also search for",
+        "title": "Yoga Des Bains",
+        "reviewsCount": 2,
+        "totalScore": 5
+      },
+      {
+        "category": "People also search for",
+        "title": "Yoga Pratibha",
+        "reviewsCount": 4,
+        "totalScore": 5
+      },
+      {
+        "category": "People also search for",
+        "title": "Yogalife Teacher Training",
+        "reviewsCount": 42,
+        "totalScore": 5
+      }
+    ],
+    "placesTags": [],
+    "reviewsTags": [
+      {
+        "title": "teacher",
+        "count": 2
+      }
+    ],
+    "additionalInfo": {
+      "Amenities": [
+        {
+          "Restroom": true
+        }
+      ]
+    },
+    "gasPrices": [],
+    "url": "https://www.google.com/maps/search/?api=1&query=Iyengar%20Yoga&query_place_id=ChIJlcUxSSFljEcRsob9kbjLf8c",
+    "searchPageUrl": "https://www.google.com/maps/search/yoga%20studio/@46.20782355351899,6.139592290208133,17z?hl=en",
+    "searchString": "yoga studio",
+    "language": "en",
+    "rank": 14,
+    "isAdvertisement": false,
+    "imageUrl": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=vkPmX17iOd5MZZhOj_SYQw&cb_client=search.gws-prod.gps&w=408&h=240&yaw=110.18556&pitch=0&thumbfov=100",
+    "kgmid": "/g/1th55wvp",
+    "reviewsDistribution": {
+      "oneStar": 0,
+      "twoStar": 0,
+      "threeStar": 1,
+      "fourStar": 1,
+      "fiveStar": 3
+    },
+    "questionsAndAnswers": [],
+    "webResults": [],
+    "tableReservationLinks": [],
+    "tableReservationProviders": [],
+    "bookingLinks": [],
+    "restaurantData": {
+      "tableReservationProvider": null
+    },
+    "ownerUpdates": [],
+    "emails": [],
+    "phones": [],
+    "phonesUncertain": [],
+    "linkedIns": [],
+    "twitters": [],
+    "instagrams": [],
+    "facebooks": [],
+    "youtubes": [],
+    "tiktoks": [],
+    "pinterests": [],
+    "discords": [],
+    "imageUrls": [
+      "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=vkPmX17iOd5MZZhOj_SYQw&cb_client=lu.gallery.gps&w=1920&h=1272&yaw=110.18556&pitch=0&thumbfov=100",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEsdkaL9uTivI2M07hBKAgXtC_vTZ2E1y49NoAAqvbqMRoESS74UPE3iR7GIE19Jtu_CGvPEEasVWsMw4cmqgZqvq4JPRajB_KNmH2bAukbsMujtbRWw8ooy9zkrXsAhMIkjkpJ=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFc0zh1CyR6rieHiT7bE7oGIVuk9Bb1bo7h-p-NLHvhKRU-qTq45VX6kL-MXXQLTrnQOsCdKqoPCkqLBlbkDDNtK__zgYtm37W3eTsamiI0nzhEfttfFvoAqoU-ECJgE1VH4LVPow=w1920-h1080-k-no"
+    ],
+    "reviews": [
+      {
+        "reviewerId": "117517287660556010225",
+        "reviewerUrl": "https://www.google.com/maps/contrib/117517287660556010225?hl=en-US",
+        "name": "Lise M",
+        "reviewerNumberOfReviews": 19,
+        "isLocalGuide": true,
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjVXR5DQJkSBtSlF6dIVJhtC2L-K7v41WwGdaQ2Rvi-B-MdBpdZpMw=s1920-c-rp-mo-ba12-br100",
+        "text": "Excellente professeure ! Merci pour la précision des ajustements me permettant d’améliorer chacune des postures ainsi que mon bien être physique et mental.  À bientôt.",
+        "textTranslated": "Excellent teacher! Thank you for the precise adjustments that allowed me to improve each posture as well as my physical and mental well-being. See you soon.",
+        "publishAt": "a year ago",
+        "publishedAtDate": "2024-06-26T13:53:07.109Z",
+        "likesCount": 0,
+        "reviewId": "ChZDSUhNMG9nS0VJQ0FnSURMNHR5X1FBEAE",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURMNHR5X1FBEAE!2m1!1s0x0:0xc77fcbb891fd86b2!3m1!1s2@1:CIHM0ogKEICAgIDL4ty_QA%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [],
+        "reviewContext": {},
+        "reviewDetailedRating": {},
+        "visitedIn": null,
+        "originalLanguage": "fr",
+        "translatedLanguage": "en"
+      },
+      {
+        "reviewerId": "105626129126249452387",
+        "reviewerUrl": "https://www.google.com/maps/contrib/105626129126249452387?hl=en-US",
+        "name": "philippe fortunato",
+        "reviewerNumberOfReviews": 112,
+        "isLocalGuide": true,
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocIs_DgJk5Cagxx7L7wkpG--XqAE3LhOFijfW4mTvInyt4xxlw=s1920-c-rp-mo-ba12-br100",
+        "text": "Excellente professeure qui sait donner des conseils personnalisés pour vous pousser à mieux connaître votre esprit et  votre corps .. et le tout avec un joli sens de l’humour !",
+        "textTranslated": "An excellent teacher who knows how to give personalized advice to help you better understand your mind and body... and all with a lovely sense of humor!",
+        "publishAt": "a year ago",
+        "publishedAtDate": "2024-07-16T18:32:03.486Z",
+        "likesCount": 0,
+        "reviewId": "ChdDSUhNMG9nS0VJQ0FnSURycXJuNzBnRRAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURycXJuNzBnRRAB!2m1!1s0x0:0xc77fcbb891fd86b2!3m1!1s2@1:CIHM0ogKEICAgIDrqrn70gE%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [],
+        "reviewContext": {},
+        "reviewDetailedRating": {},
+        "visitedIn": null,
+        "originalLanguage": "fr",
+        "translatedLanguage": "en"
+      },
+      {
+        "reviewerId": "101690173220943582195",
+        "reviewerUrl": "https://www.google.com/maps/contrib/101690173220943582195?hl=en-US",
+        "name": "FAMILY FORTUNATO",
+        "reviewerNumberOfReviews": 174,
+        "isLocalGuide": true,
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjV0tHQViRrFJX6rAbWcVXIJnuVCEwU31w1HybGTTBpb1GyTcxdhug=s1920-c-rp-mo-ba12-br100",
+        "text": "Très jolie salle spacieuse claire bien équipée. Les cours sont toujours renouvelés, créatifs et attentifs.",
+        "textTranslated": "A very nice, spacious, bright, and well-equipped room. The classes are always fresh, creative, and attentive.",
+        "publishAt": "a year ago",
+        "publishedAtDate": "2024-06-26T05:11:34.429Z",
+        "likesCount": 0,
+        "reviewId": "ChdDSUhNMG9nS0VJQ0FnSURMbk1QeG1RRRAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURMbk1QeG1RRRAB!2m1!1s0x0:0xc77fcbb891fd86b2!3m1!1s2@1:CIHM0ogKEICAgIDLnMPxmQE%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [],
+        "reviewContext": {},
+        "reviewDetailedRating": {},
+        "visitedIn": null,
+        "originalLanguage": "fr",
+        "translatedLanguage": "en"
+      },
+      {
+        "reviewerId": "100620354691724917667",
+        "reviewerUrl": "https://www.google.com/maps/contrib/100620354691724917667?hl=en-US",
+        "name": "Caroline M",
+        "reviewerNumberOfReviews": 4,
+        "isLocalGuide": false,
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUPBxr_vCihAMXn3srfRYCwtx1wi3PqhYjd9Sk8_xDeb-L4cSs=s1920-c-rp-mo-br100",
+        "text": "très proche du centre ville. Bons conseils",
+        "textTranslated": "Very close to the city center. Good advice.",
+        "publishAt": "7 years ago",
+        "publishedAtDate": "2018-11-04T09:30:09.283Z",
+        "likesCount": 0,
+        "reviewId": "ChZDSUhNMG9nS0VJQ0FnSUNJNHBiZUR3EAE",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNJNHBiZUR3EAE!2m1!1s0x0:0xc77fcbb891fd86b2!3m1!1s2@1:CIHM0ogKEICAgICI4pbeDw%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 4,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [],
+        "reviewContext": {},
+        "reviewDetailedRating": {},
+        "visitedIn": null,
+        "originalLanguage": "fr",
+        "translatedLanguage": "en"
+      },
+      {
+        "reviewerId": "106332173158377732689",
+        "reviewerUrl": "https://www.google.com/maps/contrib/106332173158377732689?hl=en-US",
+        "name": "vienney catherine",
+        "reviewerNumberOfReviews": 0,
+        "isLocalGuide": false,
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocIIb69JzSVeEXGPJtBG83mf4fvgR7tTKPc_cwol3YhTeGfmig=s1920-c-rp-mo-br100",
+        "text": null,
+        "textTranslated": null,
+        "publishAt": "7 years ago",
+        "publishedAtDate": "2018-09-19T14:13:40.689Z",
+        "likesCount": 0,
+        "reviewId": "ChZDSUhNMG9nS0VJQ0FnSURnNGUtVktREAE",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURnNGUtVktREAE!2m1!1s0x0:0xc77fcbb891fd86b2!3m1!1s2@1:CIHM0ogKEICAgIDg4e-VKQ%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 3,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [],
+        "reviewContext": {},
+        "reviewDetailedRating": {},
+        "visitedIn": null,
+        "originalLanguage": null,
+        "translatedLanguage": null
+      }
+    ],
+    "leadsEnrichment": []
+  },
+  {
+    "title": "Yoga Chinois Geneva",
+    "subTitle": "YOGA CHINOIS GENEVA",
+    "description": null,
+    "price": null,
+    "categoryName": "Yoga studio",
+    "address": "Rue de Lyon 42, 1203 Genève, Switzerland",
+    "neighborhood": null,
+    "street": "Rue de Lyon 42",
+    "city": "Geneva",
+    "postalCode": "1203",
+    "state": null,
+    "countryCode": "CH",
+    "phone": "",
+    "phoneUnformatted": "",
+    "claimThisBusiness": true,
+    "location": {
+      "lat": 46.2087717,
+      "lng": 6.1337344
+    },
+    "locatedIn": null,
+    "floor": null,
+    "plusCode": "645M+GF Geneva, Switzerland",
+    "menu": null,
+    "servicesLink": null,
+    "totalScore": null,
+    "permanentlyClosed": false,
+    "temporarilyClosed": false,
+    "placeId": "ChIJtyzsYdpkjEcRGtJO9SizMG0",
+    "categories": [
+      "Yoga studio",
+      "Acupuncturist",
+      "Chinese medicine"
+    ],
+    "fid": "0x478c64da61ec2cb7:0x6d30b328f54ed21a",
+    "cid": "7867985537511903770",
+    "reviewsCount": null,
+    "imagesCount": 1,
+    "imageCategories": [
+      "All",
+      "Street View & 360°"
+    ],
+    "scrapedAt": "2026-06-21T12:01:53.756Z",
+    "reserveTableUrl": null,
+    "googleFoodUrl": null,
+    "hotelStars": null,
+    "hotelDescription": null,
+    "checkInDate": null,
+    "checkOutDate": null,
+    "hotelAds": [],
+    "popularTimesLiveText": null,
+    "popularTimesLivePercent": null,
+    "popularTimesHistogram": {},
+    "openingHours": [
+      {
+        "day": "Monday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Tuesday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Wednesday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Thursday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Friday",
+        "hours": "7 to 9 PM"
+      },
+      {
+        "day": "Saturday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Sunday",
+        "hours": "Closed"
+      }
+    ],
+    "peopleAlsoSearch": [
+      {
+        "category": "People also search for",
+        "title": "Adrien-Yoga-Pilates",
+        "reviewsCount": 0,
+        "totalScore": 0
+      },
+      {
+        "category": "People also search for",
+        "title": "Pilates & Yoga à Genève",
+        "reviewsCount": 0,
+        "totalScore": 0
+      },
+      {
+        "category": "People also search for",
+        "title": "Yogalife",
+        "reviewsCount": 0,
+        "totalScore": 0
+      },
+      {
+        "category": "People also search for",
+        "title": "Yoga Pour Moi",
+        "reviewsCount": 0,
+        "totalScore": 0
+      },
+      {
+        "category": "People also search for",
+        "title": "Iyengar Yoga",
+        "reviewsCount": 5,
+        "totalScore": 4.4
+      }
+    ],
+    "placesTags": [],
+    "reviewsTags": [],
+    "additionalInfo": {
+      "Amenities": [
+        {
+          "Restroom": true
+        }
+      ]
+    },
+    "gasPrices": [],
+    "url": "https://www.google.com/maps/search/?api=1&query=Yoga%20Chinois%20Geneva&query_place_id=ChIJtyzsYdpkjEcRGtJO9SizMG0",
+    "searchPageUrl": "https://www.google.com/maps/search/yoga%20studio/@46.20782355351899,6.139592290208133,17z?hl=en",
+    "searchString": "yoga studio",
+    "language": "en",
+    "rank": 24,
+    "isAdvertisement": false,
+    "imageUrl": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Pa5labklfxATAnLXTGf68Q&cb_client=search.gws-prod.gps&w=408&h=240&yaw=25.92239&pitch=0&thumbfov=100",
+    "kgmid": "/g/1jkvg5__w",
+    "questionsAndAnswers": [],
+    "webResults": [],
+    "tableReservationLinks": [],
+    "tableReservationProviders": [],
+    "bookingLinks": [],
+    "restaurantData": {
+      "tableReservationProvider": null
+    },
+    "ownerUpdates": [],
+    "emails": [],
+    "phones": [],
+    "phonesUncertain": [],
+    "linkedIns": [],
+    "twitters": [],
+    "instagrams": [],
+    "facebooks": [],
+    "youtubes": [],
+    "tiktoks": [],
+    "pinterests": [],
+    "discords": [],
+    "imageUrls": [
+      "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Pa5labklfxATAnLXTGf68Q&cb_client=search.gws-prod.gps&w=1920&h=1129&yaw=25.92239&pitch=0&thumbfov=100"
+    ],
+    "reviews": [],
+    "leadsEnrichment": []
+  },
+  {
+    "title": "Yogikpath",
+    "subTitle": null,
+    "description": null,
+    "price": null,
+    "categoryName": "Yoga studio",
+    "address": "Château-Bruyant, Rue des Buis 14, 1202 Geneva, Switzerland",
+    "neighborhood": null,
+    "street": "Château-Bruyant, Rue des Buis 14",
+    "city": "Geneva",
+    "postalCode": "1202",
+    "state": null,
+    "countryCode": "CH",
+    "phone": "+41 76 269 84 96",
+    "phoneUnformatted": "+41762698496",
+    "claimThisBusiness": false,
+    "location": {
+      "lat": 46.2149542,
+      "lng": 6.1502009
+    },
+    "locatedIn": null,
+    "floor": null,
+    "plusCode": "6572+X3 Geneva, Switzerland",
+    "menu": null,
+    "servicesLink": null,
+    "totalScore": 5,
+    "permanentlyClosed": false,
+    "temporarilyClosed": false,
+    "placeId": "ChIJGZbS7hVljEcRHyNCO3TkUUg",
+    "categories": [
+      "Yoga studio",
+      "Meditation instructor",
+      "Yoga instructor"
+    ],
+    "fid": "0x478c6515eed29619:0x4851e4743b42231f",
+    "cid": "5211197431705903903",
+    "reviewsCount": 1,
+    "imagesCount": 1,
+    "imageCategories": [
+      "All",
+      "Street View & 360°"
+    ],
+    "scrapedAt": "2026-06-21T12:02:17.060Z",
+    "reserveTableUrl": null,
+    "googleFoodUrl": null,
+    "hotelStars": null,
+    "hotelDescription": null,
+    "checkInDate": null,
+    "checkOutDate": null,
+    "hotelAds": [],
+    "popularTimesLiveText": null,
+    "popularTimesLivePercent": null,
+    "popularTimesHistogram": {},
+    "openingHours": [
+      {
+        "day": "Monday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Tuesday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Wednesday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Thursday",
+        "hours": "6 to 7 PM"
+      },
+      {
+        "day": "Friday",
+        "hours": "Closed"
+      },
+      {
+        "day": "Saturday",
+        "hours": "10 AM to 12 PM"
+      },
+      {
+        "day": "Sunday",
+        "hours": "Closed"
+      }
+    ],
+    "peopleAlsoSearch": [
+      {
+        "category": "People also search for",
+        "title": "Yogalife Teacher Training",
+        "reviewsCount": 42,
+        "totalScore": 5
+      },
+      {
+        "category": "People also search for",
+        "title": "Yogakashi",
+        "reviewsCount": 0,
+        "totalScore": 0
+      },
+      {
+        "category": "People also search for",
+        "title": "Yoga Lab",
+        "reviewsCount": 56,
+        "totalScore": 4.9
+      },
+      {
+        "category": "People also search for",
+        "title": "Yoga Pratibha",
+        "reviewsCount": 4,
+        "totalScore": 5
+      },
+      {
+        "category": "People also search for",
+        "title": "Colife",
+        "reviewsCount": 180,
+        "totalScore": 4.9
+      }
+    ],
+    "placesTags": [],
+    "reviewsTags": [],
+    "additionalInfo": {
+      "From the business": [
+        {
+          "Identifies as women-owned": true
+        }
+      ],
+      "Service options": [
+        {
+          "Online classes": true
+        },
+        {
+          "Onsite services": true
+        }
+      ],
+      "Amenities": [
+        {
+          "Restroom": true
+        }
+      ],
+      "Children": [
+        {
+          "Good for kids": true
+        }
+      ]
+    },
+    "gasPrices": [],
+    "url": "https://www.google.com/maps/search/?api=1&query=Yogikpath&query_place_id=ChIJGZbS7hVljEcRHyNCO3TkUUg",
+    "searchPageUrl": "https://www.google.com/maps/search/yoga%20studio/@46.225655274632935,6.165344948959341,17z?hl=en",
+    "searchString": "yoga studio",
+    "language": "en",
+    "rank": 13,
+    "isAdvertisement": false,
+    "imageUrl": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=ODEMgkTALaxm-2OLpONfpQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=123.625404&pitch=0&thumbfov=100",
+    "kgmid": "/g/11y5_2ph9q",
+    "reviewsDistribution": {
+      "oneStar": 0,
+      "twoStar": 0,
+      "threeStar": 0,
+      "fourStar": 0,
+      "fiveStar": 1
+    },
+    "openingHoursBusinessConfirmationText": "Updated by this business 5 weeks ago",
+    "questionsAndAnswers": [],
+    "webResults": [],
+    "tableReservationLinks": [],
+    "tableReservationProviders": [],
+    "bookingLinks": [
+      {
+        "name": "calendly.com",
+        "url": "https://calendly.com/yogikpath_108/hatha-yoga-with-vidya"
+      }
+    ],
+    "restaurantData": {
+      "tableReservationProvider": null
+    },
+    "ownerUpdates": [],
+    "emails": [],
+    "phones": [],
+    "phonesUncertain": [],
+    "linkedIns": [],
+    "twitters": [],
+    "instagrams": [],
+    "facebooks": [],
+    "youtubes": [],
+    "tiktoks": [],
+    "pinterests": [],
+    "discords": [],
+    "imageUrls": [
+      "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=ODEMgkTALaxm-2OLpONfpQ&cb_client=search.gws-prod.gps&w=1920&h=1129&yaw=123.625404&pitch=0&thumbfov=100"
+    ],
+    "reviews": [
+      {
+        "reviewerId": "109824202170287728573",
+        "reviewerUrl": "https://www.google.com/maps/contrib/109824202170287728573?hl=en-US",
+        "name": "Isnelle Peyrouny",
+        "reviewerNumberOfReviews": 4,
+        "isLocalGuide": false,
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjXmUmqoGHTmCS4aPZPtUcNFnM5aS0ISf1YtpBC6UFMW6bOd9-nw=s1920-c-rp-mo-br100",
+        "text": "I've been taking yoga classes with Vidya for several months now and I particularly appreciate her holistic approach. I'm already seeing positive effects on my body.\n\nJe suis des cours de yoga avec Vidya depuis plusieurs mois et j'apprécie particulièrement son approche holistique. Je vois déjà des effets positifs sur mon corps.",
+        "textTranslated": "I've been taking yoga classes with Vidya for several months now and I particularly appreciate her holistic approach. I'm already seeing positive effects on my body.\n\nI've been taking yoga classes with Vidya for several months and I particularly appreciate her holistic approach. I'm already seeing positive effects on my body.",
+        "publishAt": "a year ago",
+        "publishedAtDate": "2024-11-24T14:29:44.848Z",
+        "likesCount": 0,
+        "reviewId": "ChZDSUhNMG9nS0VJQ0FnSUNQcnVHRFh3EAE",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNQcnVHRFh3EAE!2m1!1s0x0:0x4851e4743b42231f!3m1!1s2@1:CIHM0ogKEICAgICPruGDXw%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": "2024-12-11T11:20:32.000Z",
+        "responseFromOwnerText": "Merci beaucoup pour votre merveilleux retour ! 🌟 Nous sommes ravis d'apprendre que vous appréciez votre parcours de yoga avec Vidya et que son approche holistique vous apporte des bienfaits. C’est toujours gratifiant de savoir que nos cours ont un impact positif sur le corps et l’esprit. Nous sommes impatients de continuer ce voyage avec vous et de soutenir votre bien-être. Namaste 🙏",
+        "reviewImageUrls": [],
+        "reviewContext": {},
+        "reviewDetailedRating": {},
+        "visitedIn": null,
+        "originalLanguage": "fr",
+        "translatedLanguage": "en"
+      }
+    ],
+    "leadsEnrichment": []
+  },
+  {
+    "title": "Centre de Formation et de Recherche en Yoga",
+    "subTitle": null,
+    "description": null,
+    "price": null,
+    "categoryName": "Yoga studio",
+    "address": "Rue des Grottes 28, 1201 Genève, Switzerland",
+    "neighborhood": null,
+    "street": "Rue des Grottes 28",
+    "city": "Geneva",
+    "postalCode": "1201",
+    "state": null,
+    "countryCode": "CH",
+    "phone": "+41 79 215 10 45",
+    "phoneUnformatted": "+41792151045",
+    "claimThisBusiness": true,
+    "location": {
+      "lat": 46.2113583,
+      "lng": 6.1387471
+    },
+    "locatedIn": null,
+    "floor": null,
+    "plusCode": "646Q+GF Geneva, Switzerland",
+    "menu": null,
+    "servicesLink": null,
+    "totalScore": null,
+    "permanentlyClosed": false,
+    "temporarilyClosed": false,
+    "placeId": "ChIJq6q6PtlkjEcR1vtZ8XqY7IQ",
+    "categories": [
+      "Yoga studio"
+    ],
+    "fid": "0x478c64d93ebaaaab:0x84ec987af159fbd6",
+    "cid": "9578198161312840662",
+    "reviewsCount": null,
+    "imagesCount": 1,
+    "imageCategories": [
+      "All",
+      "Street View & 360°"
+    ],
+    "scrapedAt": "2026-06-21T12:02:34.016Z",
+    "reserveTableUrl": null,
+    "googleFoodUrl": null,
+    "hotelStars": null,
+    "hotelDescription": null,
+    "checkInDate": null,
+    "checkOutDate": null,
+    "hotelAds": [],
+    "popularTimesLiveText": null,
+    "popularTimesLivePercent": null,
+    "popularTimesHistogram": {},
+    "openingHours": [],
+    "peopleAlsoSearch": [
+      {
+        "category": "People also search for",
+        "title": "Pilates & Yoga à Genève",
+        "reviewsCount": 0,
+        "totalScore": 0
+      },
+      {
+        "category": "People also search for",
+        "title": "Yogakashi",
+        "reviewsCount": 0,
+        "totalScore": 0
+      },
+      {
+        "category": "People also search for",
+        "title": "Yoga Maternité/yoga femmes enceintes",
+        "reviewsCount": 0,
+        "totalScore": 0
+      },
+      {
+        "category": "People also search for",
+        "title": "Maeva Fages",
+        "reviewsCount": 0,
+        "totalScore": 0
+      },
+      {
+        "category": "People also search for",
+        "title": "Yoga Lab",
+        "reviewsCount": 56,
+        "totalScore": 4.9
+      }
+    ],
+    "placesTags": [],
+    "reviewsTags": [],
+    "additionalInfo": {
+      "Amenities": [
+        {
+          "Restroom": true
+        }
+      ]
+    },
+    "gasPrices": [],
+    "url": "https://www.google.com/maps/search/?api=1&query=Centre%20de%20Formation%20et%20de%20Recherche%20en%20Yoga&query_place_id=ChIJq6q6PtlkjEcR1vtZ8XqY7IQ",
+    "searchPageUrl": "https://www.google.com/maps/search/yoga%20studio/@46.21376746055697,6.131008070624397,17z?hl=en",
+    "searchString": "yoga studio",
+    "language": "en",
+    "rank": 16,
+    "isAdvertisement": false,
+    "imageUrl": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=_ePtnOXIqK3TDN5Z2nW5Qw&cb_client=search.gws-prod.gps&w=408&h=240&yaw=24.53084&pitch=0&thumbfov=100",
+    "kgmid": "/g/11fmwwtypm",
+    "questionsAndAnswers": [],
+    "webResults": [],
+    "tableReservationLinks": [],
+    "tableReservationProviders": [],
+    "bookingLinks": [],
+    "restaurantData": {
+      "tableReservationProvider": null
+    },
+    "ownerUpdates": [],
+    "emails": [],
+    "phones": [],
+    "phonesUncertain": [],
+    "linkedIns": [],
+    "twitters": [],
+    "instagrams": [],
+    "facebooks": [],
+    "youtubes": [],
+    "tiktoks": [],
+    "pinterests": [],
+    "discords": [],
+    "imageUrls": [
+      "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=_ePtnOXIqK3TDN5Z2nW5Qw&cb_client=search.gws-prod.gps&w=1920&h=1129&yaw=24.53084&pitch=0&thumbfov=100"
+    ],
+    "reviews": [],
+    "leadsEnrichment": []
+  }
+]
