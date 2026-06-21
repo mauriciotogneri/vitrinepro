@@ -495,23 +495,6 @@ h1.display { font-size: clamp(2.4rem, 1.4rem + 4.6vw, 4.7rem); }
 .access li { padding-left: 1.3rem; position: relative; margin-top: .4rem; }
 .access li::before { content: ""; position: absolute; left: 0; top: .55em; width: .5rem; height: .5rem; background: var(--seal); border-radius: 2px; }
 
-/* ---------- FAQ ---------- */
-.faq { display: grid; gap: .7rem; }
-.faq details {
-  background: var(--paper-2); border: 1px solid var(--hair-cream);
-  border-radius: var(--r); overflow: hidden;
-}
-.faq summary {
-  list-style: none; cursor: pointer; padding: 1.05rem 1.3rem;
-  font-family: var(--f-body); font-weight: 700; color: var(--ink);
-  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-}
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; font-size: 1.5rem; color: var(--seal-ink); font-weight: 400; transition: transform var(--t) var(--ease); line-height: 1; }
-.faq details[open] summary::after { transform: rotate(45deg); }
-.faq .faq-body { padding: 0 1.3rem 1.2rem; color: var(--ink-2); }
-.faq .faq-body p { max-width: 60ch; }
-
 /* ---------- footer ---------- */
 .site-footer { background: var(--bg-deep); border-top: 1px solid var(--hair-dark); padding-block: clamp(2.8rem,6vw,4.2rem) 1.8rem; }
 .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 2.2rem; }

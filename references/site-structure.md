@@ -52,16 +52,6 @@ Build trust through social proof.
 - **Phone & email.**
 - **Access** — parking and transport.
 
-## FAQ
-
-Answers the common pre-visit questions, e.g.:
-
-- Cancellations and deposits.
-- Payment methods.
-- Accessibility.
-- Age restrictions.
-- Preparation instructions.
-
 ## Footer
 
 - **Brand block** — logo + one-line description; _restates identity at the bottom._

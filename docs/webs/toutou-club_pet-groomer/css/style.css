@@ -335,25 +335,6 @@ p { text-wrap: pretty; }
 .hours li span:last-child { color: var(--muted); }
 .hours .closed span:last-child { color: var(--rose-deep); font-weight: 600; }
 
-/* ---- FAQ -------------------------------------------------------------- */
-.faq { max-width: 800px; margin-inline: auto; }
-.qa { border-bottom: 1px solid var(--border); }
-.qa summary {
-  display: flex; align-items: center; gap: 1rem; padding: 1.35rem .4rem; list-style: none; cursor: pointer;
-  font-family: var(--display); font-weight: 400; font-size: clamp(1.1rem, 1rem + .5vw, 1.32rem); color: var(--charcoal);
-}
-.qa summary::-webkit-details-marker { display: none; }
-.qa summary::after {
-  content: ""; flex: none; margin-left: auto; width: 24px; height: 24px;
-  background: var(--rose-deep); -webkit-mask: var(--plus) center/contain no-repeat; mask: var(--plus) center/contain no-repeat;
-  transition: transform var(--t-fast);
-}
-.qa[open] summary::after { transform: rotate(45deg); }
-.qa summary::before { content: ""; flex: none; width: 22px; height: 22px; background: var(--rose); -webkit-mask: var(--paw) center/contain no-repeat; mask: var(--paw) center/contain no-repeat; }
-.qa__body { padding: 0 .4rem 1.5rem 3.4rem; color: var(--muted); }
-.qa__body a { color: var(--rose-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-:root { --plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='11' y='4' width='2' height='16' rx='1'/%3E%3Crect x='4' y='11' width='16' height='2' rx='1'/%3E%3C/svg%3E"); }
-
 /* ---- Footer ----------------------------------------------------------- */
 .site-footer { background: #403937; color: #e9e2e0; padding-block: clamp(3rem, 6vw, 5rem) 2.2rem; position: relative; }
 .site-footer::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 1px; background: linear-gradient(90deg, transparent, var(--rose), transparent); }

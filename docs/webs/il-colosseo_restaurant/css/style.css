@@ -61,8 +61,6 @@
   --arcade: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='62' height='34' viewBox='0 0 62 34'%3E%3Cpath d='M5 34 L5 17 A26 13 0 0 1 57 17 L57 34' fill='none' stroke='%23b08d4f' stroke-width='1.4'/%3E%3C/svg%3E");
   /* faint Colosseum watermark (cream linework) for verde hero & footer */
   --wm: url("../assets/logo-cream.png");
-  /* plus glyph mask for FAQ toggles */
-  --plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 5V19M5 12H19' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 /* ---------- Reset ---------- */
@@ -470,29 +468,6 @@ strong, b { font-weight: 600; }
 .access-card p { color: var(--ink-2); margin-top: .9rem; font-size: .96rem; }
 
 /* ============================================================
-   FAQ
-   ============================================================ */
-.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.7rem, 2vw, 1.2rem) clamp(1.6rem, 4vw, 3rem); align-items: start; }
-.faq details {
-  border-bottom: 1px solid var(--border); padding: .35rem 0;
-}
-.faq summary {
-  list-style: none; cursor: pointer; padding: 1.05rem 2.2rem 1.05rem 0; position: relative;
-  font-family: var(--display); font-weight: 600; font-size: 1.08rem; color: var(--ink);
-}
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after {
-  content: ""; position: absolute; right: .2rem; top: 50%; width: 13px; height: 13px;
-  margin-top: -6px;
-  background: var(--brass);
-  -webkit-mask: var(--plus) center/contain no-repeat; mask: var(--plus) center/contain no-repeat;
-  transition: transform var(--t-fast);
-}
-.faq details[open] summary::after { transform: rotate(45deg); }
-.faq details p { color: var(--ink-2); padding: 0 1.5rem 1.1rem 0; font-size: .98rem; }
-.faq details a { color: var(--verde-link); font-weight: 600; }
-
-/* ============================================================
    Footer
    ============================================================ */
 .site-footer { background: var(--verde-deep); color: var(--cream-dim); position: relative; overflow: hidden; }
@@ -578,7 +553,6 @@ strong, b { font-weight: 600; }
 }
 @media (max-width: 760px) {
   :root { --header-h: 62px; }
-  .faq-grid { grid-template-columns: 1fr; }
   .quotes { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(3, 1fr); gap: .6rem; }
