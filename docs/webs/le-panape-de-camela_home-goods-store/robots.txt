@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vndly.github.io/websites/webs/le-panape-de-camela_home-goods-store/sitemap.xml
+Sitemap: https://mauriciotogneri.github.io/vitrinepro/webs/le-panape-de-camela_home-goods-store/sitemap.xml

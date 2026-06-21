@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vndly.github.io/websites/webs/le-the_restaurant/sitemap.xml
+Sitemap: https://mauriciotogneri.github.io/vitrinepro/webs/le-the_restaurant/sitemap.xml

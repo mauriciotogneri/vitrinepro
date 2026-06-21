@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://vndly.github.io/websites/webs/le-mexicain_restaurant/</loc>
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://vndly.github.io/websites/webs/le-mexicain_restaurant/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vndly.github.io/websites/webs/le-mexicain_restaurant/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vndly.github.io/websites/webs/le-mexicain_restaurant/"/>
-    <lastmod>2026-06-14</lastmod>
-  </url>
-  <url>
-    <loc>https://vndly.github.io/websites/webs/le-mexicain_restaurant/en/</loc>
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://vndly.github.io/websites/webs/le-mexicain_restaurant/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vndly.github.io/websites/webs/le-mexicain_restaurant/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vndly.github.io/websites/webs/le-mexicain_restaurant/"/>
-    <lastmod>2026-06-14</lastmod>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<url>
+		<loc>
+			https://mauriciotogneri.github.io/vitrinepro/webs/le-mexicain_restaurant/
+		</loc>
+		<link rel="alternate" hreflang="fr-CH" href="https://mauriciotogneri.github.io/vitrinepro/webs/le-mexicain_restaurant/" />
+		<link rel="alternate" hreflang="en" href="https://mauriciotogneri.github.io/vitrinepro/webs/le-mexicain_restaurant/en/" />
+		<link rel="alternate" hreflang="x-default" href="https://mauriciotogneri.github.io/vitrinepro/webs/le-mexicain_restaurant/" />
+		<lastmod>
+			2026-06-14
+		</lastmod>
+	</url>
+	<url>
+		<loc>
+			https://mauriciotogneri.github.io/vitrinepro/webs/le-mexicain_restaurant/en/
+		</loc>
+		<link rel="alternate" hreflang="fr-CH" href="https://mauriciotogneri.github.io/vitrinepro/webs/le-mexicain_restaurant/" />
+		<link rel="alternate" hreflang="en" href="https://mauriciotogneri.github.io/vitrinepro/webs/le-mexicain_restaurant/en/" />
+		<link rel="alternate" hreflang="x-default" href="https://mauriciotogneri.github.io/vitrinepro/webs/le-mexicain_restaurant/" />
+		<lastmod>
+			2026-06-14
+		</lastmod>
+	</url>
 </urlset>

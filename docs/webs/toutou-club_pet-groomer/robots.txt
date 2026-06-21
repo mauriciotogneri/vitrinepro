@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vndly.github.io/websites/webs/toutou-club_pet-groomer/sitemap.xml
+Sitemap: https://mauriciotogneri.github.io/vitrinepro/webs/toutou-club_pet-groomer/sitemap.xml

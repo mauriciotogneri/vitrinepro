@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Yummy Coffee — Cosy coffee &amp; homemade breakfast in Plainpalais, Geneva</title>
-<meta name="description" content="Yummy Coffee is a small, much-loved café on Rue Dancet in Geneva's Plainpalais. Carefully brewed coffee, almond-milk chai and homemade pastries from 7:30, weekday mornings. Rated 5.0 on Google." />
-<meta name="theme-color" content="#FBF3E4" />
 
-<!-- ============================================================
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yummy Coffee — Cosy coffee &amp; homemade breakfast in Plainpalais, Geneva</title>
+    <meta name="description"
+        content="Yummy Coffee is a small, much-loved café on Rue Dancet in Geneva's Plainpalais. Carefully brewed coffee, almond-milk chai and homemade pastries from 7:30, weekday mornings. Rated 5.0 on Google." />
+    <meta name="theme-color" content="#FBF3E4" />
+
+    <!-- ============================================================
      YUMMY COFFEE — bilingual static site (FR default, EN under /en/)
      ------------------------------------------------------------
      STRUCTURE:
@@ -24,526 +26,710 @@
        5. REVIEWS ....... search "REVIEWS".
      ============================================================ -->
 
-<link rel="canonical" href="https://vndly.github.io/websites/webs/yummy_coffee/en/" />
-<link rel="alternate" hreflang="fr-CH" href="https://vndly.github.io/websites/webs/yummy_coffee/" />
-<link rel="alternate" hreflang="fr" href="https://vndly.github.io/websites/webs/yummy_coffee/" />
-<link rel="alternate" hreflang="en" href="https://vndly.github.io/websites/webs/yummy_coffee/en/" />
-<link rel="alternate" hreflang="x-default" href="https://vndly.github.io/websites/webs/yummy_coffee/en/" />
+    <link rel="canonical" href="https://mauriciotogneri.github.io/vitrinepro/webs/yummy_coffee/en/" />
+    <link rel="alternate" hreflang="fr-CH" href="https://mauriciotogneri.github.io/vitrinepro/webs/yummy_coffee/" />
+    <link rel="alternate" hreflang="fr" href="https://mauriciotogneri.github.io/vitrinepro/webs/yummy_coffee/" />
+    <link rel="alternate" hreflang="en" href="https://mauriciotogneri.github.io/vitrinepro/webs/yummy_coffee/en/" />
+    <link rel="alternate" hreflang="x-default"
+        href="https://mauriciotogneri.github.io/vitrinepro/webs/yummy_coffee/en/" />
 
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="Yummy Coffee" />
-<meta property="og:locale" content="en" />
-<meta property="og:locale:alternate" content="fr_CH" />
-<meta property="og:title" content="Yummy Coffee — Cosy coffee &amp; homemade breakfast in Plainpalais, Geneva" />
-<meta property="og:description" content="Carefully brewed coffee, almond-milk chai and homemade pastries from 7:30 in Plainpalais. Rated 5.0 on Google." />
-<meta property="og:url" content="https://vndly.github.io/websites/webs/yummy_coffee/en/" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Yummy Coffee — Cosy coffee in Plainpalais, Geneva" />
-<meta name="twitter:description" content="Carefully brewed coffee, almond-milk chai and homemade pastries from 7:30 in Plainpalais." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Yummy Coffee" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:locale:alternate" content="fr_CH" />
+    <meta property="og:title" content="Yummy Coffee — Cosy coffee &amp; homemade breakfast in Plainpalais, Geneva" />
+    <meta property="og:description"
+        content="Carefully brewed coffee, almond-milk chai and homemade pastries from 7:30 in Plainpalais. Rated 5.0 on Google." />
+    <meta property="og:url" content="https://mauriciotogneri.github.io/vitrinepro/webs/yummy_coffee/en/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yummy Coffee — Cosy coffee in Plainpalais, Geneva" />
+    <meta name="twitter:description"
+        content="Carefully brewed coffee, almond-milk chai and homemade pastries from 7:30 in Plainpalais." />
 
-<!-- Favicons — coffee cup, Yummy Coffee palette -->
-<link rel="icon" href="../favicon.ico" sizes="any" />
-<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
-<link rel="manifest" href="../site.webmanifest" />
+    <!-- Favicons — coffee cup, Yummy Coffee palette -->
+    <link rel="icon" href="../favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../site.webmanifest" />
 
-<!-- Bootstrap 5 (grid + utilities) -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-<!-- Bootstrap Icons (small UI icons: instagram, clock, pin, arrow) -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-<!-- Fonts: Bricolage Grotesque (display) · DM Sans (body) · Caveat (handwritten accents) -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Caveat:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+    <!-- Bootstrap 5 (grid + utilities) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons (small UI icons: instagram, clock, pin, arrow) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <!-- Fonts: Bricolage Grotesque (display) · DM Sans (body) · Caveat (handwritten accents) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Caveat:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
+        rel="stylesheet" />
 
-<link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
 </head>
 
 <body id="top">
 
-<!-- ===================== TOP BAR ===================== -->
-<div class="topbar">
-  <div class="wrap">
-    <span><i class="bi bi-geo-alt-fill"></i> Rue Dancet 8, Plainpalais — Geneva</span>
-    <span class="dot hide-xs">•</span>
-    <span class="hide-xs"><i class="bi bi-clock-fill"></i> Open Mon–Fri from 7:30</span>
-    <span class="dot">•</span>
-    <span><span class="stars">★★★★★</span> 5.0 on Google</span>
-  </div>
-</div>
-
-<!-- ===================== NAV ===================== -->
-<header class="nav" id="nav">
-  <div class="wrap nav__inner">
-    <a class="brand" href="#top" aria-label="Yummy Coffee — home">
-      <!-- Brand mark: sun + steaming cup -->
-      <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <g stroke="#E89B2E" stroke-width="2.4" stroke-linecap="round">
-          <circle cx="24" cy="22" r="7.5" fill="#E89B2E" stroke="none"/>
-          <line x1="24" y1="6" x2="24" y2="10"/><line x1="24" y1="34" x2="24" y2="38"/>
-          <line x1="8" y1="22" x2="12" y2="22"/><line x1="36" y1="22" x2="40" y2="22"/>
-          <line x1="12.6" y1="10.6" x2="15.4" y2="13.4"/><line x1="32.6" y1="30.6" x2="35.4" y2="33.4"/>
-          <line x1="35.4" y1="10.6" x2="32.6" y2="13.4"/><line x1="15.4" y1="30.6" x2="12.6" y2="33.4"/>
-        </g>
-        <g stroke="#43301F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
-          <path d="M13 30 h17 v5 a7 7 0 0 1 -7 7 h-3 a7 7 0 0 1 -7 -7 z"/>
-          <path d="M30 32 h3.5 a3.5 3.5 0 0 1 0 7 H30"/>
-        </g>
-      </svg>
-      Yummy <b>Coffee</b>
-    </a>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false"><span></span></button>
-
-    <nav class="nav-links" id="navLinks" aria-label="Primary">
-      <a href="#story">Our story</a>
-      <a href="#favourites">Favourites</a>
-      <a href="#menu">Menu</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#visit">Visit</a>
-      <span class="lang" aria-label="Language">
-        <a href="../index.html" hreflang="fr-CH">FR</a>
-        <span class="sep" aria-hidden="true">/</span>
-        <a href="index.html" hreflang="en" aria-current="true">EN</a>
-      </span>
-      <a class="btn-yc btn-honey nav-cta" href="#visit"><i class="bi bi-cup-hot-fill"></i> Find us</a>
-    </nav>
-  </div>
-</header>
-
-<!-- ===================== HERO ===================== -->
-<section class="hero">
-  <div class="wrap hero__grid">
-    <div class="reveal">
-      <span class="eyebrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
-        bonjour, Geneva
-      </span>
-      <h1>Mornings taste <span class="swash">better</span> here.</h1>
-      <p class="lead">A tiny, much-loved café tucked just off the Plaine de Plainpalais — carefully brewed coffee, almond-milk chai and pastries baked in-house, served from half past seven. Pull up a chair, or grab it to go.</p>
-      <div class="hero__cta">
-        <a class="btn-yc btn-honey" href="#menu"><i class="bi bi-journal-text"></i> See the menu</a>
-        <a class="btn-yc btn-outline" href="#visit"><i class="bi bi-geo-alt"></i> Find us in Plainpalais</a>
-      </div>
-      <div class="hero__rating">
-        <span class="stars">★★★★★</span>
-        <span><strong>5.0</strong> from 88 happy regulars on Google</span>
-      </div>
+    <!-- ===================== TOP BAR ===================== -->
+    <div class="topbar">
+        <div class="wrap">
+            <span><i class="bi bi-geo-alt-fill"></i> Rue Dancet 8, Plainpalais — Geneva</span>
+            <span class="dot hide-xs">•</span>
+            <span class="hide-xs"><i class="bi bi-clock-fill"></i> Open Mon–Fri from 7:30</span>
+            <span class="dot">•</span>
+            <span><span class="stars">★★★★★</span> 5.0 on Google</span>
+        </div>
     </div>
 
-    <div class="hero__media reveal">
-      <!-- Hand-drawn sun -->
-      <svg class="hero__sun" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-        <circle cx="100" cy="100" r="44" fill="currentColor" opacity=".22"/>
-        <g stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".55">
-          <line x1="100" y1="20" x2="100" y2="42"/><line x1="100" y1="158" x2="100" y2="180"/>
-          <line x1="20" y1="100" x2="42" y2="100"/><line x1="158" y1="100" x2="180" y2="100"/>
-          <line x1="43" y1="43" x2="59" y2="59"/><line x1="141" y1="141" x2="157" y2="157"/>
-          <line x1="157" y1="43" x2="141" y2="59"/><line x1="59" y1="141" x2="43" y2="157"/>
-        </g>
-      </svg>
+    <!-- ===================== NAV ===================== -->
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="#top" aria-label="Yummy Coffee — home">
+                <!-- Brand mark: sun + steaming cup -->
+                <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <g stroke="#E89B2E" stroke-width="2.4" stroke-linecap="round">
+                        <circle cx="24" cy="22" r="7.5" fill="#E89B2E" stroke="none" />
+                        <line x1="24" y1="6" x2="24" y2="10" />
+                        <line x1="24" y1="34" x2="24" y2="38" />
+                        <line x1="8" y1="22" x2="12" y2="22" />
+                        <line x1="36" y1="22" x2="40" y2="22" />
+                        <line x1="12.6" y1="10.6" x2="15.4" y2="13.4" />
+                        <line x1="32.6" y1="30.6" x2="35.4" y2="33.4" />
+                        <line x1="35.4" y1="10.6" x2="32.6" y2="13.4" />
+                        <line x1="15.4" y1="30.6" x2="12.6" y2="33.4" />
+                    </g>
+                    <g stroke="#43301F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                        <path d="M13 30 h17 v5 a7 7 0 0 1 -7 7 h-3 a7 7 0 0 1 -7 -7 z" />
+                        <path d="M30 32 h3.5 a3.5 3.5 0 0 1 0 7 H30" />
+                    </g>
+                </svg>
+                Yummy <b>Coffee</b>
+            </a>
 
-      <!-- PHOTO: hero cup of coffee — replace this URL -->
-      <div class="hero__photo" role="img" aria-label="A freshly poured cup of coffee at Yummy Coffee"></div>
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks"
+                aria-expanded="false"><span></span></button>
 
-      <!-- Steam -->
-      <svg class="hero__steam" viewBox="0 0 60 80" fill="none" aria-hidden="true">
-        <path class="steam-path" d="M18 70 C10 56 26 50 18 36 C12 26 24 18 18 6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-        <path class="steam-path" d="M30 72 C22 58 38 52 30 38 C24 28 36 20 30 8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-        <path class="steam-path" d="M42 70 C34 56 50 50 42 36 C36 26 48 18 42 6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-      </svg>
+            <nav class="nav-links" id="navLinks" aria-label="Primary">
+                <a href="#story">Our story</a>
+                <a href="#favourites">Favourites</a>
+                <a href="#menu">Menu</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#visit">Visit</a>
+                <span class="lang" aria-label="Language">
+                    <a href="../index.html" hreflang="fr-CH">FR</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <a href="index.html" hreflang="en" aria-current="true">EN</a>
+                </span>
+                <a class="btn-yc btn-honey nav-cta" href="#visit"><i class="bi bi-cup-hot-fill"></i> Find us</a>
+            </nav>
+        </div>
+    </header>
 
-      <!-- Croissant doodle -->
-      <svg class="hero__doodle croissant" viewBox="0 0 80 60" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M8 40 C18 14 62 14 72 40 C58 34 50 46 40 40 C30 34 22 46 8 40 Z"/>
-        <path d="M40 40 L40 30 M30 38 L27 31 M50 38 L53 31"/>
-      </svg>
-      <!-- Bean doodle -->
-      <svg class="hero__doodle bean" viewBox="0 0 40 56" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="3.4" stroke-linecap="round">
-        <ellipse cx="20" cy="28" rx="15" ry="24"/><path d="M20 6 C12 18 28 38 20 50"/>
-      </svg>
-
-      <div class="hero__tag">made by hand <small>fresh, every morning</small></div>
-    </div>
-  </div>
-
-  <div class="scrolldown">
-    <a href="#story" aria-label="Scroll to our story">scroll <i class="bi bi-arrow-down"></i></a>
-  </div>
-</section>
-
-<!-- ===================== MARQUEE ===================== -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track" id="marqueeTrack">
-    <!-- duplicated in JS for seamless loop -->
-    <span>Freshly brewed
-      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-      Homemade pastries
-      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-      Almond-milk chai
-      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-      Cosy corner
-      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-      Open from 7:30
-      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-      Takeaway welcome
-      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-    </span>
-  </div>
-</div>
-
-<!-- ===================== STORY ===================== -->
-<section class="section" id="story">
-  <div class="wrap">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-6">
-        <div class="story__media reveal">
-          <!-- PHOTO: café interior / barista — replace this URL -->
-          <div class="story__photo" role="img" aria-label="The cosy interior of Yummy Coffee"></div>
-          <div class="story__badge">
-            <div>
-              <div class="num">5.0</div>
-              <small>Google rating</small>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+        <div class="wrap hero__grid">
+            <div class="reveal">
+                <span class="eyebrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="4" fill="currentColor" stroke="none" />
+                        <line x1="12" y1="2" x2="12" y2="5" />
+                        <line x1="12" y1="19" x2="12" y2="22" />
+                        <line x1="2" y1="12" x2="5" y2="12" />
+                        <line x1="19" y1="12" x2="22" y2="12" />
+                    </svg>
+                    bonjour, Geneva
+                </span>
+                <h1>Mornings taste <span class="swash">better</span> here.</h1>
+                <p class="lead">A tiny, much-loved café tucked just off the Plaine de Plainpalais — carefully brewed
+                    coffee, almond-milk chai and pastries baked in-house, served from half past seven. Pull up a chair,
+                    or grab it to go.</p>
+                <div class="hero__cta">
+                    <a class="btn-yc btn-honey" href="#menu"><i class="bi bi-journal-text"></i> See the menu</a>
+                    <a class="btn-yc btn-outline" href="#visit"><i class="bi bi-geo-alt"></i> Find us in Plainpalais</a>
+                </div>
+                <div class="hero__rating">
+                    <span class="stars">★★★★★</span>
+                    <span><strong>5.0</strong> from 88 happy regulars on Google</span>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 reveal">
-        <span class="eyebrow">our little corner</span>
-        <h2>A small café with a <span class="underline-hand">big welcome
-          <svg viewBox="0 0 200 12" fill="none" preserveAspectRatio="none"><path d="M2 8 C40 2 80 2 120 7 C150 11 180 5 198 4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
-        </span></h2>
-        <p>Yummy Coffee sits quietly on Rue Dancet, a couple of minutes from the Plaine de Plainpalais and just down the road from Uni Mail. It's the kind of place where the barista learns your order, the croissants come out warm, and a quiet "bonjour" greets you on the way in.</p>
-        <p>We keep things simple and made-with-care: proper coffee, an almond-milk chai people travel for, and a little counter of bakes and breakfast prepared fresh each morning. Nothing fussy — just good things, done well, in a room that feels like it's yours.</p>
-        <ul class="story__list">
-          <li><i class="bi bi-check-circle-fill"></i><span>Specialty coffee &amp; almond-milk chai, made to order</span></li>
-          <li><i class="bi bi-check-circle-fill"></i><span>Homemade croissants, apple cake, brownies &amp; sandwiches</span></li>
-          <li><i class="bi bi-check-circle-fill"></i><span>Sit-in or takeaway — and kind on the wallet (1–10 CHF)</span></li>
-        </ul>
-        <p class="signature">— see you in the morning ☕</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ===================== FAVOURITES ===================== -->
-<section class="section section--cream2" id="favourites">
-  <div class="wrap">
-    <div class="section-head center reveal">
-      <span class="eyebrow">what we're loved for</span>
-      <h2>Three good reasons to drop by</h2>
-    </div>
-    <div class="feat-grid">
-      <article class="feat reveal">
-        <div class="feat__icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10 18 h24 v8 a10 10 0 0 1 -10 10 h-4 a10 10 0 0 1 -10 -10 z"/>
-            <path d="M34 20 h5 a5 5 0 0 1 0 10 H34"/>
-            <path class="steam-path" d="M18 12 c-3 -3 3 -5 0 -8" /><path class="steam-path" d="M26 12 c-3 -3 3 -5 0 -8" />
-          </svg>
-        </div>
-        <h3>Carefully brewed coffee</h3>
-        <p>From a quick morning espresso to a flat white worth slowing down for — plus the almond-milk chai latte our regulars keep coming back for.</p>
-      </article>
+            <div class="hero__media reveal">
+                <!-- Hand-drawn sun -->
+                <svg class="hero__sun" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+                    <circle cx="100" cy="100" r="44" fill="currentColor" opacity=".22" />
+                    <g stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".55">
+                        <line x1="100" y1="20" x2="100" y2="42" />
+                        <line x1="100" y1="158" x2="100" y2="180" />
+                        <line x1="20" y1="100" x2="42" y2="100" />
+                        <line x1="158" y1="100" x2="180" y2="100" />
+                        <line x1="43" y1="43" x2="59" y2="59" />
+                        <line x1="141" y1="141" x2="157" y2="157" />
+                        <line x1="157" y1="43" x2="141" y2="59" />
+                        <line x1="59" y1="141" x2="43" y2="157" />
+                    </g>
+                </svg>
 
-      <article class="feat reveal">
-        <div class="feat__icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M6 32 C16 8 32 8 42 32 C34 26 28 38 24 32 C20 26 14 38 6 32 Z"/>
-            <path d="M24 32 V22 M16 30 L12 22 M32 30 L36 22"/>
-          </svg>
-        </div>
-        <h3>Homemade bakes</h3>
-        <p>All-butter croissants, fudgy brownies and that famous apple cake — baked in-house and best while they're still warm from the morning.</p>
-      </article>
+                <!-- PHOTO: hero cup of coffee — replace this URL -->
+                <div class="hero__photo" role="img" aria-label="A freshly poured cup of coffee at Yummy Coffee"></div>
 
-      <article class="feat reveal">
-        <div class="feat__icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
-            <circle cx="24" cy="26" r="15"/><circle cx="24" cy="26" r="6" fill="currentColor" stroke="none"/>
-            <path d="M24 6 v4"/>
-          </svg>
-        </div>
-        <h3>A proper breakfast</h3>
-        <p>Open from 7:30 with everything from a smoked-salmon sandwich to granola and fresh juice — the gentlest possible start to a Geneva morning.</p>
-      </article>
-    </div>
-  </div>
-</section>
+                <!-- Steam -->
+                <svg class="hero__steam" viewBox="0 0 60 80" fill="none" aria-hidden="true">
+                    <path class="steam-path" d="M18 70 C10 56 26 50 18 36 C12 26 24 18 18 6" stroke="currentColor"
+                        stroke-width="4" stroke-linecap="round" />
+                    <path class="steam-path" d="M30 72 C22 58 38 52 30 38 C24 28 36 20 30 8" stroke="currentColor"
+                        stroke-width="4" stroke-linecap="round" />
+                    <path class="steam-path" d="M42 70 C34 56 50 50 42 36 C36 26 48 18 42 6" stroke="currentColor"
+                        stroke-width="4" stroke-linecap="round" />
+                </svg>
 
-<!-- ===================== MENU ===================== -->
-<section class="section" id="menu">
-  <div class="wrap">
-    <div class="section-head center reveal">
-      <span class="eyebrow">a few of our favourites</span>
-      <h2>The menu</h2>
-      <p class="lead">A taste of what's on the counter. Bakes change with the season and the baker's mood.</p>
-    </div>
+                <!-- Croissant doodle -->
+                <svg class="hero__doodle croissant" viewBox="0 0 80 60" fill="none" aria-hidden="true"
+                    stroke="currentColor" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+                    <path d="M8 40 C18 14 62 14 72 40 C58 34 50 46 40 40 C30 34 22 46 8 40 Z" />
+                    <path d="M40 40 L40 30 M30 38 L27 31 M50 38 L53 31" />
+                </svg>
+                <!-- Bean doodle -->
+                <svg class="hero__doodle bean" viewBox="0 0 40 56" fill="none" aria-hidden="true" stroke="currentColor"
+                    stroke-width="3.4" stroke-linecap="round">
+                    <ellipse cx="20" cy="28" rx="15" ry="24" />
+                    <path d="M20 6 C12 18 28 38 20 50" />
+                </svg>
 
-    <!-- Tabs -->
-    <div class="menu-tabs reveal" role="tablist" aria-label="Menu categories">
-      <button class="menu-tab is-active" role="tab" aria-selected="true" data-pane="coffee">Coffee &amp; drinks</button>
-      <button class="menu-tab" role="tab" aria-selected="false" data-pane="breakfast">Breakfast</button>
-      <button class="menu-tab" role="tab" aria-selected="false" data-pane="sweet">Sweet things</button>
-      <button class="menu-tab" role="tab" aria-selected="false" data-pane="cold">Cold &amp; fresh</button>
-    </div>
+                <div class="hero__tag">made by hand <small>fresh, every morning</small></div>
+            </div>
+        </div>
 
-    <!-- MENU DATA — edit names / prices / descriptions freely -->
-    <div class="reveal">
-      <!-- Coffee -->
-      <div class="menu-pane is-active" id="pane-coffee" role="tabpanel">
-        <div class="menu-grid">
-          <div class="menu-item"><div><span class="menu-item__name">Espresso</span></div><div class="menu-item__price">3.20</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Macchiato</span></div><div class="menu-item__price">3.80</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Cappuccino</span></div><div class="menu-item__price">4.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Flat white</span></div><div class="menu-item__price">5.00</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Caffè latte</span></div><div class="menu-item__price">4.80</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Almond-milk chai latte</span><span class="menu-item__tag">a favourite</span><div class="menu-item__desc">Spiced chai, gently steamed with almond milk.</div></div><div class="menu-item__price">5.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Hot chocolate</span></div><div class="menu-item__price">4.80</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Pot of tea</span></div><div class="menu-item__price">4.20</div></div>
+        <div class="scrolldown">
+            <a href="#story" aria-label="Scroll to our story">scroll <i class="bi bi-arrow-down"></i></a>
         </div>
-      </div>
-      <!-- Breakfast -->
-      <div class="menu-pane" id="pane-breakfast" role="tabpanel">
-        <div class="menu-grid">
-          <div class="menu-item"><div><span class="menu-item__name">The Yummy breakfast</span><div class="menu-item__desc">Coffee, fresh orange juice and a croissant with jam.</div></div><div class="menu-item__price">9.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Smoked-salmon sandwich</span><span class="menu-item__tag">house favourite</span></div><div class="menu-item__price">9.00</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Avocado toast on sourdough</span></div><div class="menu-item__price">8.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Soft-boiled eggs &amp; soldiers</span></div><div class="menu-item__price">7.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Granola, yoghurt &amp; fruit</span></div><div class="menu-item__price">7.00</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Ham &amp; cheese toastie</span></div><div class="menu-item__price">6.50</div></div>
-        </div>
-      </div>
-      <!-- Sweet -->
-      <div class="menu-pane" id="pane-sweet" role="tabpanel">
-        <div class="menu-grid">
-          <div class="menu-item"><div><span class="menu-item__name">All-butter croissant</span></div><div class="menu-item__price">2.80</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Pain au chocolat</span></div><div class="menu-item__price">3.20</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Homemade apple cake</span><span class="menu-item__tag">the famous one</span></div><div class="menu-item__price">4.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Fudgy brownie</span></div><div class="menu-item__price">4.00</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Carrot cake</span></div><div class="menu-item__price">4.80</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Cookie of the day</span></div><div class="menu-item__price">3.00</div></div>
-        </div>
-      </div>
-      <!-- Cold -->
-      <div class="menu-pane" id="pane-cold" role="tabpanel">
-        <div class="menu-grid">
-          <div class="menu-item"><div><span class="menu-item__name">Fresh orange juice</span></div><div class="menu-item__price">5.00</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Iced latte</span></div><div class="menu-item__price">5.20</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Iced matcha</span></div><div class="menu-item__price">5.80</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Homemade lemonade</span></div><div class="menu-item__price">4.50</div></div>
-          <div class="menu-item"><div><span class="menu-item__name">Sparkling water</span></div><div class="menu-item__price">3.50</div></div>
-        </div>
-      </div>
-    </div>
-    <p class="menu-note">All prices in CHF. Card &amp; contactless welcome. A sample menu — pop in to see today's bakes.</p>
-  </div>
-</section>
+    </section>
 
-<!-- ===================== GALLERY ===================== -->
-<section class="section section--cream2" id="gallery">
-  <div class="wrap">
-    <div class="section-head center reveal">
-      <span class="eyebrow">a peek inside</span>
-      <h2>Snapshots from the counter</h2>
+    <!-- ===================== MARQUEE ===================== -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee__track" id="marqueeTrack">
+            <!-- duplicated in JS for seamless loop -->
+            <span>Freshly brewed
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="5" />
+                </svg>
+                Homemade pastries
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="5" />
+                </svg>
+                Almond-milk chai
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="5" />
+                </svg>
+                Cosy corner
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="5" />
+                </svg>
+                Open from 7:30
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="5" />
+                </svg>
+                Takeaway welcome
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="5" />
+                </svg>
+            </span>
+        </div>
     </div>
 
-    <!-- PHOTO: gallery — swap data-full + the background URL on each .tile__photo.
+    <!-- ===================== STORY ===================== -->
+    <section class="section" id="story">
+        <div class="wrap">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="story__media reveal">
+                        <!-- PHOTO: café interior / barista — replace this URL -->
+                        <div class="story__photo" role="img" aria-label="The cosy interior of Yummy Coffee"></div>
+                        <div class="story__badge">
+                            <div>
+                                <div class="num">5.0</div>
+                                <small>Google rating</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 reveal">
+                    <span class="eyebrow">our little corner</span>
+                    <h2>A small café with a <span class="underline-hand">big welcome
+                            <svg viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
+                                <path d="M2 8 C40 2 80 2 120 7 C150 11 180 5 198 4" stroke="currentColor"
+                                    stroke-width="4" stroke-linecap="round" />
+                            </svg>
+                        </span></h2>
+                    <p>Yummy Coffee sits quietly on Rue Dancet, a couple of minutes from the Plaine de Plainpalais and
+                        just down the road from Uni Mail. It's the kind of place where the barista learns your order,
+                        the croissants come out warm, and a quiet "bonjour" greets you on the way in.</p>
+                    <p>We keep things simple and made-with-care: proper coffee, an almond-milk chai people travel for,
+                        and a little counter of bakes and breakfast prepared fresh each morning. Nothing fussy — just
+                        good things, done well, in a room that feels like it's yours.</p>
+                    <ul class="story__list">
+                        <li><i class="bi bi-check-circle-fill"></i><span>Specialty coffee &amp; almond-milk chai, made
+                                to order</span></li>
+                        <li><i class="bi bi-check-circle-fill"></i><span>Homemade croissants, apple cake, brownies &amp;
+                                sandwiches</span></li>
+                        <li><i class="bi bi-check-circle-fill"></i><span>Sit-in or takeaway — and kind on the wallet
+                                (1–10 CHF)</span></li>
+                    </ul>
+                    <p class="signature">— see you in the morning ☕</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FAVOURITES ===================== -->
+    <section class="section section--cream2" id="favourites">
+        <div class="wrap">
+            <div class="section-head center reveal">
+                <span class="eyebrow">what we're loved for</span>
+                <h2>Three good reasons to drop by</h2>
+            </div>
+            <div class="feat-grid">
+                <article class="feat reveal">
+                    <div class="feat__icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 18 h24 v8 a10 10 0 0 1 -10 10 h-4 a10 10 0 0 1 -10 -10 z" />
+                            <path d="M34 20 h5 a5 5 0 0 1 0 10 H34" />
+                            <path class="steam-path" d="M18 12 c-3 -3 3 -5 0 -8" />
+                            <path class="steam-path" d="M26 12 c-3 -3 3 -5 0 -8" />
+                        </svg>
+                    </div>
+                    <h3>Carefully brewed coffee</h3>
+                    <p>From a quick morning espresso to a flat white worth slowing down for — plus the almond-milk chai
+                        latte our regulars keep coming back for.</p>
+                </article>
+
+                <article class="feat reveal">
+                    <div class="feat__icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6"
+                            stroke-linejoin="round" stroke-linecap="round">
+                            <path d="M6 32 C16 8 32 8 42 32 C34 26 28 38 24 32 C20 26 14 38 6 32 Z" />
+                            <path d="M24 32 V22 M16 30 L12 22 M32 30 L36 22" />
+                        </svg>
+                    </div>
+                    <h3>Homemade bakes</h3>
+                    <p>All-butter croissants, fudgy brownies and that famous apple cake — baked in-house and best while
+                        they're still warm from the morning.</p>
+                </article>
+
+                <article class="feat reveal">
+                    <div class="feat__icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6"
+                            stroke-linejoin="round" stroke-linecap="round">
+                            <circle cx="24" cy="26" r="15" />
+                            <circle cx="24" cy="26" r="6" fill="currentColor" stroke="none" />
+                            <path d="M24 6 v4" />
+                        </svg>
+                    </div>
+                    <h3>A proper breakfast</h3>
+                    <p>Open from 7:30 with everything from a smoked-salmon sandwich to granola and fresh juice — the
+                        gentlest possible start to a Geneva morning.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== MENU ===================== -->
+    <section class="section" id="menu">
+        <div class="wrap">
+            <div class="section-head center reveal">
+                <span class="eyebrow">a few of our favourites</span>
+                <h2>The menu</h2>
+                <p class="lead">A taste of what's on the counter. Bakes change with the season and the baker's mood.</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="menu-tabs reveal" role="tablist" aria-label="Menu categories">
+                <button class="menu-tab is-active" role="tab" aria-selected="true" data-pane="coffee">Coffee &amp;
+                    drinks</button>
+                <button class="menu-tab" role="tab" aria-selected="false" data-pane="breakfast">Breakfast</button>
+                <button class="menu-tab" role="tab" aria-selected="false" data-pane="sweet">Sweet things</button>
+                <button class="menu-tab" role="tab" aria-selected="false" data-pane="cold">Cold &amp; fresh</button>
+            </div>
+
+            <!-- MENU DATA — edit names / prices / descriptions freely -->
+            <div class="reveal">
+                <!-- Coffee -->
+                <div class="menu-pane is-active" id="pane-coffee" role="tabpanel">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Espresso</span></div>
+                            <div class="menu-item__price">3.20</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Macchiato</span></div>
+                            <div class="menu-item__price">3.80</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Cappuccino</span></div>
+                            <div class="menu-item__price">4.50</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Flat white</span></div>
+                            <div class="menu-item__price">5.00</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Caffè latte</span></div>
+                            <div class="menu-item__price">4.80</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Almond-milk chai latte</span><span
+                                    class="menu-item__tag">a favourite</span>
+                                <div class="menu-item__desc">Spiced chai, gently steamed with almond milk.</div>
+                            </div>
+                            <div class="menu-item__price">5.50</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Hot chocolate</span></div>
+                            <div class="menu-item__price">4.80</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Pot of tea</span></div>
+                            <div class="menu-item__price">4.20</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Breakfast -->
+                <div class="menu-pane" id="pane-breakfast" role="tabpanel">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">The Yummy breakfast</span>
+                                <div class="menu-item__desc">Coffee, fresh orange juice and a croissant with jam.</div>
+                            </div>
+                            <div class="menu-item__price">9.50</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Smoked-salmon sandwich</span><span
+                                    class="menu-item__tag">house favourite</span></div>
+                            <div class="menu-item__price">9.00</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Avocado toast on sourdough</span></div>
+                            <div class="menu-item__price">8.50</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Soft-boiled eggs &amp; soldiers</span></div>
+                            <div class="menu-item__price">7.50</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Granola, yoghurt &amp; fruit</span></div>
+                            <div class="menu-item__price">7.00</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Ham &amp; cheese toastie</span></div>
+                            <div class="menu-item__price">6.50</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sweet -->
+                <div class="menu-pane" id="pane-sweet" role="tabpanel">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">All-butter croissant</span></div>
+                            <div class="menu-item__price">2.80</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Pain au chocolat</span></div>
+                            <div class="menu-item__price">3.20</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Homemade apple cake</span><span
+                                    class="menu-item__tag">the famous one</span></div>
+                            <div class="menu-item__price">4.50</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Fudgy brownie</span></div>
+                            <div class="menu-item__price">4.00</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Carrot cake</span></div>
+                            <div class="menu-item__price">4.80</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Cookie of the day</span></div>
+                            <div class="menu-item__price">3.00</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cold -->
+                <div class="menu-pane" id="pane-cold" role="tabpanel">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Fresh orange juice</span></div>
+                            <div class="menu-item__price">5.00</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Iced latte</span></div>
+                            <div class="menu-item__price">5.20</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Iced matcha</span></div>
+                            <div class="menu-item__price">5.80</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Homemade lemonade</span></div>
+                            <div class="menu-item__price">4.50</div>
+                        </div>
+                        <div class="menu-item">
+                            <div><span class="menu-item__name">Sparkling water</span></div>
+                            <div class="menu-item__price">3.50</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="menu-note">All prices in CHF. Card &amp; contactless welcome. A sample menu — pop in to see
+                today's bakes.</p>
+        </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="section section--cream2" id="gallery">
+        <div class="wrap">
+            <div class="section-head center reveal">
+                <span class="eyebrow">a peek inside</span>
+                <h2>Snapshots from the counter</h2>
+            </div>
+
+            <!-- PHOTO: gallery — swap data-full + the background URL on each .tile__photo.
          If a photo doesn't load, the warm gradient + label still look intentional. -->
-    <div class="gallery reveal">
-      <button class="tile big" style="--tile:linear-gradient(150deg,#C98A4A,#5a3c25)" data-full="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1100&q=80">
-        <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1100&q=80')"></span>
-        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Latte, just poured</span>
-      </button>
-      <button class="tile" style="--tile:linear-gradient(150deg,#caa06a,#7b5230)" data-full="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80">
-        <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80')"></span>
-        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Warm croissants</span>
-      </button>
-      <button class="tile" style="--tile:linear-gradient(150deg,#b9824a,#4a3220)" data-full="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80">
-        <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80')"></span>
-        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>The cosy corner</span>
-      </button>
-      <button class="tile" style="--tile:linear-gradient(150deg,#d6a35e,#6a4527)" data-full="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=80">
-        <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=80')"></span>
-        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Morning light</span>
-      </button>
-      <button class="tile" style="--tile:linear-gradient(150deg,#c79050,#583a23)" data-full="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=80">
-        <span class="tile__photo" style="background-image:url('https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=80')"></span>
-        <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Avocado toast</span>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== REVIEWS ===================== -->
-<section class="section section--dark" id="reviews">
-  <div class="wrap">
-    <div class="reviews-head reveal">
-      <div>
-        <span class="eyebrow">kind words</span>
-        <h2>Loved by the neighbourhood</h2>
-      </div>
-      <div class="score">
-        <div class="score__num">5.0</div>
-        <div>
-          <div class="stars" style="font-size:1.2rem">★★★★★</div>
-          <small>Based on 88 Google reviews</small>
-        </div>
-      </div>
-    </div>
-
-    <!-- REVIEWS — replace with your real Google reviews when ready -->
-    <div class="row g-4">
-      <div class="col-md-4 reveal">
-        <div class="review">
-          <span class="q">&ldquo;</span>
-          <div class="stars" style="font-size:.95rem">★★★★★</div>
-          <p>The friendliest welcome in Geneva, and a flat white to match. My weekday mornings completely revolve around this little place.</p>
-          <div class="who"><div class="av">S</div><div><b>Sophie M.</b><span>Google review</span></div></div>
-        </div>
-      </div>
-      <div class="col-md-4 reveal">
-        <div class="review">
-          <span class="q">&ldquo;</span>
-          <div class="stars" style="font-size:.95rem">★★★★★</div>
-          <p>That apple cake. The almond-milk chai. The little "bonjour" when you walk in. Five stars honestly isn't enough.</p>
-          <div class="who"><div class="av">M</div><div><b>Marco R.</b><span>Google review</span></div></div>
-        </div>
-      </div>
-      <div class="col-md-4 reveal">
-        <div class="review">
-          <span class="q">&ldquo;</span>
-          <div class="stars" style="font-size:.95rem">★★★★★</div>
-          <p>Tucked just off the Plaine de Plainpalais — tiny, sunny and always worth the stop before class. My go-to in the quartier.</p>
-          <div class="who"><div class="av">L</div><div><b>Léa B.</b><span>Google review</span></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== VISIT ===================== -->
-<section class="section" id="visit">
-  <div class="wrap">
-    <div class="section-head center reveal">
-      <span class="eyebrow">come say hello</span>
-      <h2>Find us</h2>
-    </div>
-    <div class="row g-4 align-items-stretch">
-      <div class="col-lg-5 reveal">
-        <div class="visit-card">
-          <div class="info-row">
-            <div class="ic"><i class="bi bi-geo-alt-fill"></i></div>
-            <div><b>Where</b><br>Rue Dancet 8<br>1205 Geneva, Switzerland</div>
-          </div>
-          <div class="info-row">
-            <div class="ic"><i class="bi bi-bus-front-fill"></i></div>
-            <div><b>Getting here</b><br>2 min from the Dancet stop · a short walk from Uni&nbsp;Mail and the Plaine&nbsp;de&nbsp;Plainpalais</div>
-          </div>
-          <div class="info-row">
-            <div class="ic"><i class="bi bi-clock-fill"></i></div>
-            <div style="flex:1">
-              <b>Opening hours</b>
-              <ul class="hours">
-                <li><span class="day">Monday</span><span>7:30 – 13:30</span></li>
-                <li><span class="day">Tuesday</span><span>7:30 – 16:30</span></li>
-                <li><span class="day">Wednesday</span><span>7:30 – 16:30</span></li>
-                <li><span class="day">Thursday</span><span>7:30 – 16:30</span></li>
-                <li><span class="day">Friday</span><span>7:30 – 16:30</span></li>
-                <li class="closed"><span class="day">Saturday</span><span>Closed</span></li>
-                <li class="closed"><span class="day">Sunday</span><span>Closed</span></li>
-              </ul>
+            <div class="gallery reveal">
+                <button class="tile big" style="--tile:linear-gradient(150deg,#C98A4A,#5a3c25)"
+                    data-full="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1100&q=80">
+                    <span class="tile__photo"
+                        style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1100&q=80')"></span>
+                    <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="6" />
+                        </svg>Latte, just poured</span>
+                </button>
+                <button class="tile" style="--tile:linear-gradient(150deg,#caa06a,#7b5230)"
+                    data-full="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80">
+                    <span class="tile__photo"
+                        style="background-image:url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80')"></span>
+                    <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="6" />
+                        </svg>Warm croissants</span>
+                </button>
+                <button class="tile" style="--tile:linear-gradient(150deg,#b9824a,#4a3220)"
+                    data-full="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80">
+                    <span class="tile__photo"
+                        style="background-image:url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80')"></span>
+                    <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="6" />
+                        </svg>The cosy corner</span>
+                </button>
+                <button class="tile" style="--tile:linear-gradient(150deg,#d6a35e,#6a4527)"
+                    data-full="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=80">
+                    <span class="tile__photo"
+                        style="background-image:url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=80')"></span>
+                    <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="6" />
+                        </svg>Morning light</span>
+                </button>
+                <button class="tile" style="--tile:linear-gradient(150deg,#c79050,#583a23)"
+                    data-full="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=80">
+                    <span class="tile__photo"
+                        style="background-image:url('https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=80')"></span>
+                    <span class="tile__cap"><svg viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="6" />
+                        </svg>Avocado toast</span>
+                </button>
             </div>
-          </div>
-          <div class="info-row">
-            <div class="ic"><i class="bi bi-instagram"></i></div>
-            <div><b>Say hi online</b><br><a href="https://www.instagram.com/yummycoffee.gva/" target="_blank" rel="noopener">@yummycoffee.gva</a></div>
-          </div>
-          <a class="btn-yc btn-honey w-100 justify-content-center mt-3" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rue+Dancet+8,+1205+Gen%C3%A8ve" target="_blank" rel="noopener"><i class="bi bi-map"></i> Get directions</a>
         </div>
-      </div>
-      <div class="col-lg-7 reveal">
-        <div class="map-frame">
-          <iframe
-            title="Map showing Yummy Coffee at Rue Dancet 8, Geneva"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Rue+Dancet+8,+1205+Gen%C3%A8ve,+Switzerland&z=16&hl=en&output=embed"></iframe>
+    </section>
+
+    <!-- ===================== REVIEWS ===================== -->
+    <section class="section section--dark" id="reviews">
+        <div class="wrap">
+            <div class="reviews-head reveal">
+                <div>
+                    <span class="eyebrow">kind words</span>
+                    <h2>Loved by the neighbourhood</h2>
+                </div>
+                <div class="score">
+                    <div class="score__num">5.0</div>
+                    <div>
+                        <div class="stars" style="font-size:1.2rem">★★★★★</div>
+                        <small>Based on 88 Google reviews</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REVIEWS — replace with your real Google reviews when ready -->
+            <div class="row g-4">
+                <div class="col-md-4 reveal">
+                    <div class="review">
+                        <span class="q">&ldquo;</span>
+                        <div class="stars" style="font-size:.95rem">★★★★★</div>
+                        <p>The friendliest welcome in Geneva, and a flat white to match. My weekday mornings completely
+                            revolve around this little place.</p>
+                        <div class="who">
+                            <div class="av">S</div>
+                            <div><b>Sophie M.</b><span>Google review</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="review">
+                        <span class="q">&ldquo;</span>
+                        <div class="stars" style="font-size:.95rem">★★★★★</div>
+                        <p>That apple cake. The almond-milk chai. The little "bonjour" when you walk in. Five stars
+                            honestly isn't enough.</p>
+                        <div class="who">
+                            <div class="av">M</div>
+                            <div><b>Marco R.</b><span>Google review</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="review">
+                        <span class="q">&ldquo;</span>
+                        <div class="stars" style="font-size:.95rem">★★★★★</div>
+                        <p>Tucked just off the Plaine de Plainpalais — tiny, sunny and always worth the stop before
+                            class. My go-to in the quartier.</p>
+                        <div class="who">
+                            <div class="av">L</div>
+                            <div><b>Léa B.</b><span>Google review</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ===================== FOOTER ===================== -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="row g-4">
-      <div class="col-lg-5">
-        <a class="brand mb-2 d-inline-flex" href="#top">
-          <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <g stroke="#E89B2E" stroke-width="2.4" stroke-linecap="round">
-              <circle cx="24" cy="22" r="7.5" fill="#E89B2E" stroke="none"/>
-              <line x1="24" y1="6" x2="24" y2="10"/><line x1="24" y1="34" x2="24" y2="38"/>
-              <line x1="8" y1="22" x2="12" y2="22"/><line x1="36" y1="22" x2="40" y2="22"/>
-            </g>
-            <g stroke="#FBF3E4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
-              <path d="M13 30 h17 v5 a7 7 0 0 1 -7 7 h-3 a7 7 0 0 1 -7 -7 z"/><path d="M30 32 h3.5 a3.5 3.5 0 0 1 0 7 H30"/>
-            </g>
-          </svg>
-          Yummy <b style="color:var(--honey)">Coffee</b>
-        </a>
-        <p style="max-width:34ch">Your cosy corner of Plainpalais for carefully brewed coffee and homemade mornings. See you from 7:30.</p>
-        <div class="footer__social">
-          <a href="https://www.instagram.com/yummycoffee.gva/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="https://maps.google.com/?q=Rue+Dancet+8,+1205+Gen%C3%A8ve" target="_blank" rel="noopener" aria-label="Google Maps"><i class="bi bi-geo-alt-fill"></i></a>
+    <!-- ===================== VISIT ===================== -->
+    <section class="section" id="visit">
+        <div class="wrap">
+            <div class="section-head center reveal">
+                <span class="eyebrow">come say hello</span>
+                <h2>Find us</h2>
+            </div>
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-5 reveal">
+                    <div class="visit-card">
+                        <div class="info-row">
+                            <div class="ic"><i class="bi bi-geo-alt-fill"></i></div>
+                            <div><b>Where</b><br>Rue Dancet 8<br>1205 Geneva, Switzerland</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="ic"><i class="bi bi-bus-front-fill"></i></div>
+                            <div><b>Getting here</b><br>2 min from the Dancet stop · a short walk from Uni&nbsp;Mail and
+                                the Plaine&nbsp;de&nbsp;Plainpalais</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="ic"><i class="bi bi-clock-fill"></i></div>
+                            <div style="flex:1">
+                                <b>Opening hours</b>
+                                <ul class="hours">
+                                    <li><span class="day">Monday</span><span>7:30 – 13:30</span></li>
+                                    <li><span class="day">Tuesday</span><span>7:30 – 16:30</span></li>
+                                    <li><span class="day">Wednesday</span><span>7:30 – 16:30</span></li>
+                                    <li><span class="day">Thursday</span><span>7:30 – 16:30</span></li>
+                                    <li><span class="day">Friday</span><span>7:30 – 16:30</span></li>
+                                    <li class="closed"><span class="day">Saturday</span><span>Closed</span></li>
+                                    <li class="closed"><span class="day">Sunday</span><span>Closed</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div class="ic"><i class="bi bi-instagram"></i></div>
+                            <div><b>Say hi online</b><br><a href="https://www.instagram.com/yummycoffee.gva/"
+                                    target="_blank" rel="noopener">@yummycoffee.gva</a></div>
+                        </div>
+                        <a class="btn-yc btn-honey w-100 justify-content-center mt-3"
+                            href="https://www.google.com/maps/dir/?api=1&amp;destination=Rue+Dancet+8,+1205+Gen%C3%A8ve"
+                            target="_blank" rel="noopener"><i class="bi bi-map"></i> Get directions</a>
+                    </div>
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="map-frame">
+                        <iframe title="Map showing Yummy Coffee at Rue Dancet 8, Geneva" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps?q=Rue+Dancet+8,+1205+Gen%C3%A8ve,+Switzerland&z=16&hl=en&output=embed"></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-6 col-lg-3">
-        <h4>Explore</h4>
-        <ul class="footer__links">
-          <li><a href="#story">Our story</a></li>
-          <li><a href="#favourites">Favourites</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#visit">Visit us</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-lg-4">
-        <h4>Find us</h4>
-        <ul class="footer__links">
-          <li>Rue Dancet 8</li>
-          <li>1205 Geneva, Switzerland</li>
-          <li class="mt-2">Mon 7:30–13:30</li>
-          <li>Tue–Fri 7:30–16:30</li>
-          <li>Sat &amp; Sun — closed</li>
-        </ul>
-      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <a class="brand mb-2 d-inline-flex" href="#top">
+                        <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                            <g stroke="#E89B2E" stroke-width="2.4" stroke-linecap="round">
+                                <circle cx="24" cy="22" r="7.5" fill="#E89B2E" stroke="none" />
+                                <line x1="24" y1="6" x2="24" y2="10" />
+                                <line x1="24" y1="34" x2="24" y2="38" />
+                                <line x1="8" y1="22" x2="12" y2="22" />
+                                <line x1="36" y1="22" x2="40" y2="22" />
+                            </g>
+                            <g stroke="#FBF3E4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                                fill="none">
+                                <path d="M13 30 h17 v5 a7 7 0 0 1 -7 7 h-3 a7 7 0 0 1 -7 -7 z" />
+                                <path d="M30 32 h3.5 a3.5 3.5 0 0 1 0 7 H30" />
+                            </g>
+                        </svg>
+                        Yummy <b style="color:var(--honey)">Coffee</b>
+                    </a>
+                    <p style="max-width:34ch">Your cosy corner of Plainpalais for carefully brewed coffee and homemade
+                        mornings. See you from 7:30.</p>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/yummycoffee.gva/" target="_blank" rel="noopener"
+                            aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="https://maps.google.com/?q=Rue+Dancet+8,+1205+Gen%C3%A8ve" target="_blank"
+                            rel="noopener" aria-label="Google Maps"><i class="bi bi-geo-alt-fill"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h4>Explore</h4>
+                    <ul class="footer__links">
+                        <li><a href="#story">Our story</a></li>
+                        <li><a href="#favourites">Favourites</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#visit">Visit us</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-4">
+                    <h4>Find us</h4>
+                    <ul class="footer__links">
+                        <li>Rue Dancet 8</li>
+                        <li>1205 Geneva, Switzerland</li>
+                        <li class="mt-2">Mon 7:30–13:30</li>
+                        <li>Tue–Fri 7:30–16:30</li>
+                        <li>Sat &amp; Sun — closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>© <span id="year"></span> Yummy Coffee · Rue Dancet 8, Geneva</span>
+                <span class="f-lang">
+                    <a href="../index.html">Français</a>
+                    <span class="sep" aria-hidden="true">·</span>
+                    <a href="index.html" aria-current="true">English</a>
+                </span>
+                <span>Made with care &amp; good coffee ☕</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
+        <div class="lightbox__img" id="lightboxImg"></div>
     </div>
-    <div class="footer__bottom">
-      <span>© <span id="year"></span> Yummy Coffee · Rue Dancet 8, Geneva</span>
-      <span class="f-lang">
-        <a href="../index.html">Français</a>
-        <span class="sep" aria-hidden="true">·</span>
-        <a href="index.html" aria-current="true">English</a>
-      </span>
-      <span>Made with care &amp; good coffee ☕</span>
-    </div>
-  </div>
-</footer>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
-  <div class="lightbox__img" id="lightboxImg"></div>
-</div>
+    <!-- Back to top -->
+    <button class="totop" id="toTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
 
-<!-- Back to top -->
-<button class="totop" id="toTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
-
-<!-- Bootstrap JS (bundle) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/main.js"></script>
+    <!-- Bootstrap JS (bundle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
 </body>
+
 </html>

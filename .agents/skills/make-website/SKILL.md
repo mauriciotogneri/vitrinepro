@@ -35,7 +35,7 @@ Fix `<out>` = `docs/webs/<slug>/`. **If `<out>` already exists, stop and ask** b
 
 The site deploys to GitHub Pages, so absolute URLs (canonical, `og:url`, `og:image`, sitemap `<loc>`) use the real deploy origin. Run `git remote get-url origin`, parse `github.com[:/]<org>/<repo>`, and build:
 
-- `<base>` = `https://<org>.github.io/<repo>/webs/<slug>/` (e.g. `https://vndly.github.io/websites/webs/<slug>/`).
+- `<base>` = `https://<org>.github.io/<repo>/webs/<slug>/` (e.g. `https://mauriciotogneri.github.io/vitrinepro/webs/<slug>/`).
 
 If there is no remote or it can't be parsed, use a literal `{{BASE_URL}}` token instead and flag it in the final summary.
 
@@ -97,7 +97,7 @@ A **contact** form plus native links — **never a reservation/booking form**:
 - **Address → Google Maps directions (always):** wherever the page shows the venue's street address — the contact "visit us / in store" block **and/or** the location/"find us" section beside the map — render it as a **link to driving directions**, never plain static text: `<a href="https://www.google.com/maps/dir/?api=1&destination=<lat>,<lng>" target="_blank" rel="noopener noreferrer">…address…</a>`, reusing the **same `<lat>,<lng>` as the map embed**. If the business has no map/coords, fall back to `destination=<URL-encoded "Street nº, postcode City">`. Give it a visible affordance ("Voir l'itinéraire" — a `dir/?api=1` link, **not** a `?q=` "open in Maps" link). Apply it even when the map is also embedded on the page.
 - **Two-column layout (always):** put the **contact form on the right** and the **contact info on the left** (the native links — phone, WhatsApp, address / "visit in store" block). Keep the **DOM/source order matching this visual order** (info block first, then the form) so reading and focus order stay aligned — never reorder with CSS `order`/`grid-column`. On narrow screens they stack in that same order (info, then form).
 - **Location map** (only when a map is shown): always embed **Google Maps**, **directly visible on page load with no click-to-load button** — a plain `<iframe>` (`https://www.google.com/maps?q=<lat>,<lng>&z=16&hl=fr&output=embed`) inside a fixed `aspect-ratio` box. This is a deliberate exception to `best-practices.md`'s click-to-load embed guidance — never use OpenStreetMap or a press-to-reveal placeholder.
-  - **Never let the map box overflow / overlap the neighbouring card** (a recurring bug). Root cause: the map wrapper is a grid item, the grid stretches it (`align-items:stretch`, the default) to the height of the **taller** sibling card, and if the wrapper also has an `aspect-ratio` the browser then derives the wrapper's **width from that stretched height** (`height × ratio`) — far wider than its track — so it laps over the card. (`min-width:0` does **not** help: the box is *growing*, not failing to shrink.) Correct pattern: **do not put `aspect-ratio` on a stretched map wrapper.** Make the wrapper `position:relative; overflow:hidden` with a **`min-height`** (its height in the stacked 1-col layout and a floor); let `align-items:stretch` give it the row height in 2-col (equal-height columns, no ratio to inflate the width); and make the iframe `position:absolute; inset:0; width:100%; height:100%`. The wrapper's width then always equals its grid track. (If you instead want a fixed map ratio, keep `aspect-ratio` but add `align-self:start` so the ratio derives the height *from* the track-bound width, never the reverse.)
+  - **Never let the map box overflow / overlap the neighbouring card** (a recurring bug). Root cause: the map wrapper is a grid item, the grid stretches it (`align-items:stretch`, the default) to the height of the **taller** sibling card, and if the wrapper also has an `aspect-ratio` the browser then derives the wrapper's **width from that stretched height** (`height × ratio`) — far wider than its track — so it laps over the card. (`min-width:0` does **not** help: the box is _growing_, not failing to shrink.) Correct pattern: **do not put `aspect-ratio` on a stretched map wrapper.** Make the wrapper `position:relative; overflow:hidden` with a **`min-height`** (its height in the stacked 1-col layout and a floor); let `align-items:stretch` give it the row height in 2-col (equal-height columns, no ratio to inflate the width); and make the iframe `position:absolute; inset:0; width:100%; height:100%`. The wrapper's width then always equals its grid track. (If you instead want a fixed map ratio, keep `aspect-ratio` but add `align-self:start` so the ratio derives the height _from_ the track-bound width, never the reverse.)
   - **Verify the map by measuring, not just screenshotting.** The iframe won't load offline and a blank/slow iframe (plus fallback-font card heights) can hide the overflow in a screenshot. Check the computed `.map` width ≤ its grid track (e.g. compare `getBoundingClientRect()` of the map vs the card, expecting a gap not an overlap) at desktop **and** mid/tablet widths.
 
 ### 9. SEO / deploy files
@@ -115,11 +115,17 @@ Find the row whose `<slug>` appears in its Website href (`webs/<slug>`) or Data 
 
 - **Row exists** → set its **Website** cell to the live button (below) and refresh the name/trade; **leave the Data cell untouched** — it belongs to `extract-data`.
 - **No row** (e.g. a dossier that predates index registration) → append one matching the existing markup, with the **Website** button and the **Data** cell as a `—` placeholder. Do **not** fabricate a Data link — it only works once the slug is in `docs/data.html`'s `SHOPS` map, which `extract-data` owns.
-Use the **Business Name** from the dossier and a short **trade** label for the primary type, matching the style of the existing rows. Cell markup:
+  Use the **Business Name** from the dossier and a short **trade** label for the primary type, matching the style of the existing rows. Cell markup:
 
 ```html
-<td class="c-act"><a class="btn btn-site" href="webs/<slug>" target="_blank" rel="noopener">Website</a></td>  <!-- Website button -->
-<td class="c-act"><span class="na" title="No data extracted">—</span></td>                                    <!-- Data placeholder -->
+<td class="c-act">
+  <a class="btn btn-site" href="webs/<slug>" target="_blank" rel="noopener"
+    >Website</a
+  >
+</td>
+<!-- Website button -->
+<td class="c-act"><span class="na" title="No data extracted">—</span></td>
+<!-- Data placeholder -->
 ```
 
 Leave every other row untouched.

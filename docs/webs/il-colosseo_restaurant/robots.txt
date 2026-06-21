@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vndly.github.io/websites/webs/il-colosseo_restaurant/sitemap.xml
+Sitemap: https://mauriciotogneri.github.io/vitrinepro/webs/il-colosseo_restaurant/sitemap.xml

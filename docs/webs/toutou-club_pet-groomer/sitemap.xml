@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://vndly.github.io/websites/webs/toutou-club_pet-groomer/</loc>
-    <lastmod>2026-06-15</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://vndly.github.io/websites/webs/toutou-club_pet-groomer/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vndly.github.io/websites/webs/toutou-club_pet-groomer/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vndly.github.io/websites/webs/toutou-club_pet-groomer/en/"/>
-  </url>
-  <url>
-    <loc>https://vndly.github.io/websites/webs/toutou-club_pet-groomer/en/</loc>
-    <lastmod>2026-06-15</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://vndly.github.io/websites/webs/toutou-club_pet-groomer/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vndly.github.io/websites/webs/toutou-club_pet-groomer/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vndly.github.io/websites/webs/toutou-club_pet-groomer/en/"/>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<url>
+		<loc>
+			https://mauriciotogneri.github.io/vitrinepro/webs/toutou-club_pet-groomer/
+		</loc>
+		<lastmod>
+			2026-06-15
+		</lastmod>
+		<link rel="alternate" hreflang="fr-CH" href="https://mauriciotogneri.github.io/vitrinepro/webs/toutou-club_pet-groomer/" />
+		<link rel="alternate" hreflang="en" href="https://mauriciotogneri.github.io/vitrinepro/webs/toutou-club_pet-groomer/en/" />
+		<link rel="alternate" hreflang="x-default" href="https://mauriciotogneri.github.io/vitrinepro/webs/toutou-club_pet-groomer/en/" />
+	</url>
+	<url>
+		<loc>
+			https://mauriciotogneri.github.io/vitrinepro/webs/toutou-club_pet-groomer/en/
+		</loc>
+		<lastmod>
+			2026-06-15
+		</lastmod>
+		<link rel="alternate" hreflang="fr-CH" href="https://mauriciotogneri.github.io/vitrinepro/webs/toutou-club_pet-groomer/" />
+		<link rel="alternate" hreflang="en" href="https://mauriciotogneri.github.io/vitrinepro/webs/toutou-club_pet-groomer/en/" />
+		<link rel="alternate" hreflang="x-default" href="https://mauriciotogneri.github.io/vitrinepro/webs/toutou-club_pet-groomer/en/" />
+	</url>
 </urlset>
