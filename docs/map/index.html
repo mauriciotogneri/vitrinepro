@@ -156,6 +156,7 @@ body{
 .cat__head:focus-visible{ outline: 3px solid rgba(200,30,30,.3); outline-offset: -3px; }
 .cat__chev{ font-size: .8rem; color: var(--ink-soft); transition: transform .2s ease; }
 .cat[open] .cat__chev{ transform: rotate(180deg); }
+.cat__count{ margin-left: .3rem; font-family: var(--font-mono); font-weight: 400; font-size: .78rem; color: var(--ink-soft); }
 .cat__list{
   list-style: none; margin: 0;
   padding: .15rem .85rem .7rem;
@@ -445,9 +446,13 @@ body{
         var details = document.createElement("details");
         details.className = "cat";
 
+        var available = cat.items.filter(function (item) { return AVAILABLE[item]; }).length;
+        var catCount = available ? ' <span class="cat__count">(' + available + ')</span>' : '';
+
         var summary = document.createElement("summary");
         summary.className = "cat__head";
-        summary.innerHTML = esc(cat.name) + '<i class="bi bi-chevron-down cat__chev"></i>';
+        summary.innerHTML = '<span class="cat__name">' + esc(cat.name) + catCount + '</span>'
+                          + '<i class="bi bi-chevron-down cat__chev"></i>';
         details.appendChild(summary);
 
         /* keep only one category open at a time */
