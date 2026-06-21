@@ -76992,5 +76992,145 @@
     ],
     "reviews": [],
     "leadsEnrichment": []
+  },
+  {
+    "title": "Sonia coiffure",
+    "subTitle": null,
+    "description": null,
+    "price": null,
+    "categoryName": "Hair salon",
+    "address": "Rue de la Chapelle 5, 1207 Genève, Switzerland",
+    "neighborhood": null,
+    "street": "Rue de la Chapelle 5",
+    "city": "Geneva",
+    "postalCode": "1207",
+    "state": null,
+    "countryCode": "CH",
+    "phone": "+41 22 700 83 89",
+    "phoneUnformatted": "+41227008389",
+    "claimThisBusiness": true,
+    "location": {
+      "lat": 46.2013509,
+      "lng": 6.1579513
+    },
+    "locatedIn": null,
+    "floor": null,
+    "plusCode": "6525+G5 Geneva, Switzerland",
+    "menu": null,
+    "servicesLink": null,
+    "totalScore": 5,
+    "permanentlyClosed": false,
+    "temporarilyClosed": false,
+    "placeId": "ChIJOTemBDRljEcRvEFLIak8M9c",
+    "categories": [
+      "Hair salon"
+    ],
+    "fid": "0x478c653404a63739:0xd7333ca9214b41bc",
+    "cid": "15506804639072469436",
+    "reviewsCount": 1,
+    "reviewsDistribution": {
+      "oneStar": 0,
+      "twoStar": 0,
+      "threeStar": 0,
+      "fourStar": 0,
+      "fiveStar": 1
+    },
+    "imagesCount": 2,
+    "imageCategories": [
+      "All",
+      "Street View & 360°"
+    ],
+    "scrapedAt": "2026-06-17T19:10:32.828Z",
+    "reserveTableUrl": null,
+    "googleFoodUrl": null,
+    "hotelStars": null,
+    "hotelDescription": null,
+    "checkInDate": null,
+    "checkOutDate": null,
+    "hotelAds": [],
+    "popularTimesLiveText": null,
+    "popularTimesLivePercent": null,
+    "popularTimesHistogram": {},
+    "openingHours": [],
+    "peopleAlsoSearch": [
+      {
+        "category": "People also search for",
+        "title": "ScCoiffure",
+        "reviewsCount": 15,
+        "totalScore": 4.9
+      },
+      {
+        "category": "People also search for",
+        "title": "CHARLES COIFFURE",
+        "reviewsCount": 1,
+        "totalScore": 5
+      },
+      {
+        "category": "People also search for",
+        "title": "One Again",
+        "reviewsCount": 2,
+        "totalScore": 3
+      },
+      {
+        "category": "People also search for",
+        "title": "Neri Coiffure",
+        "reviewsCount": 23,
+        "totalScore": 4.4
+      },
+      {
+        "category": "People also search for",
+        "title": "CARLA STUDIO",
+        "reviewsCount": 41,
+        "totalScore": 5
+      }
+    ],
+    "placesTags": [],
+    "reviewsTags": [],
+    "additionalInfo": {
+      "Amenities": [
+        {
+          "Restroom": true
+        }
+      ],
+      "Children": [
+        {
+          "Good for kids": true
+        }
+      ]
+    },
+    "gasPrices": [],
+    "url": "https://www.google.com/maps/search/?api=1&query=Sonia%20coiffure&query_place_id=ChIJOTemBDRljEcRvEFLIak8M9c",
+    "searchPageUrl": "https://www.google.com/maps/search/hair%20salon/@46.2010701,6.158383,18.471817426363017z?hl=en",
+    "searchString": "hair salon",
+    "language": "en",
+    "rank": 39,
+    "isAdvertisement": false,
+    "imageUrl": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=SmGZ9eqA7LWXR-p8FAveNA&cb_client=search.gws-prod.gps&w=408&h=240&yaw=172.41905&pitch=0&thumbfov=100",
+    "kgmid": "/g/1tlw7zv8",
+    "questionsAndAnswers": [],
+    "webResults": [],
+    "tableReservationLinks": [],
+    "bookingLinks": [],
+    "restaurantData": {
+      "tableReservationProvider": null
+    },
+    "ownerUpdates": [],
+    "emails": [],
+    "phones": [],
+    "phonesUncertain": [],
+    "linkedIns": [],
+    "twitters": [],
+    "instagrams": [],
+    "facebooks": [],
+    "youtubes": [],
+    "tiktoks": [],
+    "pinterests": [],
+    "discords": [],
+    "imageUrls": [
+      "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=SmGZ9eqA7LWXR-p8FAveNA&cb_client=lu.gallery.gps&w=1920&h=1272&yaw=172.41905&pitch=0&thumbfov=100",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE9lZh9d90nu6zlvGNBhQw4nis71oyFf1lk0oJIwL2_zwky0XbImrLSirQQF4rmUb9n4wXlNwF3ZqABgBIAFWYKZPgNOuXipuZNyzh85Rhx2F3d1C6Lad7ABFC4LxJkoPQxiy9PpQ=w1920-h1080-k-no"
+    ],
+    "reviews": [],
+    "leadsEnrichment": []
   }
 ]
