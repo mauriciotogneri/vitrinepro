@@ -42,12 +42,12 @@ If there is no remote or it can't be parsed, use a literal `{{BASE_URL}}` token 
 ### 3. Plan content from the dossier
 
 - Map the dossier's available data onto the sections in `site-structure.md`. **Omit any section with no backing data — never fabricate.** No reviews in the dossier → no Reviews section (and no `Review`/`aggregateRating` in the JSON-LD). The structure adapts per business.
-- Choose the brand palette: use the dossier's stated brand colors if present → else derive from the **logo** → else infer from the business **type/name**.
+- Take the **theme** from the dossier's **Branding / Theme** section — its palette (the semantic roles), typography (`display` + `body`, already nominated as Google-Fonts families), `theme-color`, and shape/depth/spacing + vibe. `extract-data` already derived it (website → logo → name/type) and recorded the **basis + confidence**, so **use it verbatim — don't re-derive it**. Only if a legacy/hand-written dossier lacks the section, fall back to deriving the palette from the **logo** → else the business **type/name**.
 - Decide the most specific schema.org `LocalBusiness` subtype for the business type (e.g. `BarberShop`, `HairSalon`, `Restaurant`, `Bakery`, `BarOrPub`, `VeterinaryCare`, …); fall back to `LocalBusiness`.
 
 ### 4. Build with the frontend-design skill
 
-Invoke the **frontend-design** skill to design and implement the site (your global rule requires it for any UI). Feed it the dossier facts, the chosen palette, the section plan, and the `<base>` URL. Produce distinctive, production-grade output — a design unique to this business that doesn't resemble the other sites in `docs/webs/`. Tell it which assets are **real** (an official `logo`, `photo-*`) vs **fallback** (a generated `logo`, `stock-*`): when only fallback imagery exists, design **photo-light** — lead with brand color, type, and CSS/SVG art and icons rather than photography — and treat any `stock-*` as decorative background only (see step 6).
+Invoke the **frontend-design** skill to design and implement the site (your global rule requires it for any UI). Feed it the dossier facts, the dossier's **theme** (palette, typography, `theme-color`, shape/depth/spacing, vibe), the section plan, and the `<base>` URL. Produce distinctive, production-grade output — a design unique to this business that doesn't resemble the other sites in `docs/webs/`. Tell it which assets are **real** (an official `logo`, `photo-*`) vs **fallback** (a generated `logo`, `stock-*`): when only fallback imagery exists, design **photo-light** — lead with brand color, type, and CSS/SVG art and icons rather than photography — and treat any `stock-*` as decorative background only (see step 6).
 
 ### 5. Write the files
 
@@ -82,7 +82,7 @@ The `index.html`:
 - A descriptive `<title>` + `<meta name="description">`; `theme-color`; `<meta name="author">`.
 - `<link rel="canonical">` + Open Graph + Twitter Card, all absolute under `<base>`; `og:image` = the generated OG image; `og:locale` `fr_CH`.
 - **JSON-LD** for the chosen subtype, with only properties backed by visible content (name, address, `geo`, hours, telephone, `priceRange`, services, ratings/reviews **only if present**). Its `image`/`logo`/`photo` properties reference only **real** media (the logo, `photo-*`) or the generated OG image — **never** `stock-*` fallback imagery. **Never** include a tax or business-registration identifier (`taxID`, VAT/TVA number, Swiss UID / `CHE-…`) — not in JSON-LD, not anywhere on the page.
-- Fonts via **Google Fonts CDN**: `preconnect` to `fonts.googleapis.com` and `fonts.gstatic.com` (crossorigin), stylesheet with `&display=swap`. This is a deliberate exception to `best-practices.md`'s self-host guidance — do **not** self-host `@font-face` for these sites.
+- Fonts via **Google Fonts CDN** — load the dossier theme's nominated `display` + `body` families: `preconnect` to `fonts.googleapis.com` and `fonts.gstatic.com` (crossorigin), stylesheet with `&display=swap`. This is a deliberate exception to `best-practices.md`'s self-host guidance — do **not** self-host `@font-face` for these sites.
 - Semantic landmarks (`header`/`nav`/`main`/`section[id]`/`footer`), exactly one `<h1>`, ordered headings, skip-to-content link (parked fully off-screen — not a shallow offset that can peek — and revealed only on `:focus-visible`, never plain `:focus`, so pointer/programmatic focus never exposes it), `:focus-visible`, `prefers-reduced-motion`, `aria-current` on the active nav, touch targets ≥24px.
 - **Footer:** restate identity, contact/hours, secondary nav, social (only link an Instagram profile the dossier shows is **public** — omit the link if it's private), and legal/copyright with a **JS-rendered, never-hardcoded** year (see `js/main.js` below) — but **never** a tax/registration ID (UID / `CHE-…` / VAT) and **never a "back-to-top" link/button** (the sticky header and logo already return users to the top).
 - `js/main.js` (end of body, IIFE, no inline `on*=` handlers): the copyright year, set from `new Date().getFullYear()` into an **empty** `<span>` (the year is **never** written as a literal in the markup — no hardcoded fallback); scroll reveals via `IntersectionObserver` with a no-IO fallback; and — if hours are known — an Intl-based open/closed badge (`Europe/Zurich`).
@@ -146,7 +146,7 @@ Don't report success without checking:
 - Instagram is linked only when the dossier shows the profile is public; a private profile is not linked.
 - `docs/index.html` has **exactly one** row for this business with a working **Website** link (`webs/<slug>`) — no duplicate row.
 
-End with a short summary: the business, `<out>`, sections built vs. omitted (and why), any placeholders to replace before deploy, and anything the dossier lacked that would improve the site.
+End with a short summary: the business, `<out>`, sections built vs. omitted (and why), any placeholders to replace before deploy, whether the branding theme was high-confidence or a **low-confidence/inferred placeholder** worth revisiting (flag it as replaceable, like a generated logo or `stock-*`), and anything the dossier lacked that would improve the site.
 
 ## Constraints & conventions
 
