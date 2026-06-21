@@ -1,5 +1,7 @@
 {
-    "categoryFilterWords": ["pub"],
+    "categoryFilterWords": [
+        "pub"
+    ],
     "city": "geneva",
     "countryCode": "ch",
     "includeWebResults": false,
