@@ -325,7 +325,7 @@ const thunks = sources.map(
         `Reference access notes: ${s.access_notes || "none"}`,
         "",
         "RULES:",
-        "- Web only: use web search + public page fetches. Do NOT use paid or credentialed APIs and never invent or use credentials — but where THIS source exposes a free keyless endpoint (e.g. Overpass/Nominatim for OpenStreetMap at <=1 req/s, the Wikidata/Wikipedia APIs), prefer it over scraping the source's HTML. Don't substitute a different source's API for the one you're assigned.",
+        "- Web only: use web search + public page fetches. Do NOT use paid or credentialed APIs and never invent or use credentials — but where THIS source exposes a free keyless endpoint (e.g. Overpass/Nominatim for OpenStreetMap at <=1 req/s), prefer it over scraping the source's HTML. Don't substitute a different source's API for the one you're assigned.",
         "- Pragmatic best-effort: if the page loads, extract it; do NOT attempt anti-bot bypass (proxies, UA rotation).",
         "- If the source blocks you, the business is not listed, or the page is empty, report it via access_status and stop — don't guess.",
         "- Match carefully: confirm name + Geneva (+ address/website if known) so you extract the RIGHT business.",
@@ -703,7 +703,7 @@ _Standard fields no source could fill, or that are only low-confidence placehold
 
 ## Constraints & conventions
 
-- **Web only, no credentialed APIs.** Never assume, invent, or use credentials; no paid APIs. Free keyless public endpoints (Overpass, Nominatim, Wikidata) are allowed and preferred over HTML scraping. Best-effort fetch; no anti-bot bypass.
+- **Web only, no credentialed APIs.** Never assume, invent, or use credentials; no paid APIs. Free keyless public endpoints (Overpass, Nominatim) are allowed and preferred over HTML scraping. Best-effort fetch; no anti-bot bypass.
 - **No-login render assist (headless browser).** A committed Playwright helper (`scripts/render.mjs`) may render a **public**, JS-rendered page in headless Chromium to recover facts/branding a plain fetch misses (the business's own site, JS-rendered directories). Same best-effort/public posture — **no login, no bypass** — so it does **not** reach content that truly requires a session. Its `--follow-posts` mode harvests an Instagram/Facebook profile's first-page post images — Instagram via each post's public `og:image`, Facebook by scanning the `scontent…fbcdn.net` URL embedded in the logged-out photo page (still no login; see step 7); deeper/private content needs auth and stays out of scope. Main-agent only (sub-agents have web tools, not a browser).
 - **Original language preserved** — translation is the website-build step's job.
 - **Provenance everywhere** — every value carries its source(s); a primary-source fact must be distinguishable from an aggregator's guess.

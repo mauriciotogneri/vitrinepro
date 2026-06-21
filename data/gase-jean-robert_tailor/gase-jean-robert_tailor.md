@@ -119,7 +119,6 @@ _All genuine, sourced; downloaded into `assets/`._
 | Source                            | Access    | Notes                                                                                |
 | --------------------------------- | --------- | ------------------------------------------------------------------------------------ |
 | Google Business Profile / Maps    | blocked   | GDPR consent wall to bots; knowledge-panel web-search fallback yielded nothing       |
-| Wikidata                          | not_found | No item (below notability)                                                           |
 | Wikipedia                         | not_found | No article (below notability)                                                        |
 | OpenStreetMap                     | not_found | Building (way 181521320) exists but no POI/business tags                             |
 | local.ch                          | ok        | Address, mobile, category, services; flagged the separate Pont-d'Arve family listing |

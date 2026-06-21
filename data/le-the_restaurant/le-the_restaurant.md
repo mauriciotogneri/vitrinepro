@@ -190,7 +190,6 @@ _20 of 26 downloaded candidates kept; **all visually verified** as the real Le T
 | Source                         | Access    | Notes                                                                                                     |
 | ------------------------------ | --------- | --------------------------------------------------------------------------------------------------------- |
 | Google Business Profile / Maps | blocked   | GDPR consent wall; rating 4.2/5 via Wanderlog, identifiers/coords/hours only                              |
-| Wikidata                       | not_found | Only artworks named "Le Thé"; no business item                                                            |
 | OpenStreetMap                  | ok        | Node 2169156791; address, geo, `Mo-Sa 12:00-22:00`, cuisine=chinese, phone                                |
 | local.ch                       | ok        | Rich FR description (Mr. Lam, 9 tables, 100+ teas, bamboo decor); hours; 0 ratings; placeholder "LT" logo |
 | search.ch / tel.search.ch      | partial   | Name + address only; data attributed to "Tripadvisor Crawler"                                             |

@@ -143,7 +143,6 @@ None — a genuine logo and genuine photos were found, so no generated or stock 
 | ---------------------------- | --------- | ----------------------------------------------------------------------------------------- |
 | Official website             | no_data   | Site broken — PHP fatal errors, no HTML; sub-pages 404                                    |
 | Google Business Profile/Maps | partial   | Consent-walled to bots; data via Wanderlog fallback (hours, 4.8★/10, 5 reviews, 3 photos) |
-| Wikidata                     | not_found | No item (typical for a small shop)                                                        |
 | Wikipedia                    | not_found | No article                                                                                |
 | OpenStreetMap                | not_found | Business not mapped; address building node exists (coords used)                           |
 | local.ch                     | partial   | Name, address, phone; no hours/website/photos; listing unclaimed                          |

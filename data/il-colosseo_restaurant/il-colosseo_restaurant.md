@@ -166,7 +166,6 @@ _8 from TripAdvisor (the venue's own photo gallery), 12 re-published via Restaur
 | Source                         | Access    | Notes                                                                      |
 | ------------------------------ | --------- | -------------------------------------------------------------------------- |
 | Google Business Profile / Maps | blocked   | GDPR consent wall + JS-rendered SPA; got identifiers/coords only           |
-| Wikidata                       | not_found | No item (expected for a local restaurant)                                  |
 | OpenStreetMap                  | ok        | Address, geo, hours, cuisine, seating; field-surveyed 2025-07-07           |
 | local.ch                       | ok        | Address, phone, hours, rating 4.9/14, 3 reviews, reservation               |
 | search.ch / tel.search.ch      | ok        | Same localsearch data; + 3rd-party website link, tel UUID                  |
