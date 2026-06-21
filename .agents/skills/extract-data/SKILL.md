@@ -89,11 +89,9 @@ Select the sources to query for **this** shop:
 
 **The list is closed to those three** — `data-extraction.md` entries plus the official website, nothing else. Do **not** add off-doc sources to "confirm" the business; in particular, **never add a commercial-registry / legal-identity lookup** (Zefix, UID-Register / BFS-FSO, moneyhouse.ch, the cantonal Registre du commerce, Kompass, …). Registered legal name, UID/CHE, VAT, legal form, capital and registry status are **out of scope** (step 4), so such a source can only return discardable data — it earns no agent and just wastes the call.
 
-Then prune:
+Then dedup — the doc is already curated to only valid, reachable sources, so this step removes just **contextual** redundancy, not invalid sources:
 
-- **Drop** any entry the doc marks defunct, "do not use", "none"/no-CH-coverage, or "not a usable source".
 - **Drop redundant aggregators** when a primary source they re-publish is already in the list (the doc flags these, e.g. yellowpages.swiss, companyfinder.ch, Restaurant Guru, infoisinfo). **Exception for website-less targets:** when the only primary an aggregator re-hosts is a login-walled Facebook/Instagram page (so its photos aren't reachable any other way), keep the aggregator — it may be the sole reachable copy of those images (e.g. Restaurant Guru re-publishes Google/Facebook photos). Tag anything taken this way with the aggregator as the source.
-- **Drop sources the doc flags as actively bot-blocking / 403** (phrases like "actively blocks bots (HTTP 403)", "returns 403 to bots", "returned HTTP 403 to automated fetch"). A best-effort fetch will almost certainly fail on these, so they don't earn an agent. Scan the doc for these phrases rather than a fixed name list, which goes stale as the reference changes.
 - **When a Google-Maps-Scraper record was provided** (step 1): drop the live **Google Business Profile / Maps** source — the record stands in for it and is folded into the merge as `Google Maps (record)`. Every other source still runs (full pipeline).
 
 The result is typically ~15–30 sources. For each, keep: `{ name, url, access_notes }` (url = the source's site or its Geneva page if the doc gives one; access_notes = the doc's access/ToS line).
