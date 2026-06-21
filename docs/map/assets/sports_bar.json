@@ -1,0 +1,1495 @@
+[
+  {
+    "title": "Grand Duke Pub",
+    "subTitle": null,
+    "description": "Laid-back hangout with live sports on TV & bar games, plus a range of beers & casual things to eat.",
+    "price": "CHF 10–30",
+    "categoryName": "Sports bar",
+    "address": "Rue de Monthoux 8, 1201 Genève, Switzerland",
+    "neighborhood": null,
+    "street": "Rue de Monthoux 8",
+    "city": "Geneva",
+    "postalCode": "1201",
+    "state": null,
+    "countryCode": "CH",
+    "phone": "+41 22 732 74 73",
+    "phoneUnformatted": "+41227327473",
+    "claimThisBusiness": false,
+    "location": {
+      "lat": 46.210367,
+      "lng": 6.1494383
+    },
+    "locatedIn": null,
+    "floor": null,
+    "plusCode": "646X+4Q Geneva, Switzerland",
+    "menu": null,
+    "servicesLink": null,
+    "totalScore": 4.2,
+    "permanentlyClosed": false,
+    "temporarilyClosed": false,
+    "placeId": "ChIJPSPnQCRljEcRd_ZHbqNqDag",
+    "categories": [
+      "Sports bar"
+    ],
+    "fid": "0x478c652440e7233d:0xa80d6aa36e47f677",
+    "cid": "12109452223231555191",
+    "reviewsCount": 1002,
+    "imagesCount": 410,
+    "imageCategories": [
+      "All",
+      "Latest",
+      "Videos",
+      "Menu",
+      "Food & drink",
+      "Vibe",
+      "Beer",
+      "Pub",
+      "Club sandwich",
+      "Steak",
+      "By owner",
+      "Street View & 360°"
+    ],
+    "scrapedAt": "2026-06-21T12:16:34.336Z",
+    "reserveTableUrl": null,
+    "googleFoodUrl": null,
+    "hotelStars": null,
+    "hotelDescription": null,
+    "checkInDate": null,
+    "checkOutDate": null,
+    "hotelAds": [],
+    "popularTimesLiveText": "Not busy",
+    "popularTimesLivePercent": 11,
+    "popularTimesHistogram": {
+      "Su": [
+        {
+          "hour": 6,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 7,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 8,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 9,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 10,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 11,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 12,
+          "occupancyPercent": 20
+        },
+        {
+          "hour": 13,
+          "occupancyPercent": 30
+        },
+        {
+          "hour": 14,
+          "occupancyPercent": 32
+        },
+        {
+          "hour": 15,
+          "occupancyPercent": 37
+        },
+        {
+          "hour": 16,
+          "occupancyPercent": 43
+        },
+        {
+          "hour": 17,
+          "occupancyPercent": 54
+        },
+        {
+          "hour": 18,
+          "occupancyPercent": 58
+        },
+        {
+          "hour": 19,
+          "occupancyPercent": 56
+        },
+        {
+          "hour": 20,
+          "occupancyPercent": 52
+        },
+        {
+          "hour": 21,
+          "occupancyPercent": 54
+        },
+        {
+          "hour": 22,
+          "occupancyPercent": 55
+        },
+        {
+          "hour": 23,
+          "occupancyPercent": 47
+        },
+        {
+          "hour": 0,
+          "occupancyPercent": 31
+        },
+        {
+          "hour": 1,
+          "occupancyPercent": 17
+        }
+      ],
+      "Mo": [
+        {
+          "hour": 6,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 7,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 8,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 9,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 10,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 11,
+          "occupancyPercent": 14
+        },
+        {
+          "hour": 12,
+          "occupancyPercent": 21
+        },
+        {
+          "hour": 13,
+          "occupancyPercent": 24
+        },
+        {
+          "hour": 14,
+          "occupancyPercent": 24
+        },
+        {
+          "hour": 15,
+          "occupancyPercent": 22
+        },
+        {
+          "hour": 16,
+          "occupancyPercent": 21
+        },
+        {
+          "hour": 17,
+          "occupancyPercent": 26
+        },
+        {
+          "hour": 18,
+          "occupancyPercent": 35
+        },
+        {
+          "hour": 19,
+          "occupancyPercent": 37
+        },
+        {
+          "hour": 20,
+          "occupancyPercent": 38
+        },
+        {
+          "hour": 21,
+          "occupancyPercent": 37
+        },
+        {
+          "hour": 22,
+          "occupancyPercent": 47
+        },
+        {
+          "hour": 23,
+          "occupancyPercent": 41
+        },
+        {
+          "hour": 0,
+          "occupancyPercent": 31
+        },
+        {
+          "hour": 1,
+          "occupancyPercent": 18
+        }
+      ],
+      "Tu": [
+        {
+          "hour": 6,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 7,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 8,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 9,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 10,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 11,
+          "occupancyPercent": 18
+        },
+        {
+          "hour": 12,
+          "occupancyPercent": 24
+        },
+        {
+          "hour": 13,
+          "occupancyPercent": 31
+        },
+        {
+          "hour": 14,
+          "occupancyPercent": 28
+        },
+        {
+          "hour": 15,
+          "occupancyPercent": 31
+        },
+        {
+          "hour": 16,
+          "occupancyPercent": 35
+        },
+        {
+          "hour": 17,
+          "occupancyPercent": 41
+        },
+        {
+          "hour": 18,
+          "occupancyPercent": 46
+        },
+        {
+          "hour": 19,
+          "occupancyPercent": 44
+        },
+        {
+          "hour": 20,
+          "occupancyPercent": 41
+        },
+        {
+          "hour": 21,
+          "occupancyPercent": 43
+        },
+        {
+          "hour": 22,
+          "occupancyPercent": 45
+        },
+        {
+          "hour": 23,
+          "occupancyPercent": 47
+        },
+        {
+          "hour": 0,
+          "occupancyPercent": 38
+        },
+        {
+          "hour": 1,
+          "occupancyPercent": 28
+        }
+      ],
+      "We": [
+        {
+          "hour": 6,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 7,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 8,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 9,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 10,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 11,
+          "occupancyPercent": 13
+        },
+        {
+          "hour": 12,
+          "occupancyPercent": 15
+        },
+        {
+          "hour": 13,
+          "occupancyPercent": 21
+        },
+        {
+          "hour": 14,
+          "occupancyPercent": 31
+        },
+        {
+          "hour": 15,
+          "occupancyPercent": 30
+        },
+        {
+          "hour": 16,
+          "occupancyPercent": 26
+        },
+        {
+          "hour": 17,
+          "occupancyPercent": 33
+        },
+        {
+          "hour": 18,
+          "occupancyPercent": 38
+        },
+        {
+          "hour": 19,
+          "occupancyPercent": 54
+        },
+        {
+          "hour": 20,
+          "occupancyPercent": 67
+        },
+        {
+          "hour": 21,
+          "occupancyPercent": 85
+        },
+        {
+          "hour": 22,
+          "occupancyPercent": 88
+        },
+        {
+          "hour": 23,
+          "occupancyPercent": 74
+        },
+        {
+          "hour": 0,
+          "occupancyPercent": 42
+        },
+        {
+          "hour": 1,
+          "occupancyPercent": 26
+        }
+      ],
+      "Th": [
+        {
+          "hour": 6,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 7,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 8,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 9,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 10,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 11,
+          "occupancyPercent": 21
+        },
+        {
+          "hour": 12,
+          "occupancyPercent": 20
+        },
+        {
+          "hour": 13,
+          "occupancyPercent": 18
+        },
+        {
+          "hour": 14,
+          "occupancyPercent": 20
+        },
+        {
+          "hour": 15,
+          "occupancyPercent": 20
+        },
+        {
+          "hour": 16,
+          "occupancyPercent": 23
+        },
+        {
+          "hour": 17,
+          "occupancyPercent": 28
+        },
+        {
+          "hour": 18,
+          "occupancyPercent": 41
+        },
+        {
+          "hour": 19,
+          "occupancyPercent": 50
+        },
+        {
+          "hour": 20,
+          "occupancyPercent": 50
+        },
+        {
+          "hour": 21,
+          "occupancyPercent": 53
+        },
+        {
+          "hour": 22,
+          "occupancyPercent": 56
+        },
+        {
+          "hour": 23,
+          "occupancyPercent": 54
+        },
+        {
+          "hour": 0,
+          "occupancyPercent": 37
+        },
+        {
+          "hour": 1,
+          "occupancyPercent": 22
+        }
+      ],
+      "Fr": [
+        {
+          "hour": 6,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 7,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 8,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 9,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 10,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 11,
+          "occupancyPercent": 22
+        },
+        {
+          "hour": 12,
+          "occupancyPercent": 21
+        },
+        {
+          "hour": 13,
+          "occupancyPercent": 21
+        },
+        {
+          "hour": 14,
+          "occupancyPercent": 23
+        },
+        {
+          "hour": 15,
+          "occupancyPercent": 18
+        },
+        {
+          "hour": 16,
+          "occupancyPercent": 28
+        },
+        {
+          "hour": 17,
+          "occupancyPercent": 37
+        },
+        {
+          "hour": 18,
+          "occupancyPercent": 56
+        },
+        {
+          "hour": 19,
+          "occupancyPercent": 65
+        },
+        {
+          "hour": 20,
+          "occupancyPercent": 66
+        },
+        {
+          "hour": 21,
+          "occupancyPercent": 71
+        },
+        {
+          "hour": 22,
+          "occupancyPercent": 73
+        },
+        {
+          "hour": 23,
+          "occupancyPercent": 76
+        },
+        {
+          "hour": 0,
+          "occupancyPercent": 54
+        },
+        {
+          "hour": 1,
+          "occupancyPercent": 38
+        },
+        {
+          "hour": 2,
+          "occupancyPercent": 21
+        },
+        {
+          "hour": 3,
+          "occupancyPercent": 12
+        }
+      ],
+      "Sa": [
+        {
+          "hour": 6,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 7,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 8,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 9,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 10,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 11,
+          "occupancyPercent": 0
+        },
+        {
+          "hour": 12,
+          "occupancyPercent": 16
+        },
+        {
+          "hour": 13,
+          "occupancyPercent": 20
+        },
+        {
+          "hour": 14,
+          "occupancyPercent": 22
+        },
+        {
+          "hour": 15,
+          "occupancyPercent": 26
+        },
+        {
+          "hour": 16,
+          "occupancyPercent": 34
+        },
+        {
+          "hour": 17,
+          "occupancyPercent": 38
+        },
+        {
+          "hour": 18,
+          "occupancyPercent": 48
+        },
+        {
+          "hour": 19,
+          "occupancyPercent": 54
+        },
+        {
+          "hour": 20,
+          "occupancyPercent": 64
+        },
+        {
+          "hour": 21,
+          "occupancyPercent": 82
+        },
+        {
+          "hour": 22,
+          "occupancyPercent": 96
+        },
+        {
+          "hour": 23,
+          "occupancyPercent": 100
+        },
+        {
+          "hour": 0,
+          "occupancyPercent": 75
+        },
+        {
+          "hour": 1,
+          "occupancyPercent": 55
+        },
+        {
+          "hour": 2,
+          "occupancyPercent": 34
+        },
+        {
+          "hour": 3,
+          "occupancyPercent": 23
+        }
+      ]
+    },
+    "openingHours": [
+      {
+        "day": "Monday",
+        "hours": "11 AM to 2 AM"
+      },
+      {
+        "day": "Tuesday",
+        "hours": "11 AM to 2 AM"
+      },
+      {
+        "day": "Wednesday",
+        "hours": "11 AM to 2 AM"
+      },
+      {
+        "day": "Thursday",
+        "hours": "11 AM to 2 AM"
+      },
+      {
+        "day": "Friday",
+        "hours": "11 AM to 4 AM"
+      },
+      {
+        "day": "Saturday",
+        "hours": "12 PM to 4 AM"
+      },
+      {
+        "day": "Sunday",
+        "hours": "12 PM to 2 AM"
+      }
+    ],
+    "peopleAlsoSearch": [
+      {
+        "category": "People also search for",
+        "title": "Mr Pickwick Pub",
+        "reviewsCount": 2331,
+        "totalScore": 4.3
+      },
+      {
+        "category": "People also search for",
+        "title": "Mulligans Irish Pub Geneva",
+        "reviewsCount": 447,
+        "totalScore": 4.4
+      },
+      {
+        "category": "People also search for",
+        "title": "Pub Lord Jim",
+        "reviewsCount": 279,
+        "totalScore": 4.3
+      },
+      {
+        "category": "People also search for",
+        "title": "Britannia Pub",
+        "reviewsCount": 1013,
+        "totalScore": 4.2
+      },
+      {
+        "category": "People also search for",
+        "title": "CornerPub",
+        "reviewsCount": 486,
+        "totalScore": 4.4
+      }
+    ],
+    "placesTags": [],
+    "reviewsTags": [
+      {
+        "title": "friendly barman",
+        "count": 18
+      },
+      {
+        "title": "watching sport",
+        "count": 12
+      },
+      {
+        "title": "darts",
+        "count": 20
+      },
+      {
+        "title": "match",
+        "count": 7
+      },
+      {
+        "title": "club sandwich",
+        "count": 9
+      },
+      {
+        "title": "welcoming staff",
+        "count": 5
+      },
+      {
+        "title": "croque monsieur",
+        "count": 4
+      },
+      {
+        "title": "draft beers",
+        "count": 2
+      },
+      {
+        "title": "pub food",
+        "count": 7
+      },
+      {
+        "title": "food selection",
+        "count": 9
+      }
+    ],
+    "additionalInfo": {
+      "Service options": [
+        {
+          "Outdoor seating": true
+        },
+        {
+          "Dine-in": true
+        },
+        {
+          "Delivery": false
+        }
+      ],
+      "Highlights": [
+        {
+          "Bar games": true
+        },
+        {
+          "Great beer selection": true
+        },
+        {
+          "Great cocktails": true
+        },
+        {
+          "Sports": true
+        }
+      ],
+      "Popular for": [
+        {
+          "Solo dining": true
+        }
+      ],
+      "Accessibility": [
+        {
+          "Wheelchair accessible entrance": true
+        },
+        {
+          "Wheelchair accessible restroom": true
+        }
+      ],
+      "Offerings": [
+        {
+          "Alcohol": true
+        },
+        {
+          "Beer": true
+        },
+        {
+          "Cocktails": true
+        },
+        {
+          "Food": true
+        },
+        {
+          "Food at bar": true
+        },
+        {
+          "Hard liquor": true
+        },
+        {
+          "Wine": true
+        }
+      ],
+      "Dining options": [
+        {
+          "Seating": true
+        },
+        {
+          "Table service": true
+        }
+      ],
+      "Amenities": [
+        {
+          "Restroom": true
+        }
+      ],
+      "Atmosphere": [
+        {
+          "Casual": true
+        },
+        {
+          "Cozy": true
+        },
+        {
+          "Trendy": true
+        }
+      ],
+      "Crowd": [
+        {
+          "Groups": true
+        },
+        {
+          "Tourists": true
+        }
+      ],
+      "Planning": [
+        {
+          "Accepts reservations": true
+        }
+      ],
+      "Payments": [
+        {
+          "Credit cards": true
+        },
+        {
+          "Debit cards": true
+        },
+        {
+          "NFC mobile payments": true
+        },
+        {
+          "Credit cards": true
+        }
+      ],
+      "Parking": [
+        {
+          "Paid street parking": true
+        }
+      ],
+      "Pets": [
+        {
+          "Dogs allowed": true
+        }
+      ]
+    },
+    "gasPrices": [],
+    "url": "https://www.google.com/maps/search/?api=1&query=Grand%20Duke%20Pub&query_place_id=ChIJPSPnQCRljEcRd_ZHbqNqDag",
+    "searchPageUrl": "https://www.google.com/maps/search/sports%20bar/@46.19593573944303,6.156760729375605,17z?hl=en",
+    "searchString": "sports bar",
+    "language": "en",
+    "rank": 5,
+    "isAdvertisement": false,
+    "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5hzTfJBLMyLBVVt5TCS7qfxGPP2EOYoHUrW9SVPV0C8o79dM3BbigVJNMZX2OJ2TH-aj2wo25Xkcr4rFgekb7tTE27JTUN7JX0e9zsBWawz2Ct042H9_t_UUewCjhSodwKSOd=w426-h240-k-no",
+    "kgmid": "/g/1t_kfdxr",
+    "reviewsDistribution": {
+      "oneStar": 55,
+      "twoStar": 33,
+      "threeStar": 93,
+      "fourStar": 263,
+      "fiveStar": 558
+    },
+    "questionsAndAnswers": [],
+    "webResults": [],
+    "tableReservationLinks": [],
+    "tableReservationProviders": [],
+    "bookingLinks": [],
+    "restaurantData": {
+      "tableReservationProvider": null
+    },
+    "ownerUpdates": [],
+    "emails": [],
+    "phones": [],
+    "phonesUncertain": [],
+    "linkedIns": [],
+    "twitters": [],
+    "instagrams": [],
+    "facebooks": [],
+    "youtubes": [],
+    "tiktoks": [],
+    "pinterests": [],
+    "discords": [],
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5hzTfJBLMyLBVVt5TCS7qfxGPP2EOYoHUrW9SVPV0C8o79dM3BbigVJNMZX2OJ2TH-aj2wo25Xkcr4rFgekb7tTE27JTUN7JX0e9zsBWawz2Ct042H9_t_UUewCjhSodwKSOd=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHdoagJOkZSHDMosadMqkHDvoarQeUGMAyDdccbucRYhInrjvLifyZcOLA-v9tiPQ1wVeGoVG30WCaEJ6kKwZL7OCIOUccSFGogXyHk1G7n7xU8or9I9zjAzkCaHsbB8FQk2HQXJg=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEapRq01qSt-1S9KJZXf3MNfuIAHomfHQ9JfnrjcFMo0SlCgiKBIYFcExzPjdmej0hxkDxxRJPnU7-_IUWEMqLlC7igBxG2ZCTrSxSyCAeAMiQn4WvwcVX8y58kDFa9t5Ud5FFT=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGK5zI7ouuhHcPe32sVZV1qqoGxayfgJQSLUrA4HYVVQ1uSUmQS7rkBOdPRgXBINwMcMrNkr13RNY0EMj4l0CoYSIjhLEkWXHjye2T62am4BCy-R8vrtF-_OLh7pf30ljRDbr-J=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGn9DWpkrX9pHIQVaPu6MMkUbVjZsOO0xMwaa4hm4mkR14r4dRwyrXTBYSwyF2nqjD1u09xCwdfcc8QQqN1PVs426t4Sbu3CW8nK72XuAJRXU2MqiG7wBEufyVe4fEDVgFGwr2g=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGu7gfSxn0fJ0KRe_rVxmroce_7XrXqvES9nJivsgI7mtXe6lRhAJvRj52WQIa8CUkmrwBIobJMMgDJ7OTxHtwX3WK3-0Iyqt2ev95ak12V7-_PgBho_LbszK84JmKjy5MFGfQONHm5Af3M=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFvReER-39yZ86IxJr_ZsUgu_N3DjjTA_hEopuIW5G3NshRedHub-1VC6ntswNTPtpzBNWdIOqOjnIkgMQsiWSAbCny0PBEZwJ9txUrMpsnXhZGla2iveYmgXpMfHne1tBCzAbPd_VKb0EX=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHEE5v7Nf3Mef53t42BsofVuTGk030fL2VymAkU6virAm1Qzxy_p2zY8kCUlR44h6bZzgtHr-eBfSmht-5EHoQ04fKjYj0DLP50vkdmZUN8eriY-TQ0N-twMOMoLGsdivByY8mC=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE6sWFM1c1BiQMQLkWFJWZ0cxUAVzz8yG_GW6_Nwj8pAXuiK5LghZTaozSsOIbIIY2DQCcDqfDtzhdHFlGtV0RfePIBU2kqrensViVRjp46Po5HoS7Bwm-pRBhdVC_wIMPn1KER2A=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAF3OftmPAFtKVcIYqFWH2R8BItEoQ7GLLDzUZLSErVCLFFAilySPSSsHemEOcMwltcJiNfu8XEDvxMxlr47q7vAaTBxuQgNufHKlyXfKZn8MR0lNCJe-zMPpYU0XpiqJGcbZpHNphs7H6s=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFZj-F2248zOizy7en3C31DApDcj2KdGweE7NjucgEMehR0JpjvCwG_nn1mZLJYf-QbAqNi9KSBHHPy1cZOiCp5JLpORoyOV5AnuIEuukW12m1D2gvRLt1i3DNdXhAjuVBFsxJQow=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHjd1yFrblpw_fubx3uuYRTQ4IiZGA0tyN1FakUCcpc2CaHuYl4STSC5RIjki6Cp4q-G2bq6pJIvqSZub-vLQs_gcrWl_yEi7Qgg5AS94s6mp9h0M0Uo4ijAYqPyoNSZACUrcVrwA=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFXuE1m66kEi0e3yOTN0zQk3_gfNZCdgjQylmp-s4_3Cf8jSxRnlTGejnOLAn_tnysUD-omBSLm0A2k9I2grwPnXEzDUUd6AAHaVlN9CgrBJXx_uJ7uuSXkMiXs6_uwCVYog0A7bVxE6aQJ=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFjuJzIuHavXenCKkHcX4TqBRBXv5CpZZhFkC7R18hvxmLAmp0f54XU0fmzchH9Ym6iK2tcyxLdUmV8nkGH_pcSUSnKydM5GtS1PyP_Zp80UwIGjbX6_lIQrNLWDpgnOlewIHmusg=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHG7xfsoV3aL2tJu2UFNF9c9Em_X6ChiUoPv13XxDBRVuA4rmJn8533cmV32gv2WatXfNfapUIL80DJPmiU3NRVqDah3ZKCVpVmChcQQS5F5OfE4pibr5QcmI28UGEqhOGNo02jRRaDQyYM=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGxofNo4AZidQMf1Gv0ytnKwW_qWa-HVRDc2OhUQno3JKgcELhdhuXeAyIj3XF8E5GbqilCZMc_tG4J9aLTtpmrTZBe7xLktu7wqAwfPb7CJkQfsOjEf_IorBMv6wZxwJZuG8gJxw=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFWsu_zKRlquDQ92XCvKepC-6D6uMIfso_WnCz1maKJaOrja34cdPQLDOnOCeCtxFA1wDitVzzpsQA7MLggMosBrQxsdymxzlT8y1KKlYri5luNsAVJ10-OJy9dpPdEX9Dp9oVqSQqopeo=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFzCC7P8-pGtgL4UKyBUGGGh7B2tL_SiDANXzYBmoLKYnhUTdmb_I5RRkYsn_6shZV9lKaiELFk7eT1C8IMnWGgpXclWb9-JT02ZbTcYTjZEoj3qTKj3Z7Ed6QEcXJ2w9BQ09ou_ykR4zHl=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEg9wdQBKDsBNhJKbfw0wNku3zfi4mJhZUyTJpAmk2yqP8b5nNu2jHLriKrOSabbkGmDRQFvg86ieGt8Tp2LWAktnKvBaBh1pzSx3cijsDQ1Dis1wwYLd5pUIZJJFCUYBwZqLqw=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE1NQIWfD7-8KiT6pXQ3TYlTCjv2pZ10zpa9RWdGrhv3L8N5Qgxy6FnButoe_lRZJu3v9JEAbcaqBpsu66JHd8qiUue0HMWBRzId5A9TkdU_rjbza4BBLNCWLkDdHxCRpHaDpnQ=w1920-h1080-k-no"
+    ],
+    "reviews": [
+      {
+        "textTranslated": null,
+        "translatedLanguage": "en",
+        "text": "Lots of fun! Ate here for an evening to pair with Champions League football. Very busy with fans of a ton of different clubs. Food and drinks were solid and there was audio from one of the matches playing in English, that night it was Chelsea vs PSG.<br><br>Would be happy to go back again for another evening of football!<br><br>Pictured: Duke Burger. Ham and Cheese Toastie, and Magners Cider.",
+        "originalLanguage": "en",
+        "publishAt": "2 months ago",
+        "publishedAtDate": "2026-03-26T09:28:25.675Z",
+        "likesCount": 0,
+        "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xacGIyaFJObkpNY1ROcVduUm1MVEp3ZWw5VVgyYxAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2xacGIyaFJObkpNY1ROcVduUm1MVEp3ZWw5VVgyYxAB!2m1!1s0x0:0xa80d6aa36e47f677!3m1!1s2@1:CAIQACodChtycF9oOlZpb2hRNnJMcTNqWnRmLTJwel9UX2c%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn3M5fSe9If4Euasw4y7zdCJNt4_wkqDlF13gAFo4Kc1Ya-DMUxxzUpCMYILUuPAD7Y2q2Owchh5SUOU3XDtCst7O8Nx-8FmMPX_iqnZz8V9byJqog8KcfAqwo0eLTtIiGYFNTqerM6JexZD=k-no",
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn2ap3xR32r_R1AYpESx9Gj7RLJsofsaox1MZ9NKwj1mU2YuMfkoSJfw-2mpRYvL_SzIAxZSVlE-sCF2iDWIBqz0LLs1xmVSfrm6veVs_72BFk24T_JSkibeRTDlAZo5AHhcdZPFRkcG9L6u=k-no",
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn2QtT16OUjEuMgaBAMr78qxW5J7AonpehJjakX0zP0UpR6RvbfC2EHcSVnbpn3PrWIbeAOBEEtZgnIEOFi12372D5XyLByBVBwRZ1FtUyi_rYM7pJeeJGKl-prS7i9fOjI4hDZJKOvxq-ef=k-no"
+        ],
+        "reviewContext": {
+          "Price per person": "CHF 30–40",
+          "Noise level": "Loud, but you can still talk",
+          "Group size": "2 people",
+          "Wait time": "No wait"
+        },
+        "reviewDetailedRating": {
+          "Food": 4,
+          "Service": 5,
+          "Atmosphere": 5
+        },
+        "visitedIn": null,
+        "reviewerNumberOfReviews": 34,
+        "isLocalGuide": true,
+        "reviewerId": "112286384049907262461",
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocK4UpccNLxf0fbprimsgAj4U4F811V_ADuzmbBsG3ZMjDP-Vpc=s64-c-rp-mo-ba12-br100",
+        "reviewerUrl": "https://www.google.com/maps/contrib/112286384049907262461/reviews?hl=en-US",
+        "name": "Nicholas DiTommaso"
+      },
+      {
+        "textTranslated": null,
+        "translatedLanguage": "en",
+        "text": "Had a great experience and was able to enjoy the Liverpool match! Service was excellent and the food was delicious. Best fish and chips in Geneva!",
+        "originalLanguage": "en",
+        "publishAt": "2 months ago",
+        "publishedAtDate": "2026-04-14T22:16:03.454Z",
+        "likesCount": 0,
+        "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tsNk5XZGlXVEZUT1hSMlVFZFdMVzlIVEhrelpIYxAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2tsNk5XZGlXVEZUT1hSMlVFZFdMVzlIVEhrelpIYxAB!2m1!1s0x0:0xa80d6aa36e47f677!3m1!1s2@1:CAIQACodChtycF9oOkl6NWdiWTFTOXR2UEdWLW9HTHkzZHc%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn39WXnIwg8xpsw1HHz44B5IuUNaWM3BozECczICiuwdykkCBSgenTXrCRKQD5XpYc5LO8Cg5Y9-89M4yznPnYy--poZqUm3Yefl-liTA2tl-iFn8lmO0nlZc6Ao2IYwp-GySFKzq30CRWTx=k-no",
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn3q1cBVRuWiAuTnq19jLw_R36q04xkUcXTv00pbPblfzCDfxgZILIHsBVgZwQsrU3Xow3W5hDSDncgotJ8sSdyWEsT4KMuX-Mn5hLBic36LATGl-VeNbp-H9d-51iwiz4P54_iPLAi4g6IS=k-no",
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn0o_pWCVQ6iHWxYlnUgWBtMwuivY43qWCGUzw27-gMk-qBq1BOSJFmzHy4phrpe6Lo2dayMoogX-0J3isZt9waYqioTk9FCIJcAgndIEef_ZM5SFN6LtkABQb_3SKWBJavn_Y-AjPO9f61R=k-no",
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn25IE9HuivOyYpFsrolbBhH7Bb0yU74ra10ppjNeJfSsVVKpHtKun1VObpAnF0wY6w10GVb2G6QUHqhM8I5_ngKjkZ4nwkycKKqRkNCGe4I9My6QcxnsVVjeWa8VBEnF0DB6sDUK6jZmA3L=k-no"
+        ],
+        "reviewContext": {
+          "Price per person": "CHF 20–30",
+          "Group size": "Suitable for all group sizes",
+          "Seating type": "Indoor dining area, Bar area, Booth seating"
+        },
+        "reviewDetailedRating": {
+          "Food": 5,
+          "Service": 5,
+          "Atmosphere": 5
+        },
+        "visitedIn": null,
+        "reviewerNumberOfReviews": 9,
+        "isLocalGuide": false,
+        "reviewerId": "102792622656240050790",
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWPhpratCPzlUFzwnzhcoM81MJb0ge6ehct7KxYSXoSTrBIQfV6eA=s64-c-rp-mo-br100",
+        "reviewerUrl": "https://www.google.com/maps/contrib/102792622656240050790/reviews?hl=en-US",
+        "name": "Rachel McDaniel"
+      },
+      {
+        "textTranslated": null,
+        "translatedLanguage": "en",
+        "text": "Stopped in by chance, Great little pub, Excellent Service and Food.<br>Looking forward to our next visit!",
+        "originalLanguage": "en",
+        "publishAt": "5 months ago",
+        "publishedAtDate": "2025-12-23T13:33:10.338Z",
+        "likesCount": 0,
+        "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pkTFEzbG5lRjlRVlhscFgyMTVORWhsTlMxQmNuYxAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2pkTFEzbG5lRjlRVlhscFgyMTVORWhsTlMxQmNuYxAB!2m1!1s0x0:0xa80d6aa36e47f677!3m1!1s2@1:CAIQACodChtycF9oOjdLQ3lneF9QVXlpX215NEhlNS1Bcnc%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn220rr3XHjhQwXo_vJR19bH3sAM82zee6A-whsw3F5Qb7ECwIiOsah74BTKHu777Hc8JV1nDHbKJRexp2iA34SH5XwlKzSaFz9FXBOe9BDw6eRU7JG_uD3RCwN6rGc8zv6w8MAeWMsqkjPz=k-no",
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn224QeWTlpWfTzQh7S5GIRg18YzOMEMq8F-rVc-7Qr14EVrrXAKCNX_6AalNq5caZrU1hK2Kt4hbL4QrCLpi8ToTGNiGtDtQ49Jf_UO52Q7c2sdwJhBwFS3p2oF9W9DiqeMrRliOMuwb07g=k-no",
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn0QZ_8fj7nhvpOhK4dDC9QS8AYZ_EhPogs_aZGD1ZX59VWIMGPN6QT_FONymWVsd_e7_x52wzGnq9CGPaNajgPMAWzaTi-hv2uLnDGPkcqP7wo5GbfFUJ_QFrvcm_hX4DDh00GPOafxHgw=k-no",
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn1fPsdcsj3nFwKVpFOgJ-pO0sEWN0EdVX4vvQxn4KfGqfVxbfBHKgdg0x8S-zNJ8uL23sJrdLKwLFyULTBJz2eaAj0a9caMyjk9wR3lQV5OSO3uzNETiJr-T2uPIHsWHNIdSGmgT3XUtAc=k-no",
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn2L5DEOvUTioUI4i7FLEoxuqZl9xRVWB5z0br4LhJype8koKTQmGHBnrpCBkwmmLeqjWZn6EDGxU2RbYVIFHb7sGwr_cnHYN_tE3pARF8N1m8nk1Q8t7xJYmqGHAeN-06dpnxqPIVfPKqk=k-no"
+        ],
+        "reviewContext": {
+          "Price per person": "CHF 10–20",
+          "Group size": "1 person, 2 people, 3-4 people, 5-8 people",
+          "Wait time": "No wait"
+        },
+        "reviewDetailedRating": {
+          "Food": 5,
+          "Service": 5,
+          "Atmosphere": 5
+        },
+        "visitedIn": null,
+        "reviewerNumberOfReviews": 120,
+        "isLocalGuide": true,
+        "reviewerId": "113061557155008598147",
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKzWiEahipQ6cPyHhqtzFYW7wGzF5yJOZ-JrrMIvwLBosaWeg=s64-c-rp-mo-ba12-br100",
+        "reviewerUrl": "https://www.google.com/maps/contrib/113061557155008598147/reviews?hl=en-US",
+        "name": "Troy McCabbin"
+      },
+      {
+        "textTranslated": null,
+        "translatedLanguage": "en",
+        "text": "Great place to grab a cold one and belly up to the bar. Classic pub with immaculate vibes and friendly staff.",
+        "originalLanguage": "en",
+        "publishAt": "2 months ago",
+        "publishedAtDate": "2026-03-24T22:06:35.596Z",
+        "likesCount": 0,
+        "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2taNU5sUlpWR0ZSZFRoUU9GSk1SSGRzVDNOUmJuYxAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2taNU5sUlpWR0ZSZFRoUU9GSk1SSGRzVDNOUmJuYxAB!2m1!1s0x0:0xa80d6aa36e47f677!3m1!1s2@1:CAIQACodChtycF9oOkZ5NlRZVGFRdThQOFJMRHdsT3NRbnc%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn3YYtRhqWB1iBbh8GbIUytfUep55UlRoGIsOMslW1n_iUjqunYtUZz5LfdjUsknTEJFbi0iRtGYoKnMphhAsJcEdkm4Oi3ebA_keD6BSUYEefnz6fPMXOrNxufC_hw53F7p_l0TbFInuBw=k-no"
+        ],
+        "reviewContext": {
+          "Price per person": "CHF 40–50",
+          "Wait time": "No wait"
+        },
+        "reviewDetailedRating": {
+          "Service": 5,
+          "Atmosphere": 5
+        },
+        "visitedIn": null,
+        "reviewerNumberOfReviews": 207,
+        "isLocalGuide": true,
+        "reviewerId": "114745939537156440162",
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUCQkO0vfzdFxHilFnNoyWuGJHbvoTsUqzUUIZbTMcD3Cgng6HV=s64-c-rp-mo-ba12-br100",
+        "reviewerUrl": "https://www.google.com/maps/contrib/114745939537156440162/reviews?hl=en-US",
+        "name": "Blaine Patrick"
+      },
+      {
+        "textTranslated": null,
+        "translatedLanguage": "en",
+        "text": "Nice pub streetside in Geneva. Quick service, good food.",
+        "originalLanguage": "en",
+        "publishAt": "4 weeks ago",
+        "publishedAtDate": "2026-05-23T18:10:06.214Z",
+        "likesCount": 0,
+        "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tKR1JUVktXbk5MZURWcVEySnhaRWhUV1ZCSWNHYxAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2tKR1JUVktXbk5MZURWcVEySnhaRWhUV1ZCSWNHYxAB!2m1!1s0x0:0xa80d6aa36e47f677!3m1!1s2@1:CAIQACodChtycF9oOkJGRTVKWnNLeDVqQ2JxZEhTWVBIcGc%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn02JcTgcmHPMpdWUc101ZH12W8gGmp0iPQCUu4rcs0wkYkCFHgzjEvr-MVCwUHrK36wsG85h-Z85x2a1xVpd3sMLSQfjd95cGNK5HO10cbWymqgD5Q1wf-VhCTFBSlI1NxZdoTvcjd8rRnS=k-no"
+        ],
+        "reviewContext": {
+          "Price per person": "CHF 10–20",
+          "Noise level": "Moderate noise",
+          "Group size": "Suitable for all group sizes",
+          "Seating type": "Indoor dining area, Bar area, Outdoor patio / terrace"
+        },
+        "reviewDetailedRating": {
+          "Food": 5,
+          "Service": 5,
+          "Atmosphere": 5
+        },
+        "visitedIn": null,
+        "reviewerNumberOfReviews": 20,
+        "isLocalGuide": true,
+        "reviewerId": "110739933971220742360",
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUA61wvJTUzfxYikwtGtHSgtTH_X_G1eU3FqRU0e2r1NaECrYyXuQ=s64-c-rp-mo-ba12-br100",
+        "reviewerUrl": "https://www.google.com/maps/contrib/110739933971220742360/reviews?hl=en-US",
+        "name": "TJ Cieciura"
+      },
+      {
+        "textTranslated": null,
+        "translatedLanguage": "en",
+        "text": "Really nice bar. Great vibe.<br>I plan to come back and watch the World Cup here.",
+        "originalLanguage": "en",
+        "publishAt": "8 months ago",
+        "publishedAtDate": "2025-10-19T21:00:14.723Z",
+        "likesCount": 0,
+        "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21WaWNtZHVYMkp3V21zeVJVbERZMWgxUzFwMU5GRRAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT21WaWNtZHVYMkp3V21zeVJVbERZMWgxUzFwMU5GRRAB!2m1!1s0x0:0xa80d6aa36e47f677!3m1!1s2@1:CAIQACodChtycF9oOmVicmduX2JwWmsyRUlDY1h1S1p1NFE%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [
+          "https://lh3.googleusercontent.com/grass-cs/ANxoTn2_tiB8sYEEASqy7C-0knVtpD1uwqEKklsyvSDV5hFBuqnQL36i78Mwf6dfafgMPW98L1iRnWD2oV1h-Pl34EAe7LpVUSuQ8ykOKCIzgURSb0y8OUowzbzcp2jkxsfeKLDKUOahPwplt1_C=k-no"
+        ],
+        "reviewContext": {
+          "Price per person": "CHF 10–20"
+        },
+        "reviewDetailedRating": {
+          "Food": 5,
+          "Service": 5,
+          "Atmosphere": 5
+        },
+        "visitedIn": null,
+        "reviewerNumberOfReviews": 126,
+        "isLocalGuide": true,
+        "reviewerId": "109327400341846303388",
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocLzEvQ-tAt9EYUuZZ6aoPW67oziFgDjjrJ8HCOxdGGCSRAadw=s64-c-rp-mo-ba12-br100",
+        "reviewerUrl": "https://www.google.com/maps/contrib/109327400341846303388/reviews?hl=en-US",
+        "name": "hannah mon"
+      },
+      {
+        "textTranslated": null,
+        "translatedLanguage": "en",
+        "text": "Had excellent service from Aman (barman). He is a very welcoming and friendly barman who made us feel extremely welcome.<br>Definitely will come back here next time, enjoyed the darts and drinks. Lovely place to be.",
+        "originalLanguage": "en",
+        "publishAt": "5 months ago",
+        "publishedAtDate": "2025-12-29T12:37:31.354Z",
+        "likesCount": 0,
+        "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2w5NFZUTTFjRE5MZUVkbmRFdG9WME5KYVhJelZGRRAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2w5NFZUTTFjRE5MZUVkbmRFdG9WME5KYVhJelZGRRAB!2m1!1s0x0:0xa80d6aa36e47f677!3m1!1s2@1:CAIQACodChtycF9oOl94VTM1cDNLeEdndEtoV0NJaXIzVFE%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [],
+        "reviewContext": {
+          "Price per person": "CHF 100+",
+          "Noise level": "Quiet, easy to talk",
+          "Group size": "2 people",
+          "Seating type": "Indoor dining area, Bar area, Outdoor patio / terrace, Booth seating, Counter seating, Private dining room"
+        },
+        "reviewDetailedRating": {
+          "Food": 5,
+          "Service": 5,
+          "Atmosphere": 5
+        },
+        "visitedIn": null,
+        "reviewerNumberOfReviews": 9,
+        "isLocalGuide": true,
+        "reviewerId": "104206595946370602816",
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWF8jGNkwnAb_npFJX8ZTKOIAI2K5uys__Qi7dIyzjIUwbiWUzwug=s64-c-rp-mo-ba12-br100",
+        "reviewerUrl": "https://www.google.com/maps/contrib/104206595946370602816/reviews?hl=en-US",
+        "name": "Tammy Smith"
+      },
+      {
+        "textTranslated": null,
+        "translatedLanguage": "en",
+        "text": "Initially stopped in for just one with my partner but ended up staying for a few more than one , lovely atmosphere and decor , welcoming and very friendly barman who couldnt be more attentive and hospitable. Good selection of drinks and nice place to play darts and cards, would recommend",
+        "originalLanguage": "en",
+        "publishAt": "6 months ago",
+        "publishedAtDate": "2025-12-15T14:36:55.802Z",
+        "likesCount": 0,
+        "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2s1VGNtVkZiWEpJUVc5UVNsaGFhSGxzU1VkZlowRRAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2s1VGNtVkZiWEpJUVc5UVNsaGFhSGxzU1VkZlowRRAB!2m1!1s0x0:0xa80d6aa36e47f677!3m1!1s2@1:CAIQACodChtycF9oOk5TcmVFbXJIQW9QSlhaaHlsSUdfZ0E%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [],
+        "reviewContext": {},
+        "reviewDetailedRating": {
+          "Service": 5,
+          "Atmosphere": 5
+        },
+        "visitedIn": null,
+        "reviewerNumberOfReviews": 3,
+        "isLocalGuide": false,
+        "reviewerId": "105979323255091446109",
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjVh4F-x7azEkxUQWWswh7RAK0PUElGpQYl67KjPCXrjnmz37lWn=s64-c-rp-mo-br100",
+        "reviewerUrl": "https://www.google.com/maps/contrib/105979323255091446109/reviews?hl=en-US",
+        "name": "Jake Hill"
+      },
+      {
+        "textTranslated": null,
+        "translatedLanguage": "en",
+        "text": "It was a really pleasant atmosphere, i’ve had a couple of drinks here, the service was fast and the server was attentive.<br>We even got a free drink at the end of our visit.",
+        "originalLanguage": "en",
+        "publishAt": "a week ago",
+        "publishedAtDate": "2026-06-09T08:26:06.814Z",
+        "likesCount": 0,
+        "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21OZlpWYzNkVWsxYkVkSWRGVkdPVFZaUlU1WE9WRRAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT21OZlpWYzNkVWsxYkVkSWRGVkdPVFZaUlU1WE9WRRAB!2m1!1s0x0:0xa80d6aa36e47f677!3m1!1s2@1:CAIQACodChtycF9oOmNfZVc3dUk1bEdIdFVGOTVZRU5XOVE%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [],
+        "reviewContext": {
+          "Price per person": "CHF 20–30",
+          "Noise level": "Quiet, easy to talk",
+          "Group size": "2 people",
+          "Seating type": "Indoor dining area, Bar area, Outdoor patio / terrace"
+        },
+        "reviewDetailedRating": {
+          "Food": 5,
+          "Service": 5,
+          "Atmosphere": 5
+        },
+        "visitedIn": null,
+        "reviewerNumberOfReviews": 4,
+        "isLocalGuide": false,
+        "reviewerId": "102345034939381746697",
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUt-GZbA5isv6h0PhwqRL9zxvkGlzBNdaNiolLTuLTxJFz8aAU=s64-c-rp-mo-br100",
+        "reviewerUrl": "https://www.google.com/maps/contrib/102345034939381746697/reviews?hl=en-US",
+        "name": "vaslks pltik"
+      },
+      {
+        "textTranslated": null,
+        "translatedLanguage": "en",
+        "text": "Aman the barman was extremely attentive and friendly. He provided us with advice for our stay in Geneva and was an extremely friendly and enthusiastic figure. The beer was fairly priced and the food was great. We highly recommend! 😊",
+        "originalLanguage": "en",
+        "publishAt": "3 months ago",
+        "publishedAtDate": "2026-03-06T14:19:24.639Z",
+        "likesCount": 0,
+        "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21OUGNGWXdhMDUxWjFvdFVpMXBaRmxhZG5SVE5HYxAB",
+        "reviewUrl": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT21OUGNGWXdhMDUxWjFvdFVpMXBaRmxhZG5SVE5HYxAB!2m1!1s0x0:0xa80d6aa36e47f677!3m1!1s2@1:CAIQACodChtycF9oOmNPcFYwa051Z1otUi1pZFladnRTNGc%7C%7C?hl=en-US",
+        "reviewOrigin": "Google",
+        "stars": 5,
+        "rating": null,
+        "responseFromOwnerDate": null,
+        "responseFromOwnerText": null,
+        "reviewImageUrls": [],
+        "reviewContext": {},
+        "reviewDetailedRating": {
+          "Food": 5,
+          "Service": 5,
+          "Atmosphere": 5
+        },
+        "visitedIn": null,
+        "reviewerNumberOfReviews": 40,
+        "isLocalGuide": true,
+        "reviewerId": "101581100012921926092",
+        "reviewerPhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocIQD1YCQqXncS8LxgWYuGcCmsG1cq00-U4wxd3GGex9M3yd6w=s64-c-rp-mo-ba12-br100",
+        "reviewerUrl": "https://www.google.com/maps/contrib/101581100012921926092/reviews?hl=en-US",
+        "name": "Leon Giorgi"
+      }
+    ],
+    "leadsEnrichment": []
+  },
+  {
+    "title": "Geneva Rugby Fanzone 2023",
+    "subTitle": null,
+    "description": null,
+    "price": null,
+    "categoryName": "Sports bar",
+    "address": "1205 Geneva, Switzerland",
+    "neighborhood": null,
+    "street": null,
+    "city": "Geneva",
+    "postalCode": "1205",
+    "state": null,
+    "countryCode": "CH",
+    "phone": "+41 79 859 53 29",
+    "phoneUnformatted": "+41798595329",
+    "claimThisBusiness": false,
+    "location": {
+      "lat": 46.1980775,
+      "lng": 6.1407882
+    },
+    "locatedIn": null,
+    "floor": null,
+    "plusCode": "54XR+68 Geneva, Switzerland",
+    "menu": null,
+    "servicesLink": null,
+    "totalScore": null,
+    "permanentlyClosed": false,
+    "temporarilyClosed": false,
+    "placeId": "ChIJ59L9Hg5ljEcRMSvSwv7Z0TA",
+    "categories": [
+      "Sports bar"
+    ],
+    "fid": "0x478c650e1efdd2e7:0x30d1d9fec2d22b31",
+    "cid": "3517832472166542129",
+    "reviewsCount": null,
+    "imagesCount": 6,
+    "imageCategories": [
+      "All",
+      "Street View & 360°"
+    ],
+    "scrapedAt": "2026-06-21T12:17:07.404Z",
+    "reserveTableUrl": null,
+    "googleFoodUrl": null,
+    "hotelStars": null,
+    "hotelDescription": null,
+    "checkInDate": null,
+    "checkOutDate": null,
+    "hotelAds": [],
+    "popularTimesLiveText": null,
+    "popularTimesLivePercent": null,
+    "popularTimesHistogram": {},
+    "openingHours": [],
+    "peopleAlsoSearch": [
+      {
+        "category": "People also search for",
+        "title": "Flanagan's",
+        "reviewsCount": 375,
+        "totalScore": 4.5
+      },
+      {
+        "category": "People also search for",
+        "title": "Grand Duke Pub",
+        "reviewsCount": 1002,
+        "totalScore": 4.2
+      },
+      {
+        "category": "People also search for",
+        "title": "Bar à Jeux de Genève",
+        "reviewsCount": 0,
+        "totalScore": 0
+      },
+      {
+        "category": "People also search for",
+        "title": "Dufferin Club",
+        "reviewsCount": 8,
+        "totalScore": 5
+      }
+    ],
+    "placesTags": [],
+    "reviewsTags": [],
+    "additionalInfo": {
+      "Service options": [
+        {
+          "Takeout": true
+        },
+        {
+          "Dine-in": true
+        },
+        {
+          "Delivery": false
+        }
+      ],
+      "Offerings": [
+        {
+          "Alcohol": true
+        },
+        {
+          "Beer": true
+        },
+        {
+          "Food": true
+        },
+        {
+          "Hard liquor": true
+        },
+        {
+          "Wine": true
+        }
+      ],
+      "Amenities": [
+        {
+          "Restroom": true
+        }
+      ],
+      "Atmosphere": [
+        {
+          "Casual": true
+        }
+      ],
+      "Crowd": [
+        {
+          "Groups": true
+        }
+      ]
+    },
+    "gasPrices": [],
+    "url": "https://www.google.com/maps/search/?api=1&query=Geneva%20Rugby%20Fanzone%202023&query_place_id=ChIJ59L9Hg5ljEcRMSvSwv7Z0TA",
+    "searchPageUrl": "https://www.google.com/maps/search/sports%20bar/@46.19593573944303,6.139592290208133,17z?hl=en",
+    "searchString": "sports bar",
+    "language": "en",
+    "rank": 9,
+    "isAdvertisement": false,
+    "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGqGATAPT_qVGW_0T14P9ykH75DDoV6wS9oHO3LUftMUpm6YLzRU0QuKxLoq6VYoiVzy4mPNYwHMiP-U6nF0Cz9skqXEi-nAcDhvuIbBt5KyNZf9xkZ7vNrThpJhhibFu9tmUc0dghBNuA=w408-h306-k-no",
+    "kgmid": "/g/11vd_pzbj1",
+    "questionsAndAnswers": [],
+    "updatesFromCustomers": {
+      "text": "Food truck festival jusqu'au 15 juin 2025",
+      "language": "fr",
+      "postDate": "a year ago",
+      "postedBy": {
+        "name": "F F",
+        "url": "https://www.google.com/maps/contrib/110436993654881744511?hl=en-US",
+        "title": "Local Guide",
+        "totalReviews": 380
+      },
+      "media": [
+        {
+          "link": "https://lh3.googleusercontent.com/grass-cs/ANxoTn1VpNq83fYrWV152Kh9cNLuYtNEvYf0bnJfBMDGSPcjhwXtidDq_QTss1Nqc3uYu4bnaKZH56g0zUN-0fvsDqWG9hr_r-7TxhIiI29dmIO23f_XTc1beNitbqqQYGGOvGc9FBHYsS0TrxRq=k-no",
+          "postDate": "a year ago"
+        },
+        {
+          "link": "https://lh3.googleusercontent.com/grass-cs/ANxoTn3EYB4dURmbHN7i-4Hw8RVaA6wtD9rPsowMY1-AcfD6TdZW6rmzYT-_dPhvVa8qwPwef-cqWI0yDRPxuvsBWrxjnhi4mv_u4Ybpzy0-4D7rJ8ICuPeGJ5tFVRHqYkN1F1Tj6ZZ2o1832lE=k-no",
+          "postDate": "a year ago"
+        },
+        {
+          "link": "https://lh3.googleusercontent.com/grass-cs/ANxoTn0EPkalO6Qk6n3TF4_TzALDTyFjcwp4teRIqgI0cxpK8oX5qrmqmBgXExXd8forzZsJpe0luZXIaXJo7wlCsnEwPPLuFfGamIPABaFPqDqTUA4ZjsAnsA8XYel7ZzcOU3V_mA9yz7ff2M8=k-no",
+          "postDate": "a year ago"
+        },
+        {
+          "link": "https://lh3.googleusercontent.com/grass-cs/ANxoTn0YzhvyFe1FXkndVob8VXreAYAT52xDatA1iCvPTa5Jjpif9Z3evsEOQM-HrMVYhU985C-E5Nh8kHl8FuPslx6jNb54kcZsVyTh_GUQkZmT-q46m5cp1zczMyjiQwD-cJ7_HxN5TjtFXYyg=k-no",
+          "postDate": "a year ago"
+        },
+        {
+          "link": "https://lh3.googleusercontent.com/grass-cs/ANxoTn2FWn4HeezLGYxcTyBqSVF_ZSLWcPQBWf2Y81NAqL7P4aALnKgxj409hMtKM8vm6LRh_ngbiPnmuztNtL6iUC6_jwlrnfHRXXb1iQA3jIhjeSrBaoDXgau6PP3GXD-Jz4AZNKGHGxDZ_s8=k-no",
+          "postDate": "a year ago"
+        }
+      ]
+    },
+    "webResults": [],
+    "tableReservationLinks": [],
+    "tableReservationProviders": [],
+    "bookingLinks": [],
+    "restaurantData": {
+      "tableReservationProvider": null
+    },
+    "ownerUpdates": [],
+    "emails": [],
+    "phones": [],
+    "phonesUncertain": [],
+    "linkedIns": [],
+    "twitters": [],
+    "instagrams": [],
+    "facebooks": [],
+    "youtubes": [],
+    "tiktoks": [],
+    "pinterests": [],
+    "discords": [],
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGqGATAPT_qVGW_0T14P9ykH75DDoV6wS9oHO3LUftMUpm6YLzRU0QuKxLoq6VYoiVzy4mPNYwHMiP-U6nF0Cz9skqXEi-nAcDhvuIbBt5KyNZf9xkZ7vNrThpJhhibFu9tmUc0dghBNuA=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHvsUWf8-Xpq5FMaoOZl6x3ELy8_L7vXM_DpRMU0uXfJEu-9jIx2Acb7hM8lD0iLtYmPbOseeS6STFAR_0D1xN7YO-O0Bm4BaTT4SnuukMloaf8wV7gq4yKzCKbTmQXK2F-WRBUIpOstof-=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGa3RqqTWv3biZViPLhJoBamIdlSPl6gCO0FzC4JUe6DcEVigqtb2q7Ds1YQg_WRtmoFNVKVkR1zuFw6c5tkOzglnMlvkC3kZoUce62XtlnkJLLUGXlLA_gNuecwr_B9jKqooxgzrlt22M=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEySVgHI1V_i34fV5LStjVE7J4TACNpvMYWHvLDb4g1Vif9uDeJHgtzLK_GkvXQfpDz4DKfR7kZNX9R0GmW7tNyrTYmqSxfW2wCgSKypSv1WW77TELwXXBng5oxVzjhIMKiOBdFeTMwgcPf=w1920-h1080-k-no",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFy9X6JvO_7iF0maZy1xsW7Gfz7jo_UljNhYjRrgBPOK_Ec7ma9_Ru-5pOPKUbcmg9qtDzkRANlSAsGjyDhtZPv_F_ruMfuz4Potc6GlfPt646bHzPbde6u1kr0RVV_xMqixcUBg6u4Bks=w1920-h1080-k-no",
+      "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=8y0uf1kBwH8VEXrdFeP39A&cb_client=lu.gallery.gps&w=1920&h=1272&yaw=284.50714&pitch=0&thumbfov=100"
+    ],
+    "reviews": [],
+    "leadsEnrichment": []
+  }
+]
