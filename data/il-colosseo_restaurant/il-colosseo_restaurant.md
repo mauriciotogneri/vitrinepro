@@ -186,7 +186,6 @@ _8 from TripAdvisor (the venue's own photo gallery), 12 re-published via Restaur
 | TheFork (thefork.ch)           | not_found | Not among ~517 Geneva listings                                             |
 | Uber Eats                      | blocked   | HTTP 403; not listed in CH (only foreign namesakes)                        |
 | Just Eat (Eat.ch)              | blocked   | HTTP 403; listing status unclear                                           |
-| Smood                          | not_found | **Platform shut down ~Apr 2025** ("Smood - The End") — reference doc stale |
 | Genève Tourisme — Eat & Drink  | not_found | Not in curated Italian-restaurant list                                     |
 | gvafoodie / Time Out Geneva    | not_found | Not featured                                                               |
 | Just-Tag                       | partial   | Unclaimed listing; rating 5/5 (5), coords, cuisine; reviews not rendered   |
@@ -200,7 +199,6 @@ _8 from TripAdvisor (the venue's own photo gallery), 12 re-published via Restaur
 - **Fallback imagery:** none — a genuine logo (Facebook Graph picture) and 20 genuine photos were obtained, so no generated logo or `stock-*` images were needed.
 - **Branding accent is inferred**, not extracted (no website; monochrome logo) — treat the terracotta accent and shape/depth/spacing as a tasteful placeholder to confirm or replace at build time.
 - **Heavy source blocking:** Google, Bing, Foursquare, Yelp, Uber Eats, Just Eat, and Zefix all blocked automated access (GDPR walls, 403s, auth-gated APIs). The substantive data was recovered via local.ch / search.ch, TripAdvisor, Restaurant Guru (aggregator), OpenStreetMap, and Esprit de Genève — so the dossier is well-populated despite the blocks.
-- **Reference-doc drift to flag:** Smood has ceased operations (~April 2025); the `data-extraction.md` entry still lists it as a strong Geneva source.
 
 ## Missing information
 
@@ -208,7 +206,7 @@ _Standard fields no source could fill, or that are only low-confidence placehold
 
 - **Official website:** none exists — the business uses Facebook/Instagram only.
 - **Extracted branding (palette/fonts/theme):** none — no website. The colour **accent and shape/depth/spacing are inferred placeholders**; the ink/ground and serif feel are logo-derived. Confirm or replace at build time.
-- **Itemized menu with prices:** not found — only an overall price level (~CHF 30–40/pp) and named dishes. Delivery apps that would carry a priced menu were blocked (Uber Eats, Just Eat) or defunct (Smood).
+- **Itemized menu with prices:** not found — only an overall price level (~CHF 30–40/pp) and named dishes. Delivery apps that would carry a priced menu were blocked (Uber Eats, Just Eat) or defunct.
 - **Exact opening hours:** sources disagree (lunch close 13:45 / 14:30 / 17:00; dinner 18:00–22:00 vs 19:00–23:00) — verify the real schedule.
 - **Google rating/review count (direct):** blocked — only an aggregator-cited figure (4.6/411, vs ~4.5/~1,255 in snippets). Verify.
 - **Founding year:** not confirmed by any source (a casual "~23 years" appeared in a search snippet only).

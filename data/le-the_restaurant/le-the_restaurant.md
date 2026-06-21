@@ -235,7 +235,7 @@ _20 of 26 downloaded candidates kept; **all visually verified** as the real Le T
   - **mapstr** listed `boulangeriedesbains.ch` as the website — a different business at/near the same street; excluded.
   - The **former Jimdo site** `dragon-t.jimdo.com` (from old Foursquare data) is **dead** (connection refused).
 - **Branding is logo-derived + photo-grounded, not extracted** (no live site): the palette is well-evidenced by the venue photos, but type and shape/depth/spacing are conventions to confirm or replace at build time.
-- **Source behaviour matched the reference doc** (Google/Bing-class GDPR walls, Yelp/Michelin 403s; Cylex and resto-rang were correctly pre-dropped as bot-blocking). No major reference-doc drift to flag.
+- **Source behaviour matched the reference doc** (Google/Bing-class GDPR walls, Yelp/Michelin 403s. No major reference-doc drift to flag.
 
 ## Missing information
 

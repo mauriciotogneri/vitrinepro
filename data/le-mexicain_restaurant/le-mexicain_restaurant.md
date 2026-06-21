@@ -178,7 +178,6 @@ All 9 from TripAdvisor (the only source that exposed real image URLs; Google's ~
 | TheFork                 | not_found | Not on platform (other Geneva Mexican venues are)                            |
 | Uber Eats               | blocked   | HTTP 403; no indexed CH listing found                                        |
 | Just Eat (Eat.ch)       | blocked   | HTTP 403; no listing found                                                   |
-| Smood                   | not_found | **Platform shut down 2026-04-30**                                            |
 | Just-Tag                | partial   | Rating 5.0 (5), price band, free WiFi; listing incomplete (no menu/photos)   |
 
 ## Notes

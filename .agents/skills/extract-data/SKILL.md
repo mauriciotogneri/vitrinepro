@@ -91,7 +91,7 @@ Then prune:
 
 - **Drop** any entry the doc marks defunct, "do not use", "none"/no-CH-coverage, or "not a usable source".
 - **Drop redundant aggregators** when a primary source they re-publish is already in the list (the doc flags these, e.g. yellowpages.swiss, companyfinder.ch, Restaurant Guru, infoisinfo). **Exception for website-less targets:** when the only primary an aggregator re-hosts is a login-walled Facebook/Instagram page (so its photos aren't reachable any other way), keep the aggregator — it may be the sole reachable copy of those images (e.g. Restaurant Guru re-publishes Google/Facebook photos). Tag anything taken this way with the aggregator as the source.
-- **Drop sources the doc flags as actively bot-blocking / 403** (phrases like "actively blocks bots (HTTP 403)", "returns 403 to bots", "returned HTTP 403 to automated fetch"). A best-effort fetch will almost certainly fail on these, so they don't earn an agent (e.g. Cylex). Scan the doc for these phrases rather than a fixed name list, which goes stale as the reference changes.
+- **Drop sources the doc flags as actively bot-blocking / 403** (phrases like "actively blocks bots (HTTP 403)", "returns 403 to bots", "returned HTTP 403 to automated fetch"). A best-effort fetch will almost certainly fail on these, so they don't earn an agent. Scan the doc for these phrases rather than a fixed name list, which goes stale as the reference changes.
 - **When a Google-Maps-Scraper record was provided** (step 1): drop the live **Google Business Profile / Maps** source — the record stands in for it and is folded into the merge as `Google Maps (record)`. Every other source still runs (full pipeline).
 
 The result is typically ~15–30 sources. For each, keep: `{ name, url, access_notes }` (url = the source's site or its Geneva page if the doc gives one; access_notes = the doc's access/ToS line).
@@ -672,7 +672,7 @@ _(only when no genuine logo/photos were found — decorative stand-ins, **not** 
 | ----------------------- | --------- | ------------ |
 | Google Business Profile | ok        |              |
 | local.ch                | ok        |              |
-| Cylex Schweiz           | blocked   | HTTP 403     |
+| TripAdvisor             | blocked   | HTTP 403     |
 | Yelp                    | not_found |              |
 | Infobel                 | error     | agent failed |
 
