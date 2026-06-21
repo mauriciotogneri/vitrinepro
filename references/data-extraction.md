@@ -46,11 +46,11 @@ These work as a first pass for essentially any shop. For most small Geneva busin
 
 ### Maps & local directories
 
-- **[OpenStreetMap](https://www.openstreetmap.org)** — _Coverage (Geneva/CH):_ moderate — good for cafes/shops/amenities the community has mapped; many small shops missing or partial. _Data:_ name, address tags, geo, phone, website, email, opening*hours, shop/amenity/cuisine type, wheelchair & other attributes (no ratings/reviews/photos). \_Access:* Open data (ODbL — attribution + share-alike). Official APIs: Overpass API (free, fair-use) for tag/area queries; Nominatim (free, max 1 req/s, User-Agent required, no systematic/bulk scraping) for geocoding. Bulk via Geofabrik Switzerland extracts.
+- **[OpenStreetMap](https://www.openstreetmap.org)** — _Coverage (Geneva/CH):_ moderate — good for cafes/shops/amenities the community has mapped; many small shops missing or partial. _Data:_ name, address tags, geo, phone, website, email, opening_hours, shop/amenity/cuisine type, wheelchair & other attributes (no ratings/reviews/photos). _Access:_ Open data (ODbL — attribution + share-alike). Official APIs: Overpass API (free, fair-use) for tag/area queries; Nominatim (free, max 1 req/s, User-Agent required, no systematic/bulk scraping) for geocoding. Bulk via Geofabrik Switzerland extracts.
 
 ### Swiss directories
 
-- **[local.ch](https://www.local.ch)** — _Coverage (Geneva/CH):_ strong — flagship CH directory (Swisscom Directories/localsearch), 500k+ profiles incl. Geneva; also a booking platform. _Data:_ name, address, geo, phone, website, opening hours, category, photos, services, online booking, some ratings. _Access:_ Shares data infra with search.ch; programmatic access via the tel.search.ch API (key on request; ~1,000 req/month, ≤20 results/req; mandatory "Swisscom Directories AG" attribution).
+- **[local.ch](https://www.local.ch)** — _Coverage (Geneva/CH):_ strong — flagship CH directory (Swisscom Directories/localsearch), 500k+ profiles incl. Geneva; also a booking platform. _Data:_ name, address, geo, phone, website, opening hours, category, photos, services, online booking, some ratings. _Access:_ Shares data infra with search.ch; programmatic access via the tel.search.ch API (key on request; ~1,000 req/month, ≤200 results/req; mandatory "Swisscom Directories AG" attribution).
 - **[search.ch / tel.search.ch](https://tel.search.ch)** — _Coverage (Geneva/CH):_ strong — second flagship CH directory (same owner as local.ch). _Data:_ name, address, geo, phone, category, website; structured records. _Access:_ Official API: tel.search.ch REST API — free API key by application to localsearch; without key ≤10 results, with key ≤200; Atom/OpenSearch (+JSON) responses; "Swisscom Directories AG" attribution required; ~1,000 req/month quota. Also a map/route API.
 
 ### Geneva-specific directories
@@ -59,26 +59,26 @@ These work as a first pass for essentially any shop. For most small Geneva busin
 
 ---
 
-# Specific sites by category
+## Specific sites by category
 
-## Beauty & Grooming
+### Beauty & Grooming
 
 Business types: hair_salon, hair_care, barber_shop, beauty_salon, nail_salon, beautician, makeup_artist, body_art_service, tanning_studio, foot_care
 
 **Specific sites for this category:**
 
-- **[Treatwell](https://www.treatwell.ch)** — _(Hairdressers, Beauty Salon, Barber Shop, Nail salons, Massage Spa)_ _Coverage (Geneva/CH):_ moderate — runs treatwell.ch (5,000+ salons across DE/AT/CH) and has Geneva listings, but density is thinner in French-speaking CH than Planity/Salonkee/Fresha. _Data:_ name, address, phone, hours, photos, ratings & reviews, services & prices, staff, online booking/availability. _Access:_ a partner/booking integration exists (Treatwell Connect / Booking Connect for salon software) but no public data API — public listings are Scrape-only (HTML).
-- **[Fresha](https://www.fresha.com)** — _(Hairdressers, Beauty Salon, Barber Shop, Nail salons, Massage Spa)_ _Coverage (Geneva/CH):_ strong — dedicated Geneva pages (e.g. `/lp/en/bt/hair-salons/in/ch-genève`) for hair, beauty, nails, massage, barber. _Data:_ name, address, phone, hours, photos, ratings & reviews, services & prices, staff, online booking. _Access:_ no official public data API (only BI data connectors for a business's own data); a 3rd-party Apify scraper ("Fresha Local Beauty & Wellness Leads Extractor") exists = Unofficial/3rd-party API — otherwise Scrape-only (HTML).
-- **[Planity](https://www.planity.com)** — _(Hairdressers, Barber Shop, Beauty Salon, Nail salons)_ _Coverage (Geneva/CH):_ strong (Geneva) — many Geneva salons live (postal codes 1201/1204/1207), hair/barber-centric French-market platform. _Data:_ name, address, phone, hours, photos, ratings & reviews, services & prices, staff, real-time online booking. _Access:_ no public API; Scrape-only (HTML).
-- **[Salonkee](https://salonkee.ch)** — _(Hairdressers, Barber Shop, Beauty Salon, Nail salons, Massage Spa)_ _Coverage (Geneva/CH):_ strong — Swiss platform with dedicated Geneva pages (`/search/.../genf-geneve`) for hairdressers, barbershops, beauty and massage. _Data:_ name, address, phone, hours, photos, verified ratings & reviews, services & prices, staff, online booking. _Access:_ no public data API; Scrape-only (HTML).
-- **[agenda.ch](https://agenda.ch/fr/s/institut-de-beaute/geneve)** — _(Beauty Salon, Nail salons, Massage Spa; also osteo/wellness)_ _Coverage (Geneva):_ strong — multi-vertical online-booking directory; 18+ Geneva-area beauty institutes (incl. Carouge, Cointrin, Vésenaz) with ratings, services, live bookable slots. _Data:_ provider name, address, services, ratings, availability. _Access:_ Scrape-only (HTML); no public API.
+- **[Treatwell](https://www.treatwell.ch)** — _(Hairdressers, Beauty Salon, Barber Shop, Nail Salons, Massage Spa)_ _Coverage (Geneva/CH):_ moderate — runs treatwell.ch (5,000+ salons across DE/AT/CH) and has Geneva listings, but density is thinner in French-speaking CH than Planity/Salonkee/Fresha. _Data:_ name, address, phone, hours, photos, ratings & reviews, services & prices, staff, online booking/availability. _Access:_ a partner/booking integration exists (Treatwell Connect / Booking Connect for salon software) but no public data API — public listings are Scrape-only (HTML).
+- **[Fresha](https://www.fresha.com)** — _(Hairdressers, Beauty Salon, Barber Shop, Nail Salons, Massage Spa)_ _Coverage (Geneva/CH):_ strong — dedicated Geneva pages (e.g. `/lp/en/bt/hair-salons/in/ch-genève`) for hair, beauty, nails, massage, barber. _Data:_ name, address, phone, hours, photos, ratings & reviews, services & prices, staff, online booking. _Access:_ no official public data API (only BI data connectors for a business's own data); a 3rd-party Apify scraper ("Fresha Local Beauty & Wellness Leads Extractor") exists = Unofficial/3rd-party API — otherwise Scrape-only (HTML).
+- **[Planity](https://www.planity.com)** — _(Hairdressers, Barber Shop, Beauty Salon, Nail Salons)_ _Coverage (Geneva/CH):_ strong (Geneva) — many Geneva salons live (postal codes 1201/1204/1207), hair/barber-centric French-market platform. _Data:_ name, address, phone, hours, photos, ratings & reviews, services & prices, staff, real-time online booking. _Access:_ no public API; Scrape-only (HTML).
+- **[Salonkee](https://salonkee.ch)** — _(Hairdressers, Barber Shop, Beauty Salon, Nail Salons, Massage Spa)_ _Coverage (Geneva/CH):_ strong — Swiss platform with dedicated Geneva pages (`/search/.../genf-geneve`) for hairdressers, barbershops, beauty and massage. _Data:_ name, address, phone, hours, photos, verified ratings & reviews, services & prices, staff, online booking. _Access:_ no public data API; Scrape-only (HTML).
+- **[agenda.ch](https://agenda.ch/fr/s/institut-de-beaute/geneve)** — _(Beauty Salon, Nail Salons, Massage Spa; also osteo/wellness)_ _Coverage (Geneva):_ strong — multi-vertical online-booking directory; 18+ Geneva-area beauty institutes (incl. Carouge, Cointrin, Vésenaz) with ratings, services, live bookable slots. _Data:_ provider name, address, services, ratings, availability. _Access:_ Scrape-only (HTML); no public API.
 - **[Tattoodo](https://www.tattoodo.com)** — _(Tattoo Shop)_ _Coverage (Geneva/CH):_ moderate — Geneva studios listed (True World Tattoo, Crazy Geneva Ink, Fredson Tattoo). _Data:_ studio/artist name, address, portfolio photos, styles, bio, contact, some booking. _Access:_ no current public data API (legacy API deprecated); Scrape-only (HTML) — but a direct page fetch geo-resolves to the visitor's IP city (wrong studio) even headless; reliable data is via the search index, not a direct fetch.
 
 _No dedicated platform for **Tanning Salon** — only generic salon-booking sites (Salonkee/Treatwell/Fresha occasionally list solariums) or generic directories apply._
 
 _No dedicated CH/Geneva platform for beauticians, make-up artists or foot care (pedicure / podology) — they surface via agenda.ch and the salon-booking sites above plus the generic directories._
 
-## Wellness & Fitness
+### Wellness & Fitness
 
 Business types: massage_spa, massage, spa, gym, fitness_center, yoga_studio
 
@@ -89,7 +89,7 @@ Business types: massage_spa, massage, spa, gym, fitness_center, yoga_studio
 
 _For massage and spa providers, the salon-booking platforms under **Beauty & Grooming** (Treatwell, Fresha, Salonkee, agenda.ch) also list them._
 
-## Drink
+### Drink
 
 Business types: bar, pub, brewery, brewpub, irish_pub, gastropub, beer_garden, cocktail_bar, wine_bar, sports_bar, lounge_bar, hookah_bar, night_club, winery, coffee_shop, coffee_stand, coffee_roastery, tea_house, juice_shop
 
@@ -99,7 +99,7 @@ Business types: bar, pub, brewery, brewpub, irish_pub, gastropub, beer_garden, c
 - **[Resident Advisor (RA)](https://ra.co/clubs/ch/geneva)** — _(Night Club, electronic-music venues, some Bars)_ _Coverage (Geneva/CH):_ strong (for the niche) — dedicated Geneva club directory + RA Guide (Motel Campo, Audio Club, Wunderbar) and event listings. _Data:_ venue name, address, geo, event lineups/dates, ticket links, photos, descriptions. _Access:_ No official public API — undocumented GraphQL endpoint (ra.co/graphql) used by 3rd-party scrapers (unofficial); officially scrape-only. The Geneva club listing (names + addresses) is extractable from static HTML, but per-venue profile pages return HTTP 403 even headless.
 - **[petzi.ch](https://www.petzi.ch/fr/)** — _(Night Club / live-music venues, festivals)_ _Coverage (Geneva/CH):_ strong CH incl. Geneva/Romandie — federation of 210+ non-profit music clubs/festivals, with member-venue agenda + ticketing. _Data:_ event name/date/venue, venue name & links (address via member pages), ticket price/availability. _Access:_ Scrape-only (HTML); no documented public API.
 - **[La Décadanse](https://www.ladecadanse.ch/)** — _(Night Club, Bar/Pub)_ _Coverage (Geneva):_ strong Grand Genève + Romandie nightlife agenda (Geneva, Nyon, Lausanne, Pays de Gex, Annemasse). _Data:_ party/event listings, venue & bar names, dates, links. _Access:_ Scrape-only (HTML); no public API.
-- **[Genève Terroir](https://www.geneveterroir.ch/en/)** — _(Liquor Store: wine producers w/ direct sales; Butcher Shop: meat producers)_ _Coverage (Geneva/CH):_ strong — the canton's official terroir portal; ~130 wine estates plus meat/dairy/market-garden GRTA-certified producers. _Data:_ producer name, town, product categories, direct-sales points, contact (email/phone on detail pages), interactive map, mobile app. _Access:_ Scrape-only (HTML); no public API despite the app backend.
+- **[Genève Terroir](https://www.geneveterroir.ch/en/)** — _(Liquor Store: wine producers w/ direct sales; Butcher Shop: meat producers)_ _Coverage (Geneva/CH):_ strong — the canton's official terroir portal; ~95 wine estates plus meat/dairy/market-garden GRTA-certified producers. _Data:_ producer name, town, product categories, direct-sales points, contact (email/phone on detail pages), interactive map, mobile app. _Access:_ Scrape-only (HTML); no public API despite the app backend.
 - **[Swiss Wine — Winemakers Directory](https://www.swisswine.com/en/winemakers)** — _(Liquor Store: wineries w/ direct sales, not retail shops)_ _Coverage (Geneva/CH):_ moderate — ~130 Geneva-region producers, filterable by region; growers/wineries only. _Data:_ winery name, street address, postal code, phone, email, website (no hours/inventory). _Access:_ Scrape-only (HTML) — Swiss Wine Promotion site; no API. The Genève region filter is JS-only — a no-login render returns a non-Geneva subset (Geneva extraction needs filter interaction).
 - **[AGVEI — Vignerons-Encaveurs Indépendants de Genève](https://agvei.ch/)** — _(Liquor Store — independent Geneva winegrowers with direct/cave sales)_ _Coverage (Geneva):_ strong (cantonal) — "Nos membres" roster of local independent producers. _Data:_ producer name, address, contact. _Access:_ Scrape-only (HTML); no API; distinct from Genève Terroir/Swiss Wine.
 
@@ -107,7 +107,7 @@ _General food-and-drink directories (TripAdvisor, Just-Tag, Restaurant Guru, res
 
 _Coffee shops, tea houses and juice / smoothie bars have no dedicated CH/Geneva platform — they surface via the general food-and-drink directories (see **Food**) and the generic listings (Google, local.ch)._
 
-## Food
+### Food
 
 Business types: restaurant, cafe, bistro, diner, deli, food_court, cafeteria, steak_house, snack_bar, kebab_shop, sandwich_shop, noodle_shop, salad_shop, meal_takeaway, meal_delivery, pizza_delivery, bakery, pastry_shop, cake_shop, donut_shop, bagel_shop, dessert_shop, ice_cream_shop, chocolate_shop, confectionery, acai_shop, butcher_shop
 
@@ -126,7 +126,7 @@ _Sub-type note: **Donut Shop**, **Ice Cream Shop** and **Coffee Shop** have no d
 
 _**Butcher** shops are covered by Foodspotters and Boucherie Suisse above (plus meat producers on Genève Terroir, listed under **Drink**). No specialty directory exists for **chocolate and confectionery**, seafood or delicatessens — Google Maps/Business, TripAdvisor and local.ch are the realistic primary sources._
 
-## Auto Repair
+### Auto Repair
 
 Business types: car_repair, car_wash, car_dealer, car_rental, tire_shop, bicycle_store, auto_parts_store, ebike_charging_station
 
@@ -140,7 +140,7 @@ Business types: car_repair, car_wash, car_dealer, car_rental, tire_shop, bicycle
 
 _Car dealers/garages have no usable dedicated directory — AutoScout24 was dropped (blocked even to a headless browser), and MotoScout24 (above) covers **motorcycles** only, so cars rely on the generic listings. Car rental, auto-parts and e-bike-charging points likewise have no dedicated CH directory — use the generic listings (Google, local.ch)._
 
-## Pet Care
+### Pet Care
 
 Business types: veterinary_care, pet_care, pet_store, pet_boarding_service
 
@@ -150,7 +150,7 @@ Business types: veterinary_care, pet_care, pet_store, pet_boarding_service
 - **[Société Genevoise des Vétérinaires (SGV)](http://sgv.name/)** — _(Veterinarian)_ _Coverage (Geneva):_ strong per search (alphabetical + by-clinic Geneva vet lists). _Data:_ vet name, clinic, address, phone. _Access:_ Scrape-only (HTML); **`http://` only** — no HTTPS/modern TLS, so an https-forcing fetch gets ECONNREFUSED; use the `http://` URL; no API; distinct from the national GST-SVS.
 - **[Chien.com — Annuaire](https://www.chien.com/adresse/19-0-0-203-203008-toiletteur-canin-geneve-1.php)** — _(Pet Groomer, Veterinarian, boarding, trainers)_ _Coverage (Geneva):_ moderate — live French portal listing ~12 Geneva grooming salons plus vets/boarding/trainers. _Data:_ business name, commune/postal code, contact via profile. _Access:_ Scrape-only (HTML); no API. The best structured source found for the **Pet Groomer** gap.
 
-## Services & Trades
+### Services & Trades
 
 Business types: tailor, locksmith, plumber, electrician, painter, laundry, art_studio
 
@@ -166,7 +166,7 @@ Business types: tailor, locksmith, plumber, electrician, painter, laundry, art_s
 
 _Tailors, alteration ateliers and art studios have no dedicated CH/Geneva platform — the realistic primary sources are Google Maps/Business and local.ch._
 
-## Shops & Retail
+### Shops & Retail
 
 Business types: florist, garden_center, jewelry_store, hardware_store, book_store, shoe_store, cell_phone_store, electronics_store, clothing_store, womens_clothing_store, cosmetics_store, furniture_store, home_goods_store, thrift_store, sporting_goods_store, sportswear_store, toy_store, tea_store, candy_store, liquor_store
 
@@ -177,4 +177,4 @@ Business types: florist, garden_center, jewelry_store, hardware_store, book_stor
 
 _No dedicated CH/Geneva platform exists for vape shops, cell phone & computer repair, hardware stores, shoe stores, or **jewelry** — primary sources are generic (Google Maps/Business, local.ch, search.ch); **florists** are covered by JardinSuisse (above). Notably, uBreakiFix operates only in US/Canada (no CH presence), iFixit's retailer page finds tool resellers rather than repair shops, Euroflorist has no Swiss florist network (CH excluded), and Interflora in CH exists only as Fleurop-Interflora (no separate interflora.ch directory; the Fleurop partner-locator map is GDPR-gated and yields no extractable data even headless)._
 
-_Board-game, hobby and craft / sewing / art-supply shops, **record stores** (Discogs/VinylHub returns HTTP 403 even to a headless browser), **liquor stores** (wine & spirits retailers), tea shops, candy stores, cosmetics, clothing, shoe, furniture, home-goods and toy stores have no dedicated CH directory — use the generic listings._
+_Board-game, hobby and craft / sewing / art-supply shops, **record stores** (Discogs/VinylHub returns HTTP 403 even to a headless browser), **liquor stores** (wine & spirits retailers; wine _producers_ with direct sales are under **Drink**), tea shops, candy stores, cosmetics, clothing, shoe, furniture, home-goods and toy stores have no dedicated CH directory — use the generic listings._
