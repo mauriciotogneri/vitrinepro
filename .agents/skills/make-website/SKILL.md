@@ -6,7 +6,7 @@ description: >-
 
 # make-website
 
-Turn one business's `extract-data` dossier into a deployable, Swiss-French (**fr-CH**) static website under `docs/webs/<web-slug>/`, and add it to the portfolio index.
+Turn one business's `extract-data` dossier into a deployable, Swiss-French (**fr-CH**) static website under `docs/webs/<slug>/`, and add it to the portfolio index.
 
 **Scope:** this skill starts from an existing dossier and ends when the site is written, self-verified, and linked from `docs/index.html`. It does **not** gather data (that's `extract-data`) and does **not** commit or deploy. **One business per invocation.** **Paths** are relative to the repo root (the working directory): `references/`, `resources/`, `data/`, and `docs/` all live there.
 
@@ -17,7 +17,7 @@ Start by **proposing candidates**: list the `data/` dossier folders that have **
 From it:
 
 - Read the dossier markdown `<dir>/<slug>.md` **in full** — it is the single source of truth for every fact on the site. Note the files in `<dir>/assets/` (logo, photos).
-- Derive the **web slug** = the dossier **folder name**, used unchanged (the dossier slug is `<name-kebab>_<type-kebab>`, joined by a single `_` — keep the whole name, type suffix included). E.g. `razor_hairdresser` → `razor_hairdresser`. Output dir `<out>` = `docs/webs/<web-slug>/`.
+- The output reuses the dossier **folder name** as `<slug>`, unchanged (the dossier slug is `<name-kebab>_<type-kebab>`, joined by a single `_` — keep the whole name, type suffix included). E.g. `razor_hairdresser` → `razor_hairdresser`. Output dir `<out>` = `docs/webs/<slug>/`.
 
 ## Read before building
 
@@ -29,13 +29,13 @@ From it:
 
 ### 1. Resolve the output folder
 
-Fix `<out>` = `docs/webs/<web-slug>/`. **If `<out>` already exists, stop and ask** before overwriting — a built site may carry hand edits. Only proceed once the user confirms (then delete the old `<out>` and regenerate clean).
+Fix `<out>` = `docs/webs/<slug>/`. **If `<out>` already exists, stop and ask** before overwriting — a built site may carry hand edits. Only proceed once the user confirms (then delete the old `<out>` and regenerate clean).
 
 ### 2. Derive the base URL
 
 The site deploys to GitHub Pages, so absolute URLs (canonical, `og:url`, `og:image`, sitemap `<loc>`) use the real deploy origin. Run `git remote get-url origin`, parse `github.com[:/]<org>/<repo>`, and build:
 
-- `<base>` = `https://<org>.github.io/<repo>/webs/<web-slug>/` (e.g. `https://vndly.github.io/websites/webs/<web-slug>/`).
+- `<base>` = `https://<org>.github.io/<repo>/webs/<slug>/` (e.g. `https://vndly.github.io/websites/webs/<slug>/`).
 
 If there is no remote or it can't be parsed, use a literal `{{BASE_URL}}` token instead and flag it in the final summary.
 
@@ -109,7 +109,7 @@ A **contact** form plus native links — **never a reservation/booking form**:
 
 ### 10. Portfolio index
 
-Register the site in the portfolio index `docs/index.html` — **idempotently, keyed by the web slug** (= the dossier folder name). The index is a table where each business is **one `<tr>`** with a **Website** cell and a **Data** cell, each either a button or a `—` placeholder. In the normal pipeline `extract-data` already created this business's row (with the **Data** link) before the build, so you usually just fill in the **Website** side.
+Register the site in the portfolio index `docs/index.html` — **idempotently, keyed by `<slug>`** (= the dossier folder name). The index is a table where each business is **one `<tr>`** with a **Website** cell and a **Data** cell, each either a button or a `—` placeholder. In the normal pipeline `extract-data` already created this business's row (with the **Data** link) before the build, so you usually just fill in the **Website** side.
 
 Find the row whose `<slug>` appears in its Website href (`webs/<slug>`) or Data href (`data.html?slug=<slug>`):
 
