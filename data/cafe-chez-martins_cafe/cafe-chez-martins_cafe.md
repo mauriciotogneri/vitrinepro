@@ -173,6 +173,16 @@ None retained. Three genuine photos of this business (storefront, a bifana, a pa
 - **Fallback imagery:** generated `logo.svg` (no genuine logo or social page existed to derive one) **plus** 5 free-license `stock-*` Portuguese-bakery images. The stock images were added at the user's request to replace the genuine venue photos (not because none were found); they illustrate the category, not the actual venue, and each carries its license + required attribution above.
 - **Other relevant info:** Portuguese-specialty café-boulangerie; cash-and-carry / takeaway focus; family-run; sole proprietorship; signage advertises bifanas, boulangerie, hot dog, sandwiches, takeaway.
 
+## Suggested domains
+
+_The business has no working website. Candidate `.ch` names built from the business name (no locality token) and confirmed available by DNS NXDOMAIN check on 2026-06-21. Availability is point-in-time; re-verify before registering._
+
+- `chezmartins.ch` — **available** (DNS: NXDOMAIN, 2026-06-21)
+- `cafechezmartins.ch` — **available** (DNS: NXDOMAIN, 2026-06-21)
+- `chezmartins-boulangerie.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — `-boulangerie` reflects the bakery side
+
+_(Also confirmed available: `chez-martins.ch`, `cafe-chez-martins.ch`, `chezmartins-cafe.ch`. None of the checked candidates were taken.)_
+
 ## Missing information
 
 _Standard fields no source could fill, or that are only low-confidence placeholders — a human (ideally the owner) could supply these._

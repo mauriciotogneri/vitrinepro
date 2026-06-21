@@ -146,6 +146,16 @@ _All genuine, sourced; downloaded into `assets/`._
 - **Type note:** recorded under the **Tailor** taxonomy bucket (no millinery/chapellerie type exists in the taxonomy), but the business is a **hatter/milliner** — the website build should present him as **chapelier · modiste**, not a garment tailor.
 - **No fixed retail hours:** appointment-based atelier + market vendor — the build should avoid implying walk-in shop hours.
 
+## Suggested domains
+
+_The business has no working website (Instagram only). Candidate `.ch` names built from the business name (no locality token) and confirmed available by DNS NXDOMAIN check on 2026-06-21. Availability is point-in-time; re-verify before registering._
+
+- `jeanrobertgase.ch` — **available** (DNS: NXDOMAIN, 2026-06-21)
+- `gase-chapelier.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — `chapelier` = hatter (his actual craft)
+- `gase-modiste.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — `modiste` = milliner
+
+_(Also confirmed available: `jean-robert-gase.ch`, `gase-chapellerie.ch`, `gasechapelier.ch`, `jeanrobertgase-chapelier.ch`. None of the checked candidates were taken.)_
+
 ## Missing information
 
 _Standard fields no source could fill, or that are only low-confidence placeholders — a human may be able to supply these manually._

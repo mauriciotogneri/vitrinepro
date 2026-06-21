@@ -170,6 +170,16 @@ None — a genuine logo and genuine photos were found, so no generated or stock 
 - The official `.ch` website is **down** (PHP errors); the business's active web presence is its Facebook page, which Google even lists as the "website". This matters for the downstream build.
 - Other relevant info: founded 2012 (Sàrl since 2015); owners Catherine Ryser & Bérangère Villeval; 1–2 staff; VAT-registered since 2014.
 
+## Suggested domains
+
+_The business's own `.ch` domain is broken (PHP errors; see Website/Contact), so a working domain is still needed. Candidates below are built from the business name (no locality token) and confirmed available by DNS NXDOMAIN check on 2026-06-21. Availability is point-in-time; re-verify before registering._
+
+- `panapedecamela.ch` — **available** (DNS: NXDOMAIN, 2026-06-21)
+- `lepanape.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — short, brandable ("le panapé")
+- `lepanape-deco.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — `-deco` fits the decoration boutique
+
+_(Also confirmed available: `panape-deco.ch`, `lepanapedeco.ch`, `le-panape-de-camela.ch`. Taken: `lepanapedecamela.ch` — the business's own existing (broken) domain; repairing it, rather than registering a new name, may be preferable.)_
+
 ## Missing information
 
 _Standard fields no source could fill, or only available as low-confidence placeholders — a human may be able to supply these manually._

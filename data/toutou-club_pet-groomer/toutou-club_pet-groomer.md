@@ -164,6 +164,16 @@ _All genuine — from Toutou-Club's own Facebook / Instagram, supplied manually 
 - **Solo, appointment-only operation:** one operator, no employees, by appointment Mon–Fri — the build should avoid implying walk-in hours or a multi-stylist salon.
 - **Name styling:** "Toutou-Club" (hyphenated) is the dominant brand spelling; "Toutou Club" and "Toutou club toilettage genève" are the same business.
 
+## Suggested domains
+
+_The business's former domain `toutouclub.ch` has lapsed (NXDOMAIN) and is now available to reclaim. Candidate `.ch` names built from the business name (no locality token) and confirmed available by DNS NXDOMAIN check on 2026-06-21. Availability is point-in-time; re-verify before registering._
+
+- `toutouclub.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — the business's own lapsed domain; reclaiming it is the natural first choice
+- `toutou-club.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — matches the dominant "Toutou-Club" spelling
+- `toutouclub-toilettage.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — `toilettage` = grooming (fr)
+
+_(Also confirmed available: `toutou-toilettage.ch`, `toutouclubtoilettage.ch`, `salontoutouclub.ch`. None of the checked candidates were taken.)_
+
 ## Missing information
 
 _Standard fields no source could fill, or that are only low-confidence placeholders — a human (ideally the owner) could supply these manually._

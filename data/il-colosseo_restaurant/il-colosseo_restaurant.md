@@ -195,6 +195,16 @@ _8 from TripAdvisor (the venue's own photo gallery), 12 re-published via Restaur
 - **Branding accent is inferred**, not extracted (no website; monochrome logo) — treat the terracotta accent and shape/depth/spacing as a tasteful placeholder to confirm or replace at build time.
 - **Heavy source blocking:** Google, Yelp, Uber Eats, Just Eat, and Zefix all blocked automated access (GDPR walls, 403s, auth-gated APIs). The substantive data was recovered via local.ch / search.ch, TripAdvisor, Restaurant Guru (aggregator), OpenStreetMap, and Esprit de Genève — so the dossier is well-populated despite the blocks.
 
+## Suggested domains
+
+_The business has no working website (Facebook / Instagram only). Candidate `.ch` names built from the business name (no locality token) and confirmed available by DNS NXDOMAIN check on 2026-06-21. Availability is point-in-time; re-verify before registering._
+
+- `ilcolosseo.ch` — **available** (DNS: NXDOMAIN, 2026-06-21)
+- `ilcolosseo-pizzeria.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — `pizzeria` fits the wood-fired pizzeria
+- `ristorantecolosseo.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — `ristorante` = restaurant (it)
+
+_(Also confirmed available: `il-colosseo.ch`, `pizzeria-colosseo.ch`, `ilcolosseo-resto.ch`. Taken: `colosseo.ch` — the bare name.)_
+
 ## Missing information
 
 _Standard fields no source could fill, or that are only low-confidence placeholders — a human may be able to supply these manually._

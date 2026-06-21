@@ -224,6 +224,16 @@ _20 of 26 downloaded candidates kept; **all visually verified** as the real Le T
 - **Branding is logo-derived + photo-grounded, not extracted** (no live site): the palette is well-evidenced by the venue photos, but type and shape/depth/spacing are conventions to confirm or replace at build time.
 - **Source behaviour matched the reference doc** (Google GDPR walls, Yelp/Michelin 403s. No major reference-doc drift to flag.
 
+## Suggested domains
+
+_The business has no working website (Instagram only). Candidate `.ch` names built from the business name (no locality token) and confirmed available by DNS NXDOMAIN check on 2026-06-21. Availability is point-in-time; re-verify before registering._
+
+- `le-the.ch` — **available** (DNS: NXDOMAIN, 2026-06-21)
+- `lethe-dimsum.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — `dim sum` is the house specialty
+- `lethe-resto.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — `resto` = restaurant (fr)
+
+_(Also confirmed available: `restaurant-lethe.ch`, `lethe-restaurant.ch`, `maisonlethe.ch`. Taken: `lethe.ch` — the spaceless name.)_
+
 ## Missing information
 
 _Standard fields no source could fill, or that are only low-confidence placeholders — a human may be able to supply these manually._

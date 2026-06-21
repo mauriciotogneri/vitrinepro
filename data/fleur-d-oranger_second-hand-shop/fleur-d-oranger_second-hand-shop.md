@@ -160,6 +160,16 @@ _Tally: 5 ok, 1 partial, 11 not_found, 6 blocked (23 total). The `ok`/`partial` 
 - Fallback imagery: only the **generated** `logo.svg` remains (still no genuine logo). The 5 illustrative `stock-*.jpg` images were **removed** once the owner provided genuine photos — no stock/illustrative imagery is used in the dossier now.
 - Other relevant info: owner **Aamir Ali** also runs a **market/flea-market stall**; shop ambiance described by customers as an **"atmosphère orientale"**; **wheelchair access: no** _(OSM)_; **parking + public transport** nearby _(zip.ch)_.
 
+## Suggested domains
+
+_The business has no working website (Facebook only). Candidate `.ch` names built from the business name (no locality token) and confirmed available by DNS NXDOMAIN check on 2026-06-21. Availability is point-in-time; re-verify before registering._
+
+- `fleur-doranger.ch` — **available** (DNS: NXDOMAIN, 2026-06-21)
+- `boutiquefleurdoranger.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — matches the Facebook name "Boutique Fleur d'Oranger"
+- `fleurdoranger-boutique.ch` — **available** (DNS: NXDOMAIN, 2026-06-21)
+
+_(Also confirmed available: `lafleurdoranger.ch`, `fleurdorangerboutique.ch`. Taken: `fleurdoranger.ch` — the spaceless name.)_
+
 ## Missing information
 
 _Standard fields no source could fill, or that are only low-confidence placeholders — a human may be able to supply these manually._

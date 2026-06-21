@@ -186,6 +186,16 @@ All 9 from TripAdvisor (the only source that exposed real image URLs; Google's ~
 - **Staff size:** 3–5 employees _(Esprit de Genève, per SITG)_.
 - **Opened:** 2018 _(TripAdvisor review; corroborated by ADELINO Sàrl's 2018 RC registration)_.
 
+## Suggested domains
+
+_The business has no working website (the old `le-mexicain.business.site` returns HTTP 404). Candidate `.ch` names built from the business name (no locality token) and confirmed available by DNS NXDOMAIN check on 2026-06-21. Availability is point-in-time; re-verify before registering._
+
+- `le-mexicain.ch` — **available** (DNS: NXDOMAIN, 2026-06-21)
+- `lemexicain-resto.ch` — **available** (DNS: NXDOMAIN, 2026-06-21) — `resto` = restaurant (fr)
+- `restaurant-lemexicain.ch` — **available** (DNS: NXDOMAIN, 2026-06-21)
+
+_(Also confirmed available: `lemexicainresto.ch`, `lemexicain-restaurant.ch`. Taken: `lemexicain.ch` — the spaceless name.)_
+
 ## Missing information
 
 _Standard fields no source could fill, or that are only low-confidence placeholders — a human may be able to supply these manually._
