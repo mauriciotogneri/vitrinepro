@@ -64,7 +64,7 @@ If name, Geneva, or type(s) are missing, ask once for the missing piece. Do not 
 
 This pipeline builds a site for businesses that **don't already have a working one**, so before sinking any effort into the gather, find any **own official website** the business may already have — and if one exists, let the **user** judge whether it works and whether to go on. Do this **first**, right after identity is pinned.
 
-1. **Search hard for an own-site.** Start from anything step 1 already surfaced (the Maps listing's `website`, the pin-identity pass). If no site is known yet, look specifically for one and try as hard as public web search reasonably allows before concluding there is none: web-search the name + "Geneva" + type(s); read the website field on the Google Business Profile / Maps listing; check the business's local.ch (and other directory) listings for an outbound site link; check the Facebook / Instagram bio for a linked site.
+1. **Search hard for an own-site.** Start from anything step 1 already surfaced (the Maps listing's `website`, the pin-identity pass). If no site is known yet, look specifically for one and try as hard as public web search reasonably allows before concluding there is none: web-search the name + "Genève" + type(s); read the website field on the Google Business Profile / Maps listing; check the business's local.ch (and other directory) listings for an outbound site link; check the Facebook / Instagram bio for a linked site.
 
 2. **Keep only a genuine own-site.** A directory or aggregator listing (local.ch, Yelp, Tripadvisor, …), a social-media profile (a Facebook / Instagram page), a Linktree, and a booking / marketplace page are **not** official websites — they do not trip the gate. Only the business's **own** site does (its own domain, self-hosted content).
 
@@ -506,7 +506,7 @@ When the business has **no working own official website** — step 1b found none
 - **DNS status (decisive):** `dig +noall +comments <name>.ch SOA | grep -oE 'status: [A-Z]+'` — **`NXDOMAIN` = available**, **`NOERROR` = taken** (the name exists in DNS). SWITCH (the `.ch` registry) returns NXDOMAIN only for unregistered names, so this is authoritative; don't rely on `+short NS`/`SOA` having output (a registered domain can answer NOERROR with neither).
 - If a query errors or times out, retry once; if still inconclusive, mark the candidate **uncertain** and don't count it toward the 3.
 
-**Don't** use RDAP or `whois` for `.ch`: `rdap.org` returns 404 for *every* `.ch` name (registered or not — it has no `.ch` service), and the `whois` CLI is usually not installed, so an RDAP 404 or a missing `whois` must **never** be read as "available". (If the skill is later extended past `.ch`, `curl https://rdap.org/domain/<d>` — 404 = available, 200 = taken — works for TLDs RDAP actually serves.)
+**Don't** use RDAP or `whois` for `.ch`: `rdap.org` returns 404 for _every_ `.ch` name (registered or not — it has no `.ch` service), and the `whois` CLI is usually not installed, so an RDAP 404 or a missing `whois` must **never** be read as "available". (If the skill is later extended past `.ch`, `curl https://rdap.org/domain/<d>` — 404 = available, 200 = taken — works for TLDs RDAP actually serves.)
 
 **Reach 3.** Keep generating and checking until **3 confirmed-available** `.ch` domains are collected, replacing any taken/uncertain candidate with a fresh name variant. **Cap total checks at ~12**: if 3 can't be confirmed within the cap, record whatever was found (even 0–2) and flag that the cap was hit. Never loop indefinitely.
 
@@ -527,27 +527,27 @@ Derive two display strings (neither is the raw slug):
 
 Then make two edits:
 
-1. **`docs/data.html` — viewer allow-list (required).** The viewer only renders a slug listed in its hardcoded `SHOPS` map; an unknown slug shows "Dossier not found", so the index's Data link is dead without this. Add or update the entry (keep the file's existing formatting):
+1.  **`docs/data.html` — viewer allow-list (required).** The viewer only renders a slug listed in its hardcoded `SHOPS` map; an unknown slug shows "Dossier not found", so the index's Data link is dead without this. Add or update the entry (keep the file's existing formatting):
 
-   ```js
-   "<slug>": { name: "<Name>", trade: "<Trade>" },
-   ```
+    ```js
+    "<slug>": { name: "<Name>", trade: "<Trade>" },
+    ```
 
-2. **`docs/index.html` — the table row (upsert).** Each business is one `<tr>` with a **Website** cell and a **Data** cell, each a button or a `—` placeholder. Find the row whose `<slug>` appears in its Data href (`data.html?slug=<slug>`) or Website href (`webs/<slug>`):
+2.  **`docs/index.html` — the table row (upsert).** Each business is one `<tr>` with a **Website** cell and a **Data** cell, each a button or a `—` placeholder. Find the row whose `<slug>` appears in its Data href (`data.html?slug=<slug>`) or Website href (`webs/<slug>`):
+    - **Row exists** → set its **Data** cell to the button (turning a `—` into a link if needed) and refresh the name/trade; **leave the Website cell untouched** — it belongs to `make-website`.
+    - **No row** → append one matching the existing markup. Its **Website** cell is the live button when `docs/webs/<slug>/` already exists, else the placeholder:
 
-   - **Row exists** → set its **Data** cell to the button (turning a `—` into a link if needed) and refresh the name/trade; **leave the Website cell untouched** — it belongs to `make-website`.
-   - **No row** → append one matching the existing markup. Its **Website** cell is the live button when `docs/webs/<slug>/` already exists, else the placeholder:
+           ```html
+           <tr>
+               <td class="c-name"><span class="name"><Name></span><span class="trade"><Trade></span></td>
+               <td class="c-act"><a class="btn btn-site" href="webs/<slug>" target="_blank" rel="noopener">Website</a></td>
+               <td class="c-act"><a class="btn btn-data" href="data.html?slug=<slug>" target="_blank" rel="noopener">Data</a></td>
+           </tr>
+           ```
 
-     ```html
-     <tr>
-         <td class="c-name"><span class="name"><Name></span><span class="trade"><Trade></span></td>
-         <td class="c-act"><a class="btn btn-site" href="webs/<slug>" target="_blank" rel="noopener">Website</a></td>
-         <td class="c-act"><a class="btn btn-data" href="data.html?slug=<slug>" target="_blank" rel="noopener">Data</a></td>
-     </tr>
-     ```
+           Website placeholder when no site exists yet: `<td class="c-act"><span class="na" title="No website built">—</span></td>`.
 
-     Website placeholder when no site exists yet: `<td class="c-act"><span class="na" title="No website built">—</span></td>`.
-Match on the **data slug** only. A legacy row whose website slug differs from the data slug (e.g. `webs/miro_barbershop` vs the dossier `miro-barber-shop_barber-shop`) won't match, so a fresh row is added — note it in the final summary for the human to reconcile rather than guessing a fuzzy name match.
+      Match on the **data slug** only. A legacy row whose website slug differs from the data slug (e.g. `webs/miro_barbershop` vs the dossier `miro-barber-shop_barber-shop`) won't match, so a fresh row is added — note it in the final summary for the human to reconcile rather than guessing a fuzzy name match.
 
 ### 12. Verify before finishing
 
