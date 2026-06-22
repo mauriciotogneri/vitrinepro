@@ -18,6 +18,16 @@ Project-specific build conventions for the Geneva-business marketing sites, appl
 - **Absolute URLs under `<base>`:** `<link rel="canonical">`, Open Graph, Twitter Card, and `sitemap.xml` `<loc>` are all absolute under the deploy `<base>`. `og:image` is the generated OG image (1200×630).
 - **`theme-color`** = the dossier theme's `theme-color` value.
 
+## Images
+
+Promotes best-practices' soft "modern formats with fallback" line to a hard rule for these sites.
+
+- **Content photos ship dual-format** — every photographic image (`photo-*`, decorative `stock-*`) is a `<picture>` with a WebP `<source>` + a **JPEG `<img>` fallback**: `<picture><source type="image/webp" srcset="…/x.webp"><img src="…/x.jpg" width="…" height="…" decoding="async"></picture>`. Keep `width`/`height`/`decoding="async"` (and below-the-fold `loading="lazy"`) on the inner `<img>`; the `<source>` carries the WebP.
+- **Build both formats** — ensure each chosen content photo exists as **both** `.webp` and `.jpg` in `<out>/assets/`, transcoding the missing one with ImageMagick (`convert in.jpg -quality 82 out.webp`, or `convert in.webp out.jpg`; libwebp ships with `convert`). If no image tooling is available, emit a single-format `<img>` and flag it in the summary — same posture as favicon/OG generation.
+- **LCP photo** keeps `fetchpriority="high"` plus a matching `<link rel="preload" as="image" href="…/x.webp" type="image/webp">`; the `type` lets non-WebP browsers skip the preload and still render the JPEG.
+- **Scope: photos only.** Logos, favicons, the OG image, and inline SVG are unaffected — they stay SVG/PNG/ICO. Never wrap a logo `<img>` in `<picture>`.
+- **CSS targets the inner `<img>`** — since the photo now sits inside `<picture>`, style the `<img>` itself (`figure img`); avoid child-combinator or positional selectors that assume the image is a direct child (`figure > img`, `img:first-child`).
+
 ## JSON-LD
 
 Beyond the generic rule (chosen `LocalBusiness` subtype, visible-content-backed only):

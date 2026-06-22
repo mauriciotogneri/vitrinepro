@@ -81,7 +81,7 @@ body {
   overflow-x: hidden;
 }
 
-img { display: block; max-width: 100%; height: auto; }
+img, picture { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
 ul { list-style: none; padding: 0; }
 button { font: inherit; color: inherit; cursor: pointer; }
