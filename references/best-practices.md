@@ -210,8 +210,4 @@
 - **Sanitize/escape untrusted HTML** — prefer `textContent`; run a sanitizer (e.g. DOMPurify) before any `innerHTML`; _prevents DOM-XSS at the source (CSP only mitigates)._
 - **Keep sensitive data out of URLs and logs** — do not place secrets or personal information in query strings, fragments, console output, or analytics events; _limits accidental exposure._
 - **`/.well-known/security.txt`** — security contact for disclosures; _responsible vuln reporting._
-- **Dependency hygiene** — pin versions + `npm audit`/Dependabot; _avoid known CVEs & supply-chain risk._
-- **Analytics consent where required** — do not load optional tracking before consent; integrate the provider's consent controls and honor the user's choice; _supports privacy and ePrivacy compliance._
 - **Restrict third-party iframes** — use the narrowest possible `sandbox`, `allow`, and `referrerpolicy` attributes; _limits embedded content's capabilities and data leakage._
-- **Click-to-load third-party embeds** — do not contact video, map, or social providers until the user activates the embed; _reduces unsolicited tracking and initial page cost._
-- **Consent withdrawal** — let users revoke optional tracking consent as easily as granting it; _keeps privacy choices meaningful._
