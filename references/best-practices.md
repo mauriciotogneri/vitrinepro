@@ -135,7 +135,6 @@
 - **Vanilla JS for small interactions** — no framework where none is needed; _tiny payload, no build step._
 - **`async` on third-party scripts** — analytics/gtag; _non-blocking page render._
 - **Scripts at end of `<body>`** — after content; _DOM ready, no parser blocking._
-- **Progressive enhancement** — `try/catch` around `Flutter.postMessage`; _page still works outside the app shell._
 - **Use browser storage deliberately** — persist non-sensitive preferences or drafts where useful; never store credentials, secrets, or sensitive personal data in `localStorage`/`sessionStorage`; _state survives reloads without exposing high-value data._
 - **Reliable platform detection** — pick the app-store badge per OS via feature detection / UA-Client-Hints, not deprecated `navigator.platform` (iPadOS 13+ reports as desktop Mac); default unknowns to showing all options; _relevant CTA without misdetecting devices._
 - **Dynamic copyright year** — `new Date().getFullYear()`; _never stale._
