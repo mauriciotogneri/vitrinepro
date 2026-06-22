@@ -372,9 +372,9 @@
             right: 0.7rem;
         }
 
+        .carousel-name,
         .carousel-counter {
             position: absolute;
-            right: 0.7rem;
             bottom: 0.7rem;
             padding: 0.2rem 0.55rem;
             border-radius: 999px;
@@ -385,6 +385,18 @@
             font-size: 0.72rem;
             letter-spacing: 0.08em;
             color: var(--gold2);
+        }
+
+        .carousel-name {
+            left: 0.7rem;
+            max-width: 55%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .carousel-counter {
+            right: 0.7rem;
         }
 
         .carousel-thumbs {
@@ -566,6 +578,9 @@
                 msg.className = "carousel-msg";
                 msg.textContent = "Image unavailable";
 
+                var nameTag = document.createElement("div");
+                nameTag.className = "carousel-name";
+
                 var counter = document.createElement("div");
                 counter.className = "carousel-counter";
                 counter.setAttribute("aria-live", "polite");
@@ -584,6 +599,7 @@
 
                 stage.appendChild(img);
                 stage.appendChild(msg);
+                stage.appendChild(nameTag);
                 stage.appendChild(counter);
                 stage.appendChild(prev);
                 stage.appendChild(next);
@@ -623,6 +639,7 @@
                     stage.classList.toggle("is-logo", logo);
                     img.src = base + p;
                     img.alt = logo ? (name + " logo") : (name + " photo " + (cur + 1));
+                    nameTag.textContent = p.split("/").pop();
                     counter.textContent = pad(cur + 1) + " / " + paths.length;
                     thumbEls.forEach(function (el, j) {
                         var on = j === cur;
