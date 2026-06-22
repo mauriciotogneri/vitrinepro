@@ -41,6 +41,10 @@ A **contact** form plus native links — **never a reservation/booking form**.
   - **Never let the map box overflow / overlap the neighbouring card** (a recurring bug). Root cause: the map wrapper is a grid item, the grid stretches it (`align-items:stretch`, the default) to the height of the **taller** sibling card, and if the wrapper also has an `aspect-ratio` the browser then derives the wrapper's **width from that stretched height** (`height × ratio`) — far wider than its track — so it laps over the card. (`min-width:0` does **not** help: the box is _growing_, not failing to shrink.) Correct pattern: **do not put `aspect-ratio` on a stretched map wrapper.** Make the wrapper `position:relative; overflow:hidden` with a **`min-height`** (its height in the stacked 1-col layout and a floor); let `align-items:stretch` give it the row height in 2-col (equal-height columns, no ratio to inflate the width); and make the iframe `position:absolute; inset:0; width:100%; height:100%`. The wrapper's width then always equals its grid track. (If you instead want a fixed map ratio, keep `aspect-ratio` but add `align-self:start` so the ratio derives the height _from_ the track-bound width, never the reverse.)
   - **Verify the map by measuring, not just screenshotting.** The iframe won't load offline and a blank/slow iframe (plus fallback-font card heights) can hide the overflow in a screenshot. Check the computed `.map` width ≤ its grid track (e.g. compare `getBoundingClientRect()` of the map vs the card, expecting a gap not an overlap) at desktop **and** mid/tablet widths.
 
+## Social links
+
+- **Only link a social profile the dossier shows is public/accessible.** In particular, link an Instagram account only when the dossier shows it is public; if it's private (or flagged private in the dossier), **omit the link** entirely — never link a profile a visitor can't open.
+
 ## JSON-LD
 
 Beyond the generic rule (chosen `LocalBusiness` subtype, visible-content-backed only):
