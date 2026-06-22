@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="600" height="240" role="img" aria-label="Coiffure Illusion">
+  <title>Coiffure Illusion</title>
+  <desc>Generated placeholder wordmark — not an official logo. Palette inferred from name/type (hair salon).</desc>
+  <g text-anchor="middle">
+    <text x="300" y="80" font-family="'Mulish','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="600" letter-spacing="9" fill="#C8A063">COIFFURE</text>
+    <line x1="120" y1="73" x2="196" y2="73" stroke="#C8A063" stroke-width="1.5"/>
+    <line x1="404" y1="73" x2="480" y2="73" stroke="#C8A063" stroke-width="1.5"/>
+    <text x="300" y="170" font-family="Georgia,'Playfair Display','Times New Roman',serif" font-size="94" font-style="italic" font-weight="500" fill="#4A2E45">Illusion</text>
+    <line x1="196" y1="198" x2="404" y2="198" stroke="#4A2E45" stroke-width="2"/>
+  </g>
+</svg>
