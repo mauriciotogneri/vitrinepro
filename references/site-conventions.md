@@ -28,6 +28,15 @@ Promotes best-practices' soft "modern formats with fallback" line to a hard rule
 - **Scope: photos only.** Logos, favicons, the OG image, and inline SVG are unaffected — they stay SVG/PNG/ICO. Never wrap a logo `<img>` in `<picture>`.
 - **CSS targets the inner `<img>`** — since the photo now sits inside `<picture>`, style the `<img>` itself (`figure img`); avoid child-combinator or positional selectors that assume the image is a direct child (`figure > img`, `img:first-child`).
 
+## Image enlargement (lightbox)
+
+Every photographic image opens in a click-to-enlarge lightbox — a self-contained behaviour layered on the existing markup, with no new assets and no per-image authoring.
+
+- **Scope = `<picture>` only.** Wire every `<picture> img` — which, by the **Images** convention, is exactly the content photos (`photo-*`, decorative `stock-*`). Logos, favicons, inline SVG icons and the map `<iframe>` are never wrapped in `<picture>`, so they are excluded by construction. The JS finds the photos; do **not** add per-image classes or wrappers in the HTML.
+- **Native `<dialog>`.** Build one `<dialog class="lightbox">` and open it with `showModal()` (native focus-trap, `Esc`, `::backdrop`); feature-detect `showModal` and otherwise open the image URL in a new tab. Show the photo's **already-loaded** asset (`img.currentSrc || img.src`) — it adds no image weight. Restore focus to the triggering photo on close, and lock background scroll with a root class (`html.lightbox-open { overflow: hidden; scrollbar-gutter: stable }`) while open.
+- **Each photo is a control:** `role="button"`, `tabindex="0"`, `aria-haspopup="dialog"`, and a locale-aware `aria-label` ("Agrandir : …" / "Enlarge: …", switched on `documentElement.lang`). Enter activates on keydown, Space on keyup (native-button keys). The enlarged `<img>` takes `alt=""` (the visible `<figcaption>` carries the description — no double announcement) and copies the source's `width`/`height` (CLS). Give the trigger an **inset** focus ring (`outline-offset: -3px`) so it isn't clipped by gallery figures' `overflow: hidden`.
+- **JS is identical across every site** — a standalone IIFE appended to `js/main.js` (copy it verbatim from any built site, e.g. `docs/webs/le-the_restaurant/js/main.js`; it declares its own `doc` and depends on nothing else in the file). **CSS is themed per site** in that site's tokens: a dark scrim from the darkest token + a faint accent glow, the frame in the site's radius/border/shadow, a **light** caption/icon (the overlay is always a dark environment, so the site's dark text tokens won't read), and the close-button hover in the brand accent. Keep the structure identical (`.lightbox`, `.lightbox__fig` / `__img` / `__cap` / `__close`; the `lb-fade` / `lb-zoom` keyframes gated behind `prefers-reduced-motion: no-preference`); vary only the values.
+
 ## Contact & location
 
 A **contact** form plus native links — **never a reservation/booking form**.
@@ -63,6 +72,7 @@ End-of-body, IIFE, no inline `on*=` handlers. It must:
 - Set the copyright year from `new Date().getFullYear()` into an **empty** `<span>` — never write the year as a literal in the markup (no hardcoded fallback).
 - Run scroll reveals via `IntersectionObserver`, with a no-`IntersectionObserver` fallback.
 - When hours are known, render an `Intl`-based open/closed badge in `Europe/Zurich`.
+- Wire a photo **lightbox** over every `<picture>` (see **Image enlargement (lightbox)**) — a standalone IIFE appended after the main one, identical across sites.
 
 ## Deploy files
 

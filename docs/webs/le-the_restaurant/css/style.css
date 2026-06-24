@@ -551,8 +551,8 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 /* ---------- photo lightbox (enlarge content images) ---------- */
 /* Class is added by JS, so the affordance only appears when the dialog works. */
 .is-zoomable { cursor: zoom-in; }
-/* keep the focus ring inside the thumbnail — its figure has overflow:hidden, which clips an outset ring */
-.is-zoomable:focus-visible { outline-offset: -3px; }
+/* explicit inset ring: stays visible even inside thumbnails whose figure has overflow:hidden */
+.is-zoomable:focus-visible { outline: 3px solid var(--ember); outline-offset: -3px; }
 html.lightbox-open { overflow: hidden; scrollbar-gutter: stable; } /* lock scroll without a width shift */
 
 .lightbox {
