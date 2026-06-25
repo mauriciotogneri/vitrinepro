@@ -908,3 +908,47 @@ html.lightbox-open { overflow: hidden; scrollbar-gutter: stable; } /* lock scrol
 }
 @keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes lb-zoom { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+
+/* ---------- Legal / privacy page (mentions-legales.html · en/legal.html) ---------- */
+.legal-hero {
+  padding-top: clamp(2.4rem, 5vw, 4rem);
+  padding-bottom: clamp(1.4rem, 3vw, 2.2rem);
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--surface), transparent);
+}
+.legal-hero h1 { font-size: clamp(2rem, 1.4rem + 3vw, 3.3rem); margin-top: .55rem; }
+.legal-lede {
+  margin-top: 1rem;
+  max-width: 42rem;
+  font-size: clamp(1.05rem, 1rem + .3vw, 1.2rem);
+  color: var(--cocoa-soft);
+}
+.legal-updated { margin-top: .9rem; font-size: .84rem; color: var(--muted); }
+
+.legal-body { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.legal { max-width: 50rem; }
+.legal > p { margin-top: 1rem; }
+.legal h2 {
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.7rem);
+  color: var(--terracotta-deep);
+  margin-top: clamp(2.2rem, 4vw, 3rem);
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--border);
+}
+.legal > h2:first-child { margin-top: 0; }
+.legal h3 { font-size: 1.08rem; color: var(--cocoa); margin-top: 1.5rem; }
+.legal p, .legal li { color: var(--cocoa-soft); }
+.legal a { color: var(--terracotta-deep); text-decoration: underline; text-underline-offset: 2px; }
+.legal a:hover { color: var(--terracotta); }
+.legal ul { list-style: disc; padding-left: 1.3em; margin-top: 1rem; display: grid; gap: .4rem; }
+
+.legal-card {
+  margin-top: 1.3rem;
+  padding: clamp(1.1rem, 2.5vw, 1.6rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.legal-card .name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--cocoa); margin-bottom: .5rem; }
+.legal-card p { color: var(--cocoa-soft); line-height: 1.75; }
