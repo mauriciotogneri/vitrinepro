@@ -515,6 +515,9 @@ h1.display { font-size: clamp(2.4rem, 1.4rem + 4.6vw, 4.7rem); }
   color: var(--taupe-dim); font-size: .82rem;
 }
 .footer-bottom a { color: var(--taupe-dim); }
+.powered-by { margin-top: 1.25rem; text-align: center; font-size: .78rem; letter-spacing: .02em; opacity: .7; }
+.powered-by a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.powered-by a:hover { opacity: 1; }
 
 /* ---------- reveal (progressive; only when JS on) ---------- */
 html.js .reveal { opacity: 0; transform: translateY(20px); transition: opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease); }

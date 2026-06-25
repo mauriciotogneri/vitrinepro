@@ -712,6 +712,9 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
   color: var(--on-teal-muted);
 }
 .footer-bottom a { color: var(--on-teal-muted); }
+.powered-by { margin-top: 1.25rem; text-align: center; font-size: .78rem; letter-spacing: .02em; opacity: .7; }
+.powered-by a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.powered-by a:hover { opacity: 1; }
 
 /* ----- Section divider blossom ----------------------------------------- */
 .divider { display: flex; align-items: center; justify-content: center; gap: 1rem; color: var(--gold); padding-block: 0.5rem; }

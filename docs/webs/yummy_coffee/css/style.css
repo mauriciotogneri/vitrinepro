@@ -399,3 +399,6 @@ p{ margin:0 0 1rem; }
 .footer__bottom .f-lang a[aria-current="true"]{ color:var(--cream); background:rgba(251,243,228,.12); }
 .footer__bottom .f-lang a:not([aria-current="true"]):hover{ color:var(--honey); }
 .footer__bottom .f-lang .sep{ opacity:.4; }
+.powered-by { margin-top: 1.25rem; text-align: center; font-size: .78rem; letter-spacing: .02em; opacity: .7; }
+.powered-by a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.powered-by a:hover { opacity: 1; }

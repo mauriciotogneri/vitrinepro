@@ -361,6 +361,9 @@ p { text-wrap: pretty; }
   display: flex; flex-wrap: wrap; gap: .8rem 1.5rem; justify-content: space-between; align-items: center;
   color: #b6aaa8; font-size: .85rem;
 }
+.powered-by { margin-top: 1.25rem; text-align: center; font-size: .78rem; letter-spacing: .02em; opacity: .7; }
+.powered-by a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.powered-by a:hover { opacity: 1; }
 
 /* ---- Scroll reveal ---------------------------------------------------- */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1); }

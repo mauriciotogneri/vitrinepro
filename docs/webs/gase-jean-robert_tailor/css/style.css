@@ -651,6 +651,9 @@ p { text-wrap: pretty; }
 }
 .to-top:hover { color: var(--camel-light); }
 .legal-note { max-width: 60ch; }
+.powered-by { margin-top: 1.25rem; text-align: center; font-size: .78rem; letter-spacing: .02em; opacity: .7; }
+.powered-by a { color: inherit; text-decoration: underline; text-underline-offset: 2px; font-size: inherit; }
+.powered-by a:hover { opacity: 1; }
 
 /* ---------- Reveal animations ---------- */
 .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--t), transform .8s var(--t); }

@@ -763,6 +763,9 @@ a.contact-line:hover { transform: translateY(-2px); box-shadow: var(--shadow-md)
   color: var(--amber-soft); font-weight: 600;
 }
 .to-top:hover { color: var(--cream); }
+.powered-by { margin-top: 1.25rem; text-align: center; font-size: .78rem; letter-spacing: .02em; opacity: .7; }
+.powered-by a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.powered-by a:hover { opacity: 1; }
 
 /* ---------- Scroll reveal ---------- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1); }
