@@ -402,3 +402,32 @@ p{ margin:0 0 1rem; }
 .powered-by { margin-top: 1.25rem; text-align: center; font-size: .78rem; letter-spacing: .02em; opacity: .7; }
 .powered-by a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .powered-by a:hover { opacity: 1; }
+
+
+/* ---------- Legal / privacy page (mentions-legales.html · en/legal.html) ---------- */
+.legal-page {
+  --lg-primary: var(--coffee);
+  --lg-text:    var(--ink);
+  --lg-muted:   var(--muted);
+  --lg-surface: var(--paper);
+  --lg-border:  var(--line);
+  --lg-radius:  var(--r);
+  --lg-display: var(--display);
+}
+.legal-wrap { width: 100%; max-width: 54rem; margin-inline: auto; padding-inline: clamp(1.15rem, 4vw, 2rem); }
+.legal-hero { padding: clamp(2.4rem, 5vw, 4rem) 0 clamp(1.4rem, 3vw, 2.2rem); border-bottom: 1px solid var(--lg-border); }
+.legal-eyebrow { font-weight: 700; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--lg-primary); }
+.legal-hero h1 { font-family: var(--lg-display); font-size: clamp(2rem, 1.4rem + 3vw, 3.2rem); line-height: 1.08; margin-top: .5rem; color: var(--lg-text); }
+.legal-updated { margin-top: .9rem; font-size: .84rem; color: var(--lg-muted); }
+.legal-body { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.legal { max-width: 50rem; }
+.legal > p { margin-top: 1rem; color: var(--lg-text); }
+.legal h2 { font-family: var(--lg-display); font-size: clamp(1.35rem, 1.1rem + 1vw, 1.7rem); line-height: 1.15; color: var(--lg-primary); margin-top: clamp(2.2rem, 4vw, 3rem); padding-bottom: .5rem; border-bottom: 2px solid var(--lg-border); }
+.legal > h2:first-child { margin-top: 0; }
+.legal h3 { font-family: var(--lg-display); font-size: 1.08rem; color: var(--lg-text); margin-top: 1.5rem; }
+.legal p, .legal li { color: var(--lg-text); }
+.legal a { color: var(--lg-primary); text-decoration: underline; text-underline-offset: 2px; }
+.legal ul { list-style: disc; padding-left: 1.3em; margin-top: 1rem; display: grid; gap: .4rem; }
+.legal-card { margin-top: 1.3rem; padding: clamp(1.1rem, 2.5vw, 1.6rem); background: var(--lg-surface); border: 1px solid var(--lg-border); border-radius: var(--lg-radius); }
+.legal-card .name { font-family: var(--lg-display); font-weight: 700; font-size: 1.15rem; color: var(--lg-text); margin-bottom: .5rem; }
+.legal-card p { color: var(--lg-text); line-height: 1.75; margin: 0; }
