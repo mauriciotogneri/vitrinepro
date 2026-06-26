@@ -63,7 +63,7 @@ Create this layout under `<out>`:
 
 ```
 index.html        fr-CH homepage  (lang="fr-CH")
-legal.html  fr-CH legal & privacy page, footer-linked (see site-conventions.md → Legal page)
+legal.html        fr-CH legal & privacy page, footer-linked (see site-conventions.md → Legal page)
 css/style.css     hand-written CSS (no framework)
 js/main.js        vanilla JS (no framework)
 assets/           logo, photos, favicons, og-image (+ any decorative stock-*)
@@ -72,6 +72,7 @@ sitemap.xml
 404.html
 .nojekyll         empty file (serve dotfiles / skip Jekyll)
 favicon.ico
+site.webmanifest  PWA manifest, linked via <link rel="manifest"> (see site-conventions.md → Web app manifest)
 ```
 
 ### 6. Assets
@@ -132,6 +133,7 @@ Don't report success without checking:
 - No fabricated **facts** anywhere — every factual claim (hours, prices, services, contact, reviews, copy) traces to the dossier; **imagery** is the sole exception, allowed only under the decorative-only guardrail below.
 - Fallback imagery obeys the guardrail: `stock-*` appears only as decoration, with honest generic `alt`, never captioned/alt-texted as this venue, and absent from JSON-LD `image`. Any generated logo and every used `stock-*` are flagged in the summary as replaceable.
 - Favicons/OG image were generated (or their absence was flagged); the `{{FORMSPREE_ID}}` (and `{{BASE_URL}}`, if used) placeholders are flagged.
+- `site.webmanifest` exists, is linked from the homepage `<head>`, is valid JSON, and every icon `src` it lists resolves in `<out>/assets/`.
 - No tax/registration ID anywhere — homepage **or** `legal.html` — (no Swiss UID / `CHE-…` / `IDE`, VAT/TVA, or `taxID`), in visible content **or** JSON-LD.
 - The footer links to `legal.html`, and that legal page exists, is **fr-CH**, content-complete (no empty/placeholder sections), reuses `css/style.css`, and all its internal links resolve.
 - The footer/copyright year is produced by JS (`getFullYear()`) into an empty span — no literal year in the markup.

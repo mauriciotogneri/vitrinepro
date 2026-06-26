@@ -83,6 +83,13 @@ Every site ships a dedicated **legal & privacy page** at `<out>/legal.html`, lin
 - **Mark it as a draft to validate** — carry an HTML comment noting the page is a generated template to be reviewed by the operator (and, if needed, legal counsel) before publication.
 - **No tax/registration identifier — ever.** The legal page is bound by the same hard rule as the rest of the site: **never** print a Swiss UID / `CHE-…` / `IDE`, a VAT/TVA number, or any `taxID` — not even under "Éditeur du site" (name + address + contact only). This is the spot where that rule is easiest to violate; don't.
 
+## Web app manifest (`site.webmanifest`)
+
+Every site ships a `site.webmanifest` at `<out>/` and links it from the homepage `<head>` with `<link rel="manifest" href="site.webmanifest">`, placed right after the `apple-touch-icon` link. It makes the site installable with a branded icon + splash.
+
+- **JSON fields:** `name` ("<Business> — <short trade>, Genève"), `short_name` (the brand), a truthful one-line `description` from the dossier, `"lang": "fr-CH"`, `"start_url": "./"`, `"scope": "./"`, `"display": "standalone"`, `theme_color` = the dossier theme's `theme-color` (the same value as the `<meta name="theme-color">`), and `background_color` = the page background.
+- **Icons reference only assets that exist** in `<out>/assets/` (the favicons from step 6): the 512×512 PNG with both `"purpose": "any"` and `"purpose": "maskable"`, plus the 32×32 PNG and the 180×180 `apple-touch-icon.png` (add `favicon.svg` only if one was generated). Never point an icon at a file the build didn't produce.
+
 ## Deploy files
 
 Generic shapes come from `best-practices.md` (`robots.txt` `Allow:`+`Sitemap:`, `sitemap.xml`, branded `404.html` with `noindex`, self-contained single file). Project specifics:

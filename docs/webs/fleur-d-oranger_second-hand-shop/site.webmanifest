@@ -1,0 +1,17 @@
+{
+  "name": "Fleur d'Oranger — Boutique de seconde main, Genève",
+  "short_name": "Fleur d'Oranger",
+  "description": "Boutique de seconde main et dépôt-vente à Genève.",
+  "lang": "fr-CH",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#134E45",
+  "background_color": "#FBF6EE",
+  "icons": [
+    { "src": "assets/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
