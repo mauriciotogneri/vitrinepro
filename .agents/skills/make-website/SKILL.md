@@ -63,7 +63,7 @@ Create this layout under `<out>`:
 
 ```
 index.html        fr-CH homepage  (lang="fr-CH")
-mentions-legales.html  fr-CH legal & privacy page, footer-linked (see site-conventions.md → Legal page)
+legal.html  fr-CH legal & privacy page, footer-linked (see site-conventions.md → Legal page)
 css/style.css     hand-written CSS (no framework)
 js/main.js        vanilla JS (no framework)
 assets/           logo, photos, favicons, og-image (+ any decorative stock-*)
@@ -132,8 +132,8 @@ Don't report success without checking:
 - No fabricated **facts** anywhere — every factual claim (hours, prices, services, contact, reviews, copy) traces to the dossier; **imagery** is the sole exception, allowed only under the decorative-only guardrail below.
 - Fallback imagery obeys the guardrail: `stock-*` appears only as decoration, with honest generic `alt`, never captioned/alt-texted as this venue, and absent from JSON-LD `image`. Any generated logo and every used `stock-*` are flagged in the summary as replaceable.
 - Favicons/OG image were generated (or their absence was flagged); the `{{FORMSPREE_ID}}` (and `{{BASE_URL}}`, if used) placeholders are flagged.
-- No tax/registration ID anywhere — homepage **or** `mentions-legales.html` — (no Swiss UID / `CHE-…` / `IDE`, VAT/TVA, or `taxID`), in visible content **or** JSON-LD.
-- The footer links to `mentions-legales.html`, and that legal page exists, is **fr-CH**, content-complete (no empty/placeholder sections), reuses `css/style.css`, and all its internal links resolve.
+- No tax/registration ID anywhere — homepage **or** `legal.html` — (no Swiss UID / `CHE-…` / `IDE`, VAT/TVA, or `taxID`), in visible content **or** JSON-LD.
+- The footer links to `legal.html`, and that legal page exists, is **fr-CH**, content-complete (no empty/placeholder sections), reuses `css/style.css`, and all its internal links resolve.
 - The footer/copyright year is produced by JS (`getFullYear()`) into an empty span — no literal year in the markup.
 - Instagram is linked only when the dossier shows the profile is public; a private profile is not linked.
 - `docs/index.html` has **exactly one** row for this business with a working **Website** link (`webs/<slug>`) — no duplicate row.
@@ -145,7 +145,7 @@ End with a short summary: the business, `<out>`, sections built vs. omitted (and
 - **Swiss-French only** (`fr-CH`) — a single-locale site at the root.
 - **No framework**: hand-written CSS + vanilla JS. Fonts via Google Fonts CDN (`display=swap` + preconnect).
 - **Truthful content only** — omit what the dossier doesn't support; never invent reviews, hours, prices, or copy. The one exception is **imagery**: labeled fallback assets from the dossier (a generated logo, `stock-*`) may be used as **decoration only** — honest generic `alt`, never presented as the real venue, never in JSON-LD, always flagged as replaceable.
-- **Never expose a tax/registration ID** — no Swiss UID / `CHE-…` / `IDE`, VAT/TVA number, or `taxID` anywhere on the site — **including the legal page (`mentions-legales.html`)** — neither in visible content nor in JSON-LD.
+- **Never expose a tax/registration ID** — no Swiss UID / `CHE-…` / `IDE`, VAT/TVA number, or `taxID` anywhere on the site — **including the legal page (`legal.html`)** — neither in visible content nor in JSON-LD.
 - **Social links:** only link an Instagram account the dossier shows is **public/accessible**; if it's private (or flagged private in the dossier), omit the link.
 - **Year is always dynamic** — render the copyright/footer year with JS (`getFullYear()`) into an empty span; never hardcode a year in the markup.
 - **Accessibility + SEO + performance per `references/best-practices.md`** — it is the bar, not a suggestion.

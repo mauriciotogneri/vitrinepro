@@ -851,7 +851,7 @@ html.lightbox-open { overflow: hidden; scrollbar-gutter: stable; } /* lock scrol
 @keyframes lb-zoom { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
 
 
-/* ---------- Legal / privacy page (mentions-legales.html · en/legal.html) ---------- */
+/* ---------- Legal / privacy page (legal.html · en/legal.html) ---------- */
 .legal-page {
   --lg-primary: var(--teal);
   --lg-text:    var(--ink);

@@ -74,9 +74,9 @@ End-of-body, IIFE, no inline `on*=` handlers. It must:
 - When hours are known, render an `Intl`-based open/closed badge in `Europe/Zurich`.
 - Wire a photo **lightbox** over every `<picture>` (see **Image enlargement (lightbox)**) — a standalone IIFE appended after the main one, identical across sites.
 
-## Legal page (`mentions-legales.html`)
+## Legal page (`legal.html`)
 
-Every site ships a dedicated **legal & privacy page** at `<out>/mentions-legales.html`, linked from the footer (see `references/site-structure.md` → **Footer**). Build it from the **dossier's published data only** — never invent an operator, address, or identifier.
+Every site ships a dedicated **legal & privacy page** at `<out>/legal.html`, linked from the footer (see `references/site-structure.md` → **Footer**). Build it from the **dossier's published data only** — never invent an operator, address, or identifier.
 
 - **Standalone fr-CH page** (`<html lang="fr-CH">`) that **reuses the site's `css/style.css`** — style its `.legal-page` container there, don't add a separate stylesheet. Standard head: charset, viewport, `<title>Mentions légales &amp; confidentialité — <Business></title>`, description, `theme-color`, `robots: index, follow`, an absolute `<link rel="canonical">` under `<base>`, favicons, and the same Google-Fonts links as the homepage. No header/nav and no site footer — just a `<main class="legal-page">` with an `<h1>`, a "Dernière mise à jour" date, the sections below, and a link back to the homepage (`index.html`).
 - **Section set** (include only what the dossier supports): **Éditeur du site** (business name, address, phone — public contact details only), **Hébergement** (GitHub Pages / GitHub, Inc.), **Responsable du traitement** (Swiss **nLPD**), **Données que nous traitons** (the contact form's name/e-mail/message via **Formspree**, plus the host's technical logs), **Cookies** (the site itself sets none; Google Maps/Fonts may), **Transferts à l'étranger** (GitHub/Formspree/Google in the US; Swiss-U.S. Data Privacy Framework or standard contractual clauses), **Durée de conservation**, **Vos droits** (nLPD + the **PFPDT** as supervisory authority), **Propriété intellectuelle & images**.
