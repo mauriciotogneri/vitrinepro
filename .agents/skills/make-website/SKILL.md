@@ -48,7 +48,14 @@ If there is no remote or it can't be parsed, use a literal `{{BASE_URL}}` token 
 
 ### 4. Build with the frontend-design skill
 
-Invoke the **frontend-design** skill to design and implement the site (your global rule requires it for any UI). Feed it the dossier facts, the dossier's **theme** (palette, typography, `theme-color`, shape/depth/spacing, vibe), the section plan, and the `<base>` URL. Produce distinctive, production-grade output — a design unique to this business that doesn't resemble the other sites in `docs/webs/`. Tell it which assets are **real** (an official `logo`, `photo-*`) vs **fallback** (a generated `logo`, `stock-*`): when only fallback imagery exists, design **photo-light** — lead with brand color, type, and CSS/SVG art and icons rather than photography — and treat any `stock-*` as decorative background only (see step 6).
+Invoke the **frontend-design** skill to design and implement the site (your global rule requires it for any UI). Feed it the dossier facts, the dossier's **theme** (palette, typography, `theme-color`, shape/depth/spacing, vibe), the section plan, and the `<base>` URL. Produce distinctive, production-grade output — a design unique to this business that doesn't resemble the other sites in `docs/webs/`.
+
+**Design for genuine craft, not just difference from the other sites:**
+
+- **Invest in one signature element a template can't produce** — a bespoke illustration, a custom icon set, a recurring graphic device, or a small piece of motion. Handcraft is what separates "designed" from "assembled". It needn't be everywhere; it must be distinctive and tied to something **true about the business**, so it reads as earned rather than decorative.
+- **Make the hero specific and proof-led** — lead with copy written for this exact business and its real benefit, never generic welcome text, and surface concrete proof early: a rating, a number, a real detail — each **taken from the dossier, never invented**. Small craft touches — a slight tilt, subtle motion, a hand-drawn mark — set the tone in the first second, before anyone reads a word.
+
+Tell it which assets are **real** (an official `logo`, `photo-*`) vs **fallback** (a generated `logo`, `stock-*`): when only fallback imagery exists, design **photo-light** — lead with brand color, type, and CSS/SVG art and icons rather than photography — and treat any `stock-*` as decorative background only (see step 6).
 
 ### 5. Write the files
 
