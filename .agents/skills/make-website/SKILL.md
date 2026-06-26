@@ -70,7 +70,6 @@ assets/           logo, photos, favicons, og-image (+ any decorative stock-*)
 robots.txt
 sitemap.xml
 404.html
-.nojekyll         empty file (serve dotfiles / skip Jekyll)
 favicon.ico
 site.webmanifest  PWA manifest, linked via <link rel="manifest"> (see site-conventions.md → Web app manifest)
 ```
@@ -95,7 +94,7 @@ Build the contact section per `site-conventions.md` → **Contact & location**: 
 
 ### 9. SEO / deploy files
 
-Emit `robots.txt`, `sitemap.xml`, `404.html`, and `.nojekyll` (all in step 5's layout) per `best-practices.md` (generic shapes) + `site-conventions.md` (project specifics — `<base>`-absolute, single-page sitemap, fr-CH `404`, GitHub-Pages `.nojekyll`). Don't restate them here.
+Emit `robots.txt`, `sitemap.xml`, and `404.html` (all in step 5's layout) per `best-practices.md` (generic shapes) + `site-conventions.md` (project specifics — `<base>`-absolute, single-page sitemap, fr-CH `404`). Don't restate them here.
 
 ### 10. Portfolio index
 

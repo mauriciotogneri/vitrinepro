@@ -96,4 +96,4 @@ Generic shapes come from `best-practices.md` (`robots.txt` `Allow:`+`Sitemap:`, 
 
 - `robots.txt` `Sitemap:` and `sitemap.xml` `<loc>` are absolute under `<base>`; the sitemap lists the **single homepage URL** (these are one-page sites).
 - `404.html` copy is in **fr-CH**.
-- `.nojekyll` (empty) — required because the sites deploy to **GitHub Pages**.
+- **Jekyll is disabled repo-wide by `docs/.nojekyll`** — a single empty file at the Pages publish-source root (`docs/`), committed once as repo infrastructure. **Do not emit a per-site `.nojekyll`** under `<out>`: GitHub Pages only honours `.nojekyll` at the publish root, so a nested copy does nothing for the live portfolio.
