@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page introuvable — Café Le Bout de la Rue</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#1b3c53" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shantell+Sans:wght@600;700&display=swap"
+    />
+    <style>
+      :root {
+        --bg: #1b3c53;
+        --primary: #0f2737;
+        --accent: #c0922f;
+        --accent-bright: #dcae4e;
+        --text: #f3f1eb;
+        --muted: #a9b8c6;
+        --border: #2e5168;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", system-ui, sans-serif;
+        line-height: 1.6;
+        text-align: center;
+      }
+      .e {
+        max-width: 30rem;
+      }
+      .e svg {
+        width: 96px;
+        height: auto;
+        margin: 0 auto 1.5rem;
+        display: block;
+      }
+      .code {
+        font-family: "Shantell Sans", cursive;
+        font-weight: 700;
+        font-size: clamp(3.5rem, 14vw, 6rem);
+        line-height: 1;
+        color: var(--accent-bright);
+      }
+      h1 {
+        font-family: "Shantell Sans", cursive;
+        font-weight: 700;
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        margin: 0.6rem 0 0.5rem;
+      }
+      p {
+        color: var(--muted);
+        margin-bottom: 1.8rem;
+      }
+      a.home {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0.78rem 1.5rem;
+        border-radius: 999px;
+        background: var(--accent);
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      a.home:hover {
+        background: var(--accent-bright);
+      }
+      a.home:focus-visible {
+        outline: 3px solid var(--accent-bright);
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="e">
+      <svg viewBox="0 0 120 200" aria-hidden="true">
+        <path
+          d="M52 16c-1 12 0 20-1 27-1 8-9 13-12 23-2 7-3 14-3 24v66c0 16 9 24 24 24s24-8 24-24v-66c0-10-1-17-3-24-3-10-11-15-12-23-1-7 0-15-1-27z"
+          fill="#0f2737"
+          stroke="#f3f1eb"
+          stroke-width="4"
+          stroke-linejoin="round"
+        />
+        <rect x="51" y="6" width="18" height="12" rx="4" fill="#0f2737" stroke="#f3f1eb" stroke-width="4" />
+        <g fill="none" stroke="#f3f1eb" stroke-width="4" stroke-linecap="round">
+          <path d="M46 120c2-6 12-6 14 0" />
+          <path d="M60 120c2-6 12-6 14 0" />
+          <path d="M50 138c5 4 15 4 20-2" />
+        </g>
+      </svg>
+      <p class="code">404</p>
+      <h1>On a perdu le fil…</h1>
+      <p>
+        Cette page n’existe pas (ou plus). Mais le bar, lui, est toujours au bout
+        de la rue.
+      </p>
+      <a class="home" href="index.html">Retour à l’accueil</a>
+    </main>
+  </body>
+</html>

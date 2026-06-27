@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mauriciotogneri.github.io/vitrinepro/webs/cafe-le-bout-de-la-rue_bar/sitemap.xml

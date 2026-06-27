@@ -1,0 +1,35 @@
+{
+  "name": "Café Le Bout de la Rue — bar de quartier, Genève",
+  "short_name": "Le BDR",
+  "description": "Bar-café de quartier rue de l’École-de-Médecine à Genève : cocktails, Guinness pression, tapas maison et soirées.",
+  "lang": "fr-CH",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#1b3c53",
+  "background_color": "#1b3c53",
+  "icons": [
+    {
+      "src": "assets/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
