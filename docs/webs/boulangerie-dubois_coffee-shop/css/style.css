@@ -289,6 +289,7 @@ h1.display { font-size: clamp(2.6rem, 1.5rem + 4.9vw, 4.9rem); }
 }
 .nav-list { display: flex; align-items: center; gap: 0.25rem; }
 .nav-list a {
+  position: relative;
   color: var(--ink-2);
   text-decoration: none;
   font-weight: 550;
@@ -299,13 +300,17 @@ h1.display { font-size: clamp(2.6rem, 1.5rem + 4.9vw, 4.9rem); }
 }
 .nav-list a:hover { color: var(--ink); background: rgba(79, 122, 104, 0.08); }
 .nav-list a[aria-current="true"] { color: var(--sage-ink); }
+/* underline is absolutely positioned so the active link keeps the same box
+   height as the others — otherwise it grows taller and the centered row shifts */
 .nav-list a[aria-current="true"]::after {
   content: "";
-  display: block;
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.3rem;
   height: 2px;
   border-radius: 2px;
   background: var(--terra);
-  margin-top: 2px;
 }
 
 .nav-toggle {
