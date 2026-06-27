@@ -10,7 +10,6 @@
   <link rel="canonical" href="https://mauriciotogneri.github.io/vitrinepro/webs/la-casa-del-sandwich_sandwich-shop/">
 
   <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -45,7 +44,7 @@
     "slogan": "Une sandwicherie pas comme les autres !",
     "description": "Sandwicherie portugaise à Genève : la vraie bifana, paninis, sandwichs et plats du dimanche portugais, à emporter, en livraison ou sur place.",
     "url": "https://mauriciotogneri.github.io/vitrinepro/webs/la-casa-del-sandwich_sandwich-shop/",
-    "logo": "https://mauriciotogneri.github.io/vitrinepro/webs/la-casa-del-sandwich_sandwich-shop/assets/logo.png",
+    "logo": "https://mauriciotogneri.github.io/vitrinepro/webs/la-casa-del-sandwich_sandwich-shop/assets/logo2.png",
     "image": [
       "https://mauriciotogneri.github.io/vitrinepro/webs/la-casa-del-sandwich_sandwich-shop/assets/og-image.png",
       "https://mauriciotogneri.github.io/vitrinepro/webs/la-casa-del-sandwich_sandwich-shop/assets/hero-roti.jpg",
@@ -108,21 +107,8 @@
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-  <!-- inline SVG sprite: the El Profesor mask (the house mascot) + star -->
+  <!-- inline SVG sprite: rating star -->
   <svg width="0" height="0" class="svg-sprite" aria-hidden="true" focusable="false">
-    <symbol id="lcs-mask" viewBox="0 0 120 140">
-      <path d="M60 6 C90 6 107 28 107 60 C107 93 88 121 60 135 C32 121 13 93 13 60 C13 28 30 6 60 6 Z" fill="#db0a14"/>
-      <path d="M27 49 Q40 38 54 47" fill="none" stroke="#f2e6c8" stroke-width="5" stroke-linecap="round"/>
-      <path d="M93 49 Q80 38 66 47" fill="none" stroke="#f2e6c8" stroke-width="5" stroke-linecap="round"/>
-      <ellipse cx="41" cy="60" rx="8" ry="5.5" fill="#161412"/>
-      <ellipse cx="79" cy="60" rx="8" ry="5.5" fill="#161412"/>
-      <path d="M60 62 C55 74 55 85 60 93 C65 85 65 74 60 62 Z" fill="#f2e6c8"/>
-      <path d="M60 93 C52 98 43 100 35 97 C28 95 24 91 22 84 C29 91 34 92 41 91 C49 90 55 95 60 101 C65 95 71 90 79 91 C86 92 91 91 98 84 C96 91 92 95 85 97 C77 100 68 98 60 93 Z" fill="#f2e6c8"/>
-      <path d="M60 105 C53 108 53 119 60 125 C67 119 67 108 60 105 Z" fill="#f2e6c8"/>
-    </symbol>
-    <symbol id="lcs-face" viewBox="0 0 120 140">
-      <path d="M60 6 C90 6 107 28 107 60 C107 93 88 121 60 135 C32 121 13 93 13 60 C13 28 30 6 60 6 Z"/>
-    </symbol>
     <symbol id="lcs-star" viewBox="0 0 24 24">
       <path d="M12 2.2l2.95 5.98 6.6.96-4.77 4.65 1.13 6.57L12 17.98 6.1 21.33l1.13-6.57L2.46 10.1l6.6-.96z"/>
     </symbol>
@@ -131,7 +117,7 @@
   <header class="site-head" id="top">
     <div class="container head-inner">
       <a class="brand" href="#top" aria-label="La Casa Del Sandwich — retour en haut">
-        <img src="assets/logo.png" alt="La Casa Del Sandwich" width="150" height="103" decoding="async">
+        <img src="assets/mascot.png" alt="La Casa Del Sandwich — sandwicherie portugaise à Genève" width="496" height="496" decoding="async">
       </a>
       <nav class="site-nav" id="nav-menu" aria-label="Navigation principale">
         <a href="#carte">La carte</a>
@@ -150,10 +136,9 @@
 
     <!-- ======================= HERO ======================= -->
     <section class="hero">
-      <svg class="hero__ghost" aria-hidden="true"><use href="#lcs-face"/></svg>
       <div class="container hero__grid">
         <div class="hero__copy reveal">
-          <p class="eyebrow"><svg class="ico-mask" aria-hidden="true"><use href="#lcs-mask"/></svg> Sandwicherie portugaise · Genève</p>
+          <p class="eyebrow">Sandwicherie portugaise · Genève</p>
           <h1 class="hero__title">Une sandwicherie <span class="hl">pas comme<br>les autres.</span></h1>
           <p class="lede">La vraie <strong>bifana</strong> portugaise, des paninis généreux, des sandwichs sur mesure et les vrais <strong>plats du dimanche</strong> — à emporter, en livraison ou sur place, Avenue de Sainte-Clotilde.</p>
           <div class="cta-row">
@@ -185,7 +170,7 @@
             <circle cx="60" cy="60" r="58" fill="none" stroke="#e0a82e" stroke-width="1.4"/>
             <circle cx="60" cy="60" r="44" fill="none" stroke="#e0a82e" stroke-width="0.8" stroke-dasharray="1 3"/>
             <text class="seal__txt"><textPath href="#sealCurve" startOffset="0">★ MAISON PORTUGAISE ★ GENÈVE ★ À EMPORTER &amp; LIVRAISON </textPath></text>
-            <use href="#lcs-mask" transform="translate(36,34) scale(0.4)"/>
+            <image href="assets/mascot.png" x="25" y="24" width="70" height="70"/>
           </svg>
         </div>
       </div>
@@ -195,7 +180,7 @@
     <section class="section" id="carte">
       <div class="container">
         <header class="sec-head reveal">
-          <p class="eyebrow"><svg class="ico-mask" aria-hidden="true"><use href="#lcs-mask"/></svg> La carte</p>
+          <p class="eyebrow">La carte</p>
           <h2>Bifanas, sandwichs &amp; saveurs du Portugal</h2>
           <p class="sec-sub">Tout est fait pour être généreux et sans chichi. Prix en francs suisses — à emporter, en livraison ou sur place.</p>
         </header>
@@ -287,7 +272,7 @@
     <section class="section section--alt" id="maison">
       <div class="container maison">
         <div class="maison__intro reveal">
-          <p class="eyebrow"><svg class="ico-mask" aria-hidden="true"><use href="#lcs-mask"/></svg> La maison</p>
+          <p class="eyebrow">La maison</p>
           <h2>La casa du Profesor</h2>
           <p>La Casa Del Sandwich, c'est l'esprit portugais au cœur de Genève : on y vient pour la <strong>bifana</strong>, on y reste pour les <strong>plats du dimanche</strong> mijotés comme à la maison. Derrière le comptoir, le clin d'œil au <em>Profesor</em> et son masque rouge — une sandwicherie qui ne se prend pas au sérieux, mais qui prend la cuisine très au sérieux.</p>
           <p>Sandwichs sur mesure, paninis fondants, pastéis de nata tout juste sortis… et chaque semaine, un nouveau plat portugais à la carte. Le tout à emporter, en livraison ou à déguster sur place.</p>
@@ -323,7 +308,7 @@
     <section class="section" id="avis">
       <div class="container">
         <header class="sec-head reveal">
-          <p class="eyebrow"><svg class="ico-mask" aria-hidden="true"><use href="#lcs-mask"/></svg> Les avis</p>
+          <p class="eyebrow">Les avis</p>
           <h2>On en parle plutôt bien</h2>
         </header>
         <div class="avis">
@@ -353,7 +338,7 @@
     <section class="section section--alt" id="trouver">
       <div class="container">
         <header class="sec-head reveal">
-          <p class="eyebrow"><svg class="ico-mask" aria-hidden="true"><use href="#lcs-mask"/></svg> Nous trouver</p>
+          <p class="eyebrow">Nous trouver</p>
           <h2>Avenue de Sainte-Clotilde 18</h2>
         </header>
         <div class="trouver">
@@ -408,7 +393,7 @@
     <section class="section" id="contact">
       <div class="container">
         <header class="sec-head reveal">
-          <p class="eyebrow"><svg class="ico-mask" aria-hidden="true"><use href="#lcs-mask"/></svg> Contact</p>
+          <p class="eyebrow">Contact</p>
           <h2>Une faim, une question&#8239;?</h2>
           <p class="sec-sub">Écrivez-nous, appelez, ou commandez en ligne — on vous répond vite.</p>
         </header>
@@ -460,7 +445,7 @@
   <footer class="site-foot">
     <div class="container foot-grid">
       <div class="foot-brand">
-        <img src="assets/logo.png" alt="La Casa Del Sandwich" width="160" height="110" loading="lazy" decoding="async">
+        <img src="assets/logo2.png" alt="La Casa Del Sandwich" width="655" height="807" loading="lazy" decoding="async">
         <p>Une sandwicherie pas comme les autres — bifana, paninis &amp; plats du dimanche portugais, au cœur de Genève.</p>
         <p class="foot-contact">Avenue de Sainte-Clotilde 18, 1205 Genève<br>
           <a href="tel:+41225553666">022 555 36 66</a> · <a href="mailto:profesor@lacasadelsandwich.ch">profesor@lacasadelsandwich.ch</a></p>
