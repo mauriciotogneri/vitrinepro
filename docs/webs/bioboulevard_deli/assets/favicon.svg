@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="BioBoulevard">
+  <rect width="512" height="512" rx="104" fill="#62B55B"/>
+  <path d="M256 406 C 247 350, 247 302, 257 258" fill="none" stroke="#FFFFFF" stroke-width="25" stroke-linecap="round"/>
+  <ellipse cx="190" cy="238" rx="76" ry="34" fill="#FFFFFF" transform="rotate(-43 190 238)"/>
+  <ellipse cx="324" cy="220" rx="76" ry="34" fill="#FFFFFF" transform="rotate(42 324 220)"/>
+</svg>
