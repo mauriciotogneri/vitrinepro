@@ -255,7 +255,7 @@ svg { fill: currentColor; }
 .pl-dots { flex: 1; border-bottom: 2px dotted var(--border); transform: translateY(-.25em); min-width: 1.5rem; }
 .pl-price { font-family: var(--font-display); font-weight: 800; color: var(--gold); font-size: 1.12rem; white-space: nowrap; }
 
-.cards { display: grid; gap: clamp(1rem, 2.5vw, 1.4rem); grid-template-columns: 1fr; }
+.cards { display: grid; grid-auto-flow: dense; gap: clamp(1rem, 2.5vw, 1.4rem); grid-template-columns: 1fr; }
 @media (min-width: 620px) { .cards { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 980px) { .cards { grid-template-columns: repeat(3, 1fr); } }
 .card {
@@ -295,10 +295,7 @@ svg { fill: currentColor; }
 .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(.6rem, 1.6vw, 1rem); }
 .gallery__item { border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
 .gallery__item img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1/1; transition: transform .5s var(--t); }
-.gallery__item--tall { grid-row: span 2; }
-.gallery__item--tall img { aspect-ratio: 3/4; }
 .gallery__item:hover img { transform: scale(1.05); }
-@media (max-width: 480px) { .gallery__item--tall { grid-row: auto; } .gallery__item--tall img { aspect-ratio: 1/1; } }
 
 /* ---------- avis ---------- */
 .avis { display: grid; gap: clamp(1rem, 2.5vw, 1.4rem); grid-template-columns: 1fr; }
@@ -334,8 +331,6 @@ svg { fill: currentColor; }
 .hours td { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
 .hours th { font-family: var(--font-body); }
 .hours tr.today th, .hours tr.today td { color: var(--gold); font-weight: 700; }
-.hours-note { color: var(--muted); font-size: .88rem; margin-top: .5rem; }
-.hours-note a { color: var(--gold); }
 .trouver__photo { margin-top: 1.4rem; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); }
 .trouver__photo img { width: 100%; aspect-ratio: 9/5; object-fit: cover; }
 

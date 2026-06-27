@@ -63,10 +63,10 @@
     zurichNow = { day: m.weekday, mins: (+m.hour) * 60 + (+m.minute) };
   } catch (e) { zurichNow = null; }
 
-  /* --- open / closed badges (per-day schedule, self-reported hours) --- */
+  /* --- open / closed badges (per-day schedule; Saturday closed) --- */
   var schedule = {
-    Mon: [510, 1110], Tue: [510, 1110], Wed: [510, 1110], Thu: [510, 1110], Fri: [510, 1110],
-    Sat: [600, 1080], Sun: [600, 840]
+    Mon: [660, 1095], Tue: [660, 1095], Wed: [660, 1095], Thu: [660, 1095], Fri: [660, 1095],
+    Sun: [660, 825]
   };
   var isOpenNow = function () {
     if (!zurichNow) { return null; }
