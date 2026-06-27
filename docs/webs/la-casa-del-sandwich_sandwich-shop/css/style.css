@@ -428,9 +428,6 @@ html.lightbox-open { overflow: hidden; scrollbar-gutter: stable; }
 .legal-page {
   max-width: 50rem; margin-inline: auto; padding: clamp(2rem, 6vw, 4rem) var(--pad) clamp(3rem, 7vw, 5rem);
 }
-.legal-back a { font-family: var(--font-display); font-weight: 700; color: var(--gold); text-decoration: none; }
-.legal-back a:hover { color: var(--gold-soft); text-decoration: underline; }
-.legal-back--end { margin-top: 2.6rem; padding-top: 1.6rem; border-top: 1px solid var(--border); }
 .legal-page h1 { font-size: clamp(1.9rem, 1.4rem + 2.2vw, 2.8rem); margin: 1.2rem 0 .4rem; }
 .legal-updated { color: var(--muted); font-size: .92rem; margin-bottom: 2.2rem; }
 .legal-page section { margin-bottom: 1.9rem; }
