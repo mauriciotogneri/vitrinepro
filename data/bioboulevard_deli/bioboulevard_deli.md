@@ -39,15 +39,26 @@ Per source (note the disagreements — Saturday differs on every source, and Ins
 
 ## Ratings
 
-| Source  | Score   | Count |
-| ------- | ------- | ----- |
+| Source   | Score   | Count |
+| -------- | ------- | ----- |
+| Google   | 4.7 / 5 | 33    |
 | HappyCow | 3.5 / 5 | 4     |
 
-_Google's rating/review count could not be captured — the Maps page sits behind a GDPR consent wall (blocked). Facebook shows "Pas encore évalué (0 avis)" — no rating yet._
+_Google rating/reviews captured 2026-06-27 from the Maps place page (link provided by the owner; CID `0x478c658680123cd9:0x5b934808e35b26b1`, place `/g/11fllmmpy1`) — **supersedes** the earlier "blocked by GDPR consent wall" note. **Google is the canonical rating: 4.7/5 from 33 avis.** Facebook shows "Pas encore évalué (0 avis)" — no rating yet._
 
 ## Reviews
 
-**HappyCow** _(most positive; excerpts as summarized by the source)_
+**Google** _(canonical: 4.7/5 from 33 reviews; captured 2026-06-27; verbatim French excerpts)_
+
+- **Audrey B.**, 5★ (~2025): "Excellente adresse pour nos courses bio avec des produits sélectionnés de qualité et un accueil chaleureux toujours de bon conseil. Nous recommandons grandement BioBoulevard pour vos emplettes, allant de l'alimentaire aux produits d'entretien, cosmétiques, et autres. Une pépite à Genève !"
+- **Isabelle Fleury**, 5★ (~2025): "Première visite chez BioBoulevard. Wendy est très gentille, accueillante et de bons conseils. Le magasin est lumineux, propre avec un très bon choix de produits. Je vais y retourner !"
+- **Matteo**, 5★ (~2026): "Très belle découverte chez BioBoulevard ! Une dame vraiment très chou, gentille et cordiale. Elle donne d'excellents conseils et prend vraiment le temps d'aider ses clients, ce qui est rare et très appréciable. […] J'ai adoré l'endroit et tout ce qu'elle propose — je reviendrai plus souvent, c'est certain !"
+- **Isabellanne VanHoye** (Local Guide), 5★ (~2025): satisfaite "au niveau du choix, de la variété et de la qualité" — and the owner (Wendy, also a health coach) "saura vous aiguiller ! C'est une perle".
+- **Balancing view** — **Steve Balaser** (Local Guide), 2★ (~2026): "Prix extrêmement surfait (1/4 en plus)" vs other organic shops. (The only sub-5★ among those captured; the 4.7 aggregate already reflects it.)
+
+_The three Google reviews above are the ones used on the built site (Reviews section + JSON-LD). The owner is referred to by name (Wendy) in several reviews; she is the public proprietor (also visible on the storefront door)._
+
+**HappyCow** _(older; superseded as the headline rating by Google; excerpts as summarized by the source)_
 
 - HC-Zurich, 2020-08-11: "Above average for its size — organized selection with more vegan products than comparable stores."
 - MajoExploradora, 2022-01-01: "Appreciated broad vegan product range including tofu varieties, powders, biscuits, and sweets."
@@ -122,7 +133,7 @@ _No fallback imagery was needed — a genuine logo and genuine venue photos were
 
 | Source                                | Access    | Notes                                                                                                  |
 | ------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------ |
-| Google Business Profile / Google Maps | blocked   | GDPR consent wall; no rating/reviews/photos. Identity (name/address/phone/hours/status) cross-confirmed via aggregating directories. |
+| Google Business Profile / Google Maps | ok _(2026-06-27)_ | Reviews captured from the owner-provided Maps link: **4.7/5, 33 avis**; top 5★ reviews extracted. (An earlier run was blocked by the GDPR consent wall; cleared via consent + headless render.) |
 | OpenStreetMap                         | ok        | Node 12367301486; `shop=deli`, `organic=only`; address, phone, hours, FB/IG handles.                   |
 | local.ch                              | partial   | Listed as "Terr'Ô de Vie Sàrl/BioBoulevard" at Bd d'Yvoy 5; phone + email; no hours/photos; "Pas encore d'avis". |
 | search.ch / tel.search.ch             | partial   | Same entity at Bd d'Yvoy 5; phone; links to locali-ge.ch (Locali marketplace).                         |
@@ -160,9 +171,7 @@ _Also confirmed available: `bioboulevard-epicerie.ch`, `bioboulevardshop.ch`, `b
 _Standard fields no source could fill, or that are only low-confidence placeholders — a human (ideally the owner) could supply these._
 
 - **Working website:** none — the own domain `bioboulevard.ch` is an unfinished maintenance page. Suggested `.ch` domains for the new build are listed above.
-- **Opening hours:** conflicting across sources (Mon–Fri 09:30–19:00 vs 09:00–18:00; Saturday 18:00 / 17:00 / 16:00) and likely seasonal ("horaires d'été") — needs the owner's confirmation.
-- **Google rating & reviews:** not captured (Google sits behind a consent wall) — only HappyCow's 3.5/5 (4) is available.
-- **Secondary phone:** +41 22 808 03 89 (HappyCow) is unverified against the canonical 022 321 69 58.
+- **Opening hours:** conflicting across sources (Mon–Fri 09:30–19:00 vs 09:00–18:00; Saturday 18:00 / 17:00 / 16:00) and likely seasonal ("horaires d'été") — needs the owner's confirmation.- **Secondary phone:** +41 22 808 03 89 (HappyCow) is unverified against the canonical 022 321 69 58.
 - **Itemized prices / price list:** none published on any source.
 - **Extracted-from-website branding:** unavailable (no live site) — the theme is logo/brand-derived (medium confidence), not website-extracted.
 </content>
