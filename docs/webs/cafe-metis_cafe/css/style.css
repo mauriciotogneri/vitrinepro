@@ -935,16 +935,6 @@ section {
     font-style: italic;
 }
 
-.night__shots .shot:nth-child(2) {
-    margin-top: 2rem;
-}
-
-@media (max-width: 480px) {
-    .night__shots .shot:nth-child(2) {
-        margin-top: 0;
-    }
-}
-
 /* =============================== MAISON ================================= */
 .maison {
     padding: clamp(3.5rem, 8vw, 6rem) 0;
@@ -1001,13 +991,7 @@ section {
 .gallery {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: .8rem;
-}
-
-@media (min-width: 620px) {
-    .gallery {
-        grid-template-columns: repeat(4, 1fr);
-    }
+    gap: 1rem;
 }
 
 .gtile {
@@ -1031,15 +1015,6 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-@media (min-width: 620px) {
-
-    /* gentle stagger for rhythm — second & fourth tiles drop a touch */
-    .gtile:nth-child(2),
-    .gtile:nth-child(4) {
-        transform: translateY(1.6rem);
-    }
 }
 
 /* =============================== AVIS =================================== */
