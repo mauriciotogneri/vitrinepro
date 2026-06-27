@@ -69,7 +69,7 @@ _(No itemized prices were published on any source.)_
 
 ## Branding / Theme
 
-**Basis:** logo-derived _(medium confidence)_ — no website exists to extract from; palette taken from the downloaded logo (`assets/logo.jpg`), with shape/depth/spacing as tasteful **convention**, and the accent colour **inferred**.
+**Basis:** logo-derived + **designer-directed** _(medium confidence)_ — no website exists to extract from. The **dark navy `#1B3C53` background** and the inverted **light-on-dark** treatment were specified by the project designer _(feedback, 2026-06-27)_; the warm-white text plus the navy surface/border and muted slate are **derived** to suit that background, the amber accent stays **inferred**, and shape/depth/spacing remain tasteful **convention**.
 
 The logo is a bold, hand-drawn white wordmark — **"LE BDR / BOUT D'LA RUE"** (the big letters spell **BDR**) — on a **pure black** field. Strictly monochrome; matches the venue's "sober, classy black-walls" interior.
 
@@ -77,15 +77,15 @@ The logo is a bold, hand-drawn white wordmark — **"LE BDR / BOUT D'LA RUE"** (
 
 | Role       | Hex       | Source / basis                                  |
 | ---------- | --------- | ----------------------------------------------- |
-| primary    | `#111111` | logo field `#000000`, softened _(logo-derived)_ |
-| accent     | `#c0922f` | warm amber — beer/cocktail warmth _(**inferred**, not in logo)_ |
-| background | `#faf8f5` | warm off-white _(convention)_                   |
-| surface    | `#ffffff` | _(convention)_                                  |
-| text       | `#161616` | logo lettering contrast _(logo-derived)_        |
-| muted      | `#5d5d5d` | logo edge grey `#5D5D5D` _(logo-derived)_       |
-| border     | `#e7e3db` | _(convention)_                                  |
+| primary    | `#0f2737` | deepest navy — darkest sections & text-on-accent _(derived from background)_ |
+| accent     | `#c0922f` | warm amber — beer/cocktail warmth; reads as gold on the navy field _(**inferred**, not in logo)_ |
+| background | `#1b3c53` | dark navy — **designer-directed** _(feedback, 2026-06-27)_ |
+| surface    | `#244a64` | elevated navy — cards lift off the background _(derived)_ |
+| text       | `#f3f1eb` | warm white — the logo's native white `#f3f3f3`, warmed _(logo-derived)_ |
+| muted      | `#a9b8c6` | light slate — secondary text on navy _(derived)_ |
+| border     | `#2e5168` | hairline navy, lighter than surface _(derived)_ |
 
-- Native brand presentation is **white `#f3f3f3` on black `#000000`** — a dark/monochrome treatment (dark hero/sections) is the most on-brand. Alt accent: keep it monochrome (no amber) for a stricter reading.
+- Native brand presentation is **white `#f3f3f3` on black `#000000`**, so a light-on-dark treatment is on-brand. Per the designer, the dark field is rendered as **navy `#1B3C53`** rather than literal black — a deliberate step away from strict monochrome. **Alternates:** for a logo-literal reading, swap the navy field for near-black (`#000000`/`#111111`); for a stricter monochrome reading, also drop the amber accent.
 
 **Typography**
 
@@ -93,7 +93,7 @@ The logo is a bold, hand-drawn white wordmark — **"LE BDR / BOUT D'LA RUE"** (
 - **Body:** "Inter" _(Google Fonts; clean, neutral, legible)_
 - Observed on logo: a bespoke hand-lettered logotype (not a system font).
 
-**theme-color:** `#111111`
+**theme-color:** `#1b3c53`
 
 **Shape / Depth / Spacing** _(convention, not evidence — no website to measure)_
 
