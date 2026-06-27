@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mauriciotogneri.github.io/vitrinepro/webs/empanadas-republic_coffee-shop/sitemap.xml
