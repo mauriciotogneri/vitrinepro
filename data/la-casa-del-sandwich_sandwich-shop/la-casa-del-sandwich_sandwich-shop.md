@@ -88,21 +88,22 @@ _From the official website (Just Eat platform); prices in CHF._
 
 ## Branding / Theme
 
-**Basis:** logo-derived _(medium confidence)_ — the business's own website is a **Just Eat / Takeaway.com platform template**, so its on-site colors (blue `#55ADDE` / `#2F96CE`, orange `#FF8800`) and Open Sans type are the **platform's defaults, not the brand**; they are recorded only as alternates below. The canonical theme is taken from the real uploaded **logo**.
+**Basis:** logo-derived brand hues on a **designer-directed dark theme** _(medium confidence)_ — the red and gold are taken from the real uploaded **logo**; the dark background, light text, and surface/border scaffolding are a deliberate dark-mode choice (per designer), not the logo's literal white ground. The business's own website is a **Just Eat / Takeaway.com platform template**, so its on-site colors (blue `#55ADDE` / `#2F96CE`, orange `#FF8800`) and Open Sans type are the **platform's defaults, not the brand**; they are recorded only as alternates below.
 
 **Palette** (canonical; alternates noted)
 
-| Role       | Hex       | Source / basis                                            |
+| Role       | Hex       | Source / basis |
 | ---------- | --------- | --------------------------------------------------------- |
 | primary    | `#db0a14` | logo red (mask/"DEL"/outline; observed sat 0.91) _(logo)_ |
 | accent     | `#e0a82e` | logo "sandwich" wordmark gold; deepened from observed `#efddb1` for contrast _(logo-derived)_ |
-| background | `#ffffff` | logo ground _(logo)_                                      |
-| surface    | `#fbf4e2` | warm cream tint of the wordmark gold _(logo-derived)_     |
-| text       | `#1a1a1a` | logo black badge (observed `#050504`) _(logo)_            |
-| muted      | `#7a7368` | warm gray _(convention)_                                  |
-| border     | `#ebdfc6` | warm light _(convention/derived)_                         |
+| background | `#1a1a1a` | dark-theme base _(designer)_ |
+| surface    | `#242220` | warm-tinted dark, lifted from background _(designer/derived)_ |
+| text       | `#ffffff` | dark-theme text _(designer)_ |
+| muted      | `#a59c8e` | warm gray, lightened for dark background _(convention)_ |
+| border     | `#34302a` | warm dark hairline _(convention/derived)_ |
 
 - Alt (website — **Just Eat platform template, not the brand**): `#55adde`, `#2f96ce` (blues), `#ff8800` (orange) _(website)_
+- Dark-theme usage: `primary` red is a **fill** color (white-on-red ≈ 5.2:1, AA-pass); if used as text/links on `#1a1a1a`, brighten toward `#f5333d` (red-on-dark is only ≈ 3.3:1). `accent` gold reads well directly on the dark background.
 
 **Typography**
 
