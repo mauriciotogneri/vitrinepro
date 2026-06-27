@@ -348,7 +348,7 @@ strong { font-weight: 800; }
 
 /* ---------- Lightbox (themed) ---------- */
 html.lightbox-open { overflow: hidden; scrollbar-gutter: stable; }
-.lightbox { width: min(92vw, 1100px); max-width: 92vw; max-height: 92vh; padding: 0; border: 0; background: transparent; overflow: visible; }
+.lightbox { width: min(92vw, 1100px); max-width: 92vw; max-height: 92vh; margin: auto; padding: 0; border: 0; background: transparent; overflow: visible; }
 .lightbox::backdrop { background: radial-gradient(120% 120% at 50% 30%, rgba(38, 60, 33, .82), rgba(20, 28, 17, .94)); backdrop-filter: blur(3px); }
 .lightbox:not([open]) { display: none; }
 .lightbox__fig { margin: 0; display: flex; flex-direction: column; align-items: center; gap: .8rem; }
