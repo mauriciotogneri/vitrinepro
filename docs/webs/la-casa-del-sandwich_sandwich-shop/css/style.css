@@ -111,7 +111,7 @@ svg { fill: currentColor; }
 .site-head.is-scrolled { border-bottom-color: var(--border); background: rgba(20,19,18,.92); }
 .head-inner { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 70px; }
 .brand { display: inline-flex; align-items: center; line-height: 0; }
-.brand img { height: clamp(44px, 5.8vw, 52px); width: auto; }
+.brand img { width: clamp(120px, 15vw, 146px); height: auto; }
 .site-nav { display: flex; align-items: center; gap: clamp(.6rem, 2vw, 1.7rem); }
 .site-nav > a:not(.btn) {
   font-family: var(--font-display); font-weight: 600; color: var(--text);
