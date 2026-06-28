@@ -1,6 +1,6 @@
 # Site Structure
 
-Single-page site — one HTML file, every section on one scrollable page, linked by in-page anchors. Sections run top to bottom in the order below — include every one and keep that order; omit or reorder a section only when explicitly instructed otherwise.
+Single-page site — one HTML file, every section on one scrollable page, linked by in-page anchors. Sections run top to bottom in the order below — include every one and keep that order; omit or reorder a section only when explicitly instructed otherwise. Give consecutive sections **distinct background tones** — an alternating banded rhythm drawn from the theme palette so each section is visually separated from its neighbours, never one flat background top to bottom (see `site-conventions.md` → **Section backgrounds**).
 
 ## Header / Nav bar
 

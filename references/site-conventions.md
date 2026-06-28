@@ -18,6 +18,16 @@ Project-specific build conventions for the Geneva-business marketing sites, appl
 - **Absolute URLs under `<base>`:** `<link rel="canonical">`, Open Graph, Twitter Card, and `sitemap.xml` `<loc>` are all absolute under the deploy `<base>`. `og:image` is the generated OG image (1200×630).
 - **`theme-color`** = the dossier theme's `theme-color` value.
 
+## Section backgrounds
+
+Give the page a **banded rhythm: no two adjacent sections share the same background.** Each section is set off from the one above and below it by a change of background tone, so the page's structure stays legible as the visitor scrolls. A single flat background running the whole page reads as a template — alternate instead.
+
+- **Rotate a small, cohesive set of theme tones — not a unique hue per section.** Draw every band from the dossier theme's palette: a base **page ground**, one or two **subtle tints** of it, and at most one or two **deep "feature" bands** (a saturated brand colour) used sparingly for high-impact sections (typically the hero, Reviews, or a closing CTA). Cycle them so consecutive sections differ — e.g. ground → tint → ground → deep → ground → tint. Aim for rhythm within one palette, never a rainbow of unrelated colours.
+- **The hero is the first band** — choose the next section's background to contrast it, so the seam under the hero is visible.
+- **Deep bands invert their text.** On a dark or saturated band, switch to the theme's on-dark text tokens and adjust the eyebrow rules, dividers, card surfaces, and buttons to match — never leave dark body text on a dark band.
+- **Every band keeps AA contrast** for text, icons, and borders — check the tints and deep bands, not just the ground. Keep tints subtle enough that the cards and hairlines on them still read; if a tint kills contrast, lighten the tint rather than darken the text.
+- **Implement per-section, from tokens** — a couple of band modifier classes on the `<section>` (a "tint" and a "deep/feature" class), each backed by a theme token, applied in document order; avoid inline one-off colours. Surfaces inside a band (cards, inputs) shift to a tone that still separates from the new background — a white card on the ground may need to become a raised off-white on a tint.
+
 ## Images
 
 Promotes best-practices' soft "modern formats with fallback" line to a hard rule for these sites.

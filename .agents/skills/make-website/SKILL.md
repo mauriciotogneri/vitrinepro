@@ -128,6 +128,7 @@ Don't report success without checking:
 - All in-page anchors and internal links resolve.
 - Every content photo (`<picture>`) opens in the click-to-enlarge lightbox per `site-conventions.md` → **Image enlargement (lightbox)** (native `<dialog>`; logos, icons and the map iframe are excluded); the trigger is keyboard-operable and focus returns to it on close.
 - Photo thumbnails in any grid/gallery **fill their cell** — the `<picture>`/`<img>` covers each `figure` with no leftover padding (a recurring bug when `aspect-ratio`/`height: 100%` is set on the `<img>` instead of the cell; see `site-conventions.md` → **Images**); spot-check the gallery at desktop and mobile.
+- Consecutive sections have **distinct background tones** — no two adjacent sections share a background — drawn from the theme palette, with inverted text on any deep band and AA contrast on every band (see `site-conventions.md` → **Section backgrounds**).
 - If a map is shown, the contact section matches `site-conventions.md` → **Contact & location**, and the `.map` box doesn't overflow its grid track — **verified by measuring** (`getBoundingClientRect()` width ≤ track at desktop and mid/tablet widths), not just by screenshot.
 - JSON-LD reflects only visible content; absolute URLs all use `<base>` consistently.
 - No fabricated **facts** anywhere — every factual claim (hours, prices, services, contact, reviews, copy) traces to the dossier; **imagery** is the sole exception, allowed only under the decorative-only guardrail below.
