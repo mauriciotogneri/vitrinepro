@@ -23,10 +23,15 @@ _No CTA button in the header — keep the bar minimal. The actual CTAs live in t
 
 ## Services / Menu / Products
 
-A clear, scannable list of what the business offers.
+The first content section after the hero and the page's centre of gravity: a clear, scannable account of what the business offers. There's no single template — name and shape it to the trade: a **carte** (food), a grid of **produits / rayons / collections** (shops), a list of **prestations / soins** (services), a **collection** (second-hand). The nav links to it with a themed fr-CH label — "La carte", "La table", "Produits", "Les soins", "Le métier", "La collection".
 
-- Each item shows a name and short description.
-- Price, and duration where relevant.
+- **Section head** — an eyebrow that echoes the nav label or sets the scene ("La carte", "Au comptoir", "Nos rayons", "Nos prestations"); an evocative fr-CH `<h2>`, never the bare word "Menu" ("Tout droit sorti du four", "À midi, on passe à table.", "Les spécialités de la maison", "Dim sum, douceurs & thés"); and a one- to two-sentence lede in the brand's voice — what's made, "fait maison", service hours, dishes "à partager".
+- **Layout — fit the trade, don't force one template.** Three base shapes recur: items grouped under a few **named categories** ("Le salé", "La boulangerie", "Pour commencer", "Les classiques"); a **flat list of dish / product _families_** (one elegant card, or a classic dotted-leader list — the leader running to a tag, never to a price); or a **grid of icon cards** — each a department/family with a line-art SVG glyph, a title, and one sentence — the default for shops and service businesses with no fixed menu ("rayons", "collections", "soins"). Richer variants seen across the sites: interactive tabs, a day-to-night split, chalkboard "boards", or a single **signature item** given a spotlight.
+- **Each item** — a **name + a short description** in the brand's voice, always. Add a small **tag** only to flag a signature or notable item ("Signature", "Maison", "Le classique", "Végé") — sparingly, one or two per list, never a full dietary-marker system. In the icon-card shape a decorative glyph stands in for an image; **no per-item photos** anywhere.
+- **No prices here — keep the section price-free.** No per-item prices, no price list, no ranges or "à partir de" / "dès …" figures — not even for a barber or a fixed café carte. Pricing is addressed only by the closing note's polite deferral to the shop or a direct contact (below), never inline against an item. _(No durations either — drop any "30 min"-style label; even the barber and groomer show none.)_
+- **Closing note** — a small footnote usually ends the list, carrying the **pricing posture** (always a deferral, never a figure: "Les prix sont affichés en boutique", "communiqués au comptoir", "Pas de tarifs en ligne", a "devis personnalisé" for quote-based services), the **living-menu caveat** ("carte indicative", "elle évolue au fil des saisons", "au fil des arrivages"), and any **payment / service facts** ("Cartes acceptées", "Espèces uniquement", "À emporter, livraison, sur place", "Sans rendez-vous").
+
+_No prominent CTA button inside this section — the "see the offering" CTA lives in the hero and scrolls in (see **Hero**). The section closes on its note or a couple of captioned photo tiles; the real dish / product / work photos belong to the gallery or **About**, not here. Any link here stays contact- or offering-worded, never "Réserver" (see `site-conventions.md` → **CTA labels**)._
 
 ## About
 
