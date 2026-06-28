@@ -8,7 +8,20 @@ Project-specific build conventions for the Geneva-business marketing sites, appl
 
 `best-practices.md` already covers the generic baseline (DOCTYPE, `lang`, charset, viewport, semantic landmarks, one `<h1>`, `:focus-visible`, `prefers-reduced-motion`, `aria-current`, touch targets, canonical/OG/Twitter, JSON-LD, dynamic year, end-of-body scripts, no inline handlers, `IntersectionObserver`, `Intl`, …) — satisfy it, don't restate it. Only the project deltas live below.
 
-**Intentional omissions from `best-practices.md`:** no service worker (`:201`) — these are static one-pagers with no offline use case, and SW scope/staleness isn't worth it on GitHub Pages. No `prefers-color-scheme` dark theme (`:117`) — the sites are single fixed-brand palettes; instead declare `color-scheme: light` in `:root` so browsers don't auto-darken form controls.
+## Deviations from `best-practices.md`
+
+The full set of places these sites depart from the generic bar — **everything else in `best-practices.md` applies unchanged.** This is only an index; each item is specified in the section named.
+
+- **Fonts** — Google Fonts CDN, never self-host (`best-practices.md:178`); see **Overrides**.
+- **Files** — external `css/style.css` + `js/main.js`, never a single self-contained `.html` (`:15`, `:175`); see **Overrides**.
+- **Service worker** — none (`:201`); see **Intentional omissions**.
+- **Dark theme** — no `prefers-color-scheme`; `color-scheme: light` instead (`:117`); see **Intentional omissions**.
+- **Map `aspect-ratio`** — not set on a grid-stretched map wrapper (`:111`); see **Contact & location**.
+- **Legal-page navigation** — `legal.html` carries no nav / back-to-home link (`:73`, `:45`); see **Legal page**.
+
+## Intentional omissions from `best-practices.md`
+
+No service worker (`:201`) — these are static one-pagers with no offline use case, and SW scope/staleness isn't worth it on GitHub Pages. No `prefers-color-scheme` dark theme (`:117`) — the sites are single fixed-brand palettes; instead declare `color-scheme: light` in `:root` so browsers don't auto-darken form controls.
 
 ## Overrides — these reverse `best-practices.md`
 
