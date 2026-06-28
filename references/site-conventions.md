@@ -54,15 +54,15 @@ A **contact** form plus native links — **never a reservation/booking form**.
 
 ## Open/closed status chip
 
-The hero **Trust / meta strip** (`references/site-structure.md` → **Hero**) ends with a live open/closed chip that `js/main.js` renders from the dossier's opening hours. **Pinned to the business, never the visitor:** compute the state in `Europe/Zurich` and format the text in **fr-CH** via `Intl` — never the browser's timezone or locale, so a visitor abroad still sees Geneva's real status, in French. With **no hours in the dossier, render nothing** (the strip falls back to the address). Clock times use the site's **`h` notation** — "18h", "8h30", minutes only when non-zero — matching the opening hours shown elsewhere on the page; the clause after the `·` is **lowercase**.
+The hero **Trust / meta strip** (`references/site-structure.md` → **Hero**) ends with a live open/closed chip that `js/main.js` renders from the dossier's opening hours. **Words are always French; only the clock time follows the visitor's browser locale.** The sites are French-only, so the labels are fixed — `Ouvert`, `Fermé`, `Ferme bientôt`, `ferme à …` / `ouvre à …`, and the day words (`demain`, the weekday names) — never translated. The **time value is always Geneva's** — state and the next transition are computed in `Europe/Zurich` — but the **`HH:MM` is rendered with `Intl.DateTimeFormat(navigator.language, { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Zurich' })`**, so its digits and separator follow the visitor's own convention: a visitor in Spain sees `Ouvert · ferme à 22:00`, one in the US `Ouvert · ferme à 10:00 PM` — same Geneva instant and French words, just a locale-formatted number. (`timeZone` stays `Europe/Zurich`: the locale changes only the *format*, it never converts the time into the visitor's own zone.) With **no hours in the dossier, render nothing** (the strip falls back to the address); the clause after the `·` is **lowercase**.
 
 Three states, each a tinted pill — a status **dot** plus a dark, desaturated state colour on a light tint of itself, switched by `data-state`. It's the accessible pattern (the word already carries the meaning, so it isn't colour-only; keep AA contrast on the tint): **copy the pill/dot CSS** from `docs/webs/empanadas-republic_coffee-shop/css/style.css` → `.badge-open` and theme the hues from the site's palette (empanadas ships `open`/`closed` only — add the amber `soon` hue, and the `· …` detail text, on top).
 
-- **`open`** — green — `Ouvert · ferme à 18h`. Round-the-clock → `Ouvert 24h/24` (no closing time).
-- **`soon`** — amber — within **30 min** of closing — `Ferme bientôt · 18h`.
-- **`closed`** — red/brick — `Fermé · ouvre à 9h`, adding a day only when it isn't later today: `ouvre demain à 10h`, `ouvre lundi à 8h30`.
+- **`open`** — green — `Ouvert · ferme à 22:00`. Round-the-clock → `Ouvert 24h/24` (no closing time).
+- **`soon`** — amber — within **30 min** of closing — `Ferme bientôt · 22:00`.
+- **`closed`** — red/brick — `Fermé · ouvre à 09:00`, adding a day only when it isn't later today: `ouvre demain à 10:00`, `ouvre lundi à 08:30`.
 
-Hours crossing midnight keep the same notation and take no day label — a bar open at 23h reads `Ouvert · ferme à 2h` (`ferme à minuit` for a 0h close).
+Hours crossing midnight take no day label — a bar open at 23:00 reads `Ouvert · ferme à 02:00` (a midnight close renders as the locale's `00:00`). Because the time is locale-formatted, it won't always match the French `h`-notation in the static hours table elsewhere on the page (`07h–18h`) — that's expected.
 
 ## Social links
 
