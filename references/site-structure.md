@@ -19,7 +19,7 @@ _No CTA button in the header — keep the bar minimal. The actual CTAs live in t
 - **Subhead / lede** — usually a single sentence (two at most) expanding the promise; packs the specifics — signature products, since-year, neighborhood — in the brand's own voice.
 - **CTAs** — one primary + one secondary button, themed in fr-CH and text-only — no icons in the buttons. Primary is the contact action ("Nous contacter", "Appeler le salon", "Prendre contact"); secondary points at the offering ("Voir la carte", "Voir les produits", "Découvrir la collection"). _Contact wording only — never "Réserver"/"Prendre rendez-vous" (see `site-conventions.md` → **CTA labels**)._
 - **Trust / meta strip** — quick credibility and key facts: the Google rating (stars + review count) on nearly every site, often a live open/closed status chip (`id="open-status"` carrying `data-open`/`data-closed` text), plus address, hours, and the odd extra badge ("Travelers' Choice", "À emporter & livraison", "Chiens bienvenus", "Espèces uniquement").
-- **Visual** — the LCP hero photo (loaded per `site-conventions.md` → **LCP photo**), usually paired with decorative SVG — a seal, brush stroke, scattered doodles, or a script-character watermark; occasionally a small multi-photo collage instead of a single image.
+- **Visual** — the LCP hero photo (loaded per `site-conventions.md` → **LCP photo**), usually paired with decorative SVG — a seal, brush stroke, scattered doodles, or a script-character watermark; occasionally a small multi-photo collage instead of a single image. If the dossier has an official logo or logomark that sits cleanly over the photo, overlay it small in the bottom-left corner of the image; omit it when it doesn't read well there.
 
 ## Services / Menu / Products
 
