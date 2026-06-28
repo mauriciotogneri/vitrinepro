@@ -52,6 +52,18 @@ A **contact** form plus native links — **never a reservation/booking form**.
   - **Never let the map box overflow / overlap the neighbouring card** (a recurring bug). Root cause: the map wrapper is a grid item, the grid stretches it (`align-items:stretch`, the default) to the height of the **taller** sibling card, and if the wrapper also has an `aspect-ratio` the browser then derives the wrapper's **width from that stretched height** (`height × ratio`) — far wider than its track — so it laps over the card. (`min-width:0` does **not** help: the box is _growing_, not failing to shrink.) Correct pattern: **do not put `aspect-ratio` on a stretched map wrapper.** Make the wrapper `position:relative; overflow:hidden` with a **`min-height`** (its height in the stacked 1-col layout and a floor); let `align-items:stretch` give it the row height in 2-col (equal-height columns, no ratio to inflate the width); and make the iframe `position:absolute; inset:0; width:100%; height:100%`. The wrapper's width then always equals its grid track. (If you instead want a fixed map ratio, keep `aspect-ratio` but add `align-self:start` so the ratio derives the height _from_ the track-bound width, never the reverse.)
   - **Verify the map by measuring, not just screenshotting.** The iframe won't load offline and a blank/slow iframe (plus fallback-font card heights) can hide the overflow in a screenshot. Check the computed `.map` width ≤ its grid track (e.g. compare `getBoundingClientRect()` of the map vs the card, expecting a gap not an overlap) at desktop **and** mid/tablet widths.
 
+## Open/closed status chip
+
+The hero **Trust / meta strip** (`references/site-structure.md` → **Hero**) ends with a live open/closed chip that `js/main.js` renders from the dossier's opening hours. **Pinned to the business, never the visitor:** compute the state in `Europe/Zurich` and format the text in **fr-CH** via `Intl` — never the browser's timezone or locale, so a visitor abroad still sees Geneva's real status, in French. With **no hours in the dossier, render nothing** (the strip falls back to the address). Clock times use the site's **`h` notation** — "18h", "8h30", minutes only when non-zero — matching the opening hours shown elsewhere on the page; the clause after the `·` is **lowercase**.
+
+Three states, each a tinted pill — a status **dot** plus a dark, desaturated state colour on a light tint of itself, switched by `data-state`. It's the accessible pattern (the word already carries the meaning, so it isn't colour-only; keep AA contrast on the tint): **copy the pill/dot CSS** from `docs/webs/empanadas-republic_coffee-shop/css/style.css` → `.badge-open` and theme the hues from the site's palette (empanadas ships `open`/`closed` only — add the amber `soon` hue, and the `· …` detail text, on top).
+
+- **`open`** — green — `Ouvert · ferme à 18h`. Round-the-clock → `Ouvert 24h/24` (no closing time).
+- **`soon`** — amber — within **30 min** of closing — `Ferme bientôt · 18h`.
+- **`closed`** — red/brick — `Fermé · ouvre à 9h`, adding a day only when it isn't later today: `ouvre demain à 10h`, `ouvre lundi à 8h30`.
+
+Hours crossing midnight keep the same notation and take no day label — a bar open at 23h reads `Ouvert · ferme à 2h` (`ferme à minuit` for a 0h close).
+
 ## Social links
 
 - **Only link a social profile the dossier shows is public/accessible.** In particular, link an Instagram account only when the dossier shows it is public; if it's private (or flagged private in the dossier), **omit the link** entirely — never link a profile a visitor can't open.
@@ -73,7 +85,7 @@ End-of-body, IIFE, no inline `on*=` handlers. It must:
 
 - Set the copyright year from `new Date().getFullYear()` into an **empty** `<span>` — never write the year as a literal in the markup (no hardcoded fallback).
 - Run scroll reveals via `IntersectionObserver`, with a no-`IntersectionObserver` fallback.
-- When hours are known, render an `Intl`-based open/closed badge in `Europe/Zurich`.
+- When hours are known, render the live open/closed status chip in `Europe/Zurich` (see **Open/closed status chip**); with no hours, render nothing.
 - Wire a photo **lightbox** over every `<picture>` (see **Image enlargement (lightbox)**) — a standalone IIFE appended after the main one, identical across sites.
 
 ## Footer credit
