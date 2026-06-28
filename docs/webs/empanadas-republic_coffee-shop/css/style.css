@@ -264,7 +264,6 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; line-
 
 /* ---------- Menu (dark band) ---------- */
 .menu-band { background: var(--night); color: var(--on-night); position: relative; }
-.menu-band::before, .menu-band::after { content: ""; display: block; height: 14px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3E%3Cpath d='M0 12 a7 7 0 0 1 14 0 a7 7 0 0 1 14 0' fill='none' stroke='%23c9a24b' stroke-width='1.6' stroke-opacity='0.6'/%3E%3C/svg%3E"); background-repeat: repeat-x; background-position: center; opacity: 0.8; }
 .menu-band .eyebrow { color: var(--gold); }
 .menu-band h2 { color: var(--on-night); }
 .menu-band .section-head p { color: var(--on-night-muted); }
