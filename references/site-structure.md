@@ -4,8 +4,13 @@ Single-page site — one HTML file, every section on one scrollable page, linked
 
 ## Header / Nav bar
 
-- **Logo** — links back to the top.
-- **Anchor nav** — links to each section on the page (the site's primary navigation).
+Sticky top bar, present on every screen — the site's primary navigation.
+
+- **Logo / brand** — a mark (logo image or inline SVG) plus the business wordmark; links back to the top (`#top`).
+- **Anchor nav** — one in-page link per major section, in document order. Labels are themed in fr-CH, not generic — "La carte", "La maison", "Nous trouver", never "Menu"/"About". The in-view section's link is marked on scroll (scrollspy — see `best-practices.md` → `aria-current` / `IntersectionObserver`).
+- **Mobile toggle** — a hamburger button revealing the nav on small screens, wired per `best-practices.md` (`aria-expanded`, `aria-controls`, `aria-label`).
+
+_No CTA button in the header — keep the bar minimal. The actual CTAs live in the hero, between sections._
 
 ## Hero
 
