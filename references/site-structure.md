@@ -35,13 +35,6 @@ A clear, scannable list of what the business offers.
 - **Certifications & trust signals** — credentials and proof.
 - **Photo gallery** — images of the work, space, or products.
 
-## Contact
-
-The primary conversion point.
-
-- **Contact form** — name, email, and message only. Never a reservation/booking widget or appointment picker, even for businesses that take bookings.
-- WhatsApp / call button.
-
 ## Reviews
 
 Build trust through social proof.
@@ -56,6 +49,13 @@ Build trust through social proof.
 - **Opening hours.**
 - **Phone & email.**
 - **Access** — parking and transport.
+
+## Contact
+
+The primary conversion point.
+
+- **Contact form** — name, email, and message only. Never a reservation/booking widget or appointment picker, even for businesses that take bookings.
+- WhatsApp / call button.
 
 ## Footer
 
