@@ -14,12 +14,12 @@ _No CTA button in the header — keep the bar minimal. The actual CTAs live in t
 
 ## Hero
 
-- **Eyebrow / overline** — tiny context label above the headline; short kicker text, often with an icon.
-- **Headline** — the one big promise, and the page's main SEO heading (`<h1>`); large display type.
-- **Subhead / lede** — one or two sentences expanding the promise; a short paragraph.
-- **CTAs** — the action(s) you want taken: one primary + one secondary button (see menu, call us, get a quote, contact us, etc.).
-- **Trust / meta strip** — quick credibility or key facts: rating, address, hours, badge.
-- **Visual** — photo, illustration, or decorative shapes (image or SVG).
+- **Eyebrow / overline** — tiny context label above the headline; a `Catégorie · quartier · Genève` kicker — "Café · Bar — Plainpalais, Genève", "Épicerie bio & santé · Jonction, Genève" — sometimes carrying a since-year ("depuis 1985", "Est. 2019"). Prefix it with an icon only when one clearly fits the business (e.g. a sprout for a bio épicerie) and is simple enough to read at that tiny size — a clean single-shape glyph, never a detailed mark or one with text/lettering in it; if none qualifies, show the text alone rather than force a generic, busy, or off-theme one.
+- **Headline** — the one big promise, and the page's main SEO heading (`<h1>`); large display type. Written in fr-CH; it names the offering and, where it reads naturally, ties it to Geneva or the quartier ("Le Portugal fait maison, à la Jonction.", "Pizza au feu de bois & cuisine italienne à Genève") — but don't force a place in when the line is stronger without it ("Les matins ont meilleur goût ici."). Often broken across lines with `<br>` or accenting one highlighted word.
+- **Subhead / lede** — usually a single sentence (two at most) expanding the promise; packs the specifics — signature products, since-year, neighborhood — in the brand's own voice.
+- **CTAs** — one primary + one secondary button, themed in fr-CH and text-only — no icons in the buttons. Primary is the contact action ("Nous contacter", "Appeler le salon", "Prendre contact"); secondary points at the offering ("Voir la carte", "Voir les produits", "Découvrir la collection"). _Contact wording only — never "Réserver"/"Prendre rendez-vous" (see `site-conventions.md` → **CTA labels**)._
+- **Trust / meta strip** — quick credibility and key facts: the Google rating (stars + review count) on nearly every site, often a live open/closed status chip (`id="open-status"` carrying `data-open`/`data-closed` text), plus address, hours, and the odd extra badge ("Travelers' Choice", "À emporter & livraison", "Chiens bienvenus", "Espèces uniquement").
+- **Visual** — the LCP hero photo (loaded per `site-conventions.md` → **LCP photo**), usually paired with decorative SVG — a seal, brush stroke, scattered doodles, or a script-character watermark; occasionally a small multi-photo collage instead of a single image.
 
 ## Services / Menu / Products
 
