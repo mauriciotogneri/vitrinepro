@@ -120,18 +120,12 @@ _(Union across Official website, Google, local.ch, search.ch; original French pr
 
 ### Photos
 
-_(10 genuine images of the clinic's own content — real patients, a vet at work, brand studio shots. Several carry the business's own VetCity logo watermark; the IG/FB shots are from the clinic's own accounts.)_
+_(Only **3** genuine photos, all real patients posted to VetCity's **OWN** Facebook/Instagram accounts. Genuine photo coverage is thin — see Missing information._
+_**Discarded:** the 6 search.ch listing photos — several carry a "**Cabinet Vétérinaire Collonge-Bellerive**" watermark (a different clinic, likely a SwissVet Group sibling sharing a media pool), so none of the directory photos could be trusted as VetCity Jonction. Also discarded: the social feed's promotional/educational graphics and reel covers (monthly greetings, seasonal tips, product offers).)_
 
-- `assets/photo-001.jpg` — vet (in scrubs) examining a dog on the table; shows the practice & staff — source: search.ch — https://search.ch/tel/media/c1155d7625e274ee571be7ae5866846bf0e80eb2.jpg/
-- `assets/photo-002.jpg` — white spitz-type dog smiling on a brand-teal backdrop — source: search.ch — https://search.ch/tel/media/50db3962d00749d4b32445c5453f75aa0aa8e0fe.jpg/
-- `assets/photo-003.jpg` — fluffy dog wearing an Elizabethan cone collar (post-op patient), VetCity watermark — source: search.ch — https://search.ch/tel/media/0d6ae4465163fe36137c00b799679964910ac406.jpg/
-- `assets/photo-004.jpg` — terrier on a leash, "Cabinet Vétérinaire — Chiens & Chats" branding — source: search.ch — https://search.ch/tel/media/2dea3cda4e66ca910212c26cf7804c552994511d.jpg/
-- `assets/photo-005.jpg` — wire fox terrier sitting against a wall (patient) — source: Facebook — https://scontent.fzrh2-2.fna.fbcdn.net/v/t39.30808-6/707838525_122258525534088765_7768684350487349299_n.jpg
-- `assets/photo-006.jpg` — border collie face close-up (striking eyes) — source: Instagram — https://scontent.cdninstagram.com/v/t39.30808-6/718526966_122259737996088765_1161761801442596550_n.jpg
-- `assets/photo-007.jpg` — wire fox terrier, happy/open-mouth close-up — source: Instagram — https://scontent.cdninstagram.com/v/t39.30808-6/706028774_122258525540088765_5852518316304722720_n.jpg
-- `assets/photo-008.jpg` — black cat resting (on brand-colour backdrop) — source: Instagram — https://scontent.cdninstagram.com/v/t39.30808-6/709014710_122258622980088765_4488391257183902805_n.jpg
-- `assets/photo-009.jpg` — fluffy orange puppy ("son premier jour à la maison" — small text overlay) — source: Instagram — https://scontent.cdninstagram.com/v/t39.30808-6/688433494_122256042014088765_5455850461131688613_n.jpg
-- `assets/photo-010.jpg` — brown poodle/doodle with a red bandana (reel thumbnail; carries a small heart sticker) — source: Instagram — https://scontent.cdninstagram.com/v/t51.82787-15/716310524_17965806243086084_977052581873460791_n.jpg
+- `assets/photo-001.jpg` — wire fox terrier sitting (real patient; plain clinic interior) — source: VetCity Facebook — https://scontent.fzrh2-2.fna.fbcdn.net/v/t39.30808-6/707838525_122258525534088765_7768684350487349299_n.jpg
+- `assets/photo-002.jpg` — the same terrier, happy open-mouth profile close-up — source: VetCity Instagram (@vetcitygeneve_veterinaire) — https://scontent.cdninstagram.com/v/t39.30808-6/706028774_122258525540088765_5852518316304722720_n.jpg
+- `assets/photo-003.jpg` — black cat resting (low quality — dark, tightly cropped) — source: VetCity Instagram (@vetcitygeneve_veterinaire) — https://scontent.cdninstagram.com/v/t39.30808-6/709014710_122258622980088765_4488391257183902805_n.jpg
 
 ## Sources queried
 
@@ -141,7 +135,7 @@ _(10 genuine images of the clinic's own content — real patients, a vet at work
 | Google Business Profile / Google Maps   | partial   | Maps blocked by consent wall; data via web search knowledge-panel (rating, services, socials, FAQ extras) |
 | OpenStreetMap                           | not_found | No OSM entry (Overpass + Nominatim); VetCity not mapped at Carl-Vogt 38              |
 | local.ch                                | ok        | Full listing: hours, rating, review, services, logo, socials                        |
-| search.ch / tel.search.ch               | ok        | Full listing + 6 photos; slug still uses old name "vet-24-…"                         |
+| search.ch / tel.search.ch               | ok        | Full listing (facts valid); slug uses old name "vet-24-…". Its 6 photos were DISCARDED — several watermarked "Cabinet Vétérinaire Collonge-Bellerive" (different clinic) |
 | Esprit de Genève                        | not_found | VetCity not listed (only a separate older clinic at the same address)               |
 | GST-SVS Tierarzt-Finder / Praxissuche   | not_found | 0 results for VetCity/Carl-Vogt; not a GST/SVS member (or not yet registered)        |
 | Société Genevoise des Vétérinaires (SGV)| blocked   | http-only legacy TLS; homepage is a redirect-only shell, index.php 301s to nothing fetchable; archives also blocked |
@@ -149,7 +143,8 @@ _(10 genuine images of the clinic's own content — real patients, a vet at work
 
 ## Notes
 
-- Photo cap: 20. Downloaded 22 candidates (6 search.ch + ~14 FB/IG posts + logo alternates); 2 FB CDN images expired (signed URLs). After visual vetting, **10 genuine** photos kept; **10 excluded** as non-venue content (7 educational/seasonal promo graphics with heavy text overlays, 2 festive retail-product gift-box shots, 1 branded contact-card graphic). 0 byte-duplicates.
+- Photo cap: 20. Downloaded 20 candidates (6 search.ch + ~14 FB/IG posts); 2 FB CDN images expired (signed URLs). After visual vetting, **3 genuine** photos kept (all from VetCity's own FB/IG); **the rest excluded**: all 6 search.ch listing photos (several watermarked "Cabinet Vétérinaire Collonge-Bellerive" — a different clinic — so the whole listing set was untrustworthy), plus the social feed's promo/educational graphics, reel covers, and seasonal product shots. 0 byte-duplicates among the kept set.
+- **Photo-attribution caveat:** the directory listings (search.ch, and by extension the SwissVet-group media pool) mix in a sibling clinic's photos. Only images posted by VetCity's own accounts were treated as VetCity's — and even those are real-patient pet photos, not premises/team shots.
 - FAQ-useful extras _(Google, local.ch, search.ch)_:
   - **Payments:** Visa, Mastercard, American Express, Diners Club, Maestro/EC, PostCard, espèces; devises étrangères acceptées (EUR, GBP, USD).
   - **Parking:** 2 places clients réservées (n°19 et n°27) via Boulevard Carl-Vogt, derrière le magasin CycleAddicts Geneva ; zone blanche en face ; parking David-Dufour à ~7 min à pied.
@@ -157,7 +152,7 @@ _(10 genuine images of the clinic's own content — real patients, a vet at work
   - **Langues:** français, anglais, allemand, espagnol.
   - **Fondation:** octobre 2023 (transformation de la clinique précédente à la même adresse) ; réseau **SwissVet Group**.
 - Download failures: 2 Facebook CDN post images (signature expired) — not needed (genuine quota already met from search.ch/IG).
-- Fallback imagery: none — genuine logo and 10 genuine photos were found, so no generated/stock assets were added.
+- Fallback imagery: none added — a genuine logo and 3 genuine photos exist (≥1 photo, so step-9 stock fallback does not trigger), but genuine coverage is thin (see Missing information).
 - No **Suggested domains** section: the business owns and operates a working domain (vetcity.ch, currently under construction), so domain proposals are not applicable.
 
 ## Missing information
@@ -166,3 +161,4 @@ _(10 genuine images of the clinic's own content — real patients, a vet at work
 - **Team / individual vet names:** not surfaced — VetCity is absent from the GST-SVS and Chien.com directories and the SGV directory was inaccessible; no named practitioners on the (under-construction) site.
 - **Additional reviews:** only one positive review text surfaced (the 4.3/5 aggregate is from 23 Google ratings, but individual review texts sit behind Google's wall).
 - **Other socials:** no TikTok / LinkedIn / YouTube / X found — only Facebook and Instagram.
+- **Genuine photos (thin — needs real images):** only 3 usable photos exist, all real-patient pets from VetCity's own FB/IG (two are the same dog; the cat shot is poor quality). **No premises, reception, equipment, or team photos** of the Jonction clinic were found anywhere. The search.ch listing's photos belong to a different clinic (Collonge-Bellerive) and were discarded. The owner should supply real interior/team/storefront photos for the website build (the under-construction site has none).
