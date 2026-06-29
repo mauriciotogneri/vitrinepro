@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Chez Teresa">
+  <defs>
+    <mask id="crescent">
+      <rect width="512" height="512" fill="#000"/>
+      <circle cx="248" cy="262" r="138" fill="#fff"/>
+      <circle cx="322" cy="232" r="120" fill="#000"/>
+    </mask>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="#5E9B79"/>
+  <g fill="#F8F3EA" opacity="0.42">
+    <circle cx="112" cy="120" r="13"/>
+    <circle cx="404" cy="138" r="11"/>
+    <circle cx="138" cy="402" r="11"/>
+    <circle cx="398" cy="392" r="13"/>
+    <circle cx="256" cy="92" r="9"/>
+  </g>
+  <rect width="512" height="512" fill="#F8F3EA" mask="url(#crescent)"/>
+  <circle cx="318" cy="150" r="17" fill="#D89A55"/>
+</svg>
