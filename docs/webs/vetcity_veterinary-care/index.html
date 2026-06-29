@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
 
   <!-- LCP image -->
-  <link rel="preload" as="image" href="assets/photo-002.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/photo-010.webp" type="image/webp" fetchpriority="high" />
 
   <link rel="stylesheet" href="css/style.css" />
 
@@ -49,8 +49,8 @@
     "url": "https://mauriciotogneri.github.io/vitrinepro/webs/vetcity_veterinary-care/",
     "logo": "https://mauriciotogneri.github.io/vitrinepro/webs/vetcity_veterinary-care/assets/favicon-512.png",
     "image": [
-      "https://mauriciotogneri.github.io/vitrinepro/webs/vetcity_veterinary-care/assets/photo-002.jpg",
-      "https://mauriciotogneri.github.io/vitrinepro/webs/vetcity_veterinary-care/assets/photo-006.jpg",
+      "https://mauriciotogneri.github.io/vitrinepro/webs/vetcity_veterinary-care/assets/photo-010.jpg",
+      "https://mauriciotogneri.github.io/vitrinepro/webs/vetcity_veterinary-care/assets/photo-009.jpg",
       "https://mauriciotogneri.github.io/vitrinepro/webs/vetcity_veterinary-care/assets/photo-003.jpg"
     ],
     "telephone": "+41229959697",
@@ -162,17 +162,10 @@
 
         <div class="hero-visual">
           <div class="bento">
-            <figure class="tile-dog">
+            <figure class="tile-photo">
               <picture>
-                <source type="image/webp" srcset="assets/photo-002.webp" />
-                <img src="assets/photo-002.jpg" width="1280" height="960" alt="Un golden retriever détendu à l’accueil de la clinique VetCity, boulevard Carl-Vogt." fetchpriority="high" decoding="async" />
-              </picture>
-              <span class="hero-badge"><img src="assets/logo.png" width="124" height="88" alt="Logo VetCity Genève" /></span>
-            </figure>
-            <figure class="tile-cat">
-              <picture>
-                <source type="image/webp" srcset="assets/photo-005.webp" />
-                <img src="assets/photo-005.jpg" width="1200" height="1200" alt="Un chaton roux sur la balance de la clinique." decoding="async" />
+                <source type="image/webp" srcset="assets/photo-010.webp" />
+                <img src="assets/photo-010.jpg" width="1440" height="924" alt="Deux vétérinaires de VetCity auscultent un labrador au stéthoscope dans la salle de soins." fetchpriority="high" decoding="async" />
               </picture>
             </figure>
             <div class="tile-247">
@@ -340,8 +333,8 @@
         <div class="about-photo reveal">
           <figure>
             <picture>
-              <source type="image/webp" srcset="assets/photo-006.webp" />
-              <img src="assets/photo-006.jpg" width="798" height="798" alt="Un chat sacré de Birmanie posé sur la table d’examen bleue de la clinique." loading="lazy" decoding="async" />
+              <source type="image/webp" srcset="assets/photo-009.webp" />
+              <img src="assets/photo-009.jpg" width="1792" height="1008" alt="L’équipe de VetCity à l’accueil de la clinique, chaque soignant tenant un animal dans les bras." loading="lazy" decoding="async" />
             </picture>
           </figure>
           <span class="deco" aria-hidden="true"></span>
@@ -359,12 +352,19 @@
         </div>
 
         <div class="gallery reveal">
-          <figure class="wide">
+          <figure>
             <picture>
               <source type="image/webp" srcset="assets/photo-007.webp" />
               <img src="assets/photo-007.jpg" width="1600" height="908" alt="Deux chats noirs au repos dans leur panier après leur stérilisation." loading="lazy" decoding="async" />
             </picture>
             <figcaption>Hécate et Isis, au calme après leur stérilisation.</figcaption>
+          </figure>
+          <figure>
+            <picture>
+              <source type="image/webp" srcset="assets/photo-006.webp" />
+              <img src="assets/photo-006.jpg" width="798" height="798" alt="Un chat sacré de Birmanie posé sur la table d’examen bleue." loading="lazy" decoding="async" />
+            </picture>
+            <figcaption>Un chat sacré de Birmanie, tout en élégance.</figcaption>
           </figure>
           <figure class="tall">
             <picture>
@@ -494,7 +494,7 @@
             <label for="cf-email">E-mail <span class="req" aria-hidden="true">*</span></label>
             <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="vous@exemple.ch" />
           </div>
-          <div class="field">
+          <div class="field field-grow">
             <label for="cf-msg">Message <span class="req" aria-hidden="true">*</span></label>
             <textarea id="cf-msg" name="message" required placeholder="Votre message, une question, un mot…"></textarea>
           </div>
