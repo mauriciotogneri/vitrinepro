@@ -59,7 +59,11 @@
   function zoneOffsetMin(date) {
     var p = zoneParts(date);
     var asUTC = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute);
-    return Math.round((asUTC - date.getTime()) / 60000);
+    /* zoneParts() carries no seconds, so the instant must be floored to its
+       minute too — otherwise the dropped seconds skew the offset by up to a
+       minute and the next-open time renders one minute late (07:30 → 07:31). */
+    var dateMin = Math.floor(date.getTime() / 60000) * 60000;
+    return Math.round((asUTC - dateMin) / 60000);
   }
   function fmtClock(refDate, minutesOfDay) {
     var p = zoneParts(refDate);
@@ -166,6 +170,37 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     sections.forEach(function (s) { spy.observe(s); });
+  }
+
+  /* --- carte category tabs (ARIA tablist; roving tabindex + arrow keys) --- */
+  var ctablist = doc.querySelector('.carte-tablist');
+  if (ctablist) {
+    var ctabs = [].slice.call(ctablist.querySelectorAll('[role="tab"]'));
+    var cpanels = ctabs.map(function (t) { return doc.getElementById(t.getAttribute('aria-controls')); });
+    var selectTab = function (i, focus) {
+      ctabs.forEach(function (t, j) {
+        var on = j === i;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        if (cpanels[j]) { cpanels[j].hidden = !on; }
+      });
+      if (focus && ctabs[i]) { ctabs[i].focus(); }
+    };
+    ctablist.addEventListener('click', function (e) {
+      var t = e.target.closest ? e.target.closest('[role="tab"]') : null;
+      if (t) { selectTab(ctabs.indexOf(t), false); }
+    });
+    ctablist.addEventListener('keydown', function (e) {
+      var i = ctabs.indexOf(doc.activeElement);
+      if (i < 0) { return; }
+      var n = ctabs.length, ni = -1;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { ni = (i + 1) % n; }
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { ni = (i - 1 + n) % n; }
+      else if (e.key === 'Home') { ni = 0; }
+      else if (e.key === 'End') { ni = n - 1; }
+      if (ni >= 0) { e.preventDefault(); selectTab(ni, true); }
+    });
+    selectTab(0, false);
   }
 })();
 

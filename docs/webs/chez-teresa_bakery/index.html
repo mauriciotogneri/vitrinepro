@@ -46,6 +46,17 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Nunito+Sans:wght@400;600;700;800&family=Parisienne&display=swap">
   <link rel="stylesheet" href="css/style.css">
 
+  <noscript>
+    <style>
+      /* The carte tabs need JS — without it, fall back to the static 2×2 card grid. */
+      .carte-tablist { display: none; }
+      .carte-panels { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.1rem, 2.5vw, 1.8rem); }
+      .carte-panel { max-width: none; }
+      .carte-panel[hidden] { display: block; }
+      @media (max-width: 640px) { .carte-panels { grid-template-columns: 1fr; } }
+    </style>
+  </noscript>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -163,12 +174,6 @@
       stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="8.5" />
       <path d="M12 7.5V12l3 1.8" />
-    </symbol>
-    <symbol id="ico-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
-      stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="6" cy="18" r="2" />
-      <circle cx="18" cy="6" r="2" />
-      <path d="M8 18h6a3 3 0 0 0 3-3V8M6 16V9a3 3 0 0 1 3-3h5" />
     </symbol>
     <symbol id="ico-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
       stroke-linecap="round" stroke-linejoin="round">
@@ -302,8 +307,6 @@
                 alt="La salle de Chez Teresa au crépuscule, l’enseigne dorée en vitrine sur le boulevard Carl-Vogt.">
             </picture>
           </figure>
-          <img class="hero-badge" src="assets/logo.jpg" width="720" height="720" decoding="async"
-            alt="L’enseigne « Chez Teresa, boulangerie & tea-room ».">
         </div>
       </div>
     </section>
@@ -323,90 +326,107 @@
           </p>
         </div>
 
-        <div class="carte-grid">
-          <article class="carte-cat reveal">
-            <h3><span class="cat-glyph"><svg aria-hidden="true"><use href="#ico-sandwich" /></svg></span> Le salé &amp; les midis</h3>
-            <ul class="carte-list">
-              <li class="carte-item">
-                <span class="item-name">Sandwichs à la commande <span class="tag">Signature</span></span>
-                <p class="item-desc">Garnis minute, beaucoup de choix — « parmi les meilleurs de Genève », dit-on.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Plats du jour</span>
-                <p class="item-desc">Soupes, omelettes et petits plats salés qui changent chaque midi.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Tartes salées &amp; quiches</span>
-                <p class="item-desc">Garnitures de saison, à déguster avec une salade.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Salades fraîches <span class="tag">Végé</span></span>
-                <p class="item-desc">Crudités, carottes et jeunes pousses — légères et généreuses.</p>
-              </li>
-            </ul>
-          </article>
+        <div class="carte-tabs reveal">
+          <div class="carte-tablist" role="tablist" aria-label="Catégories de la carte">
+            <button class="carte-tab" id="ctab-sale" type="button" role="tab" aria-controls="cpanel-sale" aria-selected="true">
+              <svg class="t-glyph" aria-hidden="true" focusable="false"><use href="#ico-sandwich" /></svg> Le salé
+            </button>
+            <button class="carte-tab" id="ctab-boulangerie" type="button" role="tab" aria-controls="cpanel-boulangerie" aria-selected="false" tabindex="-1">
+              <svg class="t-glyph" aria-hidden="true" focusable="false"><use href="#ico-croissant" /></svg> Boulangerie
+            </button>
+            <button class="carte-tab" id="ctab-patisserie" type="button" role="tab" aria-controls="cpanel-patisserie" aria-selected="false" tabindex="-1">
+              <svg class="t-glyph" aria-hidden="true" focusable="false"><use href="#ico-cake" /></svg> Pâtisseries
+            </button>
+            <button class="carte-tab" id="ctab-comptoir" type="button" role="tab" aria-controls="cpanel-comptoir" aria-selected="false" tabindex="-1">
+              <svg class="t-glyph" aria-hidden="true" focusable="false"><use href="#ico-cup" /></svg> Au comptoir
+            </button>
+          </div>
 
-          <article class="carte-cat reveal">
-            <h3><span class="cat-glyph"><svg aria-hidden="true"><use href="#ico-croissant" /></svg></span> Boulangerie &amp; viennoiseries</h3>
-            <ul class="carte-list">
-              <li class="carte-item">
-                <span class="item-name">Pains &amp; brioches</span>
-                <p class="item-desc">Pains au lait et brioches du matin, dorés au four.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Viennoiseries</span>
-                <p class="item-desc">Croissants, palmiers et feuilletés tout juste sortis du four.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Pastéis de nata <span class="tag">La spécialité</span></span>
-                <p class="item-desc">Les petits flans portugais de Teresa, à savourer tièdes.</p>
-              </li>
-            </ul>
-          </article>
+          <div class="carte-panels">
+            <article class="carte-cat carte-panel" id="cpanel-sale" role="tabpanel" aria-labelledby="ctab-sale" tabindex="0">
+              <h3><span class="cat-glyph"><svg aria-hidden="true"><use href="#ico-sandwich" /></svg></span> Le salé &amp; les midis</h3>
+              <ul class="carte-list">
+                <li class="carte-item">
+                  <span class="item-name">Sandwichs à la commande <span class="tag">Signature</span></span>
+                  <p class="item-desc">Garnis minute, beaucoup de choix — « parmi les meilleurs de Genève », dit-on.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Plats du jour</span>
+                  <p class="item-desc">Soupes, omelettes et petits plats salés qui changent chaque midi.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Tartes salées &amp; quiches</span>
+                  <p class="item-desc">Garnitures de saison, à déguster avec une salade.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Salades fraîches <span class="tag">Végé</span></span>
+                  <p class="item-desc">Crudités, carottes et jeunes pousses — légères et généreuses.</p>
+                </li>
+              </ul>
+            </article>
 
-          <article class="carte-cat reveal">
-            <h3><span class="cat-glyph"><svg aria-hidden="true"><use href="#ico-cake" /></svg></span> Pâtisseries &amp; douceurs</h3>
-            <ul class="carte-list">
-              <li class="carte-item">
-                <span class="item-name">Tartes aux fruits</span>
-                <p class="item-desc">Fruits de saison sur une pâte sablée, fraîches du jour.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Gâteaux maison</span>
-                <p class="item-desc">Dont un fondant au chocolat qui a déjà ses habitués.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Verrines &amp; douceurs</span>
-                <p class="item-desc">Petites crèmes, fruits et chantilly, à la cuillère.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Confiture maison <span class="tag">Maison</span></span>
-                <p class="item-desc">La confiture de la maison, à tartiner ou à emporter.</p>
-              </li>
-            </ul>
-          </article>
+            <article class="carte-cat carte-panel" id="cpanel-boulangerie" role="tabpanel" aria-labelledby="ctab-boulangerie" tabindex="0" hidden>
+              <h3><span class="cat-glyph"><svg aria-hidden="true"><use href="#ico-croissant" /></svg></span> Boulangerie &amp; viennoiseries</h3>
+              <ul class="carte-list">
+                <li class="carte-item">
+                  <span class="item-name">Pains &amp; brioches</span>
+                  <p class="item-desc">Pains au lait et brioches du matin, dorés au four.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Viennoiseries</span>
+                  <p class="item-desc">Croissants, palmiers et feuilletés tout juste sortis du four.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Pastéis de nata <span class="tag">La spécialité</span></span>
+                  <p class="item-desc">Les petits flans portugais de Teresa, à savourer tièdes.</p>
+                </li>
+              </ul>
+            </article>
 
-          <article class="carte-cat reveal">
-            <h3><span class="cat-glyph"><svg aria-hidden="true"><use href="#ico-cup" /></svg></span> Au comptoir</h3>
-            <ul class="carte-list">
-              <li class="carte-item">
-                <span class="item-name">Cafés</span>
-                <p class="item-desc">Expresso, cappuccino, latte — des cafés de toutes sortes.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Thés &amp; infusions</span>
-                <p class="item-desc">Une sélection pour s’attarder, en vrai salon de thé.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Matcha &amp; boissons lactées</span>
-                <p class="item-desc">Matcha latte et boissons chaudes ; lait de soja sur demande.</p>
-              </li>
-              <li class="carte-item">
-                <span class="item-name">Jus &amp; boissons fraîches</span>
-                <p class="item-desc">Jus frais et rafraîchissements de saison.</p>
-              </li>
-            </ul>
-          </article>
+            <article class="carte-cat carte-panel" id="cpanel-patisserie" role="tabpanel" aria-labelledby="ctab-patisserie" tabindex="0" hidden>
+              <h3><span class="cat-glyph"><svg aria-hidden="true"><use href="#ico-cake" /></svg></span> Pâtisseries &amp; douceurs</h3>
+              <ul class="carte-list">
+                <li class="carte-item">
+                  <span class="item-name">Tartes aux fruits</span>
+                  <p class="item-desc">Fruits de saison sur une pâte sablée, fraîches du jour.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Gâteaux maison</span>
+                  <p class="item-desc">Dont un fondant au chocolat qui a déjà ses habitués.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Verrines &amp; douceurs</span>
+                  <p class="item-desc">Petites crèmes, fruits et chantilly, à la cuillère.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Confiture maison <span class="tag">Maison</span></span>
+                  <p class="item-desc">La confiture de la maison, à tartiner ou à emporter.</p>
+                </li>
+              </ul>
+            </article>
+
+            <article class="carte-cat carte-panel" id="cpanel-comptoir" role="tabpanel" aria-labelledby="ctab-comptoir" tabindex="0" hidden>
+              <h3><span class="cat-glyph"><svg aria-hidden="true"><use href="#ico-cup" /></svg></span> Au comptoir</h3>
+              <ul class="carte-list">
+                <li class="carte-item">
+                  <span class="item-name">Cafés</span>
+                  <p class="item-desc">Expresso, cappuccino, latte — des cafés de toutes sortes.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Thés &amp; infusions</span>
+                  <p class="item-desc">Une sélection pour s’attarder, en vrai salon de thé.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Matcha &amp; boissons lactées</span>
+                  <p class="item-desc">Matcha latte et boissons chaudes ; lait de soja sur demande.</p>
+                </li>
+                <li class="carte-item">
+                  <span class="item-name">Jus &amp; boissons fraîches</span>
+                  <p class="item-desc">Jus frais et rafraîchissements de saison.</p>
+                </li>
+              </ul>
+            </article>
+          </div>
         </div>
 
         <p class="carte-note reveal">
@@ -483,9 +503,9 @@
           <span class="plate-dot dots" aria-hidden="true"></span>
           <div class="frame">
             <picture>
-              <source type="image/webp" srcset="assets/photo-004.webp">
-              <img src="assets/photo-004.jpg" width="640" height="640" loading="lazy" decoding="async"
-                alt="Teresa, au centre, et son équipe tout sourire chez Teresa.">
+              <source type="image/webp" srcset="assets/logo.webp">
+              <img src="assets/logo.jpg" width="720" height="720" loading="lazy" decoding="async"
+                alt="La vitrine de Chez Teresa : l’enseigne « boulangerie &amp; tea-room » peinte sur la pancarte vert sauge à pois.">
             </picture>
           </div>
         </figure>
@@ -582,7 +602,7 @@
     </section>
 
     <!-- ============================ reviews ============================ -->
-    <section class="section band-deep dots" id="avis" aria-labelledby="avis-title">
+    <section class="section band-deep" id="avis" aria-labelledby="avis-title">
       <div class="wrap">
         <div class="section-head reveal">
           <p class="eyebrow">
@@ -717,11 +737,6 @@
                   <a href="https://www.google.com/maps/dir/?api=1&destination=46.1978059,6.136005" target="_blank"
                     rel="noopener noreferrer">Boulevard Carl-Vogt 62<br>1205 Genève · Quartier de la Jonction</a>
                 </address>
-                <a class="btn btn-secondary dir-btn"
-                  href="https://www.google.com/maps/dir/?api=1&destination=46.1978059,6.136005" target="_blank"
-                  rel="noopener noreferrer">
-                  <svg aria-hidden="true" width="18" height="18"><use href="#ico-route" /></svg> Voir l’itinéraire
-                </a>
               </div>
             </div>
             <div class="loc-row">
@@ -811,7 +826,7 @@
             <input id="cf-email" name="email" type="email" autocomplete="email" required
               inputmode="email" placeholder="vous@exemple.ch">
           </div>
-          <div class="field">
+          <div class="field field-msg">
             <label for="cf-msg">Message <span class="req" aria-hidden="true">*</span></label>
             <textarea id="cf-msg" name="message" rows="5" required
               placeholder="Votre message, une question, un mot…"></textarea>
