@@ -120,6 +120,7 @@ End-of-body, IIFE, no inline `on*=` handlers. It must:
 ## Footer credit
 
 - The footer ends with a small **VitrinePro credit** sign-off (e.g. "Site réalisé par VitrinePro"). Its link **always** points to **`https://vitrinepro.ch`** (`target="_blank" rel="noopener"`) — never the GitHub-Pages deploy URL, the portfolio index, or any other address.
+- **Only the brand word "VitrinePro" is the hyperlink — never the whole phrase.** Keep "Site réalisé par " as plain text outside the `<a>`, and wrap just "VitrinePro" in the anchor: `Site réalisé par <a href="https://vitrinepro.ch" target="_blank" rel="noopener">VitrinePro</a>`.
 
 ## Legal page (`legal.html`)
 

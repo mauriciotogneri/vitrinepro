@@ -110,6 +110,6 @@ A **fixed three-column top region**, a **horizontal divider**, then a **two-part
 **Bottom bar — two parts:**
 
 - **Left** — the copyright line: `© <année> <Business> · <adresse> ·` then a **"Mentions légales"** link to `legal.html` (`target="_blank" rel="noopener"`; see `site-conventions.md` → **Legal page**) — e.g. "© 2026 Toutou-Club · Route de Meyrin 6, 1202 Genève · Mentions légales". The year is **JS-rendered** (`<span data-year>` / `<span id="year">`), never hardcoded; everything but "Mentions légales" is plain text.
-- **Right** — the **"Site réalisé par VitrinePro"** credit, linking **`https://vitrinepro.ch`** (`target="_blank" rel="noopener"`; link target fixed by `site-conventions.md` → **Footer credit**).
+- **Right** — the **"Site réalisé par VitrinePro"** credit, with **only the word "VitrinePro" hyperlinked** (not the whole phrase) to **`https://vitrinepro.ch`** (`target="_blank" rel="noopener"`; link form + target fixed by `site-conventions.md` → **Footer credit**).
 
 _(No secondary-nav column and no language switcher, and no inline privacy/cookie text (it lives on the legal page). The legal **form** may ride along in the copyright name ("… Sàrl", "Entreprise individuelle"), but **never** a company-registration or tax ID — no UID / `CHE-…` / TVA — anywhere. The footer's name, address, phone, e-mail and hours stay consistent with the **Location** / **Contact** sections and the page's `LocalBusiness` JSON-LD.)_
