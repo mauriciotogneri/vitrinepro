@@ -701,7 +701,7 @@ h3 {
 .ambiance-grid figure {
   position: relative;
   margin: 0;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   border-radius: var(--r-lg);
   overflow: hidden;
   border: 1px solid var(--hair);
