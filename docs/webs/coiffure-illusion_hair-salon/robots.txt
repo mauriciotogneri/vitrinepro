@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mauriciotogneri.github.io/vitrinepro/webs/coiffure-illusion_hair-salon/sitemap.xml

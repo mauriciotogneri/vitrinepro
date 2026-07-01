@@ -1,0 +1,18 @@
+{
+  "name": "Coiffure Illusion — Coiffeur dames & messieurs, Genève",
+  "short_name": "Coiffure Illusion",
+  "description": "Salon de coiffure dames et messieurs à la Jonction, Genève.",
+  "lang": "fr-CH",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#4a2e45",
+  "background_color": "#f8f4ef",
+  "icons": [
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "assets/favicon.svg", "type": "image/svg+xml", "sizes": "any" }
+  ]
+}
