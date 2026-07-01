@@ -56,19 +56,33 @@
         .bar {
             display: flex;
             align-items: center;
-            justify-content: space-between;
             gap: 1rem;
         }
 
-        .brand {
-            font-family: var(--serif);
-            font-size: 1.5rem;
-            letter-spacing: 0.01em;
+        .search {
+            flex: 1 1 auto;
+            min-width: 0;
+            padding: 0.68rem 1rem;
+            background: var(--navy2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
             color: var(--cream);
+            font-family: var(--sans);
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
+            -webkit-appearance: none;
+            appearance: none;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
         }
 
-        .brand span {
-            color: var(--gold);
+        .search::placeholder {
+            color: var(--gray);
+        }
+
+        .search:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
         }
 
         /* --- Board (the table) --- */
@@ -126,14 +140,22 @@
             color: var(--cream);
         }
 
-        .trade {
+        .meta {
             display: block;
-            margin-top: 0.35rem;
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
+            margin-top: 0.4rem;
+            font-size: 0.82rem;
+            line-height: 1.4;
             color: var(--gray);
+        }
+
+        .meta .trade {
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .meta .sep {
+            margin: 0 0.5rem;
+            opacity: 0.5;
         }
 
         .c-act {
@@ -192,6 +214,18 @@
             color: #4b5568;
             font-size: 1.1rem;
             user-select: none;
+        }
+
+        /* --- Empty state (no filter matches) --- */
+        .empty {
+            display: none;
+            padding: 3rem 2.5rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .empty.show {
+            display: block;
         }
 
         /* --- Mobile: stack each storefront into a card --- */
@@ -270,7 +304,7 @@
 <body>
     <header class="top">
         <div class="bar">
-            <span class="brand">Vitrine<span>Pro</span></span>
+            <input id="filter" class="search" type="search" autocomplete="off" spellcheck="false" placeholder="Filter by name, type or address" aria-label="Filter storefronts by name, type or address" />
             <a class="btn btn-map" href="map/"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="#C81E1E" d="M12 2C8.1 2 5 5.1 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#F6F3EC"/></svg>Map</a>
         </div>
     </header>
@@ -286,118 +320,144 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="c-name"><span class="name">Miro Barber Shop</span><span class="trade">Barbershop</span></td>
+                    <td class="c-name"><span class="name">Miro Barber Shop</span><span class="meta"><span class="trade">Barbershop</span><span class="sep">·</span>Rue Dancet 12, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/miro-barber-shop_barber-shop" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=miro-barber-shop_barber-shop" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Yummy Coffee</span><span class="trade">Coffee shop</span></td>
+                    <td class="c-name"><span class="name">Yummy Coffee</span><span class="meta"><span class="trade">Coffee shop</span><span class="sep">·</span>Rue Dancet 8, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/yummy-coffee_coffee-shop" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=yummy-coffee_coffee-shop" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Le Mexicain</span><span class="trade">Restaurant</span></td>
+                    <td class="c-name"><span class="name">Le Mexicain</span><span class="meta"><span class="trade">Restaurant</span><span class="sep">·</span>Rue des Deux-Ponts 3, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/le-mexicain_restaurant" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=le-mexicain_restaurant" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Jean-Robert Gase</span><span class="trade">Tailor</span></td>
+                    <td class="c-name"><span class="name">Jean-Robert Gase</span><span class="meta"><span class="trade">Tailor</span><span class="sep">·</span>Rue des Jardins 10, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/gase-jean-robert_tailor" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=gase-jean-robert_tailor" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Fleur d'Oranger</span><span class="trade">Second-hand shop</span></td>
+                    <td class="c-name"><span class="name">Fleur d'Oranger</span><span class="meta"><span class="trade">Second-hand shop</span><span class="sep">·</span>Boulevard Carl-Vogt 9, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/fleur-d-oranger_second-hand-shop" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=fleur-d-oranger_second-hand-shop" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Toutou-Club</span><span class="trade">Pet groomer</span></td>
+                    <td class="c-name"><span class="name">Toutou-Club</span><span class="meta"><span class="trade">Pet groomer</span><span class="sep">·</span>Route de Meyrin 6, 1202 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/toutou-club_pet-groomer" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=toutou-club_pet-groomer" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Il Colosseo</span><span class="trade">Restaurant</span></td>
+                    <td class="c-name"><span class="name">Il Colosseo</span><span class="meta"><span class="trade">Restaurant</span><span class="sep">·</span>Boulevard de Saint-Georges 46, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/il-colosseo_restaurant" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=il-colosseo_restaurant" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Le Panapé de Caméla</span><span class="trade">Home goods</span></td>
+                    <td class="c-name"><span class="name">Le Panapé de Caméla</span><span class="meta"><span class="trade">Home goods</span><span class="sep">·</span>Rue du Général-Dufour 20, 1204 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/le-panape-de-camela_home-goods-store" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=le-panape-de-camela_home-goods-store" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Le Thé</span><span class="trade">Restaurant</span></td>
+                    <td class="c-name"><span class="name">Le Thé</span><span class="meta"><span class="trade">Restaurant</span><span class="sep">·</span>Rue des Bains 65, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/le-the_restaurant" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=le-the_restaurant" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Café Chez Martins</span><span class="trade">Café</span></td>
+                    <td class="c-name"><span class="name">Café Chez Martins</span><span class="meta"><span class="trade">Café</span><span class="sep">·</span>Rue des Deux-Ponts 27, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/cafe-chez-martins_cafe" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=cafe-chez-martins_cafe" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">La Casa Del Sandwich</span><span class="trade">Sandwich shop</span></td>
+                    <td class="c-name"><span class="name">La Casa Del Sandwich</span><span class="meta"><span class="trade">Sandwich shop</span><span class="sep">·</span>Avenue de Sainte-Clotilde 18, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/la-casa-del-sandwich_sandwich-shop" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=la-casa-del-sandwich_sandwich-shop" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">BioBoulevard</span><span class="trade">Organic grocery</span></td>
+                    <td class="c-name"><span class="name">BioBoulevard</span><span class="meta"><span class="trade">Organic grocery</span><span class="sep">·</span>Boulevard Carl-Vogt 28, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/bioboulevard_deli" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=bioboulevard_deli" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Boulangerie Dubois</span><span class="trade">Bakery &amp; tea room</span></td>
+                    <td class="c-name"><span class="name">Boulangerie Dubois</span><span class="meta"><span class="trade">Bakery &amp; tea room</span><span class="sep">·</span>Boulevard Carl-Vogt 49, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/boulangerie-dubois_coffee-shop" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=boulangerie-dubois_coffee-shop" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Café Le Bout de la Rue</span><span class="trade">Bar</span></td>
+                    <td class="c-name"><span class="name">Café Le Bout de la Rue</span><span class="meta"><span class="trade">Bar</span><span class="sep">·</span>Rue de l'École-de-Médecine 14, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/cafe-le-bout-de-la-rue_bar" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=cafe-le-bout-de-la-rue_bar" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Café Metis</span><span class="trade">Café &amp; bar</span></td>
+                    <td class="c-name"><span class="name">Café Metis</span><span class="meta"><span class="trade">Café &amp; bar</span><span class="sep">·</span>Boulevard Carl-Vogt 75, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/cafe-metis_cafe" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=cafe-metis_cafe" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Empanadas Republic</span><span class="trade">Empanadas argentines</span></td>
+                    <td class="c-name"><span class="name">Empanadas Republic</span><span class="meta"><span class="trade">Empanadas argentines</span><span class="sep">·</span>Boulevard Carl-Vogt 79, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/empanadas-republic_coffee-shop" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=empanadas-republic_coffee-shop" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Chez Teresa</span><span class="trade">Bakery &amp; tea room</span></td>
+                    <td class="c-name"><span class="name">Chez Teresa</span><span class="meta"><span class="trade">Bakery &amp; tea room</span><span class="sep">·</span>Boulevard Carl-Vogt 62, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/chez-teresa_bakery" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=chez-teresa_bakery" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Sabrina Coiffure</span><span class="trade">Hair salon</span></td>
+                    <td class="c-name"><span class="name">Sabrina Coiffure</span><span class="meta"><span class="trade">Hair salon</span><span class="sep">·</span>Boulevard Carl-Vogt 31, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/sabrina-coiffure_hair-salon" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=sabrina-coiffure_hair-salon" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">GYROS</span><span class="trade">Restaurant</span></td>
+                    <td class="c-name"><span class="name">GYROS</span><span class="meta"><span class="trade">Restaurant</span><span class="sep">·</span>Chemin de l'Echo 1, 1213 Onex</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/gyros_restaurant" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=gyros_restaurant" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">VetCity</span><span class="trade">Veterinary care</span></td>
+                    <td class="c-name"><span class="name">VetCity</span><span class="meta"><span class="trade">Veterinary care</span><span class="sep">·</span>Boulevard Carl-Vogt 38, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/vetcity_veterinary-care" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=vetcity_veterinary-care" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Coiffure Illusion</span><span class="trade">Hair salon</span></td>
+                    <td class="c-name"><span class="name">Coiffure Illusion</span><span class="meta"><span class="trade">Hair salon</span><span class="sep">·</span>Avenue de Sainte-Clotilde 2, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/coiffure-illusion_hair-salon" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=coiffure-illusion_hair-salon" target="_blank" rel="noopener">Data</a></td>
                 </tr>
                 <tr>
-                    <td class="c-name"><span class="name">Les Fleurs de Frida</span><span class="trade">Home goods</span></td>
+                    <td class="c-name"><span class="name">Les Fleurs de Frida</span><span class="meta"><span class="trade">Home goods</span><span class="sep">·</span>Boulevard de Saint-Georges 52, 1205 Genève</span></td>
                     <td class="c-act"><a class="btn btn-site" href="webs/les-fleurs-de-frida_home-goods-store" target="_blank" rel="noopener">Website</a></td>
                     <td class="c-act"><a class="btn btn-data" href="data.html?slug=les-fleurs-de-frida_home-goods-store" target="_blank" rel="noopener">Data</a></td>
                 </tr>
             </tbody>
         </table>
+        <p class="empty" id="empty">No storefronts match your filter.</p>
     </main>
+
+    <script>
+        (function () {
+            var input = document.getElementById('filter');
+            var empty = document.getElementById('empty');
+            var items = Array.prototype.map.call(
+                document.querySelectorAll('tbody tr'),
+                function (row) {
+                    var cell = row.querySelector('.c-name');
+                    return { row: row, text: (cell ? cell.textContent : '').toLowerCase() };
+                }
+            );
+
+            input.addEventListener('input', function () {
+                var q = input.value.trim().toLowerCase();
+                var shown = 0;
+                items.forEach(function (item) {
+                    var match = q === '' || item.text.indexOf(q) !== -1;
+                    item.row.style.display = match ? '' : 'none';
+                    if (match) shown++;
+                });
+                empty.classList.toggle('show', shown === 0);
+            });
+        })();
+    </script>
 </body>
 
 </html>
