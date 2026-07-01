@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Club Deportivo Cerceda Genève | Football Genève</title>
+  <meta name="description" content="Club Deportivo Cerceda Genève — club de football en 4ème ligue, fondé en 1985, aux ambitions fortes au cœur de Genève.">
+  <meta name="author" content="Club Deportivo Cerceda Genève">
+  <link rel="canonical" href="https://www.cdcercedageneve.ch">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.cdcercedageneve.ch">
+  <meta property="og:title" content="Club Deportivo Cerceda Genève | Football Genève">
+  <meta property="og:description" content="Club de football genevois fondé en 1985, portant fièrement l'héritage de Cerceda, Galice.">
+  <meta property="og:site_name" content="Club Deportivo Cerceda Genève">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Club Deportivo Cerceda Genève | Football Genève">
+  <meta name="twitter:description" content="Club de football genevois fondé en 1985, portant fièrement l'héritage de Cerceda, Galice.">
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://static.wixstatic.com">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    /* ─── Tokens ────────────────────────────────── */
+    :root {
+      --blue:       #003DA5; /* royal blue — kit primary */
+      --blue-dark:  #002880;
+      --blue-light: #1A54B8;
+      --gold:       #C8A84B; /* secondary accent — warm, galician */
+      --gold-light: #E8C96A;
+      --white:      #FFFFFF;
+      --off-white:  #F5F7FA;
+      --gray-line:  #DDE2EA;
+      --text-main:  #111827;
+      --text-muted: #6B7280;
+      --navy:       #0A1628; /* deep backgrounds */
+
+      --font-display: 'Oswald', sans-serif;
+      --font-body:    'Inter', sans-serif;
+
+      --radius-sm: 4px;
+      --radius-md: 10px;
+      --radius-lg: 18px;
+      --t: 0.22s ease;
+    }
+
+    /* ─── Reset ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; color: var(--text-main); background: var(--white); margin: 0; }
+    img { max-width: 100%; height: auto; }
+    h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.1; font-weight: 700; letter-spacing: 0.02em; }
+
+    /* ─── Skip link ─────────────────────────────── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--blue); color: var(--white);
+      padding: .5rem 1rem; border-radius: 0 0 6px 6px;
+      font-weight: 600; text-decoration: none; z-index: 9999;
+      transition: top var(--t);
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ─── Focus ─────────────────────────────────── */
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    :focus:not(:focus-visible) { outline: none; }
+
+    /* ─── Navbar ────────────────────────────────── */
+    .navbar {
+      background: var(--navy) !important;
+      padding: .65rem 0;
+      position: sticky; top: 0; z-index: 1030;
+      transition: box-shadow var(--t);
+      border-bottom: 2px solid var(--blue);
+    }
+    .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.45); }
+
+    .navbar-brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .navbar-brand img { width: 46px; height: 46px; object-fit: contain; }
+    .navbar-brand-text { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--white); line-height: 1.2; letter-spacing: .05em; text-transform: uppercase; }
+    .navbar-brand-text span { display: block; font-size: .6rem; font-weight: 400; letter-spacing: .18em; color: var(--gold); }
+
+    .navbar-toggler { border: 1.5px solid rgba(255,255,255,.3); padding: .4rem .6rem; }
+    .navbar-toggler:focus { box-shadow: 0 0 0 3px rgba(200,168,75,.5); }
+    .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255%2C255%2C255%2C0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+
+    .nav-link {
+      font-family: var(--font-display); font-size: .85rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.75) !important;
+      padding: .45rem .9rem !important;
+      transition: color var(--t);
+      position: relative;
+    }
+    .nav-link::after { content:''; position:absolute; bottom:0; left:.9rem; right:.9rem; height:2px; background:var(--gold); transform:scaleX(0); transition:transform var(--t); }
+    .nav-link:hover, .nav-link:focus { color: var(--white) !important; }
+    .nav-link:hover::after, .nav-link[aria-current="page"]::after { transform: scaleX(1); }
+    .nav-link[aria-current="page"] { color: var(--white) !important; }
+
+    /* ─── Hero ──────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: clamp(480px, 82svh, 800px);
+      display: flex; align-items: flex-end; overflow: hidden;
+      background: var(--navy);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(160deg, rgba(0,45,128,.7) 0%, rgba(10,22,40,.92) 100%),
+        url('https://static.wixstatic.com/media/11062b_f68cc981478442aa89786b7f3ceded51~mv2.jpeg/v1/fill/w_1400,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Match%20de%20nuit.jpeg') center/cover no-repeat;
+    }
+    /* Signature: diagonal gold stripe */
+    .hero-stripe {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .hero-stripe::before {
+      content:'';
+      position: absolute;
+      right: -10%; top: 0;
+      width: 48%; height: 100%;
+      background: linear-gradient(to bottom, rgba(200,168,75,.1), rgba(200,168,75,.04));
+      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    .hero-stripe::after {
+      content:'';
+      position: absolute;
+      right: 2%; top: 0;
+      width: 4px; height: 100%;
+      background: var(--gold);
+      opacity: .5;
+    }
+
+    .hero-content { position: relative; z-index: 2; padding: clamp(2rem,6vw,4rem) 0 clamp(3rem,9vw,6rem); width: 100%; }
+    .hero-eyebrow { font-family: var(--font-display); font-size: .75rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
+    .hero h1 { font-size: clamp(2.6rem,8vw,5.5rem); color: var(--white); margin-bottom: .4rem; text-transform: uppercase; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-sub { font-size: clamp(.95rem,2.4vw,1.2rem); color: rgba(255,255,255,.7); max-width: 540px; margin-bottom: 1.75rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+    /* ─── Buttons ───────────────────────────────── */
+    .btn-primary-club {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: var(--blue); color: var(--white);
+      font-family: var(--font-display); font-size: .9rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+      padding: .8rem 1.8rem; border-radius: var(--radius-sm);
+      border: 2px solid var(--blue);
+      transition: background var(--t), border-color var(--t), transform var(--t);
+    }
+    .btn-primary-club:hover, .btn-primary-club:focus { background: var(--blue-light); border-color: var(--blue-light); color: var(--white); transform: translateY(-2px); }
+
+    .btn-outline-club {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: transparent; color: var(--white);
+      font-family: var(--font-display); font-size: .9rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+      padding: .8rem 1.8rem; border-radius: var(--radius-sm);
+      border: 2px solid rgba(255,255,255,.4);
+      transition: border-color var(--t), background var(--t), transform var(--t);
+    }
+    .btn-outline-club:hover, .btn-outline-club:focus { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* ─── Stats bar ─────────────────────────────── */
+    .stats-bar { background: var(--blue); padding: 1.2rem 0; }
+    .stat-item { text-align: center; color: var(--white); }
+    .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,.2); }
+    .stat-number { font-family: var(--font-display); font-size: clamp(1.5rem,4vw,2.1rem); font-weight: 700; line-height: 1; display: block; }
+    .stat-label { font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; opacity: .8; display: block; margin-top: .15rem; }
+
+    /* ─── Sections ──────────────────────────────── */
+    .section { padding: clamp(3rem,8vw,5.5rem) 0; }
+    .section-light { background: var(--off-white); }
+    .section-navy  { background: var(--navy); }
+    .section-blue  { background: var(--blue); }
+
+    .section-label { font-family: var(--font-display); font-size: .72rem; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; color: var(--blue); margin-bottom: .4rem; }
+    .section-label-gold { color: var(--gold); }
+    .section-title { font-size: clamp(1.7rem,5vw,2.8rem); text-transform: uppercase; }
+    .section-title-white { color: var(--white); }
+    .divider-gold { width: 44px; height: 3px; background: var(--gold); border: none; margin: .9rem 0 1.4rem; }
+
+    /* ─── Histoire image ────────────────────────── */
+    .histoire-wrap { position: relative; }
+    .histoire-wrap img { border-radius: var(--radius-md); width:100%; height:420px; object-fit:cover; }
+    .histoire-wrap::after {
+      content:''; position:absolute; inset: 12px -12px -12px 12px;
+      border: 3px solid var(--gold); border-radius: var(--radius-md);
+      pointer-events: none; z-index: 0;
+    }
+    .histoire-wrap img { position: relative; z-index: 1; }
+    .year-badge {
+      position: absolute; bottom: -1rem; right: 1.5rem; z-index: 2;
+      background: var(--blue); color: var(--white);
+      font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: .55rem 1.3rem; border-left: 4px solid var(--gold);
+      border-radius: var(--radius-sm);
+    }
+
+    /* ─── Feature cards ─────────────────────────── */
+    .feature-card {
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 1.75rem; border: 1px solid var(--gray-line);
+      transition: transform var(--t), box-shadow var(--t); height: 100%;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,61,165,.1); }
+    .feature-icon { width: 50px; height: 50px; background: rgba(0,61,165,.08); color: var(--blue); border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; font-size: 1.4rem; margin-bottom: 1.1rem; }
+    .feature-card h3 { font-size: 1rem; text-transform: uppercase; margin-bottom: .4rem; }
+    .feature-card p { font-size: .9rem; color: var(--text-muted); margin: 0; }
+
+    /* ─── Players carousel ───────────────────────── */
+    .players-section { background: var(--navy); }
+
+    /* Position tabs */
+    .pos-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 2rem; }
+    .pos-tab {
+      font-family: var(--font-display); font-size: .75rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: .4rem 1rem; border-radius: 999px;
+      border: 1.5px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.6); background: transparent;
+      cursor: pointer; transition: all var(--t);
+    }
+    .pos-tab:hover { border-color: var(--gold); color: var(--gold); }
+    .pos-tab.active { background: var(--blue); border-color: var(--blue); color: var(--white); }
+
+    /* Carousel track */
+    .carousel-outer { position: relative; overflow: hidden; }
+    .players-track {
+      display: flex; gap: 1rem;
+      transition: transform .38s cubic-bezier(.25,.46,.45,.94);
+      will-change: transform;
+    }
+    .player-card {
+      flex: 0 0 calc(25% - .75rem);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: background var(--t), transform var(--t);
+    }
+    .player-card:hover { background: rgba(255,255,255,.1); transform: translateY(-3px); }
+    .player-photo {
+      width: 100%; aspect-ratio: 1 / 1;
+      object-fit: cover; object-position: top;
+      display: block;
+      background: var(--blue-dark);
+    }
+    .player-info { padding: .85rem 1rem; }
+    .player-name { font-family: var(--font-display); font-size: .95rem; font-weight: 600; text-transform: uppercase; color: var(--white); letter-spacing: .04em; margin-bottom: .15rem; line-height: 1.2; }
+    .player-pos { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+    /* Staff cards */
+    .staff-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-md); overflow: hidden;
+      text-align: center;
+      transition: background var(--t);
+    }
+    .staff-card:hover { background: rgba(255,255,255,.12); }
+    .staff-photo { width: 100px; height: 100px; border-radius: 50%; object-fit:cover; object-position:top; border: 3px solid var(--blue); margin: 1.5rem auto .8rem; display:block; }
+    .staff-name { font-family: var(--font-display); font-size: .95rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: .15rem; }
+    .staff-role { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+
+    /* Carousel controls */
+    .carousel-controls { display:flex; align-items:center; gap:.75rem; margin-top:1.5rem; }
+    .car-btn {
+      width:42px; height:42px; border-radius:50%;
+      background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.2);
+      color:var(--white); font-size:1.1rem;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:all var(--t);
+    }
+    .car-btn:hover { background:var(--blue); border-color:var(--blue); }
+    .car-btn:disabled { opacity:.3; cursor:not-allowed; }
+    .car-dots { display:flex; gap:.4rem; }
+    .car-dot {
+      width:6px; height:6px; border-radius:50%;
+      background:rgba(255,255,255,.3); border:none; cursor:pointer;
+      padding:0; transition:all var(--t);
+    }
+    .car-dot.active { background:var(--gold); transform:scale(1.4); }
+    .carousel-count { font-family:var(--font-display); font-size:.8rem; color:rgba(255,255,255,.45); margin-left:auto; }
+
+    @media(max-width:991px) {
+      .player-card { flex: 0 0 calc(33.33% - .67rem); }
+    }
+    @media(max-width:767px) {
+      .player-card { flex: 0 0 calc(50% - .5rem); }
+    }
+    @media(max-width:479px) {
+      .player-card { flex: 0 0 calc(100%); }
+    }
+
+    /* ─── Centre sportif ────────────────────────── */
+    .stade-img { width:100%; height:380px; object-fit:cover; border-radius:var(--radius-md); }
+    .info-row { display:flex; gap:.75rem; align-items:flex-start; margin-bottom:.75rem; }
+    .info-row-icon { color:var(--blue); font-size:1.1rem; margin-top:.2rem; flex-shrink:0; }
+
+    /* ─── Café ──────────────────────────────────── */
+    .cafe-img { width:100%; height:400px; object-fit:cover; border-radius:var(--radius-md); }
+    .cafe-quote {
+      border-left: 4px solid var(--gold);
+      padding-left: 1.25rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin: 1.5rem 0;
+      font-size: .95rem;
+    }
+
+    /* ─── Contact form ──────────────────────────── */
+    .form-box { background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:var(--radius-lg); padding:2.25rem; }
+    .form-box label { color:rgba(255,255,255,.7); font-size:.875rem; font-weight:500; display:block; margin-bottom:.35rem; }
+    .form-box .form-control,
+    .form-box .form-select {
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2);
+      color:var(--white); border-radius:var(--radius-sm);
+    }
+    .form-box .form-control::placeholder { color:rgba(255,255,255,.3); }
+    .form-box .form-control:focus,
+    .form-box .form-select:focus { background:rgba(255,255,255,.12); border-color:var(--gold); box-shadow:0 0 0 3px rgba(200,168,75,.2); color:var(--white); }
+    .form-box .form-select option { background:var(--navy); }
+
+    /* ─── Social ────────────────────────────────── */
+    .social-links { display:flex; gap:.65rem; }
+    .social-link {
+      width:44px; height:44px;
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+      border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center;
+      color:var(--white); font-size:1.2rem; text-decoration:none;
+      transition:all var(--t);
+    }
+    .social-link:hover { background:var(--blue); border-color:var(--blue); color:var(--white); transform:translateY(-2px); }
+
+    /* ─── Footer ────────────────────────────────── */
+    footer { background:#060E1C; color:rgba(255,255,255,.5); padding:1.75rem 0; font-size:.875rem; }
+    footer a { color:rgba(255,255,255,.5); text-decoration:none; transition:color var(--t); }
+    footer a:hover { color:var(--white); }
+    .footer-logo { font-family:var(--font-display); font-size:.95rem; font-weight:700; color:var(--white); letter-spacing:.08em; text-transform:uppercase; }
+
+    /* ─── Reveal ────────────────────────────────── */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .5s ease, transform .5s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    @media(prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Aller au contenu principal</a>
+
+<!-- ── Navbar ───────────────────────────────────────── -->
+<nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
+  <div class="container">
+    <a class="navbar-brand" href="/" aria-label="Club Deportivo Cerceda Genève — accueil">
+      <img src="https://static.wixstatic.com/media/4e8532_b0e3c158efb443d4ac76cfafd5d5f977~mv2.png"
+           alt="Écusson du Club Deportivo Cerceda Genève" width="46" height="46" loading="eager">
+      <div class="navbar-brand-text">Cerceda<span>Genève · Est. 1985</span></div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+            aria-controls="navMenu" aria-expanded="false" aria-label="Ouvrir le menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="#histoire">Histoire</a></li>
+        <li class="nav-item"><a class="nav-link" href="#equipe">Équipe</a></li>
+        <li class="nav-item"><a class="nav-link" href="#stade">Centre sportif</a></li>
+        <li class="nav-item"><a class="nav-link" href="#cafe">Café &amp; Restaurant</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Main ─────────────────────────────────────────── -->
+<main id="main">
+
+<!-- ── Hero ─────────────────────────────────────────── -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-bg" role="img" aria-label="Match de nuit au centre sportif de Cerceda"></div>
+  <div class="hero-stripe" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="container">
+      <p class="hero-eyebrow" aria-hidden="true">4ème Ligue · Saison 2024–2025 · Genève</p>
+      <h1 id="hero-heading">Club<br><em>Deportivo</em><br>Cerceda</h1>
+      <p class="hero-sub">Depuis 1985, nous portons fièrement l'héritage galicien sur les terrains genevois avec passion, solidarité et ambition.</p>
+      <div class="hero-actions">
+        <a href="#equipe" class="btn-primary-club"><i class="bi bi-people-fill" aria-hidden="true"></i>Notre équipe</a>
+        <a href="#contact" class="btn-outline-club"><i class="bi bi-envelope" aria-hidden="true"></i>Nous rejoindre</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Stats ─────────────────────────────────────────── -->
+<section class="stats-bar" aria-label="Chiffres clés">
+  <div class="container">
+    <div class="row g-2">
+      <div class="col-6 col-md-3"><div class="stat-item"><span class="stat-number">1985</span><span class="stat-label">Fondation</span></div></div>
+      <div class="col-6 col-md-3"><div class="stat-item"><span class="stat-number">4L</span><span class="stat-label">Ligue régionale</span></div></div>
+      <div class="col-6 col-md-3"><div class="stat-item"><span class="stat-number">30+</span><span class="stat-label">Joueurs</span></div></div>
+      <div class="col-6 col-md-3"><div class="stat-item"><span class="stat-number">GE</span><span class="stat-label">Canton de Genève</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Histoire ──────────────────────────────────────── -->
+<section class="section" id="histoire" aria-labelledby="histoire-heading">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal">
+        <div class="histoire-wrap">
+          <img src="https://static.wixstatic.com/media/4e8532_f6feafb3983b4657979490ddb55de60e~mv2.jpeg/v1/fill/w_800,h_600,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_f6feafb3983b4657979490ddb55de60e~mv2.jpeg"
+               alt="L'équipe du Club Deportivo Cerceda Genève réunie" width="800" height="600">
+          <div class="year-badge" aria-hidden="true">Fondé en 1985</div>
+        </div>
+      </div>
+      <div class="col-lg-6 reveal" style="transition-delay:.1s">
+        <p class="section-label">Notre histoire</p>
+        <h2 class="section-title" id="histoire-heading">Galice &amp;<br>Genève</h2>
+        <hr class="divider-gold">
+        <p>Fondé en juillet <strong>1985</strong> par un groupe d'amis passionnés, le Club Deportivo Cerceda tire son nom de la pittoresque ville du même nom, nichée dans la région galicienne, province de A Coruña, le long des rives de l'Atlantique en Espagne.</p>
+        <p>Depuis sa création, le club porte fièrement l'héritage de cette charmante communauté, écrivant son histoire sur les terrains genevois avec dévouement et passion.</p>
+        <p style="color:var(--text-muted);font-size:.925rem">Ensemble, nous symbolisons l'esprit sportif et l'unité qui définissent le football à Genève. Chaque match est un nouveau chapitre d'une histoire commune qui traverse les frontières.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features ──────────────────────────────────────── -->
+<section class="section section-light" aria-labelledby="offres-heading">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="section-label">Ce que nous offrons</p>
+      <h2 class="section-title" id="offres-heading">Un club aux ambitions fortes</h2>
+      <hr class="divider-gold mx-auto">
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 reveal"><div class="feature-card"><div class="feature-icon" aria-hidden="true"><i class="bi bi-trophy"></i></div><h3>Compétition</h3><p>Engagés en 4ème ligue de l'AFS avec l'ambition de progresser chaque saison.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal" style="transition-delay:.07s"><div class="feature-card"><div class="feature-icon" aria-hidden="true"><i class="bi bi-people"></i></div><h3>Communauté</h3><p>Un club familial où règnent la convivialité, le respect et la passion partagée.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal" style="transition-delay:.14s"><div class="feature-card"><div class="feature-icon" aria-hidden="true"><i class="bi bi-geo-alt"></i></div><h3>Infrastructures</h3><p>Un centre sportif à Onex avec terrain soigné et vestiaires modernes.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal" style="transition-delay:.21s"><div class="feature-card"><div class="feature-icon" aria-hidden="true"><i class="bi bi-cup-hot"></i></div><h3>Café &amp; Restaurant</h3><p>Cuisine galicienne et espagnole traditionnelle, le rendez-vous des supporters.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Équipe ─────────────────────────────────────────── -->
+<section class="section players-section" id="equipe" aria-labelledby="equipe-heading">
+  <div class="container">
+    <!-- Staff -->
+    <div class="text-center mb-4 reveal">
+      <p class="section-label section-label-gold">Saison 2024–2025</p>
+      <h2 class="section-title section-title-white" id="equipe-heading">L'équipe senior</h2>
+      <hr class="divider-gold mx-auto">
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-size:1rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.45);margin-bottom:1.25rem" class="reveal">Staff technique</h3>
+    <div class="row g-3 mb-5 reveal" style="transition-delay:.05s">
+      <div class="col-6 col-md-3">
+        <div class="staff-card">
+          <img class="staff-photo"
+               src="https://static.wixstatic.com/media/4e8532_5dbc310db7a0482797532372b498163f~mv2.jpg/v1/crop/x_0,y_330,w_939,h_939/fill/w_220,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240120_212430000_iOS_edited.jpg"
+               alt="Manuel Garcia, Président" width="100" height="100">
+          <p class="staff-name">Manuel Garcia</p>
+          <p class="staff-role">Président</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="staff-card">
+          <img class="staff-photo"
+               src="https://static.wixstatic.com/media/4e8532_50f4008519c148e6abf1a0f5ae0955be~mv2.jpg/v1/crop/x_16,y_0,w_971,h_971/fill/w_220,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/f7b28e0f-cdec-4264-838e-37c8beb9fe84_edi.jpg"
+               alt="Juan Alvarez, Directeur technique" width="100" height="100">
+          <p class="staff-name">Juan Alvarez</p>
+          <p class="staff-role">Directeur technique</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="staff-card">
+          <img class="staff-photo"
+               src="https://static.wixstatic.com/media/4e8532_2c26ed98c8d1422ca2e5079adfe32760~mv2.jpeg/v1/crop/x_0,y_164,w_1536,h_1536/fill/w_220,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/WhatsApp%20Image%202024-10-19%20at%2011_49_57(1).jpeg"
+               alt="António Carneiro, Entraîneur" width="100" height="100">
+          <p class="staff-name">António Carneiro</p>
+          <p class="staff-role">Entraîneur</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="staff-card">
+          <img class="staff-photo"
+               src="https://static.wixstatic.com/media/4e8532_b0e3c158efb443d4ac76cfafd5d5f977~mv2.png/v1/fill/w_220,h_220,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/20231204_103706625_iOS.png"
+               alt="Joāo Ferreira, Entraîneur" width="100" height="100">
+          <p class="staff-name">Joāo Ferreira</p>
+          <p class="staff-role">Entraîneur</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Players carousel -->
+    <h3 style="font-family:var(--font-display);font-size:1rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.45);margin-bottom:1.25rem" class="reveal">Joueurs</h3>
+
+    <!-- Position filter tabs -->
+    <div class="pos-tabs reveal" role="group" aria-label="Filtrer par poste">
+      <button class="pos-tab active" data-pos="all" type="button">Tous</button>
+      <button class="pos-tab" data-pos="Gardien" type="button">Gardiens</button>
+      <button class="pos-tab" data-pos="Défenseur" type="button">Défenseurs</button>
+      <button class="pos-tab" data-pos="Milieu" type="button">Milieux</button>
+      <button class="pos-tab" data-pos="Attaquant" type="button">Attaquants</button>
+    </div>
+
+    <div class="carousel-outer reveal" style="transition-delay:.1s">
+      <div class="players-track" id="playersTrack" aria-label="Carrousel des joueurs">
+        <!-- JS will render cards here -->
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="car-btn" id="prevBtn" aria-label="Joueurs précédents" type="button" disabled>
+        <i class="bi bi-chevron-left" aria-hidden="true"></i>
+      </button>
+      <button class="car-btn" id="nextBtn" aria-label="Joueurs suivants" type="button">
+        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+      </button>
+      <div class="car-dots" id="carDots" aria-hidden="true"></div>
+      <span class="carousel-count" id="carCount" aria-live="polite"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Centre sportif ─────────────────────────────────── -->
+<section class="section" id="stade" aria-labelledby="stade-heading">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal">
+        <p class="section-label">Nos installations</p>
+        <h2 class="section-title" id="stade-heading">Centre sportif</h2>
+        <hr class="divider-gold">
+        <p>Le club joue et s'entraîne au centre sportif de Onex, en plein cœur du canton de Genève. Des installations de qualité pour préparer chaque match dans les meilleures conditions.</p>
+        <div class="mt-3">
+          <div class="info-row">
+            <i class="bi bi-geo-alt-fill info-row-icon" aria-hidden="true"></i>
+            <address style="font-style:normal;margin:0">
+              <strong>Chemin François-Chavaz 110</strong><br>
+              1213 Onex, Suisse
+            </address>
+          </div>
+          <div class="info-row">
+            <i class="bi bi-telephone-fill info-row-icon" aria-hidden="true"></i>
+            <a href="tel:+41223217569" style="color:var(--text-main);text-decoration:none">+41 22 321 75 69</a>
+          </div>
+          <div class="info-row">
+            <i class="bi bi-clock-fill info-row-icon" aria-hidden="true"></i>
+            <span>Entraînements plusieurs fois par semaine</span>
+          </div>
+        </div>
+        <a href="#contact" class="btn-primary-club mt-4" style="display:inline-flex">
+          <i class="bi bi-calendar3" aria-hidden="true"></i>Venir nous voir
+        </a>
+      </div>
+      <div class="col-lg-6 reveal" style="transition-delay:.1s">
+        <img class="stade-img"
+             src="https://static.wixstatic.com/media/11062b_f68cc981478442aa89786b7f3ceded51~mv2.jpeg/v1/fill/w_800,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Match%20de%20nuit.jpeg"
+             alt="Match de nuit au centre sportif François-Chavaz" width="800" height="500">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Café / Restaurant ──────────────────────────────── -->
+<section class="section section-light" id="cafe" aria-labelledby="cafe-heading">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 order-lg-2 reveal">
+        <img class="cafe-img"
+             src="https://static.wixstatic.com/media/4e8532_2bb7bf967750484f825ba3d4540a261f~mv2.jpg/v1/crop/x_0,y_0,w_767,h_811/fill/w_600,h_640,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_2bb7bf967750484f825ba3d4540a261f~mv2.jpg"
+             alt="Intérieur du café-restaurant du Club Deportivo Cerceda" width="600" height="640">
+      </div>
+      <div class="col-lg-6 order-lg-1 reveal" style="transition-delay:.1s">
+        <p class="section-label">Cuisine et convivialité</p>
+        <h2 class="section-title" id="cafe-heading">Café &amp;<br>Restaurant du club</h2>
+        <hr class="divider-gold">
+        <blockquote class="cafe-quote">
+          Caché dans un sous-sol de la Jonction, il faut vraiment connaître l'endroit — ou y être entraîné par des amis galiciens — pour y entrer.
+        </blockquote>
+        <p>Cerceda fait référence à une commune de La Corogne, en Galicie : c'est la raison pour laquelle le menu comporte bon nombre de plats de cette région, en plus de classiques espagnols.</p>
+        <p style="color:var(--text-muted);font-size:.925rem">Ce local populaire est notamment un repère pour les amateurs de matchs de football du coin — la salle s'anime le soir des grandes rencontres.</p>
+        <div class="row g-3 mt-2">
+          <div class="col-6">
+            <div style="background:var(--white);border:1px solid var(--gray-line);border-radius:var(--radius-md);padding:1rem">
+              <i class="bi bi-cup-straw" style="color:var(--blue);font-size:1.2rem" aria-hidden="true"></i>
+              <p style="font-family:var(--font-display);font-size:.9rem;font-weight:700;text-transform:uppercase;margin:.4rem 0 .2rem">Cuisine galicienne</p>
+              <p style="font-size:.82rem;color:var(--text-muted);margin:0">Plats traditionnels de A Coruña et classiques espagnols</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:var(--white);border:1px solid var(--gray-line);border-radius:var(--radius-md);padding:1rem">
+              <i class="bi bi-tv" style="color:var(--blue);font-size:1.2rem" aria-hidden="true"></i>
+              <p style="font-family:var(--font-display);font-size:.9rem;font-weight:700;text-transform:uppercase;margin:.4rem 0 .2rem">Matchs en direct</p>
+              <p style="font-size:.82rem;color:var(--text-muted);margin:0">Retransmission des grands matchs pour les supporters</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ────────────────────────────────────────── -->
+<section class="section section-navy" id="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="row align-items-start g-5">
+      <div class="col-lg-5 reveal">
+        <p class="section-label section-label-gold">Rejoindre l'aventure</p>
+        <h2 class="section-title section-title-white" id="contact-heading">Contactez-nous</h2>
+        <hr class="divider-gold">
+        <p style="color:rgba(255,255,255,.7)">Vous souhaitez jouer pour Cerceda, suivre le club ou obtenir des informations sur le café-restaurant ? Nous sommes toujours à la recherche de nouveaux talents et de supporters passionnés.</p>
+        <div class="mt-4 mb-4">
+          <div class="info-row" style="margin-bottom:.6rem">
+            <i class="bi bi-geo-alt-fill info-row-icon" aria-hidden="true"></i>
+            <span style="color:rgba(255,255,255,.7)">Chemin François-Chavaz 110, 1213 Onex</span>
+          </div>
+          <div class="info-row">
+            <i class="bi bi-telephone-fill info-row-icon" aria-hidden="true"></i>
+            <a href="tel:+41223217569" style="color:rgba(255,255,255,.7);text-decoration:none">+41 22 321 75 69</a>
+          </div>
+        </div>
+        <p class="section-label section-label-gold mb-2">Nous suivre</p>
+        <nav class="social-links" aria-label="Réseaux sociaux du club">
+          <a class="social-link" href="https://www.facebook.com/people/Restaurant-Cerceda/100063964423502/" target="_blank" rel="noopener noreferrer" aria-label="Facebook du club (nouvel onglet)"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+          <a class="social-link" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram du club (nouvel onglet)"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+          <a class="social-link" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube du club (nouvel onglet)"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+          <a class="social-link" href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok du club (nouvel onglet)"><i class="bi bi-tiktok" aria-hidden="true"></i></a>
+        </nav>
+      </div>
+      <div class="col-lg-7 reveal" style="transition-delay:.1s">
+        <div class="form-box">
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem;letter-spacing:.05em">Envoyer un message</h3>
+          <form action="https://www.cdcercedageneve.ch/contact" method="post" novalidate>
+            <div class="mb-3">
+              <label for="nom">Nom complet <span aria-hidden="true" style="color:var(--gold)">*</span><span class="visually-hidden">(obligatoire)</span></label>
+              <input type="text" id="nom" name="nom" required autocomplete="name" placeholder="Jean Dupont" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="email">Adresse e-mail <span aria-hidden="true" style="color:var(--gold)">*</span><span class="visually-hidden">(obligatoire)</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" inputmode="email" placeholder="jean@exemple.ch" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="sujet">Sujet</label>
+              <select id="sujet" name="sujet" class="form-select">
+                <option value="">Choisissez un sujet</option>
+                <option value="rejoindre">Rejoindre le club</option>
+                <option value="essai">Demander un essai</option>
+                <option value="info">Renseignements généraux</option>
+                <option value="cafe">Café &amp; Restaurant</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label for="message">Message <span aria-hidden="true" style="color:var(--gold)">*</span><span class="visually-hidden">(obligatoire)</span></label>
+              <textarea id="message" name="message" rows="4" required placeholder="Votre message…" class="form-control" style="resize:vertical"></textarea>
+            </div>
+            <button type="submit" class="btn-primary-club w-100 justify-content-center" style="border:none;cursor:pointer">
+              <i class="bi bi-send" aria-hidden="true"></i>Envoyer le message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="row align-items-center g-3">
+      <div class="col-md-6">
+        <p class="footer-logo mb-1">Club Deportivo Cerceda Genève</p>
+        <p class="mb-0">© <span id="year"></span> — Tous droits réservés. Onex, Genève, Suisse.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <nav aria-label="Liens du pied de page">
+          <a href="#histoire">Histoire</a>
+          <span aria-hidden="true" style="margin:0 .5rem;opacity:.25">·</span>
+          <a href="#equipe">Équipe</a>
+          <span aria-hidden="true" style="margin:0 .5rem;opacity:.25">·</span>
+          <a href="#stade">Centre sportif</a>
+          <span aria-hidden="true" style="margin:0 .5rem;opacity:.25">·</span>
+          <a href="#cafe">Café</a>
+          <span aria-hidden="true" style="margin:0 .5rem;opacity:.25">·</span>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── Scripts ─────────────────────────────────────────── -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmB1FU+rUJqOPL9+Mcd8c7MIFP+" crossorigin="anonymous" defer></script>
+
+<script>
+// Copyright year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Sticky nav
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+// aria-current
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('main section[id]');
+const sectionObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(l => {
+      l.removeAttribute('aria-current');
+      if (l.getAttribute('href') === '#' + e.target.id) l.setAttribute('aria-current', 'page');
+    });
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => sectionObs.observe(s));
+
+// Scroll reveal
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── Player carousel data ──────────────────────────────
+const WIX = 'https://static.wixstatic.com/media/4e8532_';
+
+const allPlayers = [
+  // Gardiens
+  { name: 'Mendes de Castro George', pos: 'Gardien', cat: 'Gardien',
+    img: WIX + '27277db41936461fae2cf54e084807b8~mv2.jpg/v1/crop/x_0,y_256,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240124_185747000_iOS.jpg' },
+  { name: 'Dos Santos Daniel', pos: 'Gardien', cat: 'Gardien',
+    img: WIX + 'b0e3c158efb443d4ac76cfafd5d5f977~mv2.png/v1/fill/w_400,h_400,al_c,q_85,enc_avif,quality_auto/20231204_103706625_iOS.png' },
+
+  // Défenseurs
+  { name: 'Rexhepi Shemsedin', pos: 'Arrière latéral gauche', cat: 'Défenseur',
+    img: WIX + '80d107d82f0f4092af6f7cfddcbdb83e~mv2.jpg/v1/crop/x_0,y_172,w_1536,h_1538/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240111_172746000_iOS_edited.jpg' },
+  { name: 'Jimmy Tuan-Anh Ta Da Silva', pos: 'Arrière central droit', cat: 'Défenseur',
+    img: WIX + 'd765203c2ce54c27afbec54fb16602b5~mv2.jpg/v1/crop/x_0,y_256,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/99e3bfb2-bc61-4c93-8bc2-830b1c95e553_edi.jpg' },
+  { name: 'Naranjo Alejandro', pos: 'Arrière latéral droit', cat: 'Défenseur',
+    img: WIX + '2caa26b3295f4e0090f71a30ca5c44f3~mv2.jpeg/v1/crop/x_0,y_430,w_1362,h_1359/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_2caa26b3295f4e0090f71a30ca5c44f3~mv2.jpeg' },
+  { name: 'Agbodji Ayité Gaël', pos: 'Arrière central droit', cat: 'Défenseur',
+    img: WIX + 'fc48a605181945fba83c35bb8e8646ea~mv2.jpg/v1/crop/x_0,y_256,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240124_190140000_iOS.jpg' },
+  { name: 'Simoes Clemente David', pos: 'Arrière central droit', cat: 'Défenseur',
+    img: WIX + '135d27a9844c436b950d3b4928c1c3cb~mv2.jpg/v1/crop/x_124,y_447,w_1194,h_1195/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/342e523a-a24e-4a19-afa9-831caeb3acb3_edi.jpg' },
+  { name: 'Tarhouni Mohamed', pos: 'Arrière latéral droit', cat: 'Défenseur',
+    img: WIX + '47cc18a553e6474099a6cd07b3179131~mv2.jpg/v1/crop/x_0,y_256,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240120_212039000_iOS_edited.jpg' },
+  { name: 'Lahyani Oualid', pos: 'Arrière latéral droit', cat: 'Défenseur',
+    img: WIX + '176ee195341f4918aad5591fecd8e2cb~mv2.jpeg/v1/crop/x_0,y_191,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_176ee195341f4918aad5591fecd8e2cb~mv2.jpeg' },
+  { name: 'Cimelli Mathias', pos: 'Arrière latéral gauche', cat: 'Défenseur',
+    img: WIX + '3d5c3b75090f403b8a2d8cc3f3acfdb3~mv2.jpg/v1/crop/x_0,y_389,w_1536,h_1538/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240111_172506000_iOS_edited.jpg' },
+  { name: 'Sanneh Sulayman', pos: 'Arrière central gauche', cat: 'Défenseur',
+    img: WIX + '5fdb5bcf70574e32ae0e4661f7e31f34~mv2.jpeg/v1/crop/x_0,y_256,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_5fdb5bcf70574e32ae0e4661f7e31f34~mv2.jpeg' },
+  { name: 'Du Bois Cléo', pos: 'Arrière central droit', cat: 'Défenseur',
+    img: WIX + 'a377e48a17d94c3199d7142e733ab637~mv2.jpeg/v1/crop/x_0,y_72,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_a377e48a17d94c3199d7142e733ab637~mv2.jpeg' },
+
+  // Milieux
+  { name: 'Avdiu Edon', pos: 'Demi défensif', cat: 'Milieu',
+    img: WIX + '83f8014ab4854bfbae060dbd222c3ce7~mv2.jpg/v1/crop/x_0,y_116,w_1536,h_1538/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240114_080729000_iOS_edited.jpg' },
+  { name: 'Tarolli Eduardo', pos: 'Demi gauche intérieur', cat: 'Milieu',
+    img: WIX + 'd33bf9144d94435d8b76ccb8dc6bc5e3~mv2.jpeg/v1/crop/x_0,y_331,w_1461,h_1457/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_d33bf9144d94435d8b76ccb8dc6bc5e3~mv2.jpeg' },
+  { name: 'Carvalho Dany', pos: 'Demi droit', cat: 'Milieu',
+    img: WIX + '2043311ad96a43e4a00098369d80cab4~mv2.jpeg/v1/crop/x_0,y_317,w_1451,h_1447/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_2043311ad96a43e4a00098369d80cab4~mv2.jpeg' },
+  { name: 'Modou Lamine Jammeh', pos: 'Demi droit', cat: 'Milieu',
+    img: WIX + '16eb99d6b1ea4d368426bdb1ca09958c~mv2.jpeg/v1/crop/x_0,y_65,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_16eb99d6b1ea4d368426bdb1ca09958c~mv2.jpeg' },
+  { name: 'Avdiu Rexhep', pos: 'Demi centre', cat: 'Milieu',
+    img: WIX + '100dacab7d2840b0bd8631b6efac8012~mv2.jpeg/v1/crop/x_0,y_256,w_1403,h_1403/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_100dacab7d2840b0bd8631b6efac8012~mv2.jpeg' },
+  { name: 'Kamanda Bomba Jean', pos: 'Demi droit intérieur', cat: 'Milieu',
+    img: WIX + '4d9c23b526d54bca8922e89e77e52ac1~mv2.jpeg/v1/crop/x_0,y_309,w_1200,h_1200/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_4d9c23b526d54bca8922e89e77e52ac1~mv2.jpeg' },
+  { name: 'Casey Lee', pos: 'Demi défensif', cat: 'Milieu',
+    img: WIX + 'b47279da49724b3aba7e6b7c7d3e1ec0~mv2.jpg/v1/crop/x_0,y_72,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_b47279da49724b3aba7e6b7c7d3e1ec0~mv2.jpg' },
+  { name: 'Musa Sabally', pos: 'Demi droit', cat: 'Milieu',
+    img: WIX + 'fc4f752880c947c2b4a5e948d1f76659~mv2.jpeg/v1/crop/x_0,y_0,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_fc4f752880c947c2b4a5e948d1f76659~mv2.jpeg' },
+  { name: 'Fiume Lucio', pos: 'Demi centre', cat: 'Milieu',
+    img: WIX + '2bba48f6b6004545962960885493d456~mv2.jpg/v1/crop/x_0,y_256,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_2bba48f6b6004545962960885493d456~mv2.jpg' },
+
+  // Attaquants
+  { name: 'Neto Sergio', pos: 'Attaquant de pointe', cat: 'Attaquant',
+    img: WIX + '0b0b7bc34b4d4e24a3989f6a43d7f917~mv2.jpeg/v1/crop/x_3,y_300,w_1318,h_1314/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_0b0b7bc34b4d4e24a3989f6a43d7f917~mv2.jpeg' },
+  { name: 'Sana Cristian', pos: 'Ailier droit', cat: 'Attaquant',
+    img: WIX + 'c174f1f6a558423f892f56a77119df3c~mv2.jpg/v1/crop/x_100,y_496,w_1341,h_1341/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240111_170540000_iOS_edited.jpg' },
+  { name: 'Doumbouya Mohamed', pos: 'Attaquant de pointe', cat: 'Attaquant',
+    img: WIX + '2045732bdb77491bbd2c9b037a2278db~mv2.jpeg/v1/crop/x_0,y_48,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_2045732bdb77491bbd2c9b037a2278db~mv2.jpeg' },
+  { name: 'Khavari Mohammad Davoud', pos: 'Ailier droit', cat: 'Attaquant',
+    img: WIX + '5dd800d26a194ac088061be2e34eff87~mv2.jpg/v1/crop/x_0,y_165,w_1536,h_1538/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240111_172137000_iOS_edited.jpg' },
+  { name: 'Bekri Yannis', pos: 'Ailier droit', cat: 'Attaquant',
+    img: WIX + '79c8652743f6440a94b3dc231556cae0~mv2.jpeg/v1/crop/x_0,y_259,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_79c8652743f6440a94b3dc231556cae0~mv2.jpeg' },
+  { name: 'Nouboussi Sokeng Thomas Junior', pos: 'Ailier gauche', cat: 'Attaquant',
+    img: WIX + 'befcf0c072b94abaa4d1c50a26814a4e~mv2.jpg/v1/crop/x_0,y_99,w_1536,h_1536/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_befcf0c072b94abaa4d1c50a26814a4e~mv2.jpg' },
+  { name: 'Migliorini Fabiomassimo', pos: 'Attaquant de pointe', cat: 'Attaquant',
+    img: WIX + 'd436f06077fb4734be753409b7647110~mv2.jpeg/v1/crop/x_0,y_200,w_1200,h_1200/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_d436f06077fb4734be753409b7647110~mv2.jpeg' },
+  { name: 'Abdoul Hassad', pos: 'Ailier droit', cat: 'Attaquant',
+    img: WIX + '709d9639b777444ba9c2fb93c400ef2d~mv2.jpg/v1/crop/x_151,y_486,w_1161,h_1161/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240114_080516000_iOS_edited_edited.jpg' },
+  { name: 'Grada Sasi', pos: 'Ailier gauche', cat: 'Attaquant',
+    img: WIX + 'f5e228b0ddce428db1488b13d53a3345~mv2.jpeg/v1/crop/x_0,y_307,w_1454,h_1454/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e8532_f5e228b0ddce428db1488b13d53a3345~mv2.jpeg' },
+];
+
+// ── Carousel logic ──────────────────────────────────────
+const track  = document.getElementById('playersTrack');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const dotsEl = document.getElementById('carDots');
+const countEl = document.getElementById('carCount');
+
+let currentPlayers = [...allPlayers];
+let currentPage = 0;
+
+function getPerPage() {
+  const w = window.innerWidth;
+  if (w < 480) return 1;
+  if (w < 768) return 2;
+  if (w < 992) return 3;
+  return 4;
+}
+
+function totalPages(players) {
+  return Math.ceil(players.length / getPerPage());
+}
+
+function renderTrack(players, page) {
+  const pp = getPerPage();
+  const start = page * pp;
+  const visible = players.slice(start, start + pp);
+
+  track.innerHTML = visible.map(p => `
+    <div class="player-card">
+      <img class="player-photo"
+           src="${p.img}"
+           alt="Photo de ${p.name}, ${p.pos}"
+           width="400" height="400"
+           loading="lazy">
+      <div class="player-info">
+        <p class="player-name">${p.name}</p>
+        <p class="player-pos">${p.pos}</p>
+      </div>
+    </div>
+  `).join('');
+
+  // Dots
+  const pages = totalPages(players);
+  dotsEl.innerHTML = Array.from({ length: pages }, (_, i) =>
+    `<button class="car-dot${i === page ? ' active' : ''}" data-p="${i}" aria-label="Page ${i+1}" type="button"></button>`
+  ).join('');
+  dotsEl.querySelectorAll('.car-dot').forEach(d =>
+    d.addEventListener('click', () => goTo(+d.dataset.p))
+  );
+
+  // Count
+  countEl.textContent = `${page + 1} / ${pages}`;
+
+  // Buttons
+  prevBtn.disabled = page === 0;
+  nextBtn.disabled = page >= pages - 1;
+}
+
+function goTo(page) {
+  currentPage = page;
+  renderTrack(currentPlayers, currentPage);
+}
+
+prevBtn.addEventListener('click', () => goTo(currentPage - 1));
+nextBtn.addEventListener('click', () => goTo(currentPage + 1));
+window.addEventListener('resize', () => {
+  currentPage = 0;
+  renderTrack(currentPlayers, 0);
+}, { passive: true });
+
+// Touch swipe
+let touchStartX = 0;
+track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+track.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) dx < 0 ? goTo(Math.min(currentPage + 1, totalPages(currentPlayers) - 1)) : goTo(Math.max(currentPage - 1, 0));
+}, { passive: true });
+
+// Position filter tabs
+document.querySelectorAll('.pos-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.pos-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed', 'false'); });
+    tab.classList.add('active');
+    tab.setAttribute('aria-pressed', 'true');
+    const pos = tab.dataset.pos;
+    currentPlayers = pos === 'all' ? [...allPlayers] : allPlayers.filter(p => p.cat === pos);
+    currentPage = 0;
+    renderTrack(currentPlayers, 0);
+  });
+});
+
+// Initial render
+renderTrack(currentPlayers, 0);
+</script>
+
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+
+</body>
+</html>
