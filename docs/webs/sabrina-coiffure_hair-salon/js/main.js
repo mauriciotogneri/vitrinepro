@@ -1,6 +1,6 @@
 /* Sabrina Coiffure — vanilla JS, no framework.
    Year · mobile nav · scroll reveals · scrollspy · photo lightbox.
-   (No open/closed status chip: the dossier has no opening hours.) */
+   (Opening hours are shown statically; no live open/closed status chip.) */
 (function () {
   'use strict';
   var doc = document;

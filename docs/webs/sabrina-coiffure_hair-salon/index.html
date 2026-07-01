@@ -94,6 +94,26 @@
         },
         "areaServed": "Genève",
         "knowsLanguage": "fr-CH",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Thursday"],
+            "opens": "08:30",
+            "closes": "14:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "08:30",
+            "closes": "17:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "08:00",
+            "closes": "12:30"
+          }
+        ],
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.4",
@@ -485,10 +505,15 @@
                 <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-clock" /></svg>
                 <div>
                   <div class="ir-label">Horaires</div>
-                  <p class="ir-note">
-                    Les horaires ne sont pas publiés en ligne. Appelez le salon pour connaître les horaires du
-                    jour et prendre rendez-vous.
-                  </p>
+                  <ul class="hours">
+                    <li><span class="d">Lundi</span><span class="h">8h30 – 14h00</span></li>
+                    <li class="is-appt"><span class="d">Mardi</span><span class="h">Sur rendez-vous</span></li>
+                    <li class="is-closed"><span class="d">Mercredi</span><span class="h">Fermé</span></li>
+                    <li><span class="d">Jeudi</span><span class="h">8h30 – 14h00</span></li>
+                    <li><span class="d">Vendredi</span><span class="h">8h30 – 17h30</span></li>
+                    <li><span class="d">Samedi</span><span class="h">8h00 – 12h30</span></li>
+                    <li class="is-closed"><span class="d">Dimanche</span><span class="h">Fermé</span></li>
+                  </ul>
                 </div>
               </div>
               <div class="info-row">
@@ -598,9 +623,13 @@
           <div class="footer-col">
             <h2>Horaires</h2>
             <ul>
-              <li class="ir-note" style="color: var(--on-deep-muted)">
-                Horaires non publiés en ligne — appelez le salon pour les horaires du jour.
-              </li>
+              <li class="day"><span>Lundi</span><span>8h30 – 14h00</span></li>
+              <li class="day"><span>Mardi</span><span>Sur rdv</span></li>
+              <li class="day"><span>Mercredi</span><span>Fermé</span></li>
+              <li class="day"><span>Jeudi</span><span>8h30 – 14h00</span></li>
+              <li class="day"><span>Vendredi</span><span>8h30 – 17h30</span></li>
+              <li class="day"><span>Samedi</span><span>8h00 – 12h30</span></li>
+              <li class="day"><span>Dimanche</span><span>Fermé</span></li>
             </ul>
           </div>
         </div>
