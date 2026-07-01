@@ -249,6 +249,16 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.
 .info-link { color: var(--plum); text-decoration: none; font-weight: 600; }
 .info-link:hover { text-decoration: underline; }
 .info-link address { font-style: normal; line-height: 1.5; }
+/* opening hours (info card + footer) */
+.hours { margin: 0.15rem 0 0; display: grid; gap: 0.3rem; }
+.hours > div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.hours dt { font-weight: 600; color: var(--ink); font-size: 0.95rem; }
+.hours dd { color: var(--muted-text); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 0.95rem; }
+.hours .is-closed { color: var(--taupe); font-weight: 400; }
+.hours--foot { gap: 0.32rem; }
+.hours--foot dt { color: var(--on-dark-soft); font-weight: 400; font-size: 0.9rem; }
+.hours--foot dd { color: var(--cream); font-size: 0.9rem; }
+.hours--foot .is-closed { color: rgba(246, 239, 225, 0.45); }
 .map {
   position: relative; overflow: hidden; border-radius: var(--r-lg);
   min-height: 340px; border: 1px solid var(--border); box-shadow: var(--shadow-soft);
