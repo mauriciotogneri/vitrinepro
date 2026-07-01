@@ -236,13 +236,14 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.
 .shot:hover figcaption, .shot:focus-within figcaption { opacity: 1; transform: none; }
 
 /* ---------- nous trouver ---------- */
-.find-grid { display: grid; grid-template-columns: 1fr 1.12fr; gap: clamp(1.4rem, 3vw, 2.4rem); align-items: stretch; }
+.find-grid { display: grid; grid-template-columns: 0.8fr 1.4fr; gap: clamp(1.4rem, 3vw, 2.4rem); align-items: stretch; }
 .info-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg);
   padding: clamp(1.4rem, 2.6vw, 2rem); box-shadow: var(--shadow-soft);
   display: flex; flex-direction: column; gap: 1.35rem;
 }
 .info-row { display: flex; gap: 0.9rem; align-items: flex-start; }
+.info-row > div { flex: 1; min-width: 0; }
 .info-ic { width: 24px; height: 24px; color: var(--plum); flex: 0 0 auto; margin-top: 2px; }
 .info-row h3 { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.13em; font-size: 0.74rem; color: var(--muted-text); font-weight: 700; margin-bottom: 0.35rem; }
 .info-row p { color: var(--muted-text); font-size: 0.95rem; }
@@ -250,7 +251,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.
 .info-link:hover { text-decoration: underline; }
 .info-link address { font-style: normal; line-height: 1.5; }
 /* opening hours (info card + footer) */
-.hours { margin: 0.15rem 0 0; display: grid; gap: 0.3rem; }
+.hours { margin: 0.15rem 0 0; display: flex; flex-direction: column; gap: 0.3rem; }
 .hours > div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
 .hours dt { font-weight: 600; color: var(--ink); font-size: 0.95rem; }
 .hours dd { color: var(--muted-text); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 0.95rem; }
@@ -280,7 +281,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.
 .ch-label { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--on-dark-soft); }
 .ch-value { display: block; font-weight: 600; word-break: break-word; }
 
-.contact-form-wrap { background: #FBF6EC; border-radius: var(--r-lg); padding: clamp(1.4rem, 3vw, 2.2rem); box-shadow: var(--shadow); }
+.contact-form-wrap { background: #FBF6EC; border-radius: var(--r-lg); padding: clamp(1.4rem, 3vw, 2.2rem); box-shadow: var(--shadow); align-self: end; }
 .field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
 .field label { font-weight: 700; font-size: 0.86rem; color: var(--ink); }
 .field label span { color: var(--plum); }
