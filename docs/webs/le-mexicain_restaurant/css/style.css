@@ -1,40 +1,52 @@
 /* ==========================================================================
-   Le Mexicain — Cantina rústica
+   Le Mexicain — Cantina poster
    Hand-written CSS, no framework. Shared by fr-CH (/) and EN (/en/).
-   Aesthetic: warm editorial cantina — cream paper, terracotta + agave green,
-   Fraunces display serif, Hanken Grotesk body. Distinct from the rest of the
-   portfolio (no dark/gold, no pastel).
+   Aesthetic: bold Mexican-poster cantina — saturated terracotta + chile-red
+   fields, cream (#FDFFD0) type, Anton display, Hanken Grotesk body. Zero
+   border-radius, greca + papel-picado + confetti-square motifs.
+   Contrast contract: small text only sits on --chile or darker (cream = 5.6:1+);
+   --terracota backs large-type bands, accents, buttons, photo mats; --ochre and
+   --olive are for fills/borders/large display only (they fail as small text on red).
    ========================================================================== */
 
 /* ---------- Design tokens ---------- */
 :root {
-  /* surfaces */
-  --cream: #faf3e7;
-  --cream-deep: #f3e7d2;
-  --surface: #fffdf8;
-  --sand: #f0e3cd;
-
-  /* brand */
-  --terracotta: #b0502e;
-  --terracotta-deep: #8f3d20;
-  --clay: #c76b40;
-  --agave: #4f7a4d;
-  --agave-deep: #3f5e38;
-  --amber: #d98a3d;
-  --amber-soft: #e7c389;
-  --chili: #a3331f;
+  /* fields (backgrounds) */
+  --terracota: #d06224; /* hero + feature bands, large type only */
+  --chile: #ae431e; /* text-dense sections — cream is AA here */
+  --chile-deep: #822f16; /* cards, chips, inputs — cream 8.6:1 */
+  --cocoa: #3a1608; /* deepest — footer, skip link, hamburger */
 
   /* ink */
-  --cocoa: #2b221c;
-  --cocoa-soft: #3a2c22;
-  --ink: #2b221c;
-  --muted: #6f5d4e; /* AA on cream for small text */
-  --taupe: #877565; /* decorative only */
-  --border: #e7dac6;
-  --border-soft: #efe4d2;
+  --cream: #fdffd0; /* text everywhere */
+  --ink: var(--cream);
+  --muted: #f7f0c2; /* dimmed cream, still AA on chile */
+  --cocoa-soft: var(--cream);
+
+  /* accents — fills / borders / large display only */
+  --ochre: #daa520;
+  --olive: #8a6635;
+  --chili: #ef5a2a; /* bright alert red (closed dot) — non-text */
+
+  /* borders on red = cream hairlines */
+  --border: rgba(253, 255, 208, 0.3);
+  --border-soft: rgba(253, 255, 208, 0.16);
+
+  /* legacy aliases → new palette (keep references resolving) */
+  --terracotta: var(--terracota);
+  --terracotta-deep: var(--chile);
+  --clay: var(--ochre);
+  --agave: var(--ochre);
+  --agave-deep: var(--olive);
+  --amber: var(--ochre);
+  --amber-soft: var(--ochre);
+  --taupe: var(--muted);
+  --surface: var(--chile-deep);
+  --sand: var(--olive);
+  --cream-deep: var(--chile);
 
   /* type */
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-display: "Anton", "Hanken Grotesk", Impact, sans-serif;
   --font-body:
     "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     sans-serif;
@@ -43,17 +55,17 @@
   --container: 1160px;
   --gutter: clamp(1.15rem, 4vw, 2.6rem);
   --section: clamp(4rem, 9vw, 7.5rem);
-  --radius: 10px;
-  --radius-lg: 20px;
+  --radius: 0;
+  --radius-lg: 0;
   --head-h: 70px;
 
-  /* depth — warm, diffuse */
+  /* depth — deep shadow on saturated fields */
   --shadow-sm:
-    0 1px 2px rgba(74, 47, 28, 0.06), 0 2px 8px rgba(74, 47, 28, 0.05);
+    0 1px 2px rgba(20, 7, 2, 0.18), 0 2px 8px rgba(20, 7, 2, 0.14);
   --shadow-md:
-    0 4px 14px rgba(74, 47, 28, 0.09), 0 12px 34px rgba(74, 47, 28, 0.09);
+    0 4px 14px rgba(20, 7, 2, 0.22), 0 14px 34px rgba(20, 7, 2, 0.2);
   --shadow-lg:
-    0 10px 30px rgba(74, 47, 28, 0.12), 0 30px 70px rgba(74, 47, 28, 0.14);
+    0 10px 30px rgba(20, 7, 2, 0.28), 0 30px 70px rgba(20, 7, 2, 0.3);
 
   /* motion */
   --t-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
@@ -79,15 +91,15 @@ body {
   font-family: var(--font-body);
   font-size: clamp(1rem, 0.96rem + 0.2vw, 1.075rem);
   line-height: 1.65;
-  color: var(--ink);
-  background-color: var(--cream);
+  color: var(--cream);
+  background-color: var(--terracota);
   background-image:
     radial-gradient(
       120% 80% at 88% -8%,
-      rgba(217, 138, 61, 0.16),
+      rgba(218, 165, 32, 0.22),
       transparent 60%
     ),
-    radial-gradient(90% 70% at 0% 4%, rgba(79, 122, 77, 0.1), transparent 55%);
+    radial-gradient(90% 70% at 0% 4%, rgba(130, 47, 22, 0.55), transparent 55%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -135,16 +147,16 @@ ol {
   padding: 0;
 }
 :focus-visible {
-  outline: 3px solid var(--agave);
+  outline: 3px solid var(--ochre);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 :focus:not(:focus-visible) {
   outline: none;
 }
 ::selection {
-  background: var(--terracotta);
-  color: var(--cream);
+  background: var(--ochre);
+  color: var(--cocoa);
 }
 
 /* ---------- Typography ---------- */
@@ -153,10 +165,11 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -0.012em;
-  color: var(--cocoa);
+  font-weight: 400; /* Anton ships a single heavy weight */
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--cream);
   text-wrap: balance;
 }
 p {
@@ -172,12 +185,13 @@ p {
   font-size: 0.8rem;
   letter-spacing: 0.19em;
   text-transform: uppercase;
-  color: var(--terracotta-deep);
+  color: var(--cream);
 }
 .eyebrow svg {
   width: 1.05em;
   height: 1.05em;
   flex: none;
+  color: var(--ochre);
 }
 
 .section-head {
@@ -220,47 +234,76 @@ section {
   padding-block: var(--section);
 }
 
-/* organic divider between sections */
-.wave {
+/* ---------- Mexican motifs ---------- */
+/* greca — stepped-fret band, sits at the top edge of a section (transparent
+   bg so it reads on whatever field it opens) */
+.greca {
   display: block;
   width: 100%;
-  height: clamp(28px, 4vw, 52px);
-  color: var(--surface);
+  height: clamp(16px, 2.4vw, 26px);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23daa520' stroke-width='3'%3E%3Cpath d='M0 18H8V6h8v12h8'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 100%;
 }
-.wave svg {
+/* papel picado — cut-paper bunting; the ochre rule is the string */
+.papel {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 46px;
+  border-top: 3px solid var(--ochre);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='46' viewBox='0 0 80 46'%3E%3Cpath d='M2 2H38V30L32 24 26 30 20 24 14 30 8 24 2 30Z' fill='%23daa520'/%3E%3Cpath d='M42 2H78V30L72 24 66 30 60 24 54 30 48 24 42 30Z' fill='%23fdffd0'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: top center;
+  background-size: 80px 46px;
+}
+/* confetti — the reference's solid accent squares (ochre · cream · terracota) */
+.tiles {
+  display: block;
+  width: 13px;
+  height: 13px;
+  margin-top: 1.1rem;
+  background: var(--ochre);
+  box-shadow:
+    20px 0 0 var(--cream),
+    40px 0 0 var(--terracota);
+}
+.section-head--center .tiles {
+  margin-inline: auto;
 }
 
 /* ---------- Buttons ---------- */
 .btn {
-  --b: var(--terracotta-deep);
+  --b: var(--cream);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.55em;
   min-height: 48px;
-  padding: 0.82em 1.5em;
-  border: 1.5px solid var(--b);
-  border-radius: 999px;
+  padding: 0.82em 1.6em;
+  border: 2px solid var(--b);
+  border-radius: 0;
   background: var(--b);
-  color: var(--cream);
-  font-weight: 700;
-  font-size: 0.98rem;
-  letter-spacing: 0.005em;
+  color: var(--chile);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   text-align: center;
   transition:
     transform var(--t-fast),
     box-shadow var(--t),
     background var(--t-fast),
-    color var(--t-fast);
+    color var(--t-fast),
+    border-color var(--t-fast);
   box-shadow: var(--shadow-sm);
 }
 .btn:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
-  background: var(--terracotta);
-  border-color: var(--terracotta);
+  background: var(--ochre);
+  border-color: var(--ochre);
+  color: var(--cocoa);
 }
 .btn:active {
   transform: translateY(0);
@@ -271,28 +314,30 @@ section {
 }
 .btn--ghost {
   background: transparent;
-  color: var(--terracotta-deep);
-  border-color: var(--border);
+  color: var(--cream);
+  border-color: var(--cream);
 }
 .btn--ghost:hover {
-  background: var(--surface);
-  color: var(--terracotta-deep);
-  border-color: var(--clay);
+  background: var(--cream);
+  color: var(--chile);
+  border-color: var(--cream);
 }
 .btn--lg {
   min-height: 54px;
-  padding: 0.95em 1.8em;
-  font-size: 1.05rem;
+  padding: 0.95em 1.9em;
+  font-size: 1rem;
 }
 .btn--block {
   width: 100%;
 }
 .btn--agave {
-  --b: var(--agave-deep);
+  --b: var(--ochre);
+  color: var(--cocoa);
 }
 .btn--agave:hover {
-  background: var(--agave);
-  border-color: var(--agave);
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--chile);
 }
 
 /* ---------- Header / Nav ---------- */
@@ -300,7 +345,7 @@ section {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: color-mix(in srgb, var(--cream) 86%, transparent);
+  background: color-mix(in srgb, var(--chile-deep) 92%, transparent);
   -webkit-backdrop-filter: blur(12px) saturate(1.3);
   backdrop-filter: blur(12px) saturate(1.3);
   border-bottom: 1px solid transparent;
@@ -310,8 +355,8 @@ section {
     background var(--t);
 }
 .site-header.is-stuck {
-  border-bottom-color: var(--border);
-  box-shadow: 0 6px 24px rgba(74, 47, 28, 0.07);
+  border-bottom-color: var(--ochre);
+  box-shadow: 0 6px 24px rgba(20, 7, 2, 0.35);
 }
 .nav {
   display: flex;
@@ -327,20 +372,20 @@ section {
   font-weight: 600;
   font-size: 1.32rem;
   letter-spacing: -0.01em;
-  color: var(--cocoa);
+  color: var(--cream);
   margin-right: auto;
 }
 .brand img {
   width: 34px;
   height: 34px;
-  border-radius: 8px;
+  border-radius: 0;
   box-shadow: var(--shadow-sm);
 }
 .brand b {
-  font-weight: 600;
+  font-weight: 400;
 }
 .brand span {
-  color: var(--terracotta-deep);
+  color: var(--ochre);
 }
 
 .nav-links {
@@ -354,7 +399,7 @@ section {
   font-weight: 600;
   font-size: 0.96rem;
   color: var(--cocoa-soft);
-  border-radius: 8px;
+  border-radius: 0;
   transition:
     color var(--t-fast),
     background var(--t-fast);
@@ -366,27 +411,27 @@ section {
   right: 0.7rem;
   bottom: 0.28rem;
   height: 2px;
-  background: var(--terracotta);
+  background: var(--ochre);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--t);
 }
 .nav-links a:hover {
-  color: var(--terracotta-deep);
+  color: var(--cream);
 }
 .nav-links a:hover::after,
 .nav-links a[aria-current="true"]::after {
   transform: scaleX(1);
 }
 .nav-links a[aria-current="true"] {
-  color: var(--terracotta-deep);
-}
-/* the Réserver pill keeps its button colours even inside the nav */
-.nav-links a.btn {
   color: var(--cream);
+}
+/* the Contact pill keeps its button colours even inside the nav */
+.nav-links a.btn {
+  color: var(--chile);
 }
 .nav-links a.btn:hover {
-  color: var(--cream);
+  color: var(--cocoa);
 }
 .nav-links a.btn::after {
   content: none;
@@ -403,7 +448,7 @@ section {
   display: inline-flex;
   align-items: center;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 0;
   overflow: hidden;
   background: var(--surface);
 }
@@ -423,7 +468,7 @@ section {
 }
 .lang a:not([aria-current="true"]):hover {
   background: var(--cream-deep);
-  color: var(--cocoa);
+  color: var(--cream);
 }
 
 /* hamburger (shown only when JS enhances the nav) */
@@ -432,7 +477,7 @@ section {
   width: 46px;
   height: 46px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 0;
   background: var(--surface);
   align-items: center;
   justify-content: center;
@@ -444,8 +489,8 @@ section {
   display: block;
   width: 20px;
   height: 2px;
-  background: var(--cocoa);
-  border-radius: 2px;
+  background: var(--cream);
+  border-radius: 0;
   transition:
     transform var(--t),
     opacity var(--t-fast);
@@ -480,7 +525,7 @@ section {
   padding: 0.7rem 1.1rem;
   background: var(--cocoa);
   color: var(--cream);
-  border-radius: 8px;
+  border-radius: 0;
   transition: top var(--t);
 }
 .skip:focus {
@@ -500,22 +545,33 @@ section {
   align-items: center;
 }
 .hero-copy {
-  max-width: 36rem;
+  max-width: 38rem;
+  background: var(--chile);
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+  border-top: 6px solid var(--ochre);
+  box-shadow: var(--shadow-lg);
 }
 .hero h1 {
   font-size: clamp(2.7rem, 1.5rem + 5.4vw, 5.1rem);
-  font-weight: 600;
+  font-weight: 400;
+  line-height: 1.08;
   margin: 1.1rem 0 0;
 }
+/* accent word gets an ochre marker-block — the one warm pop in the headline.
+   negative vertical padding + positive margin keeps the block tight to the
+   glyphs without eating the tight Anton leading above/below it */
 .hero h1 .accent {
-  color: var(--terracotta-deep);
-  font-style: italic;
-  font-weight: 500;
+  color: var(--cocoa);
+  background: var(--ochre);
+  padding: 0.02em 0.12em;
+  margin: 0 -0.04em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 .hero .lede {
   margin-top: 1.3rem;
   font-size: clamp(1.08rem, 1rem + 0.4vw, 1.28rem);
-  color: var(--cocoa-soft);
+  color: var(--cream);
   max-width: 33rem;
 }
 .hero-cta {
@@ -541,7 +597,7 @@ section {
   padding: 0.42rem 0.8rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--cocoa-soft);
@@ -560,32 +616,32 @@ section {
 .chip--live .dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--taupe);
   box-shadow: 0 0 0 0 currentColor;
 }
 .chip--live.is-open {
-  color: var(--agave-deep);
+  color: var(--cream);
 }
 .chip--live.is-open .dot {
-  background: var(--agave);
+  background: var(--ochre);
   animation: pulse 2.4s ease-out infinite;
 }
 .chip--live.is-closed {
-  color: var(--chili);
+  color: var(--muted);
 }
 .chip--live.is-closed .dot {
   background: var(--chili);
 }
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(79, 122, 77, 0.5);
+    box-shadow: 0 0 0 0 rgba(218, 165, 32, 0.55);
   }
   70% {
-    box-shadow: 0 0 0 7px rgba(79, 122, 77, 0);
+    box-shadow: 0 0 0 7px rgba(218, 165, 32, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(79, 122, 77, 0);
+    box-shadow: 0 0 0 0 rgba(218, 165, 32, 0);
   }
 }
 
@@ -595,11 +651,10 @@ section {
 }
 .hero-frame {
   position: relative;
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border);
-  transform: rotate(1.4deg);
+  border: 3px solid var(--cream);
   aspect-ratio: 4 / 5;
 }
 .hero-frame img {
@@ -615,29 +670,39 @@ section {
   aspect-ratio: 1;
   background: radial-gradient(
     circle,
-    rgba(217, 138, 61, 0.45),
+    rgba(218, 165, 32, 0.5),
     transparent 68%
   );
   z-index: -1;
   filter: blur(8px);
 }
+/* solid confetti square clipped to the photo corner (reference motif) */
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  right: -12px;
+  bottom: -12px;
+  width: 48px;
+  height: 48px;
+  background: var(--ochre);
+  z-index: 2;
+}
 .hero-badge {
   position: absolute;
   left: -6%;
   bottom: 8%;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  background: var(--chile-deep);
+  border: 2px solid var(--ochre);
+  border-radius: 0;
   padding: 0.7rem 1rem;
   box-shadow: var(--shadow-md);
-  transform: rotate(-2deg);
   max-width: 13rem;
 }
 .hero-badge .num {
   font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 600;
-  color: var(--terracotta-deep);
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--ochre);
   line-height: 1;
 }
 .hero-badge .lbl {
@@ -646,7 +711,7 @@ section {
   margin-top: 0.15rem;
 }
 .hero-badge .stars {
-  color: var(--amber);
+  color: var(--ochre);
   margin-bottom: 0.25rem;
 }
 
@@ -664,8 +729,8 @@ section {
 .menu {
   background: linear-gradient(
     180deg,
-    var(--surface),
-    color-mix(in srgb, var(--surface) 70%, var(--cream))
+    var(--chile),
+    color-mix(in srgb, var(--chile) 82%, var(--cocoa))
   );
 }
 .menu-top {
@@ -686,10 +751,10 @@ section {
   align-items: baseline;
   gap: 0.6rem;
   font-size: 1.5rem;
-  color: var(--terracotta-deep);
+  color: var(--cream);
   padding-bottom: 0.7rem;
   margin-bottom: 0.4rem;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 2px solid var(--ochre);
 }
 .menu-cat h3 svg {
   width: 1.1rem;
@@ -706,21 +771,21 @@ section {
   border-bottom: 0;
 }
 .menu-item .name {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 1.12rem;
-  font-weight: 600;
-  color: var(--cocoa);
+  font-weight: 700;
+  color: var(--cream);
 }
 .menu-item .name .tag {
   font-family: var(--font-body);
   font-size: 0.66rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--agave-deep);
-  background: color-mix(in srgb, var(--agave) 14%, transparent);
-  padding: 0.12em 0.5em;
-  border-radius: 5px;
+  color: var(--cocoa);
+  background: var(--ochre);
+  padding: 0.16em 0.5em;
+  border-radius: 0;
   vertical-align: middle;
   margin-left: 0.5em;
 }
@@ -763,6 +828,12 @@ section {
 }
 
 /* ---------- About ---------- */
+/* text-dense sections ride the darker chile field so cream stays AA (5.6:1) */
+#about,
+#reviews,
+#visit {
+  background: var(--chile);
+}
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -777,7 +848,7 @@ section {
 }
 .about-copy .lead {
   font-size: 1.18rem;
-  color: var(--cocoa);
+  color: var(--cream);
 }
 .features {
   display: flex;
@@ -792,7 +863,7 @@ section {
   padding: 0.45rem 0.85rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 0.86rem;
   font-weight: 600;
   color: var(--cocoa-soft);
@@ -876,14 +947,14 @@ section {
   padding: 0.55rem 1.1rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 0.92rem;
   color: var(--cocoa-soft);
   box-shadow: var(--shadow-sm);
 }
 .stat-row strong {
   font-family: var(--font-display);
-  color: var(--terracotta-deep);
+  color: var(--cream);
 }
 .stat-row .stars {
   color: var(--amber);
@@ -917,10 +988,10 @@ section {
   font-size: 1.05rem;
 }
 .review-card blockquote {
-  font-family: var(--font-display);
-  font-size: 1.08rem;
-  line-height: 1.45;
-  color: var(--cocoa);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--cream);
   flex: 1;
 }
 .review-card figcaption {
@@ -930,7 +1001,7 @@ section {
 }
 .review-card figcaption b {
   font-weight: 700;
-  color: var(--cocoa);
+  color: var(--cream);
 }
 .review-card figcaption span {
   font-size: 0.82rem;
@@ -939,7 +1010,15 @@ section {
 
 /* ---------- Reserve ---------- */
 .reserve {
-  background: linear-gradient(180deg, var(--cream), var(--cream-deep));
+  /* faint talavera-tile texture over the chile field */
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' fill='none' stroke='%23fdffd0' stroke-opacity='0.08' stroke-width='2'%3E%3Cpath d='M22 4 38 22 22 40 6 22Z'/%3E%3Ccircle cx='22' cy='22' r='4'/%3E%3Cpath d='M0 0h2v2H0zM42 42h2v2h-2z'/%3E%3C/svg%3E")
+      repeat,
+    linear-gradient(
+      180deg,
+      var(--chile),
+      color-mix(in srgb, var(--chile) 84%, var(--cocoa))
+    );
 }
 .reserve-grid {
   display: grid;
@@ -959,7 +1038,7 @@ section {
   padding: 1rem 1.15rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 0;
   transition:
     transform var(--t-fast),
     box-shadow var(--t),
@@ -977,9 +1056,9 @@ a.contact-line:hover {
   height: 42px;
   display: grid;
   place-items: center;
-  border-radius: 11px;
+  border-radius: 0;
   background: color-mix(in srgb, var(--terracotta) 12%, transparent);
-  color: var(--terracotta-deep);
+  color: var(--cream);
 }
 .contact-line .ico svg {
   width: 20px;
@@ -990,10 +1069,10 @@ a.contact-line:hover {
   color: var(--muted);
 }
 .contact-line .v {
-  font-family: var(--font-display);
-  font-size: 1.18rem;
-  font-weight: 600;
-  color: var(--cocoa);
+  font-family: var(--font-body);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--cream);
 }
 
 .card {
@@ -1022,7 +1101,7 @@ a.contact-line:hover {
   color: var(--cocoa-soft);
 }
 .field label .req {
-  color: var(--terracotta);
+  color: var(--ochre);
 }
 .field input,
 .field textarea,
@@ -1030,21 +1109,25 @@ a.contact-line:hover {
   width: 100%;
   padding: 0.72rem 0.85rem;
   background: var(--cream);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  color: var(--ink);
+  border: 1.5px solid var(--olive);
+  border-radius: 0;
+  color: var(--cocoa);
   transition:
     border-color var(--t-fast),
     box-shadow var(--t-fast),
     background var(--t-fast);
 }
+.field input::placeholder,
+.field textarea::placeholder {
+  color: color-mix(in srgb, var(--cocoa) 52%, transparent);
+}
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
   outline: none;
-  border-color: var(--clay);
-  background: var(--surface);
-  box-shadow: 0 0 0 3px rgba(199, 107, 64, 0.16);
+  border-color: var(--chile);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.4);
 }
 .field textarea {
   resize: vertical;
@@ -1058,7 +1141,7 @@ a.contact-line:hover {
 .form-status {
   margin-top: 1rem;
   padding: 0.85rem 1rem;
-  border-radius: 10px;
+  border-radius: 0;
   font-weight: 600;
   font-size: 0.92rem;
   display: none;
@@ -1067,14 +1150,14 @@ a.contact-line:hover {
   display: block;
 }
 .form-status.ok {
-  background: color-mix(in srgb, var(--agave) 16%, transparent);
-  color: var(--agave-deep);
-  border: 1px solid var(--agave);
+  background: var(--olive);
+  color: var(--cream);
+  border: 1px solid var(--ochre);
 }
 .form-status.err {
-  background: color-mix(in srgb, var(--chili) 12%, transparent);
-  color: var(--chili);
-  border: 1px solid var(--chili);
+  background: var(--chili);
+  color: var(--cocoa);
+  border: 1px solid var(--cocoa);
 }
 
 /* ---------- Visit / Contact ---------- */
@@ -1089,7 +1172,7 @@ a.contact-line:hover {
 }
 .info-block h3 {
   font-size: 1.25rem;
-  color: var(--terracotta-deep);
+  color: var(--cream);
   margin-bottom: 0.7rem;
 }
 .info-block address {
@@ -1107,7 +1190,7 @@ a.contact-line:hover {
   font-size: 1.25rem;
   font-family: var(--font-display);
   font-weight: 600;
-  color: var(--terracotta-deep);
+  color: var(--cream);
   margin-bottom: 0.7rem;
 }
 .hours th,
@@ -1128,7 +1211,7 @@ a.contact-line:hover {
 }
 .hours tr.today th,
 .hours tr.today td {
-  color: var(--terracotta-deep);
+  color: var(--cream);
   font-weight: 700;
 }
 .hours tr.today {
@@ -1168,7 +1251,7 @@ a.contact-line:hover {
   background:
     radial-gradient(
       100% 120% at 90% 0%,
-      rgba(176, 80, 46, 0.28),
+      rgba(208, 98, 36, 0.4),
       transparent 50%
     ),
     var(--cocoa);
@@ -1197,14 +1280,14 @@ a.contact-line:hover {
 .footer-brand .lang {
   margin-top: 1.4rem;
   background: transparent;
-  border-color: rgba(250, 243, 231, 0.2);
+  border-color: rgba(253, 255, 208, 0.22);
 }
 .footer-brand .lang a {
   color: color-mix(in srgb, var(--cream) 70%, transparent);
 }
 .footer-brand .lang a[aria-current="true"] {
-  background: var(--terracotta);
-  color: var(--cream);
+  background: var(--ochre);
+  color: var(--cocoa);
 }
 .footer-col h3 {
   font-family: var(--font-body);
@@ -1234,7 +1317,7 @@ a.contact-line:hover {
 .footer-bottom {
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
   padding-top: 1.6rem;
-  border-top: 1px solid rgba(250, 243, 231, 0.14);
+  border-top: 1px solid rgba(253, 255, 208, 0.16);
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem 1.4rem;
@@ -1465,8 +1548,8 @@ a.contact-line:hover {
 }
 @media (prefers-contrast: more) {
   :root {
-    --muted: #4f4034;
-    --border: #c9b89a;
+    --muted: var(--cream);
+    --border: rgba(253, 255, 208, 0.7);
   }
   .btn {
     border-width: 2px;
@@ -1480,7 +1563,7 @@ a.contact-line:hover {
 }
 /* explicit inset ring: stays visible even inside thumbnails whose figure has overflow:hidden */
 .is-zoomable:focus-visible {
-  outline: 3px solid var(--terracotta-deep);
+  outline: 3px solid var(--ochre);
   outline-offset: -3px;
 }
 html.lightbox-open {
@@ -1561,7 +1644,7 @@ html.lightbox-open {
   display: grid;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 999px;
+  border-radius: 0;
   background: rgba(43, 34, 28, 0.5);
   color: var(--cream);
   -webkit-backdrop-filter: blur(6px);
@@ -1617,12 +1700,14 @@ html.lightbox-open {
 
 /* ---------- Legal / privacy page (legal.html · en/legal.html) ---------- */
 .legal-page {
-  --lg-primary: var(--terracotta-deep);
-  --lg-text: var(--ink);
+  background: var(--chile);
+  min-height: 100vh;
+  --lg-primary: var(--cream);
+  --lg-text: var(--cream);
   --lg-muted: var(--muted);
-  --lg-surface: var(--surface);
+  --lg-surface: var(--chile-deep);
   --lg-border: var(--border);
-  --lg-radius: var(--radius-lg);
+  --lg-radius: 0;
   --lg-display: var(--font-display);
 }
 .legal-wrap {
@@ -1671,7 +1756,7 @@ html.lightbox-open {
   color: var(--lg-primary);
   margin-top: clamp(2.2rem, 4vw, 3rem);
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--lg-border);
+  border-bottom: 2px solid var(--ochre);
 }
 .legal > h2:first-child {
   margin-top: 0;
