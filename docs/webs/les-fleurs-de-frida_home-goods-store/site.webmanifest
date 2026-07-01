@@ -1,0 +1,18 @@
+{
+  "name": "Les Fleurs de Frida — Atelier-boutique fleuri, Genève",
+  "short_name": "Les Fleurs de Frida",
+  "description": "Atelier-boutique fleuri au quartier des Bains, Genève : accessoires, bijoux brodés, vêtements, décoration, artisanat et tableaux floraux, faits main.",
+  "lang": "fr-CH",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#8E2F5A",
+  "background_color": "#F6EFE1",
+  "icons": [
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "assets/favicon.svg", "type": "image/svg+xml", "sizes": "any" }
+  ]
+}
