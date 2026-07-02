@@ -1,0 +1,68 @@
+/* ---------- contact form: success / failure feedback ----------
+   Pairs with references/snippets/contact-form.js (which injects the
+   .btn-label / .spinner / .form-status / .form-status-text markup — nothing
+   here needs matching hand-authored HTML).
+
+   This is one site's THEMED block, not a literal copy-paste: keep the
+   selectors and structure identical, but remap every var(--…) below to the
+   target site's own tokens —
+     --panna       → the button's own text/foreground colour (spinner's lit arc)
+     --t, --ease   → the site's transition-duration + easing tokens
+     --fs-small    → the site's small/meta font-size token
+     --bosco-deep  → a success-ish / brand-green-ish token (ok state text)
+     --vino        → an error-ish / brand-accent-or-red token (error state text)
+   If a site's palette has no clean green/red equivalent, fall back to a
+   literal accessible green/red (e.g. #1c7a3e / #a5222a) rather than forcing
+   an off-semantic brand colour onto a status message. */
+
+.contact-form button[type="submit"] {
+  position: relative;
+}
+.contact-form button[type="submit"] .spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.4);
+  border-top-color: var(--panna);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -9px 0 0 -9px;
+  animation: spin 0.7s linear infinite;
+}
+.contact-form button[type="submit"][aria-busy="true"] .btn-label {
+  visibility: hidden;
+}
+.contact-form button[type="submit"][aria-busy="true"] .spinner {
+  display: inline-block;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.form-status {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--t) var(--ease);
+}
+.form-status[data-state="ok"],
+.form-status[data-state="error"] {
+  grid-template-rows: 1fr;
+}
+.form-status-text {
+  overflow: hidden;
+  min-height: 0;
+  margin: 0;
+  padding-top: 0.7rem;
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+.form-status[data-state="ok"] .form-status-text {
+  color: var(--bosco-deep);
+}
+.form-status[data-state="error"] .form-status-text {
+  color: var(--vino);
+}
