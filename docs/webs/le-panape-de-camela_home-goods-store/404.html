@@ -4,40 +4,47 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#15508c">
+  <meta name="theme-color" content="#a5431e">
   <title>Page introuvable — Le Panapé de Caméla</title>
   <style>
-    :root { --ink:#2a1a17; --bone:#fbf0da; --cobalt:#15508c; --chili:#d62828; --soft:#6c4a3f; }
+    :root { --ink:#241c18; --bone:#fcf1e4; --cobalt:#4e3550; --chili:#a5431e; --soft:#6b5a4e; }
     * { box-sizing: border-box; }
     body {
       margin: 0; min-height: 100vh;
       display: grid; place-items: center; padding: 2rem;
       background-color: var(--bone);
       background-image:
-        radial-gradient(circle at 20% 15%, rgba(244,168,29,0.10), transparent 45%),
-        radial-gradient(circle at 82% 80%, rgba(21,80,140,0.08), transparent 45%);
+        radial-gradient(circle at 20% 15%, rgba(200,90,46,0.10), transparent 45%),
+        radial-gradient(circle at 82% 80%, rgba(78,53,80,0.10), transparent 45%);
       color: var(--ink);
-      font-family: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-family: ui-rounded, "Segoe UI", Roboto, sans-serif;
       text-align: center; line-height: 1.6;
     }
     .mark { width: 74px; height: 74px; margin: 0 auto 1.5rem; }
-    h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(3rem, 9vw, 4.5rem); margin: 0 0 .5rem; letter-spacing: -.02em; color: var(--cobalt); }
+    h1 { font-family: ui-rounded, "Segoe UI", Roboto, sans-serif; font-weight: 800; font-size: clamp(3rem, 9vw, 4.5rem); margin: 0 0 .5rem; letter-spacing: -.01em; color: var(--cobalt); }
     p { margin: .25rem 0; color: var(--soft); max-width: 44ch; }
     .home { display: inline-block; margin-top: 1.5rem; padding: .8rem 1.6rem;
-      background: var(--chili); color: #fffaf0; text-decoration: none; border: 2px solid var(--ink);
-      border-radius: 999px; font-weight: 700; box-shadow: 3px 4px 0 rgba(42,26,23,.25); }
-    .home:hover { background:#ab1f1f; transform: translate(-1px,-2px); }
+      background: var(--chili); color: #fffbf3; text-decoration: none;
+      border-radius: 999px; font-weight: 700; transition: transform .16s ease; }
+    .home:hover { transform: translateY(-2px); }
     .alt { display:block; margin-top:1rem; color: var(--cobalt); font-size:.9rem; font-weight: 600; }
   </style>
 </head>
 <body>
   <main>
-    <svg class="mark" viewBox="0 0 512 512" aria-hidden="true">
-      <rect width="512" height="512" rx="112" fill="#15508c"/>
-      <rect x="28" y="28" width="456" height="456" rx="86" fill="none" stroke="#f4a81d" stroke-width="14"/>
-      <path d="M256 198C230 170 246 148 256 116 266 148 282 170 256 198Z" fill="#f4a81d" stroke="#2a1a17" stroke-width="9" stroke-linejoin="round"/>
-      <path d="M256 432C150 354 110 286 110 222c0-46 36-74 76-74 34 0 58 22 70 52 12-30 36-52 70-52 40 0 76 28 76 74 0 64-40 132-146 210z" fill="#d62828" stroke="#2a1a17" stroke-width="16" stroke-linejoin="round"/>
-      <path d="M256 250c-16 26 14 38 0 64-20-12-22-44 0-64z" fill="#f4a81d"/>
+    <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M96.5000,50.0000 C96.5000,51.3722 93.4179,52.8974 91.7978,54.1167 C90.1777,55.3360 87.0472,55.9700 86.7794,57.3159 C86.5117,58.6618 89.1613,60.4455 90.1915,62.1920 C91.2217,63.9384 93.4855,66.5270 92.9604,67.7948 C92.4353,69.0626 89.0041,69.2921 87.0407,69.7987 C85.0773,70.3052 81.9425,69.6929 81.1801,70.8339 C80.4177,71.9749 82.1830,74.6368 82.4664,76.6445 C82.7498,78.6523 83.8508,81.9101 82.8805,82.8805 C81.9101,83.8508 78.6523,82.7498 76.6445,82.4664 C74.6368,82.1830 71.9749,80.4177 70.8339,81.1801 C69.6929,81.9425 70.3052,85.0773 69.7987,87.0407 C69.2921,89.0041 69.0626,92.4353 67.7948,92.9604 C66.5270,93.4855 63.9384,91.2217 62.1920,90.1915 C60.4455,89.1613 58.6618,86.5117 57.3159,86.7794 C55.9700,87.0472 55.3360,90.1777 54.1167,91.7978 C52.8974,93.4179 51.3722,96.5000 50.0000,96.5000 C48.6278,96.5000 47.1026,93.4179 45.8833,91.7978 C44.6640,90.1777 44.0300,87.0472 42.6841,86.7794 C41.3382,86.5117 39.5545,89.1613 37.8080,90.1915 C36.0616,91.2217 33.4730,93.4855 32.2052,92.9604 C30.9374,92.4353 30.7079,89.0041 30.2013,87.0407 C29.6948,85.0773 30.3071,81.9425 29.1661,81.1801 C28.0251,80.4177 25.3632,82.1830 23.3555,82.4664 C21.3477,82.7498 18.0899,83.8508 17.1195,82.8805 C16.1492,81.9101 17.2502,78.6523 17.5336,76.6445 C17.8170,74.6368 19.5823,71.9749 18.8199,70.8339 C18.0575,69.6929 14.9227,70.3052 12.9593,69.7987 C10.9959,69.2921 7.5647,69.0626 7.0396,67.7948 C6.5145,66.5270 8.7783,63.9384 9.8085,62.1920 C10.8387,60.4455 13.4883,58.6618 13.2206,57.3159 C12.9528,55.9700 9.8223,55.3360 8.2022,54.1167 C6.5821,52.8974 3.5000,51.3722 3.5000,50.0000 C3.5000,48.6278 6.5821,47.1026 8.2022,45.8833 C9.8223,44.6640 12.9528,44.0300 13.2206,42.6841 C13.4883,41.3382 10.8387,39.5545 9.8085,37.8080 C8.7783,36.0616 6.5145,33.4730 7.0396,32.2052 C7.5647,30.9374 10.9959,30.7079 12.9593,30.2013 C14.9227,29.6948 18.0575,30.3071 18.8199,29.1661 C19.5823,28.0251 17.8170,25.3632 17.5336,23.3555 C17.2502,21.3477 16.1492,18.0899 17.1195,17.1195 C18.0899,16.1492 21.3477,17.2502 23.3555,17.5336 C25.3632,17.8170 28.0251,19.5823 29.1661,18.8199 C30.3071,18.0575 29.6948,14.9227 30.2013,12.9593 C30.7079,10.9959 30.9374,7.5647 32.2052,7.0396 C33.4730,6.5145 36.0616,8.7783 37.8080,9.8085 C39.5545,10.8387 41.3382,13.4883 42.6841,13.2206 C44.0300,12.9528 44.6640,9.8223 45.8833,8.2022 C47.1026,6.5821 48.6278,3.5000 50.0000,3.5000 C51.3722,3.5000 52.8974,6.5821 54.1167,8.2022 C55.3360,9.8223 55.9700,12.9528 57.3159,13.2206 C58.6618,13.4883 60.4455,10.8387 62.1920,9.8085 C63.9384,8.7783 66.5270,6.5145 67.7948,7.0396 C69.0626,7.5647 69.2921,10.9959 69.7987,12.9593 C70.3052,14.9227 69.6929,18.0575 70.8339,18.8199 C71.9749,19.5823 74.6368,17.8170 76.6445,17.5336 C78.6523,17.2502 81.9101,16.1492 82.8805,17.1195 C83.8508,18.0899 82.7498,21.3477 82.4664,23.3555 C82.1830,25.3632 80.4177,28.0251 81.1801,29.1661 C81.9425,30.3071 85.0773,29.6948 87.0407,30.2013 C89.0041,30.7079 92.4353,30.9374 92.9604,32.2052 C93.4855,33.4730 91.2217,36.0616 90.1915,37.8080 C89.1613,39.5545 86.5117,41.3382 86.7794,42.6841 C87.0472,44.0300 90.1777,44.6640 91.7978,45.8833 C93.4179,47.1026 96.5000,48.6278 96.5000,50.0000 Z" fill="#4e3550"/>
+      <g transform="translate(50 50) scale(1.92) translate(-12 -12)">
+        <g fill="#fcf1e4">
+          <ellipse cx="12" cy="7.4" rx="2.7" ry="3.9"/>
+          <ellipse cx="12" cy="7.4" rx="2.7" ry="3.9" transform="rotate(60 12 12)"/>
+          <ellipse cx="12" cy="7.4" rx="2.7" ry="3.9" transform="rotate(120 12 12)"/>
+          <ellipse cx="12" cy="7.4" rx="2.7" ry="3.9" transform="rotate(180 12 12)"/>
+          <ellipse cx="12" cy="7.4" rx="2.7" ry="3.9" transform="rotate(240 12 12)"/>
+          <ellipse cx="12" cy="7.4" rx="2.7" ry="3.9" transform="rotate(300 12 12)"/>
+        </g>
+        <circle cx="12" cy="12" r="2.6" fill="#4e3550"/>
+      </g>
     </svg>
     <h1>404</h1>
     <p><strong>Cette page n'existe pas.</strong> · <strong>This page doesn't exist.</strong></p>

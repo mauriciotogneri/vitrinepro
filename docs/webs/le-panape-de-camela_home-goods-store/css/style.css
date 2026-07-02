@@ -1,42 +1,46 @@
 /* ============================================================
-   Le Panapé de Caméla — "retablo on painted tin"
+   Le Panapé de Caméla — "pastel curiosity shop"
    Hand-written CSS, no framework. Shared by fr-CH (/) and EN (/en/).
-   Concept: Mexican ex-voto — warm tin/paper ground, vivid Talavera
-   folk palette, hand-painted Fraunces titles, Sacred Heart + milagros.
+   Concept: a color-blocked, flat pastel boutique look (blush / sage /
+   aubergine / terracotta), a hand-cut scalloped "shop-window" frame as
+   the signature shape, and a small sparkle mark for "something always
+   catches the eye" (a recurring line in the shop's own reviews).
    Layout footprint is unchanged from the original build; this is a re-skin.
    ============================================================ */
 
 /* ---------- Tokens ---------- */
 :root {
-  /* substrate — the tin/paper of a retablo */
-  --paper: #fffaf0; /* warm near-white — clean tiles that must pop */
-  --bone: #fbf0da; /* page ground — warm retablo paper */
-  --cream: #f6e7c8; /* deeper warm band — alternating sections */
-  --ink: #2a1a17; /* warm near-black — text + painted outlines */
-  --ink-soft: #6c4a3f; /* warm brown — secondary text (AA on bone & cream) */
-  --tan: #e6c79a; /* warm tan — hairline borders */
-  --line: #c79a55; /* darker tan — painted "tin" edges */
+  color-scheme: light;
 
-  /* vivid folk palette (Talavera blue, chili, cempasúchil, rosa mexicano) */
-  --cobalt: #15508c;
-  --cobalt-deep: #0f3c6b;
-  --chili: #d62828;
-  --chili-deep: #ab1f1f; /* text-safe red on bone */
-  --marigold: #f4a81d;
-  --marigold-deep: #c9820a;
-  --rose: #c42e74;
-  --rose-deep: #9c1f59; /* text-safe rose on bone */
-  --turq: #128f8a;
-  --turq-deep: #0d6b67;
-  --green: #3e8e4f;
-  --green-deep: #2d6b3b;
+  /* substrate — pale pastel ground */
+  --paper: #fffbf3; /* warm near-white — clean surfaces that must pop */
+  --bone: #fcf1e4; /* page ground — warm cream */
+  --cream: #f5ded2; /* blush band — alternating sections */
+  --ink: #241c18; /* near-black warm ink — text + linework */
+  --ink-soft: #6b5a4e; /* warm taupe — secondary text (AA on bone & cream) */
+  --tan: #ead6c4; /* pale hairline borders */
+  --line: #d3b79c; /* slightly deeper hairline */
+
+  /* signature + confetti hues — a colourful bouquet on a pale ground */
+  --cobalt: #7a5578; /* dusty plum — secondary signature: links, labels */
+  --cobalt-deep: #4e3550; /* deep aubergine — footer + deep "stamp" bands */
+  --chili: #c85a2e; /* terracotta — primary signature / large fills */
+  --chili-deep: #a5431e; /* terracotta, text-safe — buttons + any small text */
+  --marigold: #d6a430; /* mustard gold — decorative (ink text only) */
+  --marigold-deep: #ad7e24; /* deep ochre — confetti accent */
+  --rose: #c1728c; /* dusty rose — confetti accent */
+  --rose-deep: #9b5069; /* deep berry-rose — confetti accent */
+  --turq: #5e8a6c; /* sage-teal — confetti accent */
+  --turq-deep: #43654c; /* deep forest-sage — confetti accent */
+  --green: #7c8a46; /* moss olive — confetti accent */
+  --green-deep: #5e6934;
 
   /* contrast-role aliases */
-  --accent: var(--chili); /* the Sacred-Heart red — primary action */
+  --accent: var(--chili); /* signature terracotta — primary action */
   --accent-deep: var(--chili-deep);
-  --link: var(--cobalt); /* text-safe on bone */
+  --link: var(--cobalt); /* text-safe on bone & cream */
 
-  /* decorative category identifiers rotate through the whole fiesta */
+  /* decorative category identifiers rotate through the whole bouquet */
   --coral: var(--chili);
   --gold: var(--marigold-deep);
   --sky: var(--cobalt);
@@ -46,24 +50,24 @@
 
   --maxw: 1180px;
   --gap: clamp(0.85rem, 2vw, 1.4rem);
-  --radius: 12px;
-  --radius-lg: 20px;
+  --radius: 20px;
+  --radius-lg: 28px;
   --radius-pill: 999px;
   --header-h: 66px;
 
-  --shadow-sm:
-    0 1px 2px rgba(42, 26, 23, 0.05), 0 4px 12px rgba(42, 26, 23, 0.07);
-  --shadow-md: 0 12px 32px rgba(42, 26, 23, 0.13);
+  --shadow-sm: 0 1px 3px rgba(36, 28, 24, 0.06), 0 4px 14px rgba(36, 28, 24, 0.06);
+  --shadow-md: 0 16px 36px rgba(36, 28, 24, 0.13);
 
   --t-fast: 160ms cubic-bezier(0.2, 0.6, 0.2, 1);
   --t: 240ms cubic-bezier(0.2, 0.6, 0.2, 1);
 
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-script: "Yellowtail", "Segoe Script", "Brush Script MT", cursive;
-  --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Baloo 2", ui-rounded, "Segoe UI", sans-serif;
+  --font-script: "Caveat", "Segoe Script", cursive;
+  --font-body: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  /* a small folk heart, used as the leyenda kicker mark */
-  --heart: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='17'%20height='17'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M12%2021.6C12%2021.6%202.6%2015%202.6%208.7%202.6%205.3%205.1%203.5%207.5%203.5%209.4%203.5%2011%204.7%2012%206.7%2013%204.7%2014.7%203.5%2016.6%203.5%2019%203.5%2021.5%205.3%2021.5%208.7%2021.5%2015%2012%2021.6%2012%2021.6Z'%20fill='%23d62828'%20stroke='%232a1a17'%20stroke-width='1.4'/%3E%3C/svg%3E");
+  /* a small hand-drawn sparkle, used as the kicker mark — "toujours un
+     objet qui attire l'œil" (there's always something that catches the eye) */
+  --kicker-mark: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='17'%20height='17'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M12%202c.6%203.6%201.3%205.9%202.5%207.1%201.2%201.2%203.5%201.9%207.1%202.5-3.6.6-5.9%201.3-7.1%202.5-1.2%201.2-1.9%203.5-2.5%207.1-.6-3.6-1.3-5.9-2.5-7.1-1.2-1.2-3.5-1.9-7.1-2.5%203.6-.6%205.9-1.3%207.1-2.5C10.7%208.3%2011.4%206%2012%202Z'%20fill='%23C85A2E'/%3E%3C/svg%3E");
 }
 
 /* ---------- Reset ---------- */
@@ -88,24 +92,6 @@ body {
   line-height: 1.7;
   color: var(--ink);
   background-color: var(--bone);
-  /* faint hand-painted tin grain so the cream never reads as a blank default */
-  background-image:
-    radial-gradient(
-      circle at 18% 12%,
-      rgba(244, 168, 29, 0.06),
-      transparent 42%
-    ),
-    radial-gradient(
-      circle at 86% 8%,
-      rgba(18, 143, 138, 0.06),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 70% 88%,
-      rgba(196, 46, 116, 0.05),
-      transparent 45%
-    );
-  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -127,7 +113,7 @@ button {
 }
 
 :focus-visible {
-  outline: 3px solid var(--cobalt);
+  outline: 3px solid var(--ink);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -155,66 +141,53 @@ section[id] {
   scroll-margin-top: calc(var(--header-h) + 14px);
 }
 
-/* leyenda — the hand-painted votive kicker */
+/* kicker — the small sparkle-led label */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.45em;
   font-family: var(--font-script);
-  font-weight: 400;
-  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.45rem);
+  font-weight: 700;
+  font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.5rem);
   line-height: 1;
   color: var(--chili-deep);
-  transform: rotate(-1.4deg);
 }
 .eyebrow::before {
-  content: var(--heart);
+  content: var(--kicker-mark);
   display: inline-block;
   line-height: 0;
-  transform: translateY(0.08em) rotate(1.4deg);
 }
 
 /* hero gets the full painted banner */
 .eyebrow--banner {
-  transform: rotate(-1.6deg);
-  /* No clip-path / no overflow clipping: a clipped band chops Yellowtail's
-     deep descenders. A plain rounded label can't crop its own text. */
-  line-height: 1.45;
-  padding: 0.42em 1.25em 0.56em;
+  line-height: 1.4;
+  padding: 0.5em 1.3em 0.6em;
   color: var(--ink);
-  background: linear-gradient(180deg, #ffd066, var(--marigold));
-  border: 2px solid var(--ink);
-  border-radius: 9px;
-  box-shadow: 3px 4px 0 rgba(42, 26, 23, 0.22);
+  background: var(--marigold);
+  border-radius: var(--radius-pill);
 }
 
 .h1 {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-weight: 850;
-  font-variation-settings: "WONK" 1;
+  font-weight: 800;
   font-size: clamp(2.5rem, 1.4rem + 5vw, 4.4rem);
-  line-height: 1.02;
-  letter-spacing: -0.018em;
-  color: var(--cobalt-deep);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 .h2 {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-variation-settings: "WONK" 1;
+  font-weight: 700;
   font-size: clamp(1.8rem, 1.2rem + 2.6vw, 2.85rem);
-  line-height: 1.06;
-  letter-spacing: -0.014em;
-  color: var(--cobalt-deep);
+  line-height: 1.08;
+  letter-spacing: -0.008em;
+  color: var(--ink);
 }
 .h3 {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-weight: 650;
+  font-weight: 700;
   font-size: 1.24rem;
-  line-height: 1.18;
-  letter-spacing: -0.005em;
+  line-height: 1.2;
   color: var(--ink);
 }
 
@@ -245,13 +218,12 @@ section[id] {
   justify-content: center;
   gap: 0.5em;
   min-height: 48px;
-  padding: 0.7em 1.5em;
+  padding: 0.7em 1.6em;
   font-family: var(--font-display);
-  font-weight: 650;
+  font-weight: 700;
   font-size: 1rem;
-  letter-spacing: 0.005em;
   text-decoration: none;
-  border: 2px solid var(--ink);
+  border: 2px solid transparent;
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition:
@@ -262,24 +234,21 @@ section[id] {
     box-shadow var(--t-fast);
 }
 .btn--primary {
-  background: var(--chili);
+  background: var(--chili-deep);
   color: var(--paper);
-  box-shadow: 3px 4px 0 rgba(42, 26, 23, 0.28);
 }
 .btn--primary:hover {
-  background: var(--chili-deep);
-  transform: translate(-1px, -2px);
-  box-shadow: 4px 6px 0 rgba(42, 26, 23, 0.3);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 .btn--ghost {
   background: var(--paper);
   color: var(--ink);
-  box-shadow: 3px 4px 0 rgba(42, 26, 23, 0.16);
+  border-color: var(--ink);
 }
 .btn--ghost:hover {
-  background: var(--marigold);
-  transform: translate(-1px, -2px);
-  box-shadow: 4px 6px 0 rgba(42, 26, 23, 0.22);
+  background: var(--cream);
+  transform: translateY(-2px);
 }
 .btn--block {
   width: 100%;
@@ -297,14 +266,14 @@ section[id] {
   border-radius: var(--radius);
   text-decoration: none;
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
 }
 .skip-link:focus-visible {
   top: 0.75rem;
 }
 
-/* ---------- Decorative milagros / accents ---------- */
-.milagros-sprite {
+/* ---------- Decorative sparkle accents ---------- */
+.motif-sprite {
   position: absolute;
   width: 0;
   height: 0;
@@ -315,8 +284,7 @@ section[id] {
   position: absolute;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.92;
-  filter: drop-shadow(2px 3px 0 rgba(42, 26, 23, 0.12));
+  opacity: 0.85;
 }
 .accent svg {
   width: 100%;
@@ -324,42 +292,14 @@ section[id] {
   display: block;
 }
 
-/* divine rays — a soft cempasúchil sunburst behind hero & votive tiles */
-.rays {
-  position: relative;
-  isolation: isolate;
-}
-.rays::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 50%;
-  top: 38%;
-  width: 150%;
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  background: repeating-conic-gradient(
-    from 0deg,
-    rgba(244, 168, 29, 0.22) 0deg 5deg,
-    transparent 5deg 11deg
-  );
-  -webkit-mask: radial-gradient(
-    closest-side,
-    #000 0,
-    #000 30%,
-    transparent 72%
-  );
-  mask: radial-gradient(closest-side, #000 0, #000 30%, transparent 72%);
-}
-
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(251, 240, 218, 0.9);
+  background: rgba(252, 241, 228, 0.92);
   backdrop-filter: saturate(150%) blur(10px);
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 1px solid var(--tan);
 }
 .header-inner {
   display: flex;
@@ -372,13 +312,12 @@ section[id] {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.5rem;
   text-decoration: none;
   color: var(--ink);
-  font-family: var(--font-display);
-  font-weight: 750;
-  font-size: 1.12rem;
-  letter-spacing: -0.01em;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1.55rem;
   line-height: 1;
 }
 .brand:hover {
@@ -389,13 +328,14 @@ section[id] {
   display: block;
   width: 30px;
   height: 30px;
+  color: var(--chili);
 }
 .brand-name b {
-  font-weight: 850;
+  font-weight: 700;
 }
 .brand-name .brand-soft {
-  color: var(--chili-deep);
-  font-weight: 600;
+  color: var(--cobalt);
+  font-weight: 700;
 }
 
 .nav {
@@ -412,13 +352,15 @@ section[id] {
 }
 .nav-links a {
   display: inline-block;
-  padding: 0.45rem 0.7rem;
+  padding: 0.5rem 0.75rem;
   text-decoration: none;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 0.94rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ink);
-  border-radius: 8px;
+  border-radius: var(--radius-pill);
   transition:
     color var(--t-fast),
     background-color var(--t-fast);
@@ -437,7 +379,7 @@ section[id] {
   align-items: center;
   gap: 2px;
   padding: 3px;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line);
   border-radius: var(--radius-pill);
   background: var(--paper);
 }
@@ -445,8 +387,8 @@ section[id] {
   display: inline-block;
   padding: 0.25rem 0.6rem;
   font-family: var(--font-display);
-  font-weight: 650;
-  font-size: 0.82rem;
+  font-weight: 700;
+  font-size: 0.78rem;
   text-decoration: none;
   color: var(--ink-soft);
   border-radius: var(--radius-pill);
@@ -469,8 +411,8 @@ section[id] {
   justify-content: center;
   width: 46px;
   height: 46px;
-  border: 2px solid var(--ink);
-  border-radius: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
   background: var(--paper);
   cursor: pointer;
 }
@@ -517,8 +459,7 @@ section[id] {
   margin-top: 1.7rem;
 }
 
-/* hero top row: text + the storefront framed like a retablo, so the
-   headline isn't marooned beside empty space on wide screens */
+/* hero top row: text + the storefront framed in the signature scallop */
 .hero-top {
   display: grid;
   gap: clamp(1.6rem, 4vw, 3rem);
@@ -538,46 +479,53 @@ section[id] {
   }
 }
 
+/* the signature scalloped "shop-window" frame: a clip-path clips the
+   photo, and a stretched-to-match SVG outline traces the same curve on
+   top so the cut-paper edge reads even though clip-path can't stroke. */
 .hero-photo {
   position: relative;
   margin: 0;
   width: min(420px, 100%);
-  overflow: hidden;
-  border: 4px solid var(--ink);
-  border-radius: 16px;
-  background: var(--cream);
-  box-shadow: 8px 10px 0 rgba(42, 26, 23, 0.2);
+  aspect-ratio: 4 / 5;
 }
+.hero-photo picture,
 .hero-photo img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 100%;
   object-fit: cover;
   object-position: center 34%;
+  clip-path: url(#scallop-frame);
+}
+.hero-photo-outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.hero-photo-outline path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
 }
 .hero-photo .ribbon {
   position: absolute;
   left: 50%;
-  bottom: 16px;
-  transform: translateX(-50%) rotate(-1.6deg);
-  padding: 0.36em 1.25em 0.5em;
-  background: linear-gradient(180deg, #ffd066, var(--marigold));
-  color: var(--ink);
-  border: 2px solid var(--ink);
-  border-radius: 9px;
+  bottom: 4%;
+  transform: translateX(-50%);
+  padding: 0.4em 1.3em 0.5em;
+  background: var(--chili-deep);
+  color: var(--paper);
+  border-radius: var(--radius-pill);
   font-family: var(--font-script);
-  font-size: 1.2rem;
+  font-weight: 700;
+  font-size: 1.25rem;
   line-height: 1.4;
   white-space: nowrap;
-  box-shadow: 3px 4px 0 rgba(42, 26, 23, 0.22);
-}
-@media (min-width: 921px) {
-  .hero-photo {
-    transform: rotate(-1.4deg);
-  }
 }
 
-/* the curated shelf — now framed like punched-tin retablo plaques */
+/* the curated shelf mosaic — flat, calm, no tilt */
 .shelf {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -590,9 +538,8 @@ section[id] {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius);
-  border: 3px solid var(--ink);
   background: var(--cream);
-  box-shadow: 3px 4px 0 rgba(42, 26, 23, 0.16);
+  box-shadow: var(--shadow-sm);
 }
 .shelf-item img {
   width: 100%;
@@ -606,24 +553,8 @@ section[id] {
 .shelf-item--wide {
   grid-column: span 2;
 }
-/* hand-placed tilt, straightening on hover */
-.shelf-item {
-  transition: transform var(--t-fast);
-}
-.shelf-item:nth-child(2) {
-  transform: rotate(-1deg);
-}
-.shelf-item:nth-child(5) {
-  transform: rotate(1.1deg);
-}
-.shelf-item:nth-child(7) {
-  transform: rotate(-1.1deg);
-}
-.shelf-item:hover {
-  transform: rotate(0);
-}
 
-/* trust "shelf-tag" tile — a votive Sacred-Heart plaque */
+/* trust "shelf-tag" tile — the aubergine stamp plaque */
 .shelf-tag {
   display: flex;
   flex-direction: column;
@@ -631,14 +562,9 @@ section[id] {
   gap: 0.3rem;
   padding: 1rem 1.15rem;
   background:
-    radial-gradient(
-      circle at 80% 12%,
-      rgba(244, 168, 29, 0.4),
-      transparent 55%
-    ),
+    radial-gradient(circle at 80% 12%, rgba(200, 90, 46, 0.35), transparent 55%),
     var(--cobalt-deep);
   color: var(--paper);
-  border-color: var(--ink);
 }
 .shelf-tag .rating-row {
   display: flex;
@@ -647,20 +573,21 @@ section[id] {
 }
 .shelf-tag .rating-num {
   font-family: var(--font-display);
-  font-weight: 850;
+  font-weight: 800;
   font-size: 1.9rem;
   line-height: 1;
-  color: #ffe6a6;
+  color: var(--paper);
 }
 .shelf-tag .stars {
   color: var(--marigold);
 }
 .shelf-tag small {
-  color: #f3e7cf;
+  color: var(--cream);
   font-size: 0.78rem;
   line-height: 1.4;
   font-family: var(--font-script);
-  font-size: 0.95rem;
+  font-weight: 700;
+  font-size: 1rem;
 }
 .shelf-tag .tag-sep {
   width: 30px;
@@ -690,39 +617,36 @@ section[id] {
   position: relative;
   padding: 1.5rem 1.4rem 1.6rem;
   background: var(--paper);
-  border: 2.5px solid var(--ink);
-  border-top: 7px solid var(--cat, var(--marigold));
+  border-bottom: 4px solid var(--cat, var(--marigold));
   border-radius: var(--radius);
-  box-shadow: 3px 4px 0 rgba(42, 26, 23, 0.14);
+  box-shadow: var(--shadow-sm);
   transition:
     transform var(--t-fast),
     box-shadow var(--t-fast);
 }
 .collection-card:hover {
-  transform: translate(-1px, -4px);
-  box-shadow: 5px 8px 0 rgba(42, 26, 23, 0.18);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 .collection-card .chip {
   display: inline-grid;
   place-items: center;
   width: 2.6rem;
   height: 2.6rem;
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--cat, var(--marigold));
   color: var(--paper);
-  border: 2px solid var(--ink);
-  box-shadow: 2px 2px 0 rgba(42, 26, 23, 0.16);
   margin-bottom: 1rem;
 }
 .collection-card .chip svg {
   width: 1.55rem;
   height: 1.55rem;
   display: block;
-}
-/* marigold chips need a dark charm to stay legible */
-.collection-card[style*="--gold"] .chip,
-.collection-card[style*="--marigold"] .chip {
-  color: var(--ink);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .collection-card .h3 {
   margin-bottom: 0.4rem;
@@ -736,13 +660,12 @@ section[id] {
   position: relative;
   margin-top: clamp(1.5rem, 3vw, 2.25rem);
   padding: 1.1rem 1.3rem 1.1rem 1.4rem;
-  border: 2px solid var(--ink);
-  border-left: 7px solid var(--chili);
+  border-left: 4px solid var(--chili);
   background: var(--paper);
   border-radius: var(--radius);
   color: var(--ink-soft);
   font-size: 0.98rem;
-  box-shadow: 3px 4px 0 rgba(42, 26, 23, 0.12);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ---------- About ---------- */
@@ -774,9 +697,8 @@ section[id] {
   gap: 0.85rem;
   padding: 0.85rem 1rem;
   background: var(--paper);
-  border: 2px solid var(--ink);
   border-radius: var(--radius);
-  box-shadow: 2px 3px 0 rgba(42, 26, 23, 0.12);
+  box-shadow: var(--shadow-sm);
 }
 .team-initials {
   flex: 0 0 auto;
@@ -784,16 +706,15 @@ section[id] {
   place-items: center;
   width: 46px;
   height: 46px;
-  border-radius: 11px;
+  border-radius: 13px;
   background: var(--cobalt);
   color: var(--paper);
-  border: 2px solid var(--ink);
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 0.95rem;
 }
 .team-card:nth-child(2) .team-initials {
-  background: var(--rose);
+  background: var(--rose-deep);
 }
 .team-card .name {
   font-family: var(--font-display);
@@ -804,7 +725,7 @@ section[id] {
   color: var(--ink-soft);
 }
 
-/* gallery — the contact-sheet, pinned like little tin plaques */
+/* gallery — soft rounded prints, no tilt */
 .gallery {
   margin-top: clamp(1.75rem, 4vw, 2.75rem);
   display: grid;
@@ -816,23 +737,16 @@ section[id] {
   margin: 0;
   overflow: hidden;
   border-radius: var(--radius);
-  border: 3px solid var(--ink);
   aspect-ratio: 4 / 3;
   background: var(--cream);
-  box-shadow: 3px 4px 0 rgba(42, 26, 23, 0.14);
+  box-shadow: var(--shadow-sm);
   transition:
     transform var(--t-fast),
     box-shadow var(--t-fast);
 }
-.gallery figure:nth-child(odd) {
-  transform: rotate(-1.1deg);
-}
-.gallery figure:nth-child(even) {
-  transform: rotate(1deg);
-}
 .gallery figure:hover {
-  transform: rotate(0) translateY(-2px);
-  box-shadow: 5px 7px 0 rgba(42, 26, 23, 0.18);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 .gallery img {
   width: 100%;
@@ -849,7 +763,7 @@ section[id] {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 6px;
+  height: 5px;
   background: var(--cat, var(--marigold));
 }
 
@@ -865,10 +779,9 @@ section[id] {
   flex-direction: column;
   padding: 1.5rem 1.4rem 1.25rem;
   background: var(--paper);
-  border: 2.5px solid var(--ink);
-  border-left: 7px solid var(--cat, var(--marigold));
+  border-left: 4px solid var(--cat, var(--marigold));
   border-radius: var(--radius);
-  box-shadow: 3px 4px 0 rgba(42, 26, 23, 0.13);
+  box-shadow: var(--shadow-sm);
 }
 .review-card blockquote {
   margin: 0 0 1rem;
@@ -893,46 +806,42 @@ section[id] {
 }
 .review-card .src {
   font-family: var(--font-script);
-  font-size: 0.92rem;
+  font-weight: 700;
+  font-size: 0.98rem;
   color: var(--chili-deep);
   margin-top: 0.5rem;
 }
 
-/* aggregate rating tile — a Sacred-Heart votive plaque leading the grid */
+/* aggregate rating tile — the seal-badge plaque leading the grid */
 .review-score {
   justify-content: center;
   align-items: flex-start;
   gap: 0.45rem;
   background:
-    radial-gradient(
-      circle at 82% 14%,
-      rgba(244, 168, 29, 0.42),
-      transparent 52%
-    ),
+    radial-gradient(circle at 82% 14%, rgba(200, 90, 46, 0.38), transparent 52%),
     var(--cobalt-deep);
   color: var(--paper);
-  border-color: var(--ink);
   border-left-color: var(--chili);
   overflow: hidden;
 }
 .review-score .votive-heart {
   position: absolute;
-  right: -10px;
-  bottom: -14px;
+  right: -14px;
+  bottom: -18px;
   width: 116px;
   height: 116px;
   opacity: 0.9;
 }
 .review-score .big {
   font-family: var(--font-display);
-  font-weight: 850;
+  font-weight: 800;
   font-size: 3rem;
   line-height: 1;
-  color: #ffe6a6;
+  color: var(--paper);
 }
 .review-score .big span {
   font-size: 1.05rem;
-  color: #f3e7cf;
+  color: var(--cream);
   font-weight: 600;
 }
 .review-score .stars {
@@ -941,9 +850,10 @@ section[id] {
 }
 .review-score p {
   margin: 0;
-  color: #f3e7cf;
+  color: var(--cream);
   font-family: var(--font-script);
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 1.05rem;
 }
 
 /* ---------- Location ---------- */
@@ -1014,7 +924,6 @@ section[id] {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.84rem;
-  border: 2px solid var(--ink);
 }
 .open-badge .dot {
   width: 0.6rem;
@@ -1023,15 +932,15 @@ section[id] {
   background: var(--ink-soft);
 }
 .open-badge[data-state="open"] {
-  color: #1c5d3a;
-  background: #d8f0dd;
+  color: #3e5a3a;
+  background: #e3eede;
 }
 .open-badge[data-state="open"] .dot {
-  background: var(--green);
+  background: var(--turq-deep);
 }
 .open-badge[data-state="closed"] {
-  color: #8a2018;
-  background: #fadcd6;
+  color: #7a3a22;
+  background: #f7e4d8;
 }
 .open-badge[data-state="closed"] .dot {
   background: var(--chili);
@@ -1043,9 +952,8 @@ section[id] {
   overflow: hidden;
   min-height: 340px;
   border-radius: var(--radius-lg);
-  border: 3px solid var(--ink);
   background: var(--cream);
-  box-shadow: 4px 5px 0 rgba(42, 26, 23, 0.16);
+  box-shadow: var(--shadow-sm);
 }
 .map iframe {
   position: absolute;
@@ -1078,23 +986,21 @@ section[id] {
   place-items: center;
   width: 46px;
   height: 46px;
-  border-radius: 12px;
+  border-radius: 13px;
   background: var(--cobalt);
-  border: 2px solid var(--ink);
   color: var(--paper);
-  box-shadow: 2px 3px 0 rgba(42, 26, 23, 0.16);
 }
 .contact-line:nth-child(2) .ico {
   background: var(--chili);
 }
 .contact-line:nth-child(3) .ico {
-  background: var(--green);
+  background: var(--turq-deep);
 }
 .contact-line:nth-child(4) .ico {
   background: var(--cobalt);
 }
 .contact-line:nth-child(5) .ico {
-  background: var(--rose);
+  background: var(--rose-deep);
 }
 .contact-line .ico svg {
   width: 21px;
@@ -1129,9 +1035,8 @@ section[id] {
 .contact-form {
   padding: clamp(1.4rem, 3vw, 2rem);
   background: var(--paper);
-  border: 2.5px solid var(--ink);
   border-radius: var(--radius-lg);
-  box-shadow: 5px 6px 0 rgba(42, 26, 23, 0.16);
+  box-shadow: var(--shadow-md);
 }
 .field {
   display: grid;
@@ -1150,7 +1055,7 @@ section[id] {
   font: inherit;
   color: var(--ink);
   background: var(--bone);
-  border: 2px solid var(--line);
+  border: 1.5px solid var(--line);
   border-radius: var(--radius);
   transition:
     border-color var(--t-fast),
@@ -1160,7 +1065,7 @@ section[id] {
 .field textarea:focus {
   outline: none;
   border-color: var(--cobalt);
-  box-shadow: 0 0 0 3px rgba(21, 80, 140, 0.2);
+  box-shadow: 0 0 0 3px rgba(122, 85, 120, 0.2);
 }
 .field textarea {
   resize: vertical;
@@ -1180,9 +1085,17 @@ section[id] {
 .site-footer {
   position: relative;
   background: var(--cobalt-deep);
-  color: #f3e7cf;
+  color: var(--cream);
   padding-block: clamp(2.75rem, 5vw, 3.75rem);
-  border-top: 6px solid var(--marigold);
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--marigold) 0 10px,
+    transparent 10px 20px
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 10px;
+  background-position: top;
+  background-origin: border-box;
 }
 .footer-grid {
   display: grid;
@@ -1190,12 +1103,13 @@ section[id] {
   gap: clamp(1.5rem, 3.5vw, 2.5rem);
 }
 .footer-brand .brand-mark {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
+  color: var(--chili);
 }
 .footer-brand p {
   margin-top: 0.9rem;
-  color: #d8e3ef;
+  color: var(--paper);
   font-size: 0.95rem;
   max-width: 34ch;
 }
@@ -1214,7 +1128,7 @@ section[id] {
   gap: 0.5rem;
 }
 .footer-col a {
-  color: #eaf1f8;
+  color: var(--paper);
   text-decoration: none;
   font-size: 0.94rem;
 }
@@ -1224,7 +1138,7 @@ section[id] {
 }
 .footer-col address {
   font-style: normal;
-  color: #d8e3ef;
+  color: var(--paper);
   font-size: 0.94rem;
   line-height: 1.6;
 }
@@ -1233,10 +1147,10 @@ section[id] {
 }
 .footer-lang .lang {
   background: transparent;
-  border-color: rgba(243, 231, 207, 0.4);
+  border-color: rgba(255, 251, 243, 0.35);
 }
 .footer-lang .lang a {
-  color: #d8e3ef;
+  color: var(--paper);
 }
 .footer-lang .lang a[aria-current="true"] {
   background: var(--marigold);
@@ -1246,16 +1160,16 @@ section[id] {
 .footer-bottom {
   margin-top: clamp(2rem, 4vw, 2.75rem);
   padding-top: 1.4rem;
-  border-top: 1px solid rgba(243, 231, 207, 0.25);
+  border-top: 1px solid rgba(255, 251, 243, 0.25);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.6rem 1.25rem;
-  color: #bcc9d8;
+  color: var(--tan);
   font-size: 0.85rem;
 }
 .footer-bottom a {
-  color: #d8e3ef;
+  color: var(--paper);
 }
 
 .powered-by {
@@ -1321,7 +1235,7 @@ section[id] {
     top: var(--header-h);
     padding: 0.8rem clamp(1.1rem, 4vw, 2.6rem) 1.2rem;
     background: var(--paper);
-    border-bottom: 2px solid var(--ink);
+    border-bottom: 1px solid var(--tan);
     box-shadow: var(--shadow-md);
   }
   .nav.is-open .nav-links a {
@@ -1391,7 +1305,6 @@ section[id] {
     opacity: 1;
     transform: none;
   }
-  /* keep hand-placed tilt static but neutralise hover straighten jump */
 }
 
 @media (forced-colors: active) {
@@ -1408,7 +1321,10 @@ section[id] {
   .btn {
     border-color: CanvasText;
   }
-  .rays::before,
+  .hero-photo picture,
+  .hero-photo img {
+    clip-path: none;
+  }
   .accent {
     display: none;
   }
@@ -1449,12 +1365,8 @@ html.lightbox-open {
 }
 .lightbox::backdrop {
   background:
-    radial-gradient(
-      58% 50% at 50% 42%,
-      rgba(244, 168, 29, 0.16),
-      transparent 70%
-    ),
-    rgba(42, 26, 23, 0.92);
+    radial-gradient(58% 50% at 50% 42%, rgba(200, 90, 46, 0.16), transparent 70%),
+    rgba(36, 28, 24, 0.92);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
@@ -1479,7 +1391,7 @@ html.lightbox-open {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: var(--shadow-md);
-  background: rgb(42, 26, 23);
+  background: rgb(36, 28, 24);
 }
 .lightbox__cap {
   margin: 0;
@@ -1503,7 +1415,7 @@ html.lightbox-open {
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
-  background: rgba(42, 26, 23, 0.5);
+  background: rgba(36, 28, 24, 0.5);
   color: var(--paper);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
@@ -1585,6 +1497,7 @@ html.lightbox-open {
 }
 .legal-hero h1 {
   font-family: var(--lg-display);
+  font-weight: 800;
   font-size: clamp(2rem, 1.4rem + 3vw, 3.2rem);
   line-height: 1.08;
   margin-top: 0.5rem;
@@ -1607,6 +1520,7 @@ html.lightbox-open {
 }
 .legal h2 {
   font-family: var(--lg-display);
+  font-weight: 700;
   font-size: clamp(1.35rem, 1.1rem + 1vw, 1.7rem);
   line-height: 1.15;
   color: var(--lg-primary);
@@ -1619,6 +1533,7 @@ html.lightbox-open {
 }
 .legal h3 {
   font-family: var(--lg-display);
+  font-weight: 700;
   font-size: 1.08rem;
   color: var(--lg-text);
   margin-top: 1.5rem;
