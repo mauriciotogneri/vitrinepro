@@ -725,13 +725,32 @@
             var items = Array.prototype.map.call(
                 document.querySelectorAll('tbody tr'),
                 function (row) {
+                    var nameEl = row.querySelector('.name');
                     var raw = ['.name', '.meta'].map(function (sel) {
                         var el = row.querySelector(sel);
                         return el ? el.textContent : '';
                     }).join(' ');
-                    return { row: row, text: normalize(raw), label: row.getAttribute('data-label') };
+                    return {
+                        row: row,
+                        text: normalize(raw),
+                        label: row.getAttribute('data-label'),
+                        name: nameEl ? nameEl.textContent.trim() : ''
+                    };
                 }
             );
+
+            // Sort so "to present" rows always precede "rejected" rows, and each
+            // group is alphabetical by name — holds on load and after filtering
+            // since this reorders the DOM rather than just toggling visibility.
+            var LABEL_ORDER = { to_present: 0, rejected: 1 };
+            items.sort(function (a, b) {
+                var rankDiff = LABEL_ORDER[a.label] - LABEL_ORDER[b.label];
+                return rankDiff !== 0 ? rankDiff : a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' });
+            });
+            var tbody = table.querySelector('tbody');
+            items.forEach(function (item) {
+                tbody.appendChild(item.row);
+            });
 
             function apply() {
                 var q = normalize(input.value);
