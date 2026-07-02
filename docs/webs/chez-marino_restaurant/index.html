@@ -526,7 +526,7 @@
                         </div>
                     </div>
                     <div class="form-col reveal">
-                        <form class="contact-form" action="https://formspree.io/f/{{FORMSPREE_ID}}" method="post">
+                        <form class="contact-form" action="https://formspree.io/f/mkolqjjb" method="post">
                             <div class="field">
                                 <label for="f-name">Nom <span class="req">*</span></label>
                                 <input id="f-name" name="name" type="text" placeholder="Votre nom" autocomplete="name" required>
@@ -539,7 +539,15 @@
                                 <label for="f-message">Message <span class="req">*</span></label>
                                 <textarea id="f-message" name="message" rows="5" placeholder="Votre message, une question, un mot…" required></textarea>
                             </div>
-                            <button class="btn btn-primary" type="submit">Envoyer le message</button>
+                            <div class="submit-row">
+                                <button class="btn btn-primary" type="submit">
+                                    <span class="btn-label">Envoyer le message</span>
+                                    <span class="spinner" aria-hidden="true"></span>
+                                </button>
+                                <div class="form-status" role="status" aria-live="polite">
+                                    <p class="form-status-text"></p>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
