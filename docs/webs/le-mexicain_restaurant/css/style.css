@@ -557,16 +557,8 @@ section {
   line-height: 1.08;
   margin: 1.1rem 0 0;
 }
-/* accent word gets an ochre marker-block — the one warm pop in the headline.
-   negative vertical padding + positive margin keeps the block tight to the
-   glyphs without eating the tight Anton leading above/below it */
 .hero h1 .accent {
-  color: var(--cocoa);
-  background: var(--ochre);
-  padding: 0.02em 0.12em;
-  margin: 0 -0.04em;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
+  color: var(--cream);
 }
 .hero .lede {
   margin-top: 1.3rem;
