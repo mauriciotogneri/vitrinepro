@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mauriciotogneri.github.io/vitrinepro/webs/celine-et-sebastien_bakery/sitemap.xml
