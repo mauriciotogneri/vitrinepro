@@ -802,7 +802,7 @@ section, footer.site-footer {
 .channel-card__label { display: block; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--band-muted); }
 .channel-card__value { display: block; font-size: 1.02rem; }
 
-.form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form { display: flex; flex-direction: column; justify-content: flex-end; gap: 1.2rem; }
 .field { display: flex; flex-direction: column; gap: 0.45rem; }
 .field label { font-weight: 700; font-size: 0.94rem; }
 .field label .req { color: var(--berry); margin-left: 0.15rem; }
