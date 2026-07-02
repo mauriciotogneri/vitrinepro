@@ -686,6 +686,12 @@ section[id] {
   }
 }
 
+.menu-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
 .menu-note {
   margin-top: 2.5rem;
   padding-top: 1.75rem;
@@ -1105,6 +1111,10 @@ a.rating-card:hover {
   stroke: var(--vino);
   fill: none;
   stroke-width: 1.8;
+}
+.channel .ic svg.ic-fill {
+  fill: var(--vino);
+  stroke: none;
 }
 .channel .lbl {
   font-size: 0.76rem;
