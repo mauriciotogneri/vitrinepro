@@ -435,6 +435,7 @@ section[id] {
   position: relative;
   overflow: clip;
   padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
 }
 .hero-grid {
   display: grid;
