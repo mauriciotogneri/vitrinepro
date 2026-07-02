@@ -479,50 +479,72 @@ section[id] {
   }
 }
 
-/* the signature scalloped "shop-window" frame: a clip-path clips the
-   photo, and a stretched-to-match SVG outline traces the same curve on
-   top so the cut-paper edge reads even though clip-path can't stroke. */
+/* the signature hero treatment: the storefront photo stacked on two
+   offset colour cards (a paper collage, not a photo mask), with a
+   circular stamp badge and a sparkle tucked into the corners. */
 .hero-photo {
   position: relative;
   margin: 0;
   width: min(420px, 100%);
   aspect-ratio: 4 / 5;
 }
-.hero-photo picture,
-.hero-photo img {
+.hero-photo-backer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: 28px;
+}
+.hero-photo-backer--a {
+  background: var(--chili);
+  transform: rotate(-4deg);
+}
+.hero-photo-backer--b {
+  background: var(--turq);
+  transform: rotate(3deg) translate(8px, -5px);
+}
+.hero-photo-card {
+  position: absolute;
+  inset: 16px 30px 30px 16px;
+  display: block;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.hero-photo-card picture,
+.hero-photo-card img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 34%;
-  clip-path: url(#scallop-frame);
 }
-.hero-photo-outline {
+.hero-photo-badge {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-.hero-photo-outline path {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 1.4;
-}
-.hero-photo .ribbon {
-  position: absolute;
-  left: 50%;
-  bottom: 4%;
-  transform: translateX(-50%);
-  padding: 0.4em 1.3em 0.5em;
-  background: var(--chili-deep);
+  left: -22px;
+  bottom: 30px;
+  width: 108px;
+  height: 108px;
+  display: grid;
+  place-items: center;
+  padding: 0 0.5rem;
+  border-radius: 50%;
+  background: var(--cobalt-deep);
   color: var(--paper);
-  border-radius: var(--radius-pill);
+  text-align: center;
+  transform: rotate(-8deg);
+  box-shadow: var(--shadow-sm);
   font-family: var(--font-script);
   font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1.4;
-  white-space: nowrap;
+  font-size: 1.3rem;
+  line-height: 1.15;
+}
+.hero-photo-sparkle {
+  position: absolute;
+  top: -12px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  color: var(--marigold);
 }
 
 /* the curated shelf mosaic — flat, calm, no tilt */
@@ -1304,10 +1326,6 @@ section[id] {
   }
   .btn {
     border-color: CanvasText;
-  }
-  .hero-photo picture,
-  .hero-photo img {
-    clip-path: none;
   }
   .accent {
     display: none;
