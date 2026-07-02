@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" role="img" aria-label="Dragon — Restaurant chinois, Genève (generated placeholder logo)">
+  <!-- GENERATED PLACEHOLDER LOGO — not an official logo. Wordmark in the name/type-inferred palette
+       (aubergine #4A2F45 primary, lacquer red #B0402F accent, cream #FAF5EE), cross-checked against
+       genuine interior photos (aubergine walls, dark wood, red lanterns). Decorative stand-in only. -->
+  <rect x="20" y="20" width="600" height="240" rx="18" fill="#4A2F45"/>
+  <rect x="33" y="33" width="574" height="214" rx="11" fill="none" stroke="#B0402F" stroke-width="2"/>
+  <text x="320" y="114" text-anchor="middle" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="27" letter-spacing="8" fill="#B0402F">RESTAURANT CHINOIS</text>
+  <text x="320" y="184" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="78" fill="#FAF5EE">Dragon</text>
+  <rect x="240" y="204" width="160" height="2.5" fill="#B0402F"/>
+  <text x="320" y="236" text-anchor="middle" font-family="'Arial Narrow','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="20" letter-spacing="7" fill="#E7C9C0">GENÈVE</text>
+</svg>

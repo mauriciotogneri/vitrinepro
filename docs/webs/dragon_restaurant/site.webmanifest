@@ -1,0 +1,17 @@
+{
+  "name": "Dragon — Restaurant chinois, Genève",
+  "short_name": "Dragon",
+  "description": "Restaurant chinois aux Eaux-Vives à Genève : cuisine cantonaise et Se-Tchuan, menu du jour en semaine, ouvert non-stop 7j/7.",
+  "lang": "fr-CH",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#4A2F45",
+  "background_color": "#221A20",
+  "icons": [
+    { "src": "assets/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
