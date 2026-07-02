@@ -256,8 +256,8 @@
             </div>
           </div>
           <div data-reveal>
-            <!-- TODO(launch): remplacer YOUR_FORM_ID par l'ID Formspree réel (compte à créer, destinataire = email du patron) -->
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <!-- TODO(launch): remplacer {{FORMSPREE_ID}} par l'ID Formspree réel (compte à créer, destinataire = email du patron) -->
+            <form action="https://formspree.io/f/{{FORMSPREE_ID}}" method="POST">
               <div class="form-field">
                 <label for="f-name">Nom</label>
                 <input id="f-name" type="text" name="name" autocomplete="name" required>
@@ -272,7 +272,13 @@
               </div>
               <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
               <input type="hidden" name="_subject" value="Message via mirobarbershop.ch">
-              <button class="btn btn-solid" type="submit">Envoyer</button>
+              <button class="btn btn-solid" type="submit">
+                <span class="btn-label">Envoyer</span>
+                <span class="spinner" aria-hidden="true"></span>
+              </button>
+              <div class="form-status" role="status" aria-live="polite">
+                <p class="form-status-text"></p>
+              </div>
               <p class="form-note">Ou passez simplement au salon — c'est sans rendez-vous.</p>
             </form>
           </div>

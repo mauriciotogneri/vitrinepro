@@ -554,7 +554,7 @@
                         <h3>Écrivez-nous</h3>
                         <p class="form-intro">Laissez-nous un message — nous revenons vers vous au plus vite. Pour une
                             commande, précisez la date et l'occasion.</p>
-                        <form action="https://formspree.io/f/{{FORMSPREE_ID}}" method="post">
+                        <form class="contact-form" action="https://formspree.io/f/{{FORMSPREE_ID}}" method="post">
                             <div class="field">
                                 <label for="name">Nom</label>
                                 <input id="name" name="name" type="text" autocomplete="name" required>
@@ -568,7 +568,13 @@
                                 <label for="message">Message</label>
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
-                            <button class="btn btn-primary" type="submit">Envoyer le message</button>
+                            <button class="btn btn-primary" type="submit">
+                                <span class="btn-label">Envoyer le message</span>
+                                <span class="spinner" aria-hidden="true"></span>
+                            </button>
+                            <div class="form-status" role="status" aria-live="polite">
+                                <p class="form-status-text"></p>
+                            </div>
                             <p class="form-foot">Nous vous répondrons dès que possible.</p>
                         </form>
                     </div>

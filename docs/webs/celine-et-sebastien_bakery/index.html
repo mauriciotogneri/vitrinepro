@@ -539,7 +539,13 @@
             <label for="f-message">Message<span class="req">*</span></label>
             <textarea id="f-message" name="message" placeholder="Votre message, une question, une commande…" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Envoyer le message</button>
+          <button type="submit" class="btn btn-primary">
+            <span class="btn-label">Envoyer le message</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+          <div class="form-status" role="status" aria-live="polite">
+            <p class="form-status-text"></p>
+          </div>
         </form>
       </div>
     </section>

@@ -87,6 +87,24 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.
 .btn-ghost { background: transparent; color: var(--cream); border-color: rgba(246, 239, 225, 0.5); }
 .btn-ghost:hover { background: rgba(246, 239, 225, 0.1); border-color: var(--cream); transform: translateY(-2px); }
 
+/* ---------- contact form status / busy state ---------- */
+.contact-form .btn { position: relative; }
+.contact-form .btn .spinner {
+  display: none; width: 18px; height: 18px;
+  border: 2.5px solid rgba(58, 21, 32, 0.3); border-top-color: #3A1520;
+  border-radius: 50%; position: absolute; top: 50%; left: 50%;
+  margin: -9px 0 0 -9px; animation: spin 0.7s linear infinite;
+}
+.contact-form .btn[aria-busy="true"] .btn-label { visibility: hidden; }
+.contact-form .btn[aria-busy="true"] .spinner { display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.form-status { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--t) var(--ease); }
+.form-status[data-state="ok"], .form-status[data-state="error"] { grid-template-rows: 1fr; }
+.form-status-text { overflow: hidden; min-height: 0; margin: 0; padding-top: 0.7rem; font-size: 0.85rem; font-weight: 700; }
+.form-status[data-state="ok"] .form-status-text { color: var(--teal); }
+.form-status[data-state="error"] .form-status-text { color: var(--maroon); }
+.field input:disabled, .field textarea:disabled { opacity: 0.6; cursor: not-allowed; }
+
 /* ---------- eyebrow / section heads ---------- */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 0.5rem;

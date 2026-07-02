@@ -634,9 +634,29 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
 }
 .form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
 .form-note { font-size: 0.8rem; color: var(--muted); }
-.form-status { font-size: 0.9rem; font-weight: 700; }
+.form-status { font-size: 0.9rem; font-weight: 700; min-height: 1.2em; }
 .form-status[data-tone="ok"] { color: #1c8a4e; }
 .form-status[data-tone="err"] { color: var(--verm); }
+
+.contact-form .btn { position: relative; }
+.contact-form .btn .spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.4);
+  border-top-color: var(--paper);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -9px 0 0 -9px;
+  animation: spin 0.7s linear infinite;
+}
+.contact-form .btn[aria-busy="true"] .btn-label { visibility: hidden; }
+.contact-form .btn[aria-busy="true"] .spinner { display: inline-block; }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
 .contact-aside { display: flex; flex-direction: column; gap: 1rem; }
 .contact-card {

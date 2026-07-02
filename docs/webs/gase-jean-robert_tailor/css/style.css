@@ -826,6 +826,31 @@ p {
   width: 100%;
   justify-content: center;
   margin-top: 0.3rem;
+  position: relative;
+}
+.form-card .btn .spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: var(--on-walnut);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -9px 0 0 -9px;
+  animation: spin 0.7s linear infinite;
+}
+.form-card .btn[aria-busy="true"] .btn-label {
+  visibility: hidden;
+}
+.form-card .btn[aria-busy="true"] .spinner {
+  display: inline-block;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 .form-status {
   margin-top: 0.9rem;

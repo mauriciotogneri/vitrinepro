@@ -115,39 +115,43 @@
   var form = doc.querySelector('.contact-form');
   if (form) {
     var status = form.querySelector('[data-form-status]');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var fields = [].slice.call(form.querySelectorAll('input, textarea'));
+
     var setStatus = function (state, msg) {
       if (!status) { return; }
       status.dataset.state = state;
       status.textContent = msg;
     };
-    form.addEventListener('submit', function (e) {
-      if (form.action.indexOf('{{') !== -1) {       /* placeholder ID not yet replaced */
-        e.preventDefault();
-        setStatus('error', 'Formulaire bientôt actif — configuration en cours. Écrivez-nous sur Instagram en attendant.');
-        return;
+    var setBusy = function (busy) {
+      if (submitBtn) {
+        submitBtn.disabled = busy;
+        submitBtn.setAttribute('aria-busy', String(busy));
       }
+      fields.forEach(function (f) { f.disabled = busy; });
+    };
+
+    form.addEventListener('submit', function (e) {
+      if (!form.checkValidity()) { return; }
       e.preventDefault();
-      var btn = form.querySelector('button[type="submit"]');
-      var orig = btn ? btn.textContent : '';
-      if (btn) { btn.disabled = true; btn.textContent = 'Envoi…'; }
+      var data = new FormData(form); /* capture before disabling — disabled fields are excluded from FormData */
       setStatus('', '');
+      setBusy(true);
       fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
+        body: data,
         headers: { Accept: 'application/json' }
       }).then(function (r) {
         if (r.ok) {
           form.reset();
-          setStatus('ok', 'Merci ! Votre message est bien parti — on vous répond vite.');
+          setStatus('ok', 'Merci, votre message a bien été envoyé ! Nous vous répondrons rapidement.');
         } else {
-          return r.json().then(function (d) {
-            throw new Error((d && d.errors && d.errors[0] && d.errors[0].message) || 'error');
-          });
+          setStatus('error', 'Une erreur est survenue. Réessayez, ou écrivez-nous sur Instagram.');
         }
       }).catch(function () {
-        setStatus('error', "Oups — l'envoi a échoué. Réessayez, ou écrivez-nous sur Instagram.");
+        setStatus('error', 'Une erreur est survenue. Réessayez, ou écrivez-nous sur Instagram.');
       }).finally(function () {
-        if (btn) { btn.disabled = false; btn.textContent = orig; }
+        setBusy(false);
       });
     });
   }

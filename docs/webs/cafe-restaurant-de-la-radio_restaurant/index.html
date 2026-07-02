@@ -485,7 +485,13 @@
               <label for="f-message">Message *</label>
               <textarea id="f-message" name="message" rows="5" placeholder="Votre message, une question, une envie de fondue…" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Envoyer le message</button>
+            <button type="submit" class="btn btn-primary btn-block">
+              <span class="btn-label">Envoyer le message</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+            <div class="form-status" role="status" aria-live="polite">
+              <p class="form-status-text"></p>
+            </div>
           </form>
         </div>
       </div>

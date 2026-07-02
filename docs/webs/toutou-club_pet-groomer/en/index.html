@@ -470,10 +470,15 @@
                             <textarea id="message" name="message" required
                                 placeholder="Your companion, their needs, your availability…"></textarea>
                         </div>
-                        <button class="btn btn--primary btn--block" type="submit">Send message <svg class="ico"
-                                aria-hidden="true">
-                                <use href="#ico-arrow"></use>
-                            </svg></button>
+                        <button class="btn btn--primary btn--block" type="submit">
+                            <span class="btn-label">Send message <svg class="ico" aria-hidden="true">
+                                    <use href="#ico-arrow"></use>
+                                </svg></span>
+                            <span class="spinner" aria-hidden="true"></span>
+                        </button>
+                        <div class="form-status" role="status" aria-live="polite">
+                            <p class="form-status-text"></p>
+                        </div>
                         <p class="form-note"><svg class="ico" aria-hidden="true">
                                 <use href="#ico-mail"></use>
                             </svg> Your message goes straight to the salon — no spam.</p>

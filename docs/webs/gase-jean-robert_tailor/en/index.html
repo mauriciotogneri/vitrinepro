@@ -427,9 +427,9 @@
                             beforehand, and we'll find a time.</p>
                     </div>
                     <form class="form-card reveal d1" id="contact-form" action="https://formspree.io/f/{{FORMSPREE_ID}}"
-                        method="post" data-sending="Sending…"
-                        data-ok="Thank you — your message is on its way. I'll reply as soon as I can."
-                        data-err="Something went wrong. Please call or email me directly.">
+                        method="post"
+                        data-ok="Thank you, your message has been sent! I'll get back to you shortly."
+                        data-err="Something went wrong. Please try again, or call me on 022 781 28 77.">
                         <div class="field">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" autocomplete="name" required>
@@ -442,7 +442,7 @@
                             <label for="message">Your message</label>
                             <textarea id="message" name="message" autocomplete="off" required></textarea>
                         </div>
-                        <button class="btn btn-primary" type="submit">Send message</button>
+                        <button class="btn btn-primary" type="submit"><span class="btn-label">Send message</span><span class="spinner" aria-hidden="true"></span></button>
                         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
                     </form>
                 </div>

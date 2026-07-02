@@ -683,8 +683,14 @@
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
                         <div class="form-foot">
-                            <button class="btn btn--primary" type="submit">Envoyer le message</button>
+                            <button class="btn btn--primary" type="submit">
+                                <span class="btn-label">Envoyer le message</span>
+                                <span class="spinner" aria-hidden="true"></span>
+                            </button>
                             <span class="muted">Nous vous répondons dès que possible.</span>
+                            <div class="form-status" role="status" aria-live="polite">
+                                <p class="form-status-text"></p>
+                            </div>
                         </div>
                     </form>
                 </div>

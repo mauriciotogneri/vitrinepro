@@ -87,6 +87,59 @@
     var todayLi = doc.querySelector('.hours li[data-day="' + now.day + '"]');
     if (todayLi) todayLi.classList.add('is-today');
   }
+
+  /* contact form — progressive enhancement over Formspree */
+  var form = doc.querySelector('.form');
+  if (form) {
+    var status = form.querySelector('.form-status');
+    var statusText = status ? status.querySelector('.form-status-text') : null;
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var fields = [].slice.call(form.querySelectorAll('input, textarea'));
+
+    var setStatus = function (state, msg) {
+      if (!status || !statusText) { return; }
+      status.dataset.state = state;
+      statusText.textContent = msg;
+    };
+    var setBusy = function (busy) {
+      if (submitBtn) {
+        submitBtn.disabled = busy;
+        submitBtn.setAttribute('aria-busy', String(busy));
+      }
+      fields.forEach(function (f) { f.disabled = busy; });
+    };
+    var MSG = isFr ? {
+      ok: 'Merci, votre message a bien été envoyé ! Nous vous répondrons rapidement.',
+      err: 'Une erreur est survenue. Réessayez, ou appelez-nous au +41 22 320 39 63.'
+    } : {
+      ok: "Thank you, your message has been sent! We'll get back to you shortly.",
+      err: 'Something went wrong. Please try again, or call us on +41 22 320 39 63.'
+    };
+
+    form.addEventListener('submit', function (e) {
+      if (!form.checkValidity()) { return; }
+      e.preventDefault();
+      var data = new FormData(form); /* capture before disabling — disabled fields are excluded from FormData */
+      setStatus('', '');
+      setBusy(true);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      }).then(function (r) {
+        if (r.ok) {
+          form.reset();
+          setStatus('ok', MSG.ok);
+        } else {
+          setStatus('error', MSG.err);
+        }
+      }).catch(function () {
+        setStatus('error', MSG.err);
+      }).finally(function () {
+        setBusy(false);
+      });
+    });
+  }
 })();
 
 /* ---- photo lightbox: click / Enter / Space to enlarge any content image ----

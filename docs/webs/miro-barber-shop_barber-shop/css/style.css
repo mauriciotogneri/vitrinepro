@@ -872,6 +872,56 @@ body::after {
   color: var(--text-dim);
 }
 
+.btn-solid {
+  position: relative;
+}
+.btn-solid .spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2.5px solid rgba(10, 10, 10, 0.35);
+  border-top-color: var(--bg);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  animation: spin 0.7s linear infinite;
+}
+.btn-solid[aria-busy="true"] .btn-label {
+  visibility: hidden;
+}
+.btn-solid[aria-busy="true"] .spinner {
+  display: inline-block;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.form-status {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+}
+.form-status[data-state="ok"],
+.form-status[data-state="error"] {
+  grid-template-rows: 1fr;
+}
+.form-status-text {
+  overflow: hidden;
+  min-height: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+.form-status[data-state="ok"] .form-status-text {
+  color: var(--accent-bright);
+}
+.form-status[data-state="error"] .form-status-text {
+  color: #c9695f;
+}
+
 @media (min-width: 880px) {
   .contact-grid {
     grid-template-columns: 5fr 6fr;

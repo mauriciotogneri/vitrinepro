@@ -74,18 +74,27 @@
   var form = document.getElementById("contact-form");
   var status = document.getElementById("form-status");
   if (form && status && window.fetch) {
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var fields = [].slice.call(form.querySelectorAll("input, textarea"));
+
+    var setBusy = function (busy) {
+      if (submitBtn) {
+        submitBtn.disabled = busy;
+        submitBtn.setAttribute("aria-busy", String(busy));
+      }
+      fields.forEach(function (f) { f.disabled = busy; });
+    };
+
     form.addEventListener("submit", function (e) {
-      var action = form.getAttribute("action") || "";
-      // let the native POST happen if the endpoint isn't configured yet
-      if (action.indexOf("{{") !== -1) { return; }
+      if (!form.checkValidity()) { return; }
       e.preventDefault();
-      var btn = form.querySelector('button[type="submit"]');
+      var data = new FormData(form); /* capture before disabling — disabled fields are excluded from FormData */
       status.removeAttribute("data-state");
-      status.textContent = form.getAttribute("data-sending") || "Sending…";
-      if (btn) { btn.disabled = true; }
-      fetch(action, {
+      status.textContent = "";
+      setBusy(true);
+      fetch(form.action, {
         method: "POST",
-        body: new FormData(form),
+        body: data,
         headers: { Accept: "application/json" }
       }).then(function (r) {
         if (r.ok) {
@@ -93,13 +102,14 @@
           status.setAttribute("data-state", "ok");
           status.textContent = form.getAttribute("data-ok") || "Thank you — message sent.";
         } else {
-          throw new Error("bad status");
+          status.setAttribute("data-state", "err");
+          status.textContent = form.getAttribute("data-err") || "Something went wrong. Please call or email instead.";
         }
       }).catch(function () {
         status.setAttribute("data-state", "err");
         status.textContent = form.getAttribute("data-err") || "Something went wrong. Please call or email instead.";
-      }).then(function () {
-        if (btn) { btn.disabled = false; }
+      }).finally(function () {
+        setBusy(false);
       });
     });
   }

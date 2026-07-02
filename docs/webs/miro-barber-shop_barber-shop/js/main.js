@@ -66,4 +66,58 @@
       /* Intl unavailable: keep the static hours text */
     }
   }
+
+  /* contact form — progressive enhancement over Formspree */
+  var fr = (document.documentElement.lang || "fr").toLowerCase().indexOf("fr") === 0;
+  var form = document.querySelector("#contact form");
+  if (form) {
+    var status = form.querySelector(".form-status");
+    var statusText = status ? status.querySelector(".form-status-text") : null;
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var fields = [].slice.call(form.querySelectorAll("input, textarea"));
+
+    var setStatus = function (state, msg) {
+      if (!status || !statusText) { return; }
+      status.dataset.state = state;
+      statusText.textContent = msg;
+    };
+    var setBusy = function (busy) {
+      if (submitBtn) {
+        submitBtn.disabled = busy;
+        submitBtn.setAttribute("aria-busy", String(busy));
+      }
+      fields.forEach(function (f) { f.disabled = busy; });
+    };
+    var MSG = fr ? {
+      ok: "Merci, votre message a bien été envoyé ! Nous vous répondrons rapidement.",
+      err: "Une erreur est survenue. Réessayez, ou appelez-nous au 076 407 50 52."
+    } : {
+      ok: "Thank you, your message has been sent! We'll get back to you shortly.",
+      err: "Something went wrong. Please try again, or call us on 076 407 50 52."
+    };
+
+    form.addEventListener("submit", function (e) {
+      if (!form.checkValidity()) { return; }
+      e.preventDefault();
+      var data = new FormData(form); /* capture before disabling — disabled fields are excluded from FormData */
+      setStatus("", "");
+      setBusy(true);
+      fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" }
+      }).then(function (r) {
+        if (r.ok) {
+          form.reset();
+          setStatus("ok", MSG.ok);
+        } else {
+          setStatus("error", MSG.err);
+        }
+      }).catch(function () {
+        setStatus("error", MSG.err);
+      }).finally(function () {
+        setBusy(false);
+      });
+    });
+  }
 })();

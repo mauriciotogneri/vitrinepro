@@ -665,17 +665,42 @@ a.contact-line:hover { transform: translateY(-2px); box-shadow: var(--shadow-md)
 }
 .field textarea { resize: vertical; min-height: 110px; }
 .form-note { font-size: .82rem; color: var(--muted); margin-top: .9rem; }
+#contact-form .btn { position: relative; }
+#contact-form .btn .spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(245, 239, 220, .4);
+  border-top-color: var(--cream);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -9px 0 0 -9px;
+  animation: spin .7s linear infinite;
+}
+#contact-form .btn[aria-busy="true"] .btn-label { visibility: hidden; }
+#contact-form .btn[aria-busy="true"] .spinner { display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
 .form-status {
   margin-top: 1rem;
-  padding: .85rem 1rem;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: .92rem;
-  display: none;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--t);
 }
-.form-status.show { display: block; }
-.form-status.ok { background: color-mix(in srgb, var(--agave) 16%, transparent); color: var(--agave-deep); border: 1px solid var(--agave); }
-.form-status.err { background: color-mix(in srgb, var(--chili) 12%, transparent); color: var(--chili); border: 1px solid var(--chili); }
+.form-status[data-state="ok"],
+.form-status[data-state="error"] {
+  grid-template-rows: 1fr;
+}
+.form-status-text {
+  overflow: hidden;
+  min-height: 0;
+  margin: 0;
+  font-weight: 600;
+  font-size: .85rem;
+}
+.form-status[data-state="ok"] .form-status-text { color: var(--agave-deep); }
+.form-status[data-state="error"] .form-status-text { color: var(--chili); }
 
 /* ---------- Visit / Contact ---------- */
 .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }

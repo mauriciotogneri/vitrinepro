@@ -12,15 +12,15 @@
     closes: "ferme à", opens: "ouvre à", opensOn: "ouvre",
     today: "", tomorrow: "demain",
     sending: "Envoi…",
-    ok: "Merci ! Votre message a bien été envoyé. Nous vous recontactons rapidement.",
-    err: "Désolé, l’envoi a échoué. Appelez-nous au +41 22 320 82 29 ou réessayez."
+    ok: "Merci, votre message a bien été envoyé ! Nous vous répondrons rapidement.",
+    err: "Une erreur est survenue. Réessayez, ou appelez-nous au +41 22 320 82 29."
   } : {
     open: "Open now", closed: "Closed",
     closes: "closes", opens: "opens", opensOn: "opens",
     today: "", tomorrow: "tomorrow",
     sending: "Sending…",
-    ok: "Thank you! Your message has been sent. We’ll get back to you shortly.",
-    err: "Sorry, sending failed. Please call us on +41 22 320 82 29 or try again."
+    ok: "Thank you, your message has been sent! We’ll get back to you shortly.",
+    err: "Something went wrong. Please try again, or call us on +41 22 320 82 29."
   };
 
   /* ---------- dynamic year ---------- */
@@ -179,30 +179,44 @@
     var form = document.getElementById("contact-form");
     if (!form) return;
     var status = form.querySelector(".form-status");
-    var submit = form.querySelector('button[type="submit"]');
-    var submitLabel = submit ? submit.textContent : "";
+    var statusText = status ? status.querySelector(".form-status-text") : null;
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var fields = [].slice.call(form.querySelectorAll("input, textarea"));
 
-    function show(kind, msg) {
-      if (!status) return;
-      status.className = "form-status show " + kind;
-      status.textContent = msg;
-    }
+    var setStatus = function (state, msg) {
+      if (!status || !statusText) { return; }
+      status.dataset.state = state;
+      statusText.textContent = msg;
+    };
+    var setBusy = function (busy) {
+      if (submitBtn) {
+        submitBtn.disabled = busy;
+        submitBtn.setAttribute("aria-busy", String(busy));
+      }
+      fields.forEach(function (f) { f.disabled = busy; });
+    };
+
     form.addEventListener("submit", function (e) {
-      if (!form.checkValidity()) return; // let the browser report invalid fields
+      if (!form.checkValidity()) { return; }
       e.preventDefault();
-      if (submit) { submit.disabled = true; submit.textContent = I18N.sending; }
-      if (status) status.className = "form-status";
+      var data = new FormData(form); /* capture before disabling — disabled fields are excluded from FormData */
+      setStatus("", "");
+      setBusy(true);
       fetch(form.action, {
         method: "POST",
-        body: new FormData(form),
+        body: data,
         headers: { Accept: "application/json" }
       }).then(function (r) {
-        if (r.ok) { show("ok", I18N.ok); form.reset(); }
-        else { show("err", I18N.err); }
+        if (r.ok) {
+          form.reset();
+          setStatus("ok", I18N.ok);
+        } else {
+          setStatus("error", I18N.err);
+        }
       }).catch(function () {
-        show("err", I18N.err);
-      }).then(function () {
-        if (submit) { submit.disabled = false; submit.textContent = submitLabel; }
+        setStatus("error", I18N.err);
+      }).finally(function () {
+        setBusy(false);
       });
     });
   })();

@@ -430,9 +430,9 @@
                             préalable, et l'on convient d'un moment.</p>
                     </div>
                     <form class="form-card reveal d1" id="contact-form" action="https://formspree.io/f/{{FORMSPREE_ID}}"
-                        method="post" data-sending="Envoi en cours…"
-                        data-ok="Merci — votre message est parti. Je vous réponds au plus vite."
-                        data-err="Une erreur est survenue. Appelez-moi ou écrivez-moi directement par e-mail.">
+                        method="post"
+                        data-ok="Merci, votre message a bien été envoyé ! Je vous répondrai rapidement."
+                        data-err="Une erreur est survenue. Réessayez, ou appelez-moi au 022 781 28 77.">
                         <div class="field">
                             <label for="name">Nom</label>
                             <input type="text" id="name" name="name" autocomplete="name" required>
@@ -445,7 +445,7 @@
                             <label for="message">Votre message</label>
                             <textarea id="message" name="message" autocomplete="off" required></textarea>
                         </div>
-                        <button class="btn btn-primary" type="submit">Envoyer le message</button>
+                        <button class="btn btn-primary" type="submit"><span class="btn-label">Envoyer le message</span><span class="spinner" aria-hidden="true"></span></button>
                         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
                     </form>
                 </div>

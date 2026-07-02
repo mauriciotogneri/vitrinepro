@@ -462,8 +462,14 @@
                             <label for="f-message">Votre message</label>
                             <textarea id="f-message" name="message" rows="5" required></textarea>
                         </p>
-                        <button class="btn btn-primary btn-block" type="submit">Envoyer le message
-                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-arrow" /></svg></button>
+                        <button class="btn btn-primary btn-block" type="submit">
+                            <span class="btn-label">Envoyer le message
+                                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-arrow" /></svg></span>
+                            <span class="spinner" aria-hidden="true"></span>
+                        </button>
+                        <div class="form-status" role="status" aria-live="polite">
+                            <p class="form-status-text"></p>
+                        </div>
                         <p class="form-hint">Nous vous répondons sous 1 à 2 jours ouvrables.</p>
                     </form>
                 </div>

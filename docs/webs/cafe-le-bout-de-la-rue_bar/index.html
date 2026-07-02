@@ -893,7 +893,13 @@
                 <label for="cf-msg">Votre message</label>
                 <textarea id="cf-msg" name="message" rows="5" required></textarea>
               </div>
-              <button class="btn btn-primary" type="submit">Envoyer le message</button>
+              <button class="btn btn-primary" type="submit">
+                <span class="btn-label">Envoyer le message</span>
+                <span class="spinner" aria-hidden="true"></span>
+              </button>
+              <div class="form-status" role="status" aria-live="polite">
+                <p class="form-status-text"></p>
+              </div>
               <p class="form-note">Vos données servent uniquement à vous répondre. Voir les
                 <a href="legal.html" target="_blank" rel="noopener">mentions légales</a>.</p>
             </form>

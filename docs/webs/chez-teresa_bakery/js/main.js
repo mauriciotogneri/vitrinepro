@@ -96,6 +96,52 @@
     });
     selectTab(0, false);
   }
+
+  /* contact form — progressive enhancement over Formspree */
+  var form = doc.querySelector('.contact-form');
+  if (form) {
+    var status = form.querySelector('.form-status');
+    var statusText = status ? status.querySelector('.form-status-text') : null;
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var fields = [].slice.call(form.querySelectorAll('input, textarea'));
+
+    var setStatus = function (state, msg) {
+      if (!status || !statusText) { return; }
+      status.dataset.state = state;
+      statusText.textContent = msg;
+    };
+    var setBusy = function (busy) {
+      if (submitBtn) {
+        submitBtn.disabled = busy;
+        submitBtn.setAttribute('aria-busy', String(busy));
+      }
+      fields.forEach(function (f) { f.disabled = busy; });
+    };
+
+    form.addEventListener('submit', function (e) {
+      if (!form.checkValidity()) { return; }
+      e.preventDefault();
+      var data = new FormData(form); /* capture before disabling — disabled fields are excluded from FormData */
+      setStatus('', '');
+      setBusy(true);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      }).then(function (r) {
+        if (r.ok) {
+          form.reset();
+          setStatus('ok', 'Merci, votre message a bien été envoyé ! Nous vous répondrons rapidement.');
+        } else {
+          setStatus('error', 'Une erreur est survenue. Réessayez, ou appelez-nous au +41 22 328 26 13.');
+        }
+      }).catch(function () {
+        setStatus('error', 'Une erreur est survenue. Réessayez, ou appelez-nous au +41 22 328 26 13.');
+      }).finally(function () {
+        setBusy(false);
+      });
+    });
+  }
 })();
 
 /* ---- open/closed status chip (Europe/Zurich) — copied verbatim from

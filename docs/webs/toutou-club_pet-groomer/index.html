@@ -472,10 +472,15 @@
                             <textarea id="message" name="message" required
                                 placeholder="Votre compagnon, ses besoins, vos disponibilités…"></textarea>
                         </div>
-                        <button class="btn btn--primary btn--block" type="submit">Envoyer le message <svg class="ico"
-                                aria-hidden="true">
-                                <use href="#ico-arrow"></use>
-                            </svg></button>
+                        <button class="btn btn--primary btn--block" type="submit">
+                            <span class="btn-label">Envoyer le message <svg class="ico" aria-hidden="true">
+                                    <use href="#ico-arrow"></use>
+                                </svg></span>
+                            <span class="spinner" aria-hidden="true"></span>
+                        </button>
+                        <div class="form-status" role="status" aria-live="polite">
+                            <p class="form-status-text"></p>
+                        </div>
                         <p class="form-note"><svg class="ico" aria-hidden="true">
                                 <use href="#ico-mail"></use>
                             </svg> Votre message arrive directement au salon — sans spam.</p>

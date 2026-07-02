@@ -589,8 +589,11 @@
                         <label for="cf-msg">Votre message</label>
                         <textarea id="cf-msg" name="message" rows="5" required></textarea>
                     </div>
-                    <button class="btn btn-primary btn-block" type="submit">Envoyer le message</button>
-                    <p class="form-note" id="form-status" role="status" aria-live="polite">On vous répond
+                    <button class="btn btn-primary btn-block" type="submit">
+                        <span class="btn-label">Envoyer le message</span>
+                        <span class="spinner" aria-hidden="true"></span>
+                    </button>
+                    <p class="form-note form-status" id="form-status" role="status" aria-live="polite">On vous répond
                         rapidement, en général sous 24 h.</p>
                 </form>
             </div>

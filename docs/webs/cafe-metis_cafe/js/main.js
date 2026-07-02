@@ -129,6 +129,56 @@
   }
 })();
 
+/* ---- contact form: progressive enhancement over Formspree ----
+   #form-status is a single element (repurposes the pre-existing static
+   "On vous répond…" note) rather than the status/status-text pair used
+   elsewhere, so its idle copy stays visible under the spinner during
+   submission and is only overwritten once a result comes back. ---- */
+(function () {
+  'use strict';
+  var form = document.querySelector('.contact__form');
+  if (!form) { return; }
+  var status = document.getElementById('form-status');
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var fields = [].slice.call(form.querySelectorAll('input, textarea'));
+
+  var setStatus = function (state, msg) {
+    if (!status) { return; }
+    status.dataset.state = state;
+    status.textContent = msg;
+  };
+  var setBusy = function (busy) {
+    if (submitBtn) {
+      submitBtn.disabled = busy;
+      submitBtn.setAttribute('aria-busy', String(busy));
+    }
+    fields.forEach(function (f) { f.disabled = busy; });
+  };
+
+  form.addEventListener('submit', function (e) {
+    if (!form.checkValidity()) { return; }
+    e.preventDefault();
+    var data = new FormData(form); /* capture before disabling — disabled fields are excluded from FormData */
+    setBusy(true);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { Accept: 'application/json' }
+    }).then(function (r) {
+      if (r.ok) {
+        form.reset();
+        setStatus('ok', 'Merci, votre message a bien été envoyé ! Nous vous répondrons rapidement.');
+      } else {
+        setStatus('error', 'Une erreur est survenue. Réessayez, ou appelez-nous au +41 22 328 98 50.');
+      }
+    }).catch(function () {
+      setStatus('error', 'Une erreur est survenue. Réessayez, ou appelez-nous au +41 22 328 98 50.');
+    }).finally(function () {
+      setBusy(false);
+    });
+  });
+})();
+
 /* ---- photo lightbox: click / Enter / Space to enlarge any content image ----
    Self-contained and identical across every site. Hooks every <picture>
    (content photos only — logos, icons and the map are never wrapped in

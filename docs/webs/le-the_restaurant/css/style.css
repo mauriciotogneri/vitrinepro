@@ -1127,6 +1127,53 @@ h1.display {
   width: 100%;
   justify-content: center;
   margin-top: 1.3rem;
+  position: relative;
+}
+.form-card .btn-primary .spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(244, 236, 221, 0.4);
+  border-top-color: var(--cream);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -9px 0 0 -9px;
+  animation: spin 0.7s linear infinite;
+}
+.form-card .btn-primary[aria-busy="true"] .btn-label {
+  visibility: hidden;
+}
+.form-card .btn-primary[aria-busy="true"] .spinner {
+  display: inline-block;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.form-status {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--t) var(--ease);
+}
+.form-status[data-state="ok"],
+.form-status[data-state="error"] {
+  grid-template-rows: 1fr;
+}
+.form-status-text {
+  overflow: hidden;
+  min-height: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.form-status[data-state="ok"] .form-status-text {
+  color: #3f6b3f;
+}
+.form-status[data-state="error"] .form-status-text {
+  color: var(--seal-ink);
 }
 .form-foot {
   font-size: 0.8rem;

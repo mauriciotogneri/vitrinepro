@@ -473,3 +473,28 @@ html.lightbox-open { overflow: hidden; scrollbar-gutter: stable; }
 .legal-page section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .legal-page h2 { font-family: var(--font-body); font-size: 1.15rem; font-weight: 800; color: var(--oxblood); margin-bottom: 0.7rem; }
 .legal-page a { color: var(--oxblood); }
+
+/* ---------- Contact form status ---------- */
+.contact-form button[type="submit"] { position: relative; }
+.contact-form .spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(252, 251, 240, 0.4);
+  border-top-color: var(--cream);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -9px 0 0 -9px;
+  animation: spin 0.7s linear infinite;
+}
+.contact-form button[aria-busy="true"] .btn-label { visibility: hidden; }
+.contact-form button[aria-busy="true"] .spinner { display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.form-status { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--t-med) var(--ease); }
+.form-status[data-state="ok"],
+.form-status[data-state="error"] { grid-template-rows: 1fr; }
+.form-status-text { overflow: hidden; min-height: 0; margin: 0; padding-top: 0.7rem; font-size: 0.85rem; font-weight: 600; }
+.form-status[data-state="ok"] .form-status-text { color: #1c7a3e; }
+.form-status[data-state="error"] .form-status-text { color: var(--garnet); }

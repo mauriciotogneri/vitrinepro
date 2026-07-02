@@ -498,7 +498,13 @@
             <label for="cf-msg">Message <span class="req" aria-hidden="true">*</span></label>
             <textarea id="cf-msg" name="message" required placeholder="Votre message, une question, un mot…"></textarea>
           </div>
-          <button class="btn btn-primary" type="submit">Envoyer le message</button>
+          <button class="btn btn-primary" type="submit">
+            <span class="btn-label">Envoyer le message</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+          <div class="form-status" role="status" aria-live="polite">
+            <p class="form-status-text"></p>
+          </div>
         </form>
       </div>
     </section>

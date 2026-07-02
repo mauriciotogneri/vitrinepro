@@ -531,7 +531,13 @@
               <label for="cf-company">Ne remplissez pas ce champ</label>
               <input id="cf-company" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
             </p>
-            <button class="btn btn-gold" type="submit">Envoyer le message</button>
+            <button class="btn btn-gold" type="submit">
+              <span class="btn-label">Envoyer le message</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+            <div class="form-status" role="status" aria-live="polite">
+              <p class="form-status-text"></p>
+            </div>
           </form>
         </div>
       </div>

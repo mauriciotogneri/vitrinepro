@@ -478,7 +478,15 @@
                             <textarea id="message" name="message" required
                                 placeholder="Votre message, une question, un mot…"></textarea>
                         </div>
-                        <button class="btn" type="submit">Envoyer le message</button>
+                        <div class="submit-row">
+                            <button class="btn" type="submit">
+                                <span class="btn-label">Envoyer le message</span>
+                                <span class="spinner" aria-hidden="true"></span>
+                            </button>
+                            <div class="form-status" role="status" aria-live="polite">
+                                <p class="form-status-text"></p>
+                            </div>
+                        </div>
                         <p class="fine">Pour réserver une table, le plus simple reste de nous appeler au
                             +41&nbsp;22&nbsp;320&nbsp;39&nbsp;63.</p>
                     </form>

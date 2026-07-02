@@ -361,6 +361,17 @@ svg { fill: currentColor; }
 .field input::placeholder, .field textarea::placeholder { color: var(--muted); }
 .hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
 .form-note { color: var(--muted); font-size: .85rem; margin-top: .8rem; }
+.contact__form .btn { position: relative; }
+.contact__form .btn .spinner { display: none; width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; position: absolute; top: 50%; left: 50%; margin: -9px 0 0 -9px; animation: spin .7s linear infinite; }
+.contact__form .btn[aria-busy="true"] .btn-label { visibility: hidden; }
+.contact__form .btn[aria-busy="true"] .spinner { display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.form-status { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--t); }
+.form-status[data-state="ok"], .form-status[data-state="error"] { grid-template-rows: 1fr; }
+.form-status-text { overflow: hidden; min-height: 0; margin: 0; padding-top: .7rem; font-size: .85rem; font-weight: 600; }
+.form-status[data-state="ok"] .form-status-text { color: var(--gold); }
+.form-status[data-state="error"] .form-status-text { color: var(--red-bright); }
+.field input:disabled, .field textarea:disabled { opacity: .6; cursor: not-allowed; }
 
 /* ---------- footer ---------- */
 .site-foot { background: var(--bg-deep); border-top: 1px solid var(--border); padding-top: clamp(2.6rem, 6vw, 4rem); margin-top: clamp(2rem, 5vw, 3rem); }

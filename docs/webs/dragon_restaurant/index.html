@@ -498,7 +498,13 @@
             <label for="message">Message <span class="req">*</span></label>
             <textarea id="message" name="message" placeholder="Votre message, une question, une commande…" required></textarea>
           </div>
-          <button class="btn btn-primary" type="submit">Envoyer le message</button>
+          <button class="btn btn-primary" type="submit">
+            <span class="btn-label">Envoyer le message</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+          <div class="form-status" role="status" aria-live="polite">
+            <p class="form-status-text"></p>
+          </div>
         </form>
       </div>
     </div>

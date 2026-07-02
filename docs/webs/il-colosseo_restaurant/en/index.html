@@ -475,7 +475,15 @@
                             <textarea id="message" name="message" required
                                 placeholder="Your message, a question, a note…"></textarea>
                         </div>
-                        <button class="btn" type="submit">Send message</button>
+                        <div class="submit-row">
+                            <button class="btn" type="submit">
+                                <span class="btn-label">Send message</span>
+                                <span class="spinner" aria-hidden="true"></span>
+                            </button>
+                            <div class="form-status" role="status" aria-live="polite">
+                                <p class="form-status-text"></p>
+                            </div>
+                        </div>
                         <p class="fine">To book a table, the easiest way is to call us on
                             +41&nbsp;22&nbsp;320&nbsp;39&nbsp;63.</p>
                     </form>

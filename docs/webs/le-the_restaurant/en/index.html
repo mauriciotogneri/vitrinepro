@@ -557,7 +557,13 @@
                                 <label for="message">Message</label>
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
-                            <button class="btn btn-primary" type="submit">Send message</button>
+                            <button class="btn btn-primary" type="submit">
+                                <span class="btn-label">Send message</span>
+                                <span class="spinner" aria-hidden="true"></span>
+                            </button>
+                            <div class="form-status" role="status" aria-live="polite">
+                                <p class="form-status-text"></p>
+                            </div>
                             <p class="form-foot">We'll reply as soon as we can.</p>
                         </form>
                     </div>

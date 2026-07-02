@@ -164,45 +164,51 @@
     if (todayRow) { todayRow.classList.add("today"); }
   }
 
-  /* ---- Contact form: AJAX submit with status (still works without JS) - */
+  /* ---- Contact form: progressive enhancement over Formspree ---- */
   var form = document.getElementById("contact-form");
   if (form) {
     var status = form.querySelector(".form-status");
     var submitBtn = form.querySelector('button[type="submit"]');
-    var btnText = submitBtn ? submitBtn.textContent : "";
+    var fields = [].slice.call(form.querySelectorAll("input, textarea"));
 
     var say = function (msg, tone) {
       if (!status) { return; }
       status.textContent = msg;
       status.setAttribute("data-tone", tone);
     };
+    var setBusy = function (busy) {
+      if (submitBtn) {
+        submitBtn.disabled = busy;
+        submitBtn.setAttribute("aria-busy", String(busy));
+      }
+      fields.forEach(function (f) { f.disabled = busy; });
+    };
 
     form.addEventListener("submit", function (e) {
-      // Only enhance if fetch + FormData exist and the endpoint is configured.
-      if (!window.fetch || !window.FormData) { return; }
-      if (form.action.indexOf("{{FORMSPREE_ID}}") !== -1) { return; } // unconfigured → native POST
-
+      if (!form.checkValidity()) { return; }
       e.preventDefault();
-      if (submitBtn) { submitBtn.disabled = true; }
-      say(EN ? "Sending…" : "Envoi en cours…", "");
+      var data = new FormData(form); /* capture before disabling — disabled fields are excluded from FormData */
+      say("", "");
+      setBusy(true);
 
       fetch(form.action, {
         method: "POST",
-        body: new FormData(form),
+        body: data,
         headers: { Accept: "application/json" }
       }).then(function (res) {
         if (res.ok) {
           form.reset();
-          say(EN ? "Thank you — your message has been sent." : "Merci — votre message a bien été envoyé.", "ok");
+          say(EN ? "Thank you, your message has been sent! We'll get back to you shortly."
+                 : "Merci, votre message a bien été envoyé ! Nous vous répondrons rapidement.", "ok");
         } else {
-          say(EN ? "Sorry, something went wrong. Please call or write us instead."
-                 : "Désolé, une erreur est survenue. Appelez-nous ou écrivez-nous directement.", "err");
+          say(EN ? "Something went wrong. Please try again, or call us on +41 76 582 00 23."
+                 : "Une erreur est survenue. Réessayez, ou appelez-nous au +41 76 582 00 23.", "err");
         }
       }).catch(function () {
-        say(EN ? "Network error. Please call or write us instead."
-               : "Erreur réseau. Appelez-nous ou écrivez-nous directement.", "err");
-      }).then(function () {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = btnText; }
+        say(EN ? "Something went wrong. Please try again, or call us on +41 76 582 00 23."
+               : "Une erreur est survenue. Réessayez, ou appelez-nous au +41 76 582 00 23.", "err");
+      }).finally(function () {
+        setBusy(false);
       });
     });
   }
